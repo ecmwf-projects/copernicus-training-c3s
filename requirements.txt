@@ -1,3 +1,15 @@
 jupyter-book
-matplotlib
+cdsapi
+netCDF4
 numpy
+pandas
+xarray
+dask
+matplotlib
+cartopy
+
+
+
+
+
+
