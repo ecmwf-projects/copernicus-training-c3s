@@ -448,12 +448,12 @@ const thebe_selector_output = ".output, .cell_output"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cdsapi in c:\users\cxcs\anaconda3\lib\site-packages (0.5.1)
-Requirement already satisfied: tqdm in c:\users\cxcs\anaconda3\lib\site-packages (from cdsapi) (4.62.3)
 Requirement already satisfied: requests&gt;=2.5.0 in c:\users\cxcs\anaconda3\lib\site-packages (from cdsapi) (2.26.0)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (3.2)
+Requirement already satisfied: tqdm in c:\users\cxcs\anaconda3\lib\site-packages (from cdsapi) (4.62.3)
+Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2021.10.8)
 Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (1.26.7)
 Requirement already satisfied: charset-normalizer~=2.0.0 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2.0.4)
-Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2021.10.8)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (3.2)
 Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-packages (from tqdm-&gt;cdsapi) (0.4.4)
 </pre></div>
 </div>
@@ -555,79 +555,6 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
         <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;netcdf&#39;</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">UERRA_ws10m.nc&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 13:17:58,488 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/reanalysis-uerra-europe-single-levels
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_18732</span><span class="o">/</span><span class="mf">4198867487.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="s1">&#39;reanalysis-uerra-europe-single-levels&#39;</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="p">{</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span>         <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;uerra_harmonie&#39;</span><span class="p">,</span>
-
-<span class="nn">~\Anaconda3\lib\site-packages\cdsapi\api.py</span> in <span class="ni">retrieve</span><span class="nt">(self, name, request, target)</span>
-<span class="g g-Whitespace">    </span><span class="mi">346</span> 
-<span class="g g-Whitespace">    </span><span class="mi">347</span>     <span class="k">def</span> <span class="nf">retrieve</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">348</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_api</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2">/resources/</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">url</span><span class="p">,</span> <span class="n">name</span><span class="p">),</span> <span class="n">request</span><span class="p">,</span> <span class="s2">&quot;POST&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">349</span>         <span class="k">if</span> <span class="n">target</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">350</span>             <span class="n">result</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
-
-<span class="nn">~\Anaconda3\lib\site-packages\cdsapi\api.py</span> in <span class="ni">_api</span><span class="nt">(self, url, request, method)</span>
-<span class="g g-Whitespace">    </span><span class="mi">415</span>             <span class="n">action</span> <span class="o">=</span> <span class="n">session</span><span class="o">.</span><span class="n">post</span>
-<span class="g g-Whitespace">    </span><span class="mi">416</span> 
-<span class="ne">--&gt; </span><span class="mi">417</span>         <span class="n">result</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">robust</span><span class="p">(</span><span class="n">action</span><span class="p">)(</span>
-<span class="g g-Whitespace">    </span><span class="mi">418</span>             <span class="n">url</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="n">request</span><span class="p">,</span> <span class="n">verify</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">verify</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">timeout</span>
-<span class="g g-Whitespace">    </span><span class="mi">419</span>         <span class="p">)</span>
-
-<span class="nn">~\Anaconda3\lib\site-packages\cdsapi\api.py</span> in <span class="ni">wrapped</span><span class="nt">(*args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">604</span>             <span class="k">while</span> <span class="n">tries</span> <span class="o">&lt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">retry_max</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">605</span>                 <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">606</span>                     <span class="n">r</span> <span class="o">=</span> <span class="n">call</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">607</span>                 <span class="k">except</span> <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">608</span>                     <span class="n">requests</span><span class="o">.</span><span class="n">exceptions</span><span class="o">.</span><span class="n">ConnectionError</span><span class="p">,</span>
-
-<span class="nn">~\Anaconda3\lib\site-packages\requests\sessions.py</span> in <span class="ni">post</span><span class="nt">(self, url, data, json, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">588</span>         <span class="s2">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">589</span><span class="s2"> </span>
-<span class="ne">--&gt; </span><span class="mi">590</span><span class="s2">         return self.request(&#39;POST&#39;, url, data=data, json=json, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">591</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">592</span><span class="s2">     def put(self, url, data=None, **kwargs):</span>
-
-<span class="nn">~\Anaconda3\lib\site-packages\requests\sessions.py</span> in <span class="ni">request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
-<span class="g g-Whitespace">    </span><span class="mi">526</span><span class="s2">             hooks=hooks,</span>
-<span class="g g-Whitespace">    </span><span class="mi">527</span><span class="s2">         )</span>
-<span class="ne">--&gt; </span><span class="mi">528</span><span class="s2">         prep = self.prepare_request(req)</span>
-<span class="g g-Whitespace">    </span><span class="mi">529</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">530</span><span class="s2">         proxies = proxies or </span><span class="si">{}</span><span class="s2"></span>
-
-<span class="nn">~\Anaconda3\lib\site-packages\requests\sessions.py</span> in <span class="ni">prepare_request</span><span class="nt">(self, request)</span>
-<span class="g g-Whitespace">    </span><span class="mi">454</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">455</span><span class="s2">         p = PreparedRequest()</span>
-<span class="ne">--&gt; </span><span class="mi">456</span><span class="s2">         p.prepare(</span>
-<span class="g g-Whitespace">    </span><span class="mi">457</span><span class="s2">             method=request.method.upper(),</span>
-<span class="g g-Whitespace">    </span><span class="mi">458</span><span class="s2">             url=request.url,</span>
-
-<span class="nn">~\Anaconda3\lib\site-packages\requests\models.py</span> in <span class="ni">prepare</span><span class="nt">(self, method, url, headers, files, data, params, auth, cookies, hooks, json)</span>
-<span class="g g-Whitespace">    </span><span class="mi">318</span><span class="s2">         self.prepare_cookies(cookies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">319</span><span class="s2">         self.prepare_body(data, files, json)</span>
-<span class="ne">--&gt; </span><span class="mi">320</span><span class="s2">         self.prepare_auth(auth, url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">321</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">322</span><span class="s2">         # Note that prepare_auth must be last to enable authentication schemes</span>
-
-<span class="nn">~\Anaconda3\lib\site-packages\requests\models.py</span> in <span class="ni">prepare_auth</span><span class="nt">(self, auth, url)</span>
-<span class="g g-Whitespace">    </span><span class="mi">554</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">555</span><span class="s2">             # Allow auth to make its changes.</span>
-<span class="ne">--&gt; </span><span class="mi">556</span><span class="s2">             r = auth(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">557</span><span class="s2"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">558</span><span class="s2">             # Update self to reflect the auth changes.</span>
-
-<span class="ne">TypeError</span>: &#39;tuple&#39; object is not callable
 </pre></div>
 </div>
 </div>

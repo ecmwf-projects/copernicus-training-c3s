@@ -69,7 +69,7 @@
 
 # ### Install CDS API via pip
 
-# In[1]:
+# In[ ]:
 
 
 get_ipython().system('pip install cdsapi')
@@ -77,7 +77,7 @@ get_ipython().system('pip install cdsapi')
 
 # ### Load libraries
 
-# In[2]:
+# In[3]:
 
 
 # CDS API
@@ -111,14 +111,14 @@ urllib3.disable_warnings() # Disable "InsecureRequestWarning"
 
 # The first step is to request data from the Climate Data Store programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: `URL` and `KEY` which build together your CDS API key. Below, you have to replace the `#########` with your personal CDS key. Please find [here](https://cds.climate.copernicus.eu/api-how-to) your personal CDS key.
 
-# In[3]:
+# In[1]:
 
 
 URL = 'https://cds.climate.copernicus.eu/api/v2'
 KEY = '##################################'
 
 
-# In[4]:
+# In[2]:
 
 
 DATADIR = './'

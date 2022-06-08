@@ -48,7 +48,7 @@ get_ipython().system('pip install cdsapi')
 # 
 # We will be working with data in NetCDF format. To best handle this data we will use libraries for working with multidimensional arrays, in particular Xarray. We will also need libraries for plotting and viewing data, in this case we will use Matplotlib and Cartopy.
 
-# In[2]:
+# In[1]:
 
 
 # CDS API
@@ -73,7 +73,7 @@ urllib3.disable_warnings()
 # 
 # We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: `URL` and `KEY` which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (http://cds.climate.copernicus.eu), then visit https://cds.climate.copernicus.eu/api-how-to and copy the string of characters listed after "key:". Replace the `#########` below with this string.
 
-# In[3]:
+# In[2]:
 
 
 URL = 'https://cds.climate.copernicus.eu/api/v2'
@@ -82,7 +82,7 @@ KEY = '##################################'
 
 # Here we specify a data directory in which we will download our data and all output files that we will generate:
 
-# In[4]:
+# In[3]:
 
 
 DATADIR = './'
@@ -114,7 +114,7 @@ DATADIR = './'
 
 # > **Note:** UERRA data are stored on tapes in MARS, the ECMWF Meteorological Archival and Retrieval System. Accessing data from tapes is generally slower than accessing data directly from disk. The data requests below may take some hours to complete. For a quicker response you can replace the UERRA data request with similar download parameters for lower resolution ERA5 global reanalysis datasets.
 
-# In[5]:
+# In[ ]:
 
 
 c = cdsapi.Client(url=URL, key=KEY)

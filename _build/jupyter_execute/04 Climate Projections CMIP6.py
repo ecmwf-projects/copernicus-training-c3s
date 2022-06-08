@@ -50,7 +50,7 @@
 
 # ### Install CDS API via pip
 
-# In[1]:
+# In[ ]:
 
 
 get_ipython().system('pip install cdsapi')
@@ -58,7 +58,7 @@ get_ipython().system('pip install cdsapi')
 
 # ### Load libraries
 
-# In[2]:
+# In[7]:
 
 
 # General libs for file paths, data extraction, etc
@@ -91,7 +91,7 @@ import cartopy.feature as cfeature
 
 # We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: `URL` and `KEY` which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (http://cds.climate.copernicus.eu), then visit https://cds.climate.copernicus.eu/api-how-to and copy the string of characters listed after "key:". Replace the `#########` below with this string.
 
-# In[3]:
+# In[2]:
 
 
 URL = 'https://cds.climate.copernicus.eu/api/v2'
@@ -100,7 +100,7 @@ KEY = '##################################'
 
 # Here we specify a data directory in which we will download our data and all output files that we will generate:
 
-# In[4]:
+# In[8]:
 
 
 DATADIR = './'
@@ -112,13 +112,13 @@ DATADIR = './'
 # 
 # In order to loop through the various experiments and models in our data requests, we will specify them as Python 'lists' here:
 
-# In[5]:
+# In[9]:
 
 
 experiments = ['historical', 'ssp126', 'ssp245', 'ssp585']
 
 
-# In[6]:
+# In[10]:
 
 
 models = ['hadgem3_gc31_ll', 'inm_cm5_0', 'inm_cm4_8', 'ipsl_cm6a_lr', 
@@ -133,7 +133,7 @@ models = ['hadgem3_gc31_ll', 'inm_cm5_0', 'inm_cm4_8', 'ipsl_cm6a_lr',
 
 # > **Note:** For more information about data access through the Climate Data Store, please see the dedicated tutorial [here](./climate_data_store_intro.ipynb).
 
-# In[7]:
+# In[ ]:
 
 
 # DOWNLOAD DATA FOR HISTORICAL PERIOD

@@ -105,7 +105,7 @@
 # The code below creates the file under your current working directory. Make sure to replace the `################` with your personal `CDS API key`.
 # 
 
-# In[1]:
+# In[ ]:
 
 
 get_ipython().run_cell_magic('writefile', './.cdsapirc', '\nurl: https://cds.climate.copernicus.eu/api/v2\nkey: ##############################')
@@ -119,7 +119,7 @@ get_ipython().run_cell_magic('writefile', './.cdsapirc', '\nurl: https://cds.cli
 # 
 # **Please note:** in the workflow notebooks, we will use this modality and set manually the CDS API key information for the data retrievals.
 
-# In[2]:
+# In[1]:
 
 
 URL = 'https://cds.climate.copernicus.eu/api/v2'
@@ -132,7 +132,7 @@ KEY = '############################'
 
 # The next step is to install the `CDS API client`. You can do this with the package management system `pip`.
 
-# In[3]:
+# In[ ]:
 
 
 get_ipython().system('pip install cdsapi')
@@ -190,7 +190,7 @@ get_ipython().system('pip install cdsapi')
 
 # **Note:** the request above makes use of the keyword `area`, which enable you to retrieve only a geographical subset. The bounding box information are set as follows: `[N, W, S, E]`. When this keyword is set, the data is automatically projected to a grid from [-180, 180].  
 
-# In[4]:
+# In[ ]:
 
 
 import cdsapi

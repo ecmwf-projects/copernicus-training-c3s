@@ -8,7 +8,8 @@ logo: LogoLine_C3S.png
 # Force re-execution of notebooks on each build.
 # See https://jupyterbook.org/content/execute.html
 execute:
-  execute_notebooks: force
+  execute_notebooks: 'off'
+  allow_errors: false
 
 # Define the name of the latex output file for PDF builds
 latex:
@@ -26,5 +27,5 @@ html:
   use_issues_button: true
   use_repository_button: true
   
-#launch_buttons:
-#  binderhub_url: "https://mybinder.org"  # The URL for your BinderHub (e.g., https://mybinder.org)
+launch_buttons:
+  binderhub_url: "https://mybinder.org"  # The URL for your BinderHub (e.g., https://mybinder.org)
