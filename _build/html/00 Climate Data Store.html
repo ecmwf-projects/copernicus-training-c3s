@@ -604,8 +604,8 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cdsapi in c:\users\cxcs\anaconda3\lib\site-packages (0.5.1)
 Requirement already satisfied: requests&gt;=2.5.0 in c:\users\cxcs\anaconda3\lib\site-packages (from cdsapi) (2.26.0)
 Requirement already satisfied: tqdm in c:\users\cxcs\anaconda3\lib\site-packages (from cdsapi) (4.62.3)
-Requirement already satisfied: charset-normalizer~=2.0.0 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2.0.4)
 Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (1.26.7)
+Requirement already satisfied: charset-normalizer~=2.0.0 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2.0.4)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (3.2)
 Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\lib\site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2021.10.8)
 Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-packages (from tqdm-&gt;cdsapi) (0.4.4)
@@ -656,7 +656,7 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
 </ul>
 </div></blockquote>
 <p><strong>Note:</strong> the request above makes use of the keyword <code class="docutils literal notranslate"><span class="pre">area</span></code>, which enable you to retrieve only a geographical subset. The bounding box information are set as follows: <code class="docutils literal notranslate"><span class="pre">[N,</span> <span class="pre">W,</span> <span class="pre">S,</span> <span class="pre">E]</span></code>. When this keyword is set, the data is automatically projected to a grid from [-180, 180].</p>
-<div class="cell tag_hide-output docutils container">
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cdsapi</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
@@ -696,16 +696,16 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 13:10:42,672 INFO Welcome to the CDS
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 13:17:41,114 INFO Welcome to the CDS
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 13:10:42,673 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/reanalysis-era5-land
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 13:17:41,116 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/reanalysis-era5-land
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 13:10:42,757 INFO Request is completed
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 13:17:41,208 INFO Request is completed
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 13:10:42,761 INFO Downloading https://download-0005-clone.copernicus-climate.eu/cache-compute-0005/cache/data6/adaptor.mars.internal-1654611875.002325-3622-6-f07de367-f32b-4331-8333-bb21ba85c620.nc to ./data/era5-land_eur_1981_2020.nc (23M)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2022-06-08 13:17:41,221 INFO Downloading https://download-0005-clone.copernicus-climate.eu/cache-compute-0005/cache/data6/adaptor.mars.internal-1654611875.002325-3622-6-f07de367-f32b-4331-8333-bb21ba85c620.nc to ./data/era5-land_eur_1981_2020.nc (23M)
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0%|                                                                                      | 0.00/23.0M [00:00&lt;?, ?B/s]
@@ -719,7 +719,7 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
 </div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_21740</span><span class="o">/</span><span class="mf">1706028111.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="o">~</span>\<span class="n">AppData</span>\<span class="n">Local</span>\<span class="n">Temp</span><span class="o">/</span><span class="n">ipykernel_13752</span><span class="o">/</span><span class="mf">1706028111.</span><span class="n">py</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">cdsapi</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
