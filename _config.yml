@@ -27,4 +27,4 @@ html:
   use_repository_button: true
   
 launch_buttons:
-  binderhub_url: "https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main"  # The URL for your BinderHub (e.g., https://mybinder.org)
+  binderhub_url: "https://mybinder.org"  # The URL for your BinderHub (e.g., https://mybinder.org)
