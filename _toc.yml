@@ -16,5 +16,8 @@ parts:
    chapters:
    - file: 04 Climate Projections CMIP6
    - file: 05 Climate Projections CORDEX
+ - caption: Tutorials on Seasonal Forecasts
+   chapters:
+   - file: 06 Seasonal Forecast Anomalies
 
 
