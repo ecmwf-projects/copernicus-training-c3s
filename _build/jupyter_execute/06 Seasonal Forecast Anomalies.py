@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# <img src='./img/LogoLine_horizon_C3S.png' align='right' width='100%'></img>
+# ![logo](./img/LogoLine_horizon_C3S.png)
 
 # <br>
 
