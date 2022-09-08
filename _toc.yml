@@ -4,9 +4,9 @@
 format: jb-book
 root: intro
 parts:
- - caption: Climate Data Store
+ - caption: Climate Data Store (CDS)
    chapters:
-   - file: 00_Climate_Data_Store (CDS)
+   - file: 00_Climate_Data_Store
      title: CDS tutorial
  - caption: Reanalysis Tutorials
    chapters:
