@@ -8,6 +8,17 @@ This website contains Jupyter notebook based tutorials that demonstrate how to a
 
 ![banner02](./img/C3S_jupyterbook_banner_v01.png)
 
+## How to run these tutorials
+
+The tutorials are in the form of [Jupyter notebooks](https://jupyter.org/). At the top of each notebook you will find links to a selection of cloud-based services to run, edit, export or create new notebooks. These include the following:
+
+|Binder|Kaggle|Colab|
+|:-:|:-:|:-:|
+|[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/)|[![Kaggle](https://kaggle.com/static/images/open-in-kaggle.svg)](https://www.kaggle.com/code)|[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/)|
+|Binder may take some time to load, so please be patient!                                           |Requires (free) registration with Kaggle. Once in, "switch on the internet" via settings           |Requires Google account, and installation of some libraries, such as Cartopy `!pip install cartopy`|
+
+If you would like to run this notebook in your own environment, we suggest you install [Anaconda](https://docs.anaconda.com/anaconda/install/), which contains most of the libraries you will need. You will also need to install [Xarray](http://xarray.pydata.org/en/stable/) for working with multidimensional data in netcdf files, and the CDS API (`pip install cdsapi`) for downloading data programatically from the CDS.
+
 ```{note}
 These tutorials provide practical guides on data processing. They can be run without need for installation, and can be fully adapted to suit your needs!
 ```
