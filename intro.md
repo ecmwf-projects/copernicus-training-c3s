@@ -1,5 +1,7 @@
 ![logo](./LogoLine_EC_Cop_ECMWF.png)
 
+<br>
+
 # Copernicus Climate Change Service (C3S) Data Tutorials
 
 ***Discover how to access and handle data of the past, present and future climate!***
@@ -22,6 +24,8 @@ If you would like to run this notebook in your own environment, we suggest you i
 ```{note}
 These tutorials provide practical guides on data processing. They can be run without need for installation, and can be fully adapted to suit your needs!
 ```
+
+## Contents
 
 Please browse through the tutorials listed below, or make use of the search function to look for specific topics or data processing workflows of interest.
 
