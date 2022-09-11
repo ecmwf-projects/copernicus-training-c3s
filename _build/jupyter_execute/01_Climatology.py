@@ -37,6 +37,8 @@
 #   </tr>
 # </table>
 
+# <br>
+
 # ## 1. Search, download and view data
 # 
 # Before we begin we must prepare our environment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various python libraries that we will need.
@@ -100,19 +102,6 @@ DATADIR = './'
 # 
 # To search for data, visit the CDS website: http://cds.climate.copernicus.eu.
 # Here you can search for ERA5 data using the search bar. The data we need for this tutorial is the [ERA5 monthly averaged data on single levels from 1979 to present](https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-monthly-means?tab=overview). ERA5 is the 5th version of the ECMWF Reanalysis dataset. Reanalysis uses a state of the art forecast model and data assimilation system to create a consistent "map without gaps" of observed and modelled climate variables over the past decades.
-
-# <style>
-# td, th {
-#    border: 1px solid white;
-#    border-collapse: collapse;
-# }
-# </style>
-# <table align="left">
-#   <tr>
-#     <th><img src = "./img/CDS.jpg" alt = "CDS"></th></th>
-#     <th><img src = "./img/CDS_ERA5.jpg" alt = "ERA5"></th></th>
-#   </tr>
-# </table>
 
 # Having selected the correct dataset, we now need to specify what product type, variables, temporal and geographic coverage we are interested in. These can all be selected in the **"Download data"** tab. In this tab a form appears in which we will select the following parameters to download:
 # 

@@ -37,6 +37,8 @@
 #   </tr>
 # </table>
 
+# <br>
+
 # ## Search, download and view data
 # 
 # Before we begin we must prepare our environment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various python libraries that we will need.
@@ -98,19 +100,6 @@ DATADIR = './'
 # #### Search for climate data to calculate wind chill index
 # 
 # The wind chill index we will calculate takes two parameters as input, these are 2m near-surface air temperature, and 10m wind speed. Data for these parameters are available as part of the UERRA regional reanalysis dataset for Europe for the period 1961 to 2019. We will search for this data on the CDS website: http://cds.climate.copernicus.eu. The specific dataset we will use is the `UERRA regional reanalysis for Europe on single levels from 1961 to 2019`. 
-
-# <style>
-# td, th {
-#    border: 1px solid white;
-#    border-collapse: collapse;
-# }
-# </style>
-# <table align="left">
-#   <tr>
-#     <th style="width:47%;"><img src = "./img/CDS.jpg" alt = "CDS"></th></th>
-#     <th style="width:53%;"><img src = "./img/CDS_UERRA.png" alt = "UERRA"></th></th>
-#   </tr>
-# </table>
 
 # Having selected the dataset, we now need to specify what product type, variables, temporal and geographic coverage we are interested in. These can all be selected in the **"Download data"** tab. In this tab a form appears in which we will select the following parameters to download:
 # 

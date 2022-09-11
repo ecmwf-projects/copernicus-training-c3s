@@ -35,6 +35,8 @@
 #   </tr>
 # </table>
 
+# <br>
+
 # ## Search, download and view data
 # 
 # Before we begin we must prepare our environment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various python libraries that we will need.
@@ -97,19 +99,6 @@ DATADIR = './'
 # #### Search for data
 # 
 # To search for data, visit the CDS website: http://cds.climate.copernicus.eu. To facilitate your search you can use keywords, or apply various filters. The data we are going to use in this exercise is the `ERA5 reanalysis data on single levels from 1979 to present`.
-
-# <style>
-# td, th {
-#    border: 1px solid white;
-#    border-collapse: collapse;
-# }
-# </style>
-# <table align="left">
-#   <tr>
-#     <th style="width:47%;"><img src = "./img/CDS.jpg" alt = "CDS"></th></th>
-#     <th style="width:53%;"><img src = "./img/CDS_ERA5_hourly.png" alt = "ERA5"></th></th>
-#   </tr>
-# </table>
 
 # Having selected the correct dataset, we now need to specify what product type, variables, temporal and geographic coverage we are interested in. These can all be selected in the **"Download data"** tab. In this tab a form appears in which we will select the following parameters to download. We will choose a subset area of 1x1 degrees, corresponding to a region of around 111km North/South and 72km East/West in Belgium and Northern France, around the city of Lille:
 # 
