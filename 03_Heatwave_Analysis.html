@@ -426,7 +426,7 @@ td, th {
     <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/master/03_Heatwave_Analysis.ipynb">
         <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
   </tr>
-</table><div class="section" id="search-download-and-view-data">
+</table><br><div class="section" id="search-download-and-view-data">
 <h2>Search, download and view data<a class="headerlink" href="#search-download-and-view-data" title="Permalink to this headline">¶</a></h2>
 <p>Before we begin we must prepare our environment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various python libraries that we will need.</p>
 <div class="section" id="install-cds-api">
@@ -501,18 +501,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\
 <div class="section" id="search-for-data">
 <h3>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this headline">¶</a></h3>
 <p>To search for data, visit the CDS website: <a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>. To facilitate your search you can use keywords, or apply various filters. The data we are going to use in this exercise is the <code class="docutils literal notranslate"><span class="pre">ERA5</span> <span class="pre">reanalysis</span> <span class="pre">data</span> <span class="pre">on</span> <span class="pre">single</span> <span class="pre">levels</span> <span class="pre">from</span> <span class="pre">1979</span> <span class="pre">to</span> <span class="pre">present</span></code>.</p>
-<style>
-td, th {
-   border: 1px solid white;
-   border-collapse: collapse;
-}
-</style>
-<table align="left">
-  <tr>
-    <th style="width:47%;"><img src = "./img/CDS.jpg" alt = "CDS"></th></th>
-    <th style="width:53%;"><img src = "./img/CDS_ERA5_hourly.png" alt = "ERA5"></th></th>
-  </tr>
-</table><p>Having selected the correct dataset, we now need to specify what product type, variables, temporal and geographic coverage we are interested in. These can all be selected in the <strong>“Download data”</strong> tab. In this tab a form appears in which we will select the following parameters to download. We will choose a subset area of 1x1 degrees, corresponding to a region of around 111km North/South and 72km East/West in Belgium and Northern France, around the city of Lille:</p>
+<p>Having selected the correct dataset, we now need to specify what product type, variables, temporal and geographic coverage we are interested in. These can all be selected in the <strong>“Download data”</strong> tab. In this tab a form appears in which we will select the following parameters to download. We will choose a subset area of 1x1 degrees, corresponding to a region of around 111km North/South and 72km East/West in Belgium and Northern France, around the city of Lille:</p>
 <ul class="simple">
 <li><p>Product type: <code class="docutils literal notranslate"><span class="pre">Reanalysis</span></code></p></li>
 <li><p>Variable: <code class="docutils literal notranslate"><span class="pre">2m</span> <span class="pre">temperature</span></code></p></li>
