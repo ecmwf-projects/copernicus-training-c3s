@@ -2,11 +2,14 @@ name: example-environment
 channels:
   - conda-forge
 dependencies:
-  - cdsapi
+  - python
   - numpy
-  - pandas
-  - netCDF4
-  - dask
-  - xarray
-  - matplotlib
-  - cartopy
+  - pip
+  - pip
+    - cdsapi
+    - pandas
+    - netCDF4
+    - dask
+    - xarray
+    - matplotlib
+    - cartopy
