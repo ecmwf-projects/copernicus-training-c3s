@@ -53,14 +53,14 @@
 
 # ### Install packages
 
-# In[2]:
+# In[ ]:
 
 
 # Install CDS API for downloading data from the CDS
 get_ipython().system('pip install cdsapi')
 
 
-# In[1]:
+# In[ ]:
 
 
 # Install cfgrib to enable us to read GRIB format files
@@ -69,7 +69,7 @@ get_ipython().system('conda install -c conda-forge cfgrib -y')
 
 # ### Load packages
 
-# In[45]:
+# In[1]:
 
 
 # Miscellaneous operating system interfaces
@@ -116,7 +116,7 @@ urllib3.disable_warnings()
 
 # The first step is to request data from the Climate Data Store programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: `URL` and `KEY` which build together your CDS API key. Below, you have to replace the `#########` with your personal CDS key. Please find [here](https://cds.climate.copernicus.eu/api-how-to) your personal CDS key.
 
-# In[ ]:
+# In[2]:
 
 
 URL = 'https://cds.climate.copernicus.eu/api/v2'
@@ -125,7 +125,7 @@ KEY = '########################################'
 
 # Here we specify a data directory in which we will download our data and all output files that we will generate:
 
-# In[62]:
+# In[3]:
 
 
 DATADIR = '../input/seasonal'
@@ -225,7 +225,7 @@ c.retrieve(
 # > **Latitude**: Latitudes in 1 deg resolution<br>
 # > **Longitude**: Longitudes in 1 deg resolution and in 0-360 grid<br>
 
-# In[63]:
+# In[4]:
 
 
 ds = xr.open_dataset(f'{DATADIR}/ecmwf_seas5_1993-2016_05_hindcast_monthly_tp.grib', engine='cfgrib')
@@ -246,7 +246,7 @@ ds
 # <b>NOTE</b>: <br>
 #     The second of the time dimensions is valid for systems with burst start dates (such as in our example), but for lagged systems, <i>time</i> should be replaced with <i>indexing_time</i>. Please see <a href="https://confluence.ecmwf.int/display/CKB/Seasonal+forecasts+and+the+Copernicus+Climate+Change+Service#heading-Burstvslaggedmode">here</a> for more details on the difference between burst and lagged systems.</div>
 
-# In[64]:
+# In[5]:
 
 
 ds_hindcast = xr.open_dataset(f'{DATADIR}/ecmwf_seas5_1993-2016_05_hindcast_monthly_tp.grib', engine='cfgrib', backend_kwargs=dict(time_dims=('forecastMonth', 'time')))
@@ -257,7 +257,7 @@ ds_hindcast
 # 
 # The `xarray.Dataset` object into which we have read the data from the downloaded GRIB files may contain arrays of multiple variables (even if we have only one: total precipitation). Another xarray data structure, `xarray.DataArray`, facilitates operations on single variables. We will use this to further process our data. You can select the relevant DataArray from a Dataset by specifying the name of the variable (in our case `tprate`) in square brackets `[]`. 
 
-# In[65]:
+# In[6]:
 
 
 tprate_hindcast = ds_hindcast['tprate']
@@ -270,7 +270,7 @@ tprate_hindcast
 # 
 # We can now create the hindcast climatology by averaging over the 25 ensemble members and the 24 years. We do this for each forecast lead time and for each geographical grid point. We use the function `mean()` to average over one or more dimensions, which in this case are `number` (25 ensemble members) and `time` (years from 1993 to 2016). The result is an `xarray.DataArray` with three dimensions: `forecastMonth`, `latitude` and `longitude`.
 
-# In[66]:
+# In[7]:
 
 
 tprate_hindcast_mean = tprate_hindcast.mean(['number', 'time'])
@@ -287,7 +287,7 @@ tprate_hindcast_mean
 # 
 # Before we can subtract the hindcast anomaly from the 2021 forecast, we need first to ensure the two datasets have the same structure. We thus need to apply the same processing on the forecast data as we did with the hindcast to use `forecastMonth` as a coordinate of the array instead of `step`.
 
-# In[67]:
+# In[8]:
 
 
 seas5_forecast = xr.open_dataset(f'{DATADIR}/ecmwf_seas5_2021_05_forecast_monthly_tp.grib', engine='cfgrib', 
@@ -309,7 +309,7 @@ seas5_forecast
 # 
 # The resulting `xarray.DataArray` has the anomaly information for each of the lead time months from May 2021 to October 2021 relative to the reference period May to October for the years 1993 to 2016.
 
-# In[68]:
+# In[9]:
 
 
 seas5_anomalies_202105 = seas5_forecast['tprate'] - tprate_hindcast_mean
@@ -324,7 +324,7 @@ seas5_anomalies_202105
 # 
 # In a second step, with the xarray function `assign_coords()`, we assign this newly created `DateTimeIndex` object as a new coordinate.
 
-# In[69]:
+# In[10]:
 
 
 valid_time = [pd.to_datetime(seas5_anomalies_202105.time.values) + relativedelta(months=fcmonth-1) for fcmonth in seas5_anomalies_202105.forecastMonth]
@@ -336,7 +336,7 @@ seas5_anomalies_202105
 # 
 # Before visualizing the seasonal forecast anomalies, let us convert the precipitation from rates in m/s to total accumulated precipitation per month in mm. The conversion has to be done per month, as it is dependent on the number of days of a specific month. For this, we create a new dimension called `numdays`. The function `monthrange()` from the calendar library returns the number of days in a month, based on a given year and month. With the help of the new coordinate information `valid_time`, we can thus create a list of the number of days. Again, with the function `assign_coords()`, we assign this list as a new coordinate in our data array.
 
-# In[70]:
+# In[11]:
 
 
 numdays = [monthrange(dd.year,dd.month)[1] for dd in valid_time]
@@ -346,21 +346,19 @@ seas5_anomalies_202105
 
 # We can now use the newly created coordinate information to convert for each month the precipitation accumulations to total precipitation. For this, we multiply the precipitation values with the number of days and then with 24 x 60 x 60 (number of seconds in a day) to retrieve precipitation values in m. As a last step, we convert the values in m to mm by multiplying them by 1000.
 
-# In[71]:
+# In[13]:
 
 
 seas5_anomalies_202105_tp = seas5_anomalies_202105 * seas5_anomalies_202105.numdays * 24 * 60 * 60 * 1000
-seas5_anomalies_202105_tp
 
 
 # As a last step before visualizing the data, we want to add the attributes units and long_name and update them, as they have changed with the previous workflow steps. You can simply specify the name of an attribute (e.g. units ) and assign it a new value.
 
-# In[72]:
+# In[14]:
 
 
 seas5_anomalies_202105_tp.attrs['units'] = 'mm'
 seas5_anomalies_202105_tp.attrs['long_name'] = 'Total precipitation anomaly' 
-seas5_anomalies_202105_tp
 
 
 # ## 4. Visualize seasonal forecast anomalies for a geographical subregion
@@ -376,30 +374,42 @@ seas5_anomalies_202105_tp
 # 
 # To create a subset, we will define a function called `ds_latlon_subet()` which generates a geographical subset of an xarray data array. The latitude and longitude values that are outside the defined area are dropped.
 
-# In[73]:
+# In[15]:
 
 
 def ds_latlon_subset(ds,area,latname='latitude',lonname='longitude'):
-    mask = (ds[latname]<=area[0]) & (ds[latname]>=area[2]) & (ds[lonname]<=area[3]%360) & (ds[lonname]>=area[1]%360)
+
+    lon1 = area[1] % 360
+    lon2 = area[3] % 360
+    if lon2 >= lon1:
+        masklon = ( (ds[lonname]<=lon2) & (ds[lonname]>=lon1) ) 
+    else:
+        masklon = ( (ds[lonname]<=lon2) | (ds[lonname]>=lon1) ) 
+        
+    mask = ((ds[latname]<=area[0]) & (ds[latname]>=area[2])) * masklon
     dsout = ds.where(mask,drop=True)
+    
+    if lon2 < lon1:
+        dsout[lonname] = (dsout[lonname] + 180) % 360 - 180
+        dsout = dsout.sortby(dsout[lonname])        
+    
     return dsout
 
 
 # Now, we apply the function `ds_latlon_subset()` to the data array of the seasonal forecast anomalies.
 
-# In[74]:
+# In[16]:
 
 
 sub = (30, 70, 5, 90) # North/West/South/East
 seas5_SAsia = ds_latlon_subset(seas5_anomalies_202105_tp, sub)
-seas5_SAsia
 
 
 # ### 4.1 Spatial map visualization
 
 # Now we can create a spatial map visualisation which shows for a given lead time the total precipitation anomaly of the 51 ensemble members.
 
-# In[75]:
+# In[17]:
 
 
 # Select a leadtime to visualise
@@ -412,7 +422,7 @@ lead_time = 2
 # > 3. **Create a colour bar**: Add a colour bar with a label. <br>
 # > 4. **Save the figure**: Save the figure as a png file. <br>
 
-# In[104]:
+# In[19]:
 
 
 # Define figure and spacing between subplots
@@ -447,7 +457,7 @@ cbar_ax = fig.add_axes([0.3, 0.05, 0.5, 0.02])
 fig.colorbar(im, cax=cbar_ax, orientation='horizontal', label='Total precipitation anomaly (mm)')
 
 # Save the figure
-fig.savefig('./TotalPrecAnomalyForecastSAsia.png')
+fig.savefig('{}/TotalPrecAnomalyForecastSAsia.png'.format(DATADIR) )
 
 
 # <br>
@@ -462,7 +472,7 @@ fig.savefig('./TotalPrecAnomalyForecastSAsia.png')
 
 # The first step is to create the weighted average of the subregion defined above. For this, we first estimate the cell area with the cosine of the latitude. These weights are then applied when the data array is averaged over the two dimensions `latitude` and `longitude`. You can use the xarray function `weighted()` together with the function `mean()` to create a weighted average of the geographical region. The result is a data array with two dimensions: `number` and `forecastMonth`.
 
-# In[77]:
+# In[20]:
 
 
 weights =np.cos(np.deg2rad(seas5_SAsia.latitude))
@@ -475,7 +485,7 @@ anoms_SAsia
 
 # To facilitate further processing we will convert the data array into a pandas.Dataframe object with the function `to_dataframe()`. Pandas dataframes are optimised for the processing and visualisation of two dimensional data. We may want to drop coordinates that are not needed. We can do this with the function `drop_vars()`.
 
-# In[97]:
+# In[21]:
 
 
 anoms_SAsia_df = anoms_SAsia.drop_vars(['time','surface','numdays']).to_dataframe(name='anomaly')
@@ -488,7 +498,7 @@ anoms_SAsia_df
 # > **set_index()**: allows us to define which column(s) shall be used as data frame indices <br>
 # > **unstack()**: converts the columns into a pivot table, thus re-arranging the data into an easily manageable two dimensional table.<br>
 
-# In[98]:
+# In[22]:
 
 
 anoms_SAsia_df = anoms_SAsia_df.reset_index().drop('forecastMonth',axis=1).set_index(['valid_time','number']).unstack()
@@ -499,12 +509,11 @@ anoms_SAsia_df
 # 
 # As a last step, to improve the labels of our data plot later on, we will convert the `valid_time` column values from *YYYY-MM-DD* format into *Month, Year* format.
 
-# In[102]:
+# In[23]:
 
 
 anoms_SAsia_m_yr = anoms_SAsia_df.reset_index()
 anoms_SAsia_m_yr['valid_time'] = anoms_SAsia_m_yr['valid_time'].dt.strftime('%b, %Y')
-anoms_SAsia_m_yr
 
 
 # #### Repeat steps for hindcast data (to compare forecast and hindcast anomalies)
@@ -573,7 +582,7 @@ P100 = anom_hindcast_tp.max(['number','time'])
 # > 2. **Plot the seasonal forecast anomalies + climatology boundaries**: Plot the ensemble seasonal forecast anomalies as black circles and the hindcast climatology as filled areas <br>
 # > 3. **Customise plot settings**: Add additonal features, such as title, x- and y-axis labels etc. <br>
 
-# In[103]:
+# In[30]:
 
 
 # Initiate the figure
@@ -600,7 +609,7 @@ ax.set_ylabel('Total precipitation anomaly (mm)' + os.linesep, fontsize=12)
 ax.set_xlabel(os.linesep + 'Valid date', fontsize=12)
 
 # Save the figure
-fig.savefig('./TotalPrecForecastHindcastAnomaliesSAsia.png')
+fig.savefig('{}/TotalPrecForecastHindcastAnomaliesSAsia.png'.format(DATADIR) )
 
 
 # <br>
@@ -613,7 +622,7 @@ fig.savefig('./TotalPrecForecastHindcastAnomaliesSAsia.png')
 # 
 # The first step is to compute 3-month rolling averaged for the seasonal forecasts and hindcast data. We will do this through a combination of the xarray functions `rolling()` and `mean()`.
 
-# In[33]:
+# In[31]:
 
 
 seas5_forecast_3m = seas5_forecast.rolling(forecastMonth=3).mean()
@@ -624,7 +633,7 @@ ds_hindcast_3m = ds_hindcast.rolling(forecastMonth=3).mean()
 # 
 # We now repeat the process of calculating anomalies with respect to the climatology, this time for the 3-monthly data.
 
-# In[34]:
+# In[32]:
 
 
 ds_hindcast_3m_hindcast_mean = ds_hindcast_3m.mean(['number','time'])
@@ -635,7 +644,7 @@ seas5_anomalies_3m_202105 = seas5_forecast_3m.tprate - ds_hindcast_3m_hindcast_m
 # 
 # We want to compute the average of the 3-month seasonal forecast anomaly of the ensemble members. For this, we have to average over the dimension `number`. The final array has three dimensions, `forecastMonth`, `latitude` and `longitude`.
 
-# In[35]:
+# In[33]:
 
 
 seas5_anomalies_3m_202105_em = seas5_anomalies_3m_202105.mean('number')
@@ -649,7 +658,7 @@ seas5_anomalies_3m_202105_em = seas5_anomalies_3m_202105.mean('number')
 # > 3. **Convert the precipitation accumulations based on the number of days** <br>
 # > 4. **Add updated attributes to the data array** <br>
 
-# In[36]:
+# In[34]:
 
 
 # Calculate number of days for each forecast month and add it as coordinate information to the data array
@@ -675,20 +684,19 @@ seas5_anomalies_3m_202105_em_tp.attrs['long_name'] = 'SEAS5 3-monthly total prec
 # 
 # Let us now visualise the 3-month total precipitation ensemble mean anomaly in an interactive plot. Widgets (`ipywidgets`) allow us to add interactive features to Jupyter notebooks. We will use these to add a dropdown menu that offers the option to choose the 3-monthly periods over which the anomalies are averaged. Given that we have 6 lead-time months, we end up with only 4 possible 3-monthly periods (the last 2 months are insufficient to create a complete 3-month aggregation).
 
-# In[37]:
+# In[35]:
 
 
 vts_names
 
 
-# In[38]:
+# In[36]:
 
 
 dropdown_opts = [(vts_names[mm-1],mm) for mm in range(3,7)]
-dropdown_opts
 
 
-# In[39]:
+# In[37]:
 
 
 tp_colors = [(153/255.,51/255.,0),(204/255.,136/255.,0),(1,213/255.,0),
