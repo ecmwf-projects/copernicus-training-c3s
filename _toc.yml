@@ -6,25 +6,27 @@ root: intro
 parts:
  - caption: Climate Data Store (CDS)
    chapters:
-   - file: 00_Climate_Data_Store
+   - file: cds-tutorial
      title: CDS tutorial
  - caption: Reanalysis Tutorials
    chapters:
-   - file: 01_Climatology
+   - file: reanalysis-climatology
      title: Climatology
-   - file: 02_Climate_Indices
-     title: Climate Indices
-   - file: 03_Heatwave_Analysis
+   - file: reanalysis-heatwave
      title: Heatwave Analysis
  - caption: Tutorials on Climate Projections
    chapters:
-   - file: 04_Climate_Projections_CMIP6
+   - file: projections-cmip6
      title: Climate Projections (CMIP6)
-   - file: 05_Climate_Projections_CORDEX
+   - file: projections-cordex
      title: Climate Projections (CORDEX)
  - caption: Tutorials on Seasonal Forecasts
    chapters:
-   - file: 06_Seasonal_Forecast_Anomalies
+   - file: sf-anomalies
+ - caption: Turorials on Climate Indices
+   chapters:
+   - file: ci-windchill
+     title: Windchill Index Calculation
  - caption: Atmosphere Monitoring Tutorials
    chapters:
    - url: https://ecmwf-projects.github.io/copernicus-training-cams/
