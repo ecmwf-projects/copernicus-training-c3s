@@ -55,8 +55,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S" href="03_Heatwave_Analysis.html" />
-    <link rel="prev" title="Tutorial on Climatologies using Climate Data from C3S" href="01_Climatology.html" />
+    <link rel="prev" title="Seasonal Forecast Anomalies" href="sf-anomalies.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -107,7 +106,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="00_Climate_Data_Store.html">
+  <a class="reference internal" href="cds-tutorial.html">
    CDS tutorial
   </a>
  </li>
@@ -117,19 +116,14 @@ const thebe_selector_output = ".output, .cell_output"
   Reanalysis Tutorials
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="01_Climatology.html">
+  <a class="reference internal" href="reanalysis-climatology.html">
    Climatology
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Climate Indices
-  </a>
- </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="03_Heatwave_Analysis.html">
+  <a class="reference internal" href="reanalysis-heatwave.html">
    Heatwave Analysis
   </a>
  </li>
@@ -141,12 +135,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="04_Climate_Projections_CMIP6.html">
+  <a class="reference internal" href="projections-cmip6.html">
    Climate Projections (CMIP6)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="05_Climate_Projections_CORDEX.html">
+  <a class="reference internal" href="projections-cordex.html">
    Climate Projections (CORDEX)
   </a>
  </li>
@@ -158,8 +152,20 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="06_Seasonal_Forecast_Anomalies.html">
+  <a class="reference internal" href="sf-anomalies.html">
    Seasonal Forecast Anomalies
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Turorials on Climate Indices
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Windchill Index Calculation
   </a>
  </li>
 </ul>
@@ -215,7 +221,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/02_Climate_Indices.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/ci-windchill.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -235,7 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2F02_Climate_Indices.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Fci-windchill.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -256,7 +262,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/02_Climate_Indices.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/ci-windchill.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -430,11 +436,11 @@ td, th {
 <table align="left">
   <tr>
     <th>Run the tutorial via free cloud platforms: </th>
-    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=02_Climate_Indices.ipynb">
+    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=ci-windchill.ipynb">
         <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
-    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/02_Climate_Indices.ipynb">
+    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/ci-windchill.ipynb">
         <img src = "https://kaggle.com/static/images/open-in-kaggle.svg" alt = "Kaggle"></th>
-    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/02_Climate_Indices.ipynb">
+    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/ci-windchill.ipynb">
         <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
   </tr>
 </table><br></div>
@@ -1524,7 +1530,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/02_Climate_Indices_38_0.png" src="_images/02_Climate_Indices_38_0.png" />
+<img alt="_images/ci-windchill_38_0.png" src="_images/ci-windchill_38_0.png" />
 </div>
 </div>
 <p>Under which category of the wind chill index do the coldest areas in Europe generally lie at this time (see chart below)?</p>
@@ -1562,19 +1568,12 @@ Attributes:
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="01_Climatology.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="sf-anomalies.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Tutorial on Climatologies using Climate Data from C3S</p>
+            <p class="prev-next-title">Seasonal Forecast Anomalies</p>
         </div>
-    </a>
-    <a class='right-next' id="next-link" href="03_Heatwave_Analysis.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
     </a>
 </div>
             

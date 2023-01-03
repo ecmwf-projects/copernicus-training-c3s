@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Climate Data Store Tutorial" href="00_Climate_Data_Store.html" />
+    <link rel="next" title="Climate Data Store Tutorial" href="cds-tutorial.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -104,7 +104,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="00_Climate_Data_Store.html">
+  <a class="reference internal" href="cds-tutorial.html">
    CDS tutorial
   </a>
  </li>
@@ -116,17 +116,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="01_Climatology.html">
+  <a class="reference internal" href="reanalysis-climatology.html">
    Climatology
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02_Climate_Indices.html">
-   Climate Indices
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_Heatwave_Analysis.html">
+  <a class="reference internal" href="reanalysis-heatwave.html">
    Heatwave Analysis
   </a>
  </li>
@@ -138,12 +133,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="04_Climate_Projections_CMIP6.html">
+  <a class="reference internal" href="projections-cmip6.html">
    Climate Projections (CMIP6)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="05_Climate_Projections_CORDEX.html">
+  <a class="reference internal" href="projections-cordex.html">
    Climate Projections (CORDEX)
   </a>
  </li>
@@ -155,8 +150,20 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="06_Seasonal_Forecast_Anomalies.html">
+  <a class="reference internal" href="sf-anomalies.html">
    Seasonal Forecast Anomalies
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Turorials on Climate Indices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ci-windchill.html">
+   Windchill Index Calculation
   </a>
  </li>
 </ul>
@@ -351,28 +358,33 @@ const thebe_selector_output = ".output, .cell_output"
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="00_Climate_Data_Store.html">CDS tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cds-tutorial.html">CDS tutorial</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Reanalysis Tutorials</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="01_Climatology.html">Climatology</a></li>
-<li class="toctree-l1"><a class="reference internal" href="02_Climate_Indices.html">Climate Indices</a></li>
-<li class="toctree-l1"><a class="reference internal" href="03_Heatwave_Analysis.html">Heatwave Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reanalysis-climatology.html">Climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reanalysis-heatwave.html">Heatwave Analysis</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="04_Climate_Projections_CMIP6.html">Climate Projections (CMIP6)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="05_Climate_Projections_CORDEX.html">Climate Projections (CORDEX)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projections-cmip6.html">Climate Projections (CMIP6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projections-cordex.html">Climate Projections (CORDEX)</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Seasonal Forecasts</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="06_Seasonal_Forecast_Anomalies.html">Seasonal Forecast Anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Turorials on Climate Indices</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="ci-windchill.html">Windchill Index Calculation</a></li>
 </ul>
 </div>
 <div class="toctree-wrapper compound">
@@ -409,7 +421,7 @@ const thebe_selector_output = ".output, .cell_output"
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='right-next' id="next-link" href="00_Climate_Data_Store.html" title="next page">
+    <a class='right-next' id="next-link" href="cds-tutorial.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Climate Data Store Tutorial</p>

@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Seasonal Forecast Anomalies" href="06_Seasonal_Forecast_Anomalies.html" />
-    <link rel="prev" title="Plot an Ensemble of CMIP6 Climate Projections" href="04_Climate_Projections_CMIP6.html" />
+    <link rel="next" title="Seasonal Forecast Anomalies" href="sf-anomalies.html" />
+    <link rel="prev" title="Plot an Ensemble of CMIP6 Climate Projections" href="projections-cmip6.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -105,7 +105,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="00_Climate_Data_Store.html">
+  <a class="reference internal" href="cds-tutorial.html">
    CDS tutorial
   </a>
  </li>
@@ -117,17 +117,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="01_Climatology.html">
+  <a class="reference internal" href="reanalysis-climatology.html">
    Climatology
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02_Climate_Indices.html">
-   Climate Indices
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_Heatwave_Analysis.html">
+  <a class="reference internal" href="reanalysis-heatwave.html">
    Heatwave Analysis
   </a>
  </li>
@@ -139,7 +134,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="current nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="04_Climate_Projections_CMIP6.html">
+  <a class="reference internal" href="projections-cmip6.html">
    Climate Projections (CMIP6)
   </a>
  </li>
@@ -156,8 +151,20 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="06_Seasonal_Forecast_Anomalies.html">
+  <a class="reference internal" href="sf-anomalies.html">
    Seasonal Forecast Anomalies
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Turorials on Climate Indices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ci-windchill.html">
+   Windchill Index Calculation
   </a>
  </li>
 </ul>
@@ -213,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/05_Climate_Projections_CORDEX.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/projections-cordex.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -233,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2F05_Climate_Projections_CORDEX.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Fprojections-cordex.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -254,7 +261,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/05_Climate_Projections_CORDEX.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/projections-cordex.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -446,11 +453,11 @@ td, th {
 <table align="left">
   <tr>
     <th>Run the tutorial via free cloud platforms: </th>
-    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=05_Climate_Projections_CORDEX.ipynb">
+    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=projections-cordex.ipynb">
         <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
-    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/05_Climate_Projections_CORDEX.ipynb">
+    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/projections-cordex.ipynb">
         <img src = "https://kaggle.com/static/images/open-in-kaggle.svg" alt = "Kaggle"></th>
-    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/05_Climate_Projections_CORDEX.ipynb">
+    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/projections-cordex.ipynb">
         <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
   </tr>
 </table><hr></div>
@@ -1763,7 +1770,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/05_Climate_Projections_CORDEX_49_0.png" src="_images/05_Climate_Projections_CORDEX_49_0.png" />
+<img alt="_images/projections-cordex_49_0.png" src="_images/projections-cordex_49_0.png" />
 </div>
 </div>
 <p>As a last step, we repeat the visualization of climate change signal between the target (2071-2100) and reference (1971-2000) period. But this time, we create the average signal for the whole period, not only one month. For this, we have to compute the average over all months with the function <code class="docutils literal notranslate"><span class="pre">mean()</span></code>.</p>
@@ -1790,7 +1797,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/05_Climate_Projections_CORDEX_51_0.png" src="_images/05_Climate_Projections_CORDEX_51_0.png" />
+<img alt="_images/projections-cordex_51_0.png" src="_images/projections-cordex_51_0.png" />
 </div>
 </div>
 <hr><p></p>
@@ -1822,14 +1829,14 @@ Attributes:
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="04_Climate_Projections_CMIP6.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="projections-cmip6.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Plot an Ensemble of CMIP6 Climate Projections</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="06_Seasonal_Forecast_Anomalies.html" title="next page">
+    <a class='right-next' id="next-link" href="sf-anomalies.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Seasonal Forecast Anomalies</p>

@@ -53,8 +53,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Wind Chill Index with Reanalysis Data" href="02_Climate_Indices.html" />
-    <link rel="prev" title="Climate Data Store Tutorial" href="00_Climate_Data_Store.html" />
+    <link rel="next" title="Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S" href="reanalysis-heatwave.html" />
+    <link rel="prev" title="Climate Data Store Tutorial" href="cds-tutorial.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -105,7 +105,7 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="00_Climate_Data_Store.html">
+  <a class="reference internal" href="cds-tutorial.html">
    CDS tutorial
   </a>
  </li>
@@ -122,12 +122,7 @@ const thebe_selector_output = ".output, .cell_output"
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="02_Climate_Indices.html">
-   Climate Indices
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="03_Heatwave_Analysis.html">
+  <a class="reference internal" href="reanalysis-heatwave.html">
    Heatwave Analysis
   </a>
  </li>
@@ -139,12 +134,12 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="04_Climate_Projections_CMIP6.html">
+  <a class="reference internal" href="projections-cmip6.html">
    Climate Projections (CMIP6)
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="05_Climate_Projections_CORDEX.html">
+  <a class="reference internal" href="projections-cordex.html">
    Climate Projections (CORDEX)
   </a>
  </li>
@@ -156,8 +151,20 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="06_Seasonal_Forecast_Anomalies.html">
+  <a class="reference internal" href="sf-anomalies.html">
    Seasonal Forecast Anomalies
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Turorials on Climate Indices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="ci-windchill.html">
+   Windchill Index Calculation
   </a>
  </li>
 </ul>
@@ -213,7 +220,7 @@ const thebe_selector_output = ".output, .cell_output"
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/01_Climatology.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="_sources/reanalysis-climatology.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -233,7 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
                 data-toggle="tooltip" data-placement="left" title="Source repository"><i
                     class="fab fa-github"></i>repository</button></a>
         <a class="issues-button"
-            href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2F01_Climatology.html&body=Your%20issue%20content%20here."><button
+            href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Freanalysis-climatology.html&body=Your%20issue%20content%20here."><button
                 type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
                 title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
         
@@ -254,7 +261,7 @@ const thebe_selector_output = ".output, .cell_output"
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/01_Climatology.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/reanalysis-climatology.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="_static/images/logo_binder.svg"
@@ -544,11 +551,11 @@ td, th {
 <table align="left">
   <tr>
     <th>Run the tutorial via free cloud platforms: </th>
-    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=01_Climatology.ipynb">
+    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=reanalysis-climatology.ipynb">
         <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
-    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/01_Climatology.ipynb">
+    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/reanalysis-climatology.ipynb">
         <img src = "https://kaggle.com/static/images/open-in-kaggle.svg" alt = "Kaggle"></th>
-    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/01_Climatology.ipynb">
+    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/reanalysis-climatology.ipynb">
         <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
   </tr>
 </table><br></div>
@@ -1536,7 +1543,7 @@ Attributes:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.collections.QuadMesh at 0x2126ba84e80&gt;
 </pre></div>
 </div>
-<img alt="_images/01_Climatology_34_1.png" src="_images/01_Climatology_34_1.png" />
+<img alt="_images/reanalysis-climatology_34_1.png" src="_images/reanalysis-climatology_34_1.png" />
 </div>
 </div>
 <p>An alternative to the built-in xarray plotting functions is to make use of a combination of the plotting libraries <a class="reference external" href="https://matplotlib.org/">matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a>. One of Cartopy’s key features is its ability to transform array data into different geographic projections. In combination with matplotlib, it is a very powerful way to create high-quality visualisations and animations. In later plots, we will make use of these libraries to produce more customised visualisations.</p>
@@ -1618,7 +1625,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01_Climatology_47_0.png" src="_images/01_Climatology_47_0.png" />
+<img alt="_images/reanalysis-climatology_47_0.png" src="_images/reanalysis-climatology_47_0.png" />
 </div>
 </div>
 </div>
@@ -1671,7 +1678,7 @@ Attributes:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x2126bd03940&gt;]
 </pre></div>
 </div>
-<img alt="_images/01_Climatology_57_1.png" src="_images/01_Climatology_57_1.png" />
+<img alt="_images/reanalysis-climatology_57_1.png" src="_images/reanalysis-climatology_57_1.png" />
 </div>
 </div>
 <p>One more step we can take is to repeat the process above for the standard deviation, to enable us to plot both in a single figure.</p>
@@ -1709,7 +1716,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01_Climatology_61_0.png" src="_images/01_Climatology_61_0.png" />
+<img alt="_images/reanalysis-climatology_61_0.png" src="_images/reanalysis-climatology_61_0.png" />
 </div>
 </div>
 <div class="section" id="calculate-monthly-anomalies">
@@ -1753,7 +1760,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01_Climatology_67_0.png" src="_images/01_Climatology_67_0.png" />
+<img alt="_images/reanalysis-climatology_67_0.png" src="_images/reanalysis-climatology_67_0.png" />
 </div>
 </div>
 </div>
@@ -1842,7 +1849,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01_Climatology_75_0.png" src="_images/01_Climatology_75_0.png" />
+<img alt="_images/reanalysis-climatology_75_0.png" src="_images/reanalysis-climatology_75_0.png" />
 </div>
 </div>
 <div class="section" id="aggregate-over-geographical-lat-lon-dimensions">
@@ -1869,7 +1876,7 @@ Attributes:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x21215148220&gt;]
 </pre></div>
 </div>
-<img alt="_images/01_Climatology_79_1.png" src="_images/01_Climatology_79_1.png" />
+<img alt="_images/reanalysis-climatology_79_1.png" src="_images/reanalysis-climatology_79_1.png" />
 </div>
 </div>
 <p>Notice that the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> function now creates a 2 dimensional graph of temperature as a function of time.</p>
@@ -1891,7 +1898,7 @@ Attributes:
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;matplotlib.lines.Line2D at 0x212151e4e20&gt;]
 </pre></div>
 </div>
-<img alt="_images/01_Climatology_82_1.png" src="_images/01_Climatology_82_1.png" />
+<img alt="_images/reanalysis-climatology_82_1.png" src="_images/reanalysis-climatology_82_1.png" />
 </div>
 </div>
 <p>Here we can see a clear warming trend.</p>
@@ -2000,7 +2007,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01_Climatology_90_0.png" src="_images/01_Climatology_90_0.png" />
+<img alt="_images/reanalysis-climatology_90_0.png" src="_images/reanalysis-climatology_90_0.png" />
 </div>
 </div>
 <p>In the plot above, you see that since 2005, each year the Arctic near-surface air temperature was warmer than the reference mean for the period 1991-2020.</p>
@@ -2039,7 +2046,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/01_Climatology_95_0.png" src="_images/01_Climatology_95_0.png" />
+<img alt="_images/reanalysis-climatology_95_0.png" src="_images/reanalysis-climatology_95_0.png" />
 </div>
 </div>
 <p>Note the difference in variability of the seasonal average of air temperature in the Arctic: mean summer temperatures seem to be more constant compared to the other seasons.</p>
@@ -2072,17 +2079,17 @@ Attributes:
             
                 <!-- Previous / next buttons -->
 <div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="00_Climate_Data_Store.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="cds-tutorial.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
             <p class="prev-next-title">Climate Data Store Tutorial</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="02_Climate_Indices.html" title="next page">
+    <a class='right-next' id="next-link" href="reanalysis-heatwave.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Wind Chill Index with Reanalysis Data</p>
+        <p class="prev-next-title">Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
