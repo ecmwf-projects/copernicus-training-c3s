@@ -1,0 +1,34 @@
+# This file lists the datasets used in Jupyter notebooks for C3S training. 
+# Links to Jupyter notebook tutorials will be included in the CDS documentation tab of the dataset(s) featured in them.
+
+reanalysis-climatology:
+  title: Tutorial on climatologies using ERA5 monthly mean data
+  description: This Jupyter notebook tutorial provides an example of using ERA5 monthly mean data to analyse climatologies and trends in near-surface air temperature.
+  datasets:
+  - reanalysis-era5-single-levels-monthly-means
+reanalysis-heatwave:
+  title: Tutorial on European heatwave analysis using ERA5 hourly data
+  description: This Jupyter notebook tutorial provides an example of using ERA5 monthly mean data to perform an analysis on the European heatwave in September 2020.
+  datasets:
+  - reanalysis-era5-single-levels
+projections-cmip6:
+  title: Tutorial on how to plot an ensemble of CMIP6 simulations
+  description: This Jupyter notebook tutorial provides a practical introduction on how to access and process CMIP6 global climate projections data available in the Climate Data Store. The notebook demonstrates how to compute and visualize the annual global average temperature between 1850 to 2100 for an ensemble of models.
+  datasets:
+  - projections-cmip6
+projections-cordex:
+  title: Tutorial on how to perform an analysis of projected versus historical climatology using CORDEX data
+  description: This Jupyter notebook tutorial provides a practical introduction to CORDEX regional climate model data on single levels. The notebook demonstrates how to compute the difference in the air temperature climatology for 2071-2100 (according to a projected scenario) relative to the reference period 1971-2000 in Africa.
+  datasets:
+  - projections-cordex-domains-single-levels
+sf-anomalies:
+  title: Tutorial on seasonal forecast anomalies
+  description: This Jupyter notebook tutorial provides a practical introduction to calculating seasonal forecast anomalies with data from the Climate Data Store.
+  datasets:
+  - seasonal-monthly-single-levels
+ci-windchill:
+  title: Climate index tutorial with UERRA data
+  description: This Jupyter notebook tutorial demonstrates how to calculate an index for wind chill using UERRA data. Similar principles can be applied for the calculation of other indices.
+  datasets:
+  - reanalysis-uerra-europe-single-levels
+
