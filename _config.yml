@@ -18,7 +18,7 @@ latex:
 
 # Information about where the book exists on the web
 repository:
-  url: https://github.com/ecmwf-projects/copernicus-training-c3s  # Online location of your book
+  url: https://github.com/ecmwf-projects/copernicus-training-c3s-review   # Online location of your book
   branch: main  # Which branch of the repository should be used when creating links (optional)
 
 # Add GitHub buttons to your book
@@ -29,3 +29,6 @@ html:
   
 launch_buttons:
   binderhub_url: "https://mybinder.org"  # The URL for your BinderHub (e.g., https://mybinder.org)
+
+exclude_patterns:
+  - developer/*
