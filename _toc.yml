@@ -27,6 +27,10 @@ parts:
    chapters:
    - file: ci-windchill
      title: Windchill Index Calculation
+ - caption: Turorials using Satellite Observations
+   chapters:
+   - file: ecv-notebooks/OutgoingLongwaveRadiation
+     title: Outgoing Longwave Radiation
  - caption: Atmosphere Monitoring Tutorials
    chapters:
    - url: https://ecmwf-projects.github.io/copernicus-training-cams/
