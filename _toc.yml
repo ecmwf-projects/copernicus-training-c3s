@@ -23,10 +23,14 @@ parts:
  - caption: Tutorials on Seasonal Forecasts
    chapters:
    - file: sf-anomalies
- - caption: Turorials on Climate Indices
+ - caption: Tutorials on Climate Indices
    chapters:
    - file: ci-windchill
      title: Windchill Index Calculation
+ - caption: Tutorials on Bias Correction
+   chapters:
+   - url: https://ibicus.readthedocs.io/en/latest/getting_started/overview.html
+     title: Python library (ibicus) and tutorials on bias correction
  - caption: Atmosphere Monitoring Tutorials
    chapters:
    - url: https://ecmwf-projects.github.io/copernicus-training-cams/
