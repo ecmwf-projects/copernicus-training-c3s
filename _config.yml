@@ -29,3 +29,6 @@ html:
   
 launch_buttons:
   binderhub_url: "https://mybinder.org"  # The URL for your BinderHub (e.g., https://mybinder.org)
+
+exclude_patterns:
+  - developer/*

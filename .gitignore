@@ -1,2 +1,7 @@
+.DS_Store
 .vscode/
 .ipynb_checkpoints/
+
+_build
+
+data_dir/
