@@ -8,12 +8,16 @@ parts:
    chapters:
    - file: cds-tutorial
      title: CDS tutorial
- - caption: Reanalysis Tutorials
+ - caption: Tutorials on Reanalysis
    chapters:
    - file: reanalysis-climatology
      title: Climatology
    - file: reanalysis-heatwave
      title: Heatwave Analysis
+ - caption: Tutorials on Observations
+   chapters:
+   - file: erb-outgoing-longwave-radiation
+     title: Outgoing Longwave Radiation     
  - caption: Tutorials on Climate Projections
    chapters:
    - file: projections-cmip6
