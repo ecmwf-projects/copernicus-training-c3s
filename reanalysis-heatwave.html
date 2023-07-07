@@ -1,429 +1,446 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S &#8212; C3S Training</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'reanalysis-heatwave';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="Plot an Ensemble of CMIP6 Climate Projections" href="projections-cmip6.html" />
+    <link rel="next" title="Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data" href="erb-outgoing-longwave-radiation.html" />
     <link rel="prev" title="Tutorial on Climatologies using Climate Data from C3S" href="reanalysis-climatology.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/C3S–POS–LINE.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">C3S Training</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Copernicus Climate Change Service (C3S) Data Tutorials
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Climate Data Store (CDS)
- </span>
-</p>
+    
+    
+    <img src="_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Copernicus Climate Change Service (C3S) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="cds-tutorial.html">
-   CDS tutorial
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="cds-tutorial.html">CDS tutorial</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Reanalysis Tutorials
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="reanalysis-climatology.html">
-   Climatology
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Heatwave Analysis
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="reanalysis-climatology.html">Climatology</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Heatwave Analysis</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tutorials on Climate Projections
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="projections-cmip6.html">
-   Climate Projections (CMIP6)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projections-cordex.html">
-   Climate Projections (CORDEX)
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tutorials on Seasonal Forecasts
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="sf-anomalies.html">
-   Seasonal Forecast Anomalies
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="projections-cmip6.html">Climate Projections (CMIP6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projections-cordex.html">Climate Projections (CORDEX)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tutorials on Climate Indices
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Seasonal Forecasts</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="ci-windchill.html">
-   Windchill Index Calculation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tutorials on Bias Correction
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
-   Python library (ibicus) and tutorials on bias correction
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="ci-windchill.html">Windchill Index Calculation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Atmosphere Monitoring Tutorials
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
-   Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">Python library (ibicus) and tutorials on bias correction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Atmosphere Monitoring Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/reanalysis-heatwave.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/ecmwf-projects/copernicus-training-c3s"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Freanalysis-heatwave.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
-</div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
+<div class="article-header-buttons">
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/reanalysis-heatwave.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
 
-        </div>
 
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
-            
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
-            </div>
-            <nav id="bd-toc-nav" aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#search-download-and-view-data">
-   Search, download and view data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#install-cds-api">
-     Install CDS API
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import-libraries">
-     Import libraries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#enter-your-cds-api-key">
-     Enter your CDS API key
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#search-for-data">
-     Search for data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-data">
-     Download data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inspect-data">
-     Inspect Data
-    </a>
-   </li>
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/reanalysis-heatwave.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
   </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#view-daily-maximum-2m-temperature-for-september-2020">
-   View daily maximum 2m temperature for September 2020
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compare-maximum-temperatures-with-climatology">
-   Compare maximum temperatures with climatology
-  </a>
- </li>
-</ul>
+</div>
 
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Freanalysis-heatwave.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/reanalysis-heatwave.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data">Search, download and view data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api">Install CDS API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-cds-api-key">Enter your CDS API key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">Inspect Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-daily-maximum-2m-temperature-for-september-2020">View daily maximum 2m temperature for September 2020</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-maximum-temperatures-with-climatology">Compare maximum temperatures with climatology</a></li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#search-download-and-view-data">
-   Search, download and view data
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#install-cds-api">
-     Install CDS API
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#import-libraries">
-     Import libraries
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#enter-your-cds-api-key">
-     Enter your CDS API key
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#search-for-data">
-     Search for data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#download-data">
-     Download data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#inspect-data">
-     Inspect Data
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#view-daily-maximum-2m-temperature-for-september-2020">
-   View daily maximum 2m temperature for September 2020
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#compare-maximum-temperatures-with-climatology">
-   Compare maximum temperatures with climatology
-  </a>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <p><img alt="logo" src="_images/LogoLine_horizon_C3S.png" /></p>
-<br><div class="tex2jax_ignore mathjax_ignore section" id="analysis-of-september-2020-european-heatwave-using-era5-climate-reanalysis-data-from-c3s">
-<h1>Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S<a class="headerlink" href="#analysis-of-september-2020-european-heatwave-using-era5-climate-reanalysis-data-from-c3s" title="Permalink to this headline">¶</a></h1>
+<br><section class="tex2jax_ignore mathjax_ignore" id="analysis-of-september-2020-european-heatwave-using-era5-climate-reanalysis-data-from-c3s">
+<h1>Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S<a class="headerlink" href="#analysis-of-september-2020-european-heatwave-using-era5-climate-reanalysis-data-from-c3s" title="Permalink to this heading">#</a></h1>
 <p>In September 2020, a record-breaking heatwave occured in large parts of western Europe, (<a class="reference external" href="https://climate.copernicus.eu/september-brings-record-breaking-warm-temperatures-and-low-sea-ice">see a description here</a>). The city of Lille in northern France for example experienced its hottest day in September 2020 since records began in 1945. In this tutorial we will analyse this event with data from the Climate Data Store (CDS) of the Copernicus Climate Change Service (C3S).</p>
 <p>The tutorial comprises the following steps:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Search, download and view data</p></li>
 <li><p>View daily maximum 2m temperature for September 2020</p></li>
 <li><p>Compare maximum temperatures with climatology</p></li>
@@ -445,11 +462,11 @@ td, th {
     <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/reanalysis-heatwave.ipynb">
         <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
   </tr>
-</table><br><div class="section" id="search-download-and-view-data">
-<h2>Search, download and view data<a class="headerlink" href="#search-download-and-view-data" title="Permalink to this headline">¶</a></h2>
+</table><br><section id="search-download-and-view-data">
+<h2>Search, download and view data<a class="headerlink" href="#search-download-and-view-data" title="Permalink to this heading">#</a></h2>
 <p>Before we begin we must prepare our environment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various python libraries that we will need.</p>
-<div class="section" id="install-cds-api">
-<h3>Install CDS API<a class="headerlink" href="#install-cds-api" title="Permalink to this headline">¶</a></h3>
+<section id="install-cds-api">
+<h3>Install CDS API<a class="headerlink" href="#install-cds-api" title="Permalink to this heading">#</a></h3>
 <p>To install the CDS API, run the following command. We use an exclamation mark to pass the command to the shell (not to the Python interpreter).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -469,9 +486,9 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="import-libraries">
-<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="import-libraries">
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
 <p>We will be working with data in NetCDF format. To best handle this data we will use libraries for working with multidimensional arrays, in particular Xarray. We will also need libraries for plotting and viewing data, in this case we will use Matplotlib and Cartopy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -496,9 +513,9 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="enter-your-cds-api-key">
-<h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="enter-your-cds-api-key">
+<h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this heading">#</a></h3>
 <p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -516,9 +533,9 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="search-for-data">
-<h3>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="search-for-data">
+<h3>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h3>
 <p>To search for data, visit the CDS website: <a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>. To facilitate your search you can use keywords, or apply various filters. The data we are going to use in this exercise is the <code class="docutils literal notranslate"><span class="pre">ERA5</span> <span class="pre">reanalysis</span> <span class="pre">data</span> <span class="pre">on</span> <span class="pre">single</span> <span class="pre">levels</span> <span class="pre">from</span> <span class="pre">1979</span> <span class="pre">to</span> <span class="pre">present</span></code>.</p>
 <p>Having selected the correct dataset, we now need to specify what product type, variables, temporal and geographic coverage we are interested in. These can all be selected in the <strong>“Download data”</strong> tab. In this tab a form appears in which we will select the following parameters to download. We will choose a subset area of 1x1 degrees, corresponding to a region of around 111km North/South and 72km East/West in Belgium and Northern France, around the city of Lille:</p>
 <ul class="simple">
@@ -533,9 +550,9 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\
 </ul>
 <p><img alt="logo" src="_images/Notebook3_data.png" /></p>
 <p>At the end of the download form, select <strong>“Show API request”</strong>. This will reveal a block of code, which you can simply copy and paste into a cell of your Jupyter Notebook (see cell below) …</p>
-</div>
-<div class="section" id="download-data">
-<h3>Download data<a class="headerlink" href="#download-data" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="download-data">
+<h3>Download data<a class="headerlink" href="#download-data" title="Permalink to this heading">#</a></h3>
 <p>… having copied the API request into the cell below, running this will retrieve and download the data you requested into your local directory. However, before you run the cell below, the <strong>terms and conditions</strong> of this particular dataset need to have been accepted in the CDS. The option to view and accept these conditions is given at the end of the download form, just above the <strong>“Show API request”</strong> option.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -609,9 +626,9 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="inspect-data">
-<h3>Inspect Data<a class="headerlink" href="#inspect-data" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="inspect-data">
+<h3>Inspect Data<a class="headerlink" href="#inspect-data" title="Permalink to this heading">#</a></h3>
 <p>We have requested the data in NetCDF format. This is a commonly used format for array-oriented scientific data. To read and process this data we will make use of the Xarray library. Xarray is an open source project and Python package that makes working with labelled multi-dimensional arrays simple and efficient. We will read the data from our NetCDF file into an <a class="reference external" href="https://xarray.pydata.org/en/stable/generated/xarray.Dataset.html">xarray.Dataset</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1014,10 +1031,10 @@ Attributes:
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="view-daily-maximum-2m-temperature-for-september-2020">
-<h2>View daily maximum 2m temperature for September 2020<a class="headerlink" href="#view-daily-maximum-2m-temperature-for-september-2020" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="view-daily-maximum-2m-temperature-for-september-2020">
+<h2>View daily maximum 2m temperature for September 2020<a class="headerlink" href="#view-daily-maximum-2m-temperature-for-september-2020" title="Permalink to this heading">#</a></h2>
 <p>As a next step, let us visualize the daily maximum 2m air temperature for September 2020. From the graph, we should be able to identify which day in September was hottest in the area around Lille.</p>
 <p>First we average over the subset area:</p>
 <blockquote>
@@ -1071,7 +1088,7 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/reanalysis-heatwave_36_0.png" src="_images/reanalysis-heatwave_36_0.png" />
+<img alt="_images/5adb026a96af8ee742d55d5f4cb7dc775fd26641e14d812d84668e9a1f63f80c.png" src="_images/5adb026a96af8ee742d55d5f4cb7dc775fd26641e14d812d84668e9a1f63f80c.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1089,9 +1106,9 @@ Attributes:
 </div>
 <p>Which day in September had the highest maximum temperature?</p>
 <p>Is this typical for Northern France? How does this compare with the long term average? We will seek to answer these questions in the next section.</p>
-</div>
-<div class="section" id="compare-maximum-temperatures-with-climatology">
-<h2>Compare maximum temperatures with climatology<a class="headerlink" href="#compare-maximum-temperatures-with-climatology" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="compare-maximum-temperatures-with-climatology">
+<h2>Compare maximum temperatures with climatology<a class="headerlink" href="#compare-maximum-temperatures-with-climatology" title="Permalink to this heading">#</a></h2>
 <p>We will now seek to discover just how high the temperature for Lille in mid September 2020 was when compared with typical values exptected in this region at this time of year. To do that we will calculate the climatology of maximum daily 2m temperature for each day in September for the period of 1979 to 2019, and compare these with our values for 2020.</p>
 <p>First we select all data prior to 2020:</p>
 <div class="cell docutils container">
@@ -1149,7 +1166,7 @@ Attributes:
   ax.plot(Lille_2020_max.day, Lille_2020_max, &#39;bo-&#39;, color=&#39;darkred&#39;, label=&#39;Daily max t2m Sep 2020&#39;)
 </pre></div>
 </div>
-<img alt="_images/reanalysis-heatwave_48_1.png" src="_images/reanalysis-heatwave_48_1.png" />
+<img alt="_images/6b14167f1193ad73c1594bbfa3859808ae288057cb28478453f0d6e6f2ef00f6.png" src="_images/6b14167f1193ad73c1594bbfa3859808ae288057cb28478453f0d6e6f2ef00f6.png" />
 </div>
 </div>
 <p>Interestingly, we see from this plot that while the temperatures from 14 to 16 Sep 2020 were the highest in the ERA5 dataset, on 25 September 2020, the lowest of the maximum temperatures was recorded for this dataset.</p>
@@ -1177,7 +1194,7 @@ Attributes:
  &lt;BarContainer object of 10 artists&gt;)
 </pre></div>
 </div>
-<img alt="_images/reanalysis-heatwave_53_1.png" src="_images/reanalysis-heatwave_53_1.png" />
+<img alt="_images/57b823d232114fcb4740c491fd5688ee2263526f06f161c3db442de003e40ca2.png" src="_images/57b823d232114fcb4740c491fd5688ee2263526f06f161c3db442de003e40ca2.png" />
 </div>
 </div>
 <p>Look at the range of maximum temperatures for 15 September in the period from 1979 to 2019. Has the temperature in this period ever exceeded that of 15 September 2020?</p>
@@ -1231,12 +1248,12 @@ Attributes:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/reanalysis-heatwave_61_0.png" src="_images/reanalysis-heatwave_61_0.png" />
+<img alt="_images/8791f8bc0c3987422b463945d984ed65c691b820567b469cfe1a1ad66704d989.png" src="_images/8791f8bc0c3987422b463945d984ed65c691b820567b469cfe1a1ad66704d989.png" />
 </div>
 </div>
-<p>In the histogram above, you see that even if we take an increased sample covering a wider temporal range, the maximum daily temperature still never reached that of 15 September 2020. To increase the sample even further, you could include data from a longer time period. The C3S reanalysis dataset now extends back to 1950 and is accessible here <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/dataset/reanalysis-era5-single-levels-preliminary-back-extension?tab=overview">ERA5 hourly data on single levels from 1950 to 1978 (preliminary version)</a>.</p>
-<hr></div>
-</div>
+<p>In the histogram above, you see that even if we take an increased sample covering a wider temporal range, the maximum daily temperature still never reached that of 15 September 2020. To increase the sample even further, you could include data from a longer time period. The C3S reanalysis dataset now extends back to 1950 and is accessible here <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-preliminary-back-extension?tab=overview">ERA5 hourly data on single levels from 1950 to 1978 (preliminary version)</a>.</p>
+<hr></section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1250,7 +1267,7 @@ Attributes:
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1258,44 +1275,115 @@ Attributes:
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="reanalysis-climatology.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Tutorial on Climatologies using Climate Data from C3S</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="erb-outgoing-longwave-radiation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-download-and-view-data">Search, download and view data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api">Install CDS API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-cds-api-key">Enter your CDS API key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-data">Inspect Data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#view-daily-maximum-2m-temperature-for-september-2020">View daily maximum 2m temperature for September 2020</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-maximum-temperatures-with-climatology">Compare maximum temperatures with climatology</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="reanalysis-climatology.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Tutorial on Climatologies using Climate Data from C3S</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="projections-cmip6.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Plot an Ensemble of CMIP6 Climate Projections</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
+          </div>
+          <footer class="bd-footer-content">
             
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
-      </div>
-    </div>
+<div class="bd-footer-content__inner container">
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
 
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>

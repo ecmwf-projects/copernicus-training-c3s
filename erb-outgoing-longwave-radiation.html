@@ -1,0 +1,1074 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data &#8212; C3S Training</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'erb-outgoing-longwave-radiation';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Plot an Ensemble of CMIP6 Climate Projections" href="projections-cmip6.html" />
+    <link rel="prev" title="Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S" href="reanalysis-heatwave.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Copernicus Climate Change Service (C3S) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cds-tutorial.html">CDS tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="reanalysis-climatology.html">Climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reanalysis-heatwave.html">Heatwave Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Outgoing Longwave Radiation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="projections-cmip6.html">Climate Projections (CMIP6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projections-cordex.html">Climate Projections (CORDEX)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Seasonal Forecasts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ci-windchill.html">Windchill Index Calculation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">Python library (ibicus) and tutorials on bias correction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Atmosphere Monitoring Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/erb-outgoing-longwave-radiation.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Ferb-outgoing-longwave-radiation.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/erb-outgoing-longwave-radiation.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-preparations">2. Prerequisites and data preparations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">2.1 How to access the notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">2.2 Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">2.3 Download data using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-and-merge-data">Unpack and merge data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">3. Use Cases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-climatology-of-the-outgoing-longwave-radiation-olr"><strong>Use case 1</strong>: Climatology of the Outgoing Longwave Radiation (OLR)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset-subselect-and-calculate-temporal-mean">Load dataset, subselect and calculate temporal mean</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-temporal-mean-and-convert-longitude-to-180-180-grid">Calculate temporal mean and convert longitude to [-180, 180] grid</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-data">Plot data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-global-time-series-of-the-olr"><strong>Use case 2</strong>: Global time series of the OLR</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-weights-and-calculate-the-rolling-mean">Apply weights and calculate the rolling mean</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Plot data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-olr-evolution-in-the-arctic"><strong>Use case 3</strong>: OLR evolution in the Arctic</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">Get more information about Earth Radiation Budget:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><img alt="logo" src="_images/LogoLine_horizon_C3S.png" /></p>
+<br><section class="tex2jax_ignore mathjax_ignore" id="calculation-of-global-distribution-and-timeseries-of-outgoing-longwave-radiation-olr-using-noaa-ncei-hirs-data">
+<h1>Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data<a class="headerlink" href="#calculation-of-global-distribution-and-timeseries-of-outgoing-longwave-radiation-olr-using-noaa-ncei-hirs-data" title="Permalink to this heading">#</a></h1>
+<p>This notebook-tutorial provides a practical introduction to the HIRS dataset available on
+<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">C3S Earth’s radiation budget from 1979 to present derived from satellite observations</a>.<br />
+<br>
+We give a short introduction to the ECV Earth Radiation Budget, Outgoing Longwave Radiation (OLR) and provide three use cases of the dataset: plot the time-averaged global distribution of OLR (Use Case 1), calculate global timeseries of OLR (Use Case 2) and plot the Arctic weighted mean timeseries between 1979 and 2019 (Use Case 3).
+We provide step-by-step instructions on data preparation. Use cases come with extensive documentation and each line of code is explained.<br />
+Two figures below are results of Use Case 1 and 2, and the result of a successful run of the code.</p>
+<p><img alt="" src="_images/hirs_olr_banner.png" /></p>
+<p>The notebook has three main sections with the following outline:</p>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><span class="xref myst">1. Introduction</span></p></li>
+<li><p><span class="xref myst">2. Prerequisites and data preparations</span></p></li>
+<li><p><span class="xref myst">3. Use cases</span></p>
+<ul>
+<li><p><span class="xref myst">Use case 1: Climatology of the Outgoing Longwave Radiation (OLR)</span></p></li>
+<li><p><span class="xref myst">Use case 2: Global time series of the OLR</span></p></li>
+<li><p><span class="xref myst">Use case 3: OLR evolution in the Arctic</span></p></li>
+</ul>
+</li>
+<li><p><span class="xref myst">References</span></p></li>
+</ul>
+<p><a id='intro'></a></p>
+</section>
+<section id="introduction">
+<h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<br>
+<div style="text-align: justify"> The Top-of-atmosphere (TOA) Outgoing Longwave Radiation (OLR) is one of the Global Climate Observing System (GCOS) Essential Climate Variables (ECV), and it is a key component of the Earth’s Radiation Budget (ERB). OLR combines the thermal radiation from the atmosphere and the thermal radiation from the Earth’s surface that leaves the atmosphere through the “window” regions of the electromagnetic spectrum. OLR is the reason why the Earth is not heating up indefinitely by the Sun. OLR has a latitudinal dependence, but it is not uniform mostly because of the difference in the cloud cover. The biggest volcanic eruptions emit small particles in the stratosphere, where they stay for decades and can reduce the global OLR for years. During the last decades, the average temperatures in the Arctic region have risen significantly. The Arctic region is mostly cloudless, so the longwave emission from the Earth contributes to the TOA OLR. </div>
+<br>
+<div style="text-align: justify"> In the Copernicus Climate Data Store (CDS), a dataset of OLR has been brokered from the High Resolution Infrared Radiation Sounder (HIRS) Outgoing Longwave Radiation (OLR) Climate Data Record (CDR) version v02r07. The Copernicus Climate Change Service (C3S) CDS provides both data produced specifically for C3S and so-called brokered products. The later are existing products produced under an independent programme or project which are made available through the CDS. This widely used CDR has been produced by the NOAA/NCEI from the HIRS instruments on board the US NOAA and European MetOp satellites. It provides monthly means of the Thermal (Longwave) Radiation Fluxes at the Top of the Atmosphere (TOA) from January 1979 to present, with global coverage and at a 2.5° x 2.5° spatial resolution. </div>  
+<br>
+<p>Please find further information about the dataset as well as the data in the Climate Data Store catalogue entry Earth’s Radiation Budget, sections “Overview”, “Download data” and “Documentation”:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a></p></li>
+</ul>
+<p>The tutorial video describes the “Earth Radiation Budget” Essential Climate Variable and the methods and satellite instruments used to produce the data provided in the CDS catalogue entry:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://datastore.copernicus-climate.eu/documents/satellite-earth-radiation-budget/C3S_D312b_Lot1.4.2.5_201902_Tutorial_ECVEarthRadiationBudget_v1.4.mp4">Tutorial video on the Earth Radiation Budget Essential Climate Variable</a></p></li>
+</ul>
+<p><a id='preparation'></a></p>
+</section>
+<section id="prerequisites-and-data-preparations">
+<h2>2. Prerequisites and data preparations<a class="headerlink" href="#prerequisites-and-data-preparations" title="Permalink to this heading">#</a></h2>
+<p>This chapter provides information on how to: run the notebook, lists necessary python libraries, and guides you through the process of data on data preparation: how to search and download the data via CDS API, and get it ready to be used.</p>
+<section id="how-to-access-the-notebook">
+<h3>2.1 How to access the notebook<a class="headerlink" href="#how-to-access-the-notebook" title="Permalink to this heading">#</a></h3>
+<p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
+<style>
+td, th {
+   border: 1px solid white;
+   border-collapse: collapse;
+}
+</style>
+<table align="left">
+  <tr>
+    <th>Run the tutorial via free cloud platforms: </th>
+    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/erb-outgoing-longwave-radiation.ipynb">
+        <img src = "https://kaggle.com/static/images/open-in-kaggle.svg" alt = "Kaggle"></th>
+    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=ecv-notebooks/erb-outgoing-longwave-radiation.ipynb">
+        <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
+    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/erb-outgoing-longwave-radiation.ipynb">
+        <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
+  </tr>
+</table>
+<p><br><br></p>
+<p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it:</p>
+<p><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code></p>
+<p><strong>Run the tutorial in local environment</strong><br />
+If you would like to run this notebook in your own environment, we suggest you install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which is the easiest way to get all libraries installed.<br />
+We will be working with data in NetCDF format. To best handle NetCDF data we will use libraries for working with multidimensional arrays, in particular <a class="reference external" href="https://numpy.org/doc/stable/">Numpy</a>, <a class="reference external" href="https://pandas.pydata.org/docs/">Pandas</a> and <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a>. We will also need libraries for plotting and viewing data, in this case, we will use <a class="reference external" href="https://matplotlib.org/stable/index.html">Matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a>. Pylab and <a class="reference external" href="https://urllib3.readthedocs.io/en/stable/">urllib3</a> change the plot style, and urllib for disabling warnings for data download via CDS API.</p>
+</section>
+<section id="import-libraries">
+<h3>2.2 Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CDS API library</span>
+<span class="kn">import</span> <span class="nn">cdsapi</span>
+
+<span class="c1"># Libraries for working with multidimensional arrays</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Library to work with zip-archives, OS-functions and pattern expansion</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Libraries for plotting and visualising data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+
+<span class="c1"># Disable warnings for data download via API</span>
+<span class="kn">import</span> <span class="nn">urllib3</span>
+<span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='cdsapi'></a></p>
+</section>
+<section id="download-data-using-cds-api">
+<h3>2.3 Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Permalink to this heading">#</a></h3>
+<p>This subsection describes the process of data search in the CDS catalogue, and data preparation for use in the use cases.</p>
+<section id="set-up-cds-api-credentials">
+<h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h4>
+<p>We will request data from the CDS programmatically with the help of the <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/Climate+Data+Store+%28CDS%29+infrastructure+and+API">CDS API</a>.<br />
+First, we need to manually set the CDS API credentials. To do so, we need to define two variables: URL and KEY.
+To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;#########&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we specify a directory where we will download our data and some filenames which we will use in several of the subsequent cells:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;./&#39;</span>
+<span class="c1"># Filename for the zip file downloaded from the CDS</span>
+<span class="n">download_zip_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="s1">&#39;olr-monthly_v02r07.zip&#39;</span><span class="p">)</span>
+<span class="c1"># Filename for the netCDF file which contain the merged contents of the monthly files.</span>
+<span class="n">merged_netcdf_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="s1">&#39;olr-monthly_v02r07_197901_202207.nc&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="search-for-data">
+<h4>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h4>
+<p>To search for data, visit the CDS website: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>.
+Here you can search for HIRS OLR data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a>.
+The Earth Radiation Budget (ERB) comprises the quantification of the incoming radiation from the Sun and the outgoing reflected shortwave and emitted longwave radiation. This catalogue entry comprises data from a number of sources.</p>
+<p>Having selected the correct catalogue entry, we now need to specify what origin, variables, temporal and geographic coverage we are interested in.
+These can all be selected in the <strong>“Download data”</strong> tab. In this tab a form appears in which we will select the following parameters to download:</p>
+<ul class="simple">
+<li><p>Origin: <code class="docutils literal notranslate"><span class="pre">NOAA/NCEI</span> <span class="pre">HIRS</span></code></p></li>
+<li><p>Variable: <code class="docutils literal notranslate"><span class="pre">Outgoing</span> <span class="pre">longwave</span> <span class="pre">radiation</span></code></p></li>
+<li><p>Year: <code class="docutils literal notranslate"><span class="pre">1979</span> <span class="pre">to</span> <span class="pre">present</span></code> (use “Select all” button)</p></li>
+<li><p>Month: <code class="docutils literal notranslate"><span class="pre">all</span></code></p></li>
+<li><p>Geographical area: <code class="docutils literal notranslate"><span class="pre">Whole</span> <span class="pre">available</span> <span class="pre">region</span></code></p></li>
+<li><p>Format: <code class="docutils literal notranslate"><span class="pre">Compressed</span> <span class="pre">zip</span> <span class="pre">file</span> <span class="pre">(.zip)</span></code></p></li>
+</ul>
+<p>If you have not already done so, you will need to accept the <strong>terms &amp; conditions</strong> of the data before you can download it.</p>
+<p>At the end of the download form, select <strong><code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code></strong>. This will reveal a block of code, which you can simply copy and paste into a cell of your Jupyter Notebook (see cell below) …</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+    <span class="s1">&#39;satellite-earth-radiation-budget&#39;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;noaa_ncei_hirs&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;outgoing_longwave_radiation&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%04d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1979</span><span class="p">,</span> <span class="mi">2023</span><span class="p">)],</span>
+        <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mnth</span><span class="p">)</span> <span class="k">for</span> <span class="n">mnth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
+    <span class="p">},</span>
+    <span class="n">download_zip_file</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-03-07 14:26:20,416 INFO Welcome to the CDS
+2023-03-07 14:26:20,417 INFO Sending request to https://cds.climate.copernicus.eu/api/v2/resources/satellite-earth-radiation-budget
+2023-03-07 14:26:20,544 INFO Request is completed
+2023-03-07 14:26:20,545 INFO Downloading https://download-0010-clone.copernicus-climate.eu/cache-compute-0010/cache/data6/dataset-satellite-earth-radiation-budget-82e47200-a028-4824-bab6-64bd6b2167b7.zip to ./olr-monthly_v02r07.zip (17.7M)
+2023-03-07 14:26:21,468 INFO Download rate 19.1M/s  
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Result(content_length=18523432,content_type=application/zip,location=https://download-0010-clone.copernicus-climate.eu/cache-compute-0010/cache/data6/dataset-satellite-earth-radiation-budget-82e47200-a028-4824-bab6-64bd6b2167b7.zip)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="unpack-and-merge-data">
+<h4>Unpack and merge data<a class="headerlink" href="#unpack-and-merge-data" title="Permalink to this heading">#</a></h4>
+<p>The zip files are now requested and downloaded to the data directory that we specified earlier.
+For the purposes of this tutorial, we will unzip the archive and merge all files into one NetCDF file.
+After that, we delete all individual files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Unzip the data. The dataset is split in monthly files.</span>
+<span class="c1"># Full HIRS dataset consists of more than 500 files.</span>
+<span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">download_zip_file</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+    <span class="n">filelist</span> <span class="o">=</span> <span class="p">[</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">zip_ref</span><span class="o">.</span><span class="n">namelist</span><span class="p">()]</span>
+    <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">)</span>
+<span class="c1"># Ensure the filelist is in the correct order:</span>
+<span class="n">filelist</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">filelist</span><span class="p">)</span>
+
+<span class="c1"># Merge all unpacked files into one.</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">filelist</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">)</span>
+<span class="n">ds</span><span class="o">.</span><span class="n">to_netcdf</span><span class="p">(</span><span class="n">merged_netcdf_file</span><span class="p">)</span>
+
+<span class="c1"># Recursively delete unpacked data, using library glob,</span>
+<span class="c1"># that enables Unix style pathname pattern expansion</span>
+<span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">filelist</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><a id='usecases'></a></p>
+</section>
+</section>
+</section>
+<section id="use-cases">
+<h2>3. Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this heading">#</a></h2>
+<p><a id='global-climatology'></a></p>
+<section id="use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
+<h3><strong>Use case 1</strong>: Climatology of the Outgoing Longwave Radiation (OLR)<a class="headerlink" href="#use-case-1-climatology-of-the-outgoing-longwave-radiation-olr" title="Permalink to this heading">#</a></h3>
+<p>Firstly, we should get an overview of the parameter by plotting the time-averaged global distribution.
+The data are stored in NetCDF format, and we will use Xarray library to work with the data.
+We will then use Matplotlib and Catropy to visualise the data.</p>
+<section id="load-dataset-subselect-and-calculate-temporal-mean">
+<h4>Load dataset, subselect and calculate temporal mean<a class="headerlink" href="#load-dataset-subselect-and-calculate-temporal-mean" title="Permalink to this heading">#</a></h4>
+<p>We load the NetCDF file with the library <a class="reference external" href="https://docs.xarray.dev/en/stable/index.html">xarray</a> and the function <code class="docutils literal notranslate"><span class="pre">open_dataset()</span></code>. We receive the <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> that has one data variable (OLR) and three dimensions: time: 480 steps, latitude: 72, and longitude: 144. This data type has also a number of attributes with auxiliary information about the data. <br>
+Next, we want to select the specific time range for the plotting from January 1979 to December 2018. Xarray has a method <code class="docutils literal notranslate"><span class="pre">sel</span></code> that indexes the data and dimensions by the appropriate indexers.
+We use the method <code class="docutils literal notranslate"><span class="pre">mean</span></code> to applying mean along the time dimension.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read data and calculate the global mean.</span>
+<span class="n">xdf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">merged_netcdf_file</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">xdf</span> <span class="o">=</span> <span class="n">xdf</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1979-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-01-01&#39;</span><span class="p">))</span>
+
+<span class="c1"># calculate the mean along the time dimension</span>
+<span class="n">xdf_m</span> <span class="o">=</span> <span class="n">xdf</span><span class="o">.</span><span class="n">olr</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="calculate-temporal-mean-and-convert-longitude-to-180-180-grid">
+<h4>Calculate temporal mean and convert longitude to [-180, 180] grid<a class="headerlink" href="#calculate-temporal-mean-and-convert-longitude-to-180-180-grid" title="Permalink to this heading">#</a></h4>
+<p>The code below shifts the longitude dimension from [1.25 to 358.75] to [-178.75, 178.75]. We also sort the longitude values in ascending order.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xdf_m</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="n">xdf_m</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="mi">180</span><span class="p">)</span> <span class="o">%</span> <span class="mi">360</span><span class="p">)</span> <span class="o">-</span> <span class="mi">180</span>
+<span class="n">xdf_m</span> <span class="o">=</span> <span class="n">xdf_m</span><span class="o">.</span><span class="n">loc</span><span class="p">[{</span><span class="s1">&#39;lon&#39;</span><span class="p">:</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">xdf_m</span><span class="o">.</span><span class="n">coords</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)}]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-data">
+<h4>Plot data<a class="headerlink" href="#plot-data" title="Permalink to this heading">#</a></h4>
+<p>First, we want to save objects <code class="docutils literal notranslate"><span class="pre">figure</span></code> and <code class="docutils literal notranslate"><span class="pre">axes</span></code> to use later. <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a> can transform data arrays on different geographic projections. We use Cartopy in combination with <a class="reference external" href="https://matplotlib.org/stable/index.html">Matplotlib</a> to create a high-quality plot. <code class="docutils literal notranslate"><span class="pre">Pcolormesh</span></code> doesn’t work with data arrays with NaNs. Before plotting we convert DataArray to the numpy MaskedArray.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="n">masked_average</span> <span class="o">=</span> <span class="n">xdf_m</span><span class="o">.</span><span class="n">to_masked_array</span><span class="p">()</span>  <span class="c1"># mask the data because pcolormesh cannot plot nan-values</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
+    <span class="n">xdf_m</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">][:],</span>
+    <span class="n">xdf_m</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">][:],</span>
+    <span class="n">masked_average</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">cm</span><span class="o">.</span><span class="n">get_cmap</span><span class="p">(</span><span class="s1">&#39;YlOrRd&#39;</span><span class="p">),</span>
+    <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+<span class="p">)</span>
+
+<span class="c1"># Modify figure style; add lat/lon grid and labels</span>
+<span class="c1"># NOTE: There is a known issue with the coastlines for the pip installation of cartopy,</span>
+<span class="c1">#   The following is a work-around, and not required if using cartopy</span>
+<span class="c1"># ax1.coastlines(color=&#39;black&#39;)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAND</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span> <span class="o">=</span> <span class="kc">False</span>  <span class="c1"># hide top and right labels</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">right_labels</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Cartopy&#39;s matplotlib gridliner takes over the xlabel and ylabel and uses it to manage</span>
+<span class="sd">grid lines and labels.</span>
+<span class="sd">To add labels we need to add text to the Axes, such as:&#39;&#39;&#39;</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+    <span class="o">-</span><span class="mf">0.07</span><span class="p">,</span> <span class="mf">0.49</span><span class="p">,</span> <span class="s1">&#39;Latitude [ $^o$ ]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+    <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;vertical&#39;</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s1">&#39;anchor&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">text</span><span class="p">(</span>
+    <span class="mf">0.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">0.12</span><span class="p">,</span> <span class="s1">&#39;Longitude [ $^o$ ]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>
+    <span class="n">rotation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s1">&#39;anchor&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ax1</span><span class="o">.</span><span class="n">transAxes</span><span class="p">)</span>
+<span class="c1"># Add colorbar</span>
+<span class="n">cb</span> <span class="o">=</span> <span class="n">fig1</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax1</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;W m$^{-2}$&#39;</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.045</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.07</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="c1"># Add title text</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span>
+    <span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">bf{Mean\ OLR\ from\ HIRS\ Ed:2.7\ (January\ 1979-December\ 2018)}$&#39;</span><span class="p">,</span>
+    <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">25</span><span class="p">)</span>
+
+<span class="c1"># and save the figure</span>
+<span class="n">fig1</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./Example_1_HIRS_olr_mean.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/l2/529q7bzs665bnrn7_wjx1nsr0000gn/T/ipykernel_91833/955912512.py:9: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+  cmap=plt.cm.get_cmap(&#39;YlOrRd&#39;),
+</pre></div>
+</div>
+<img alt="_images/07dd63dff81f264ea6c75687c3f3ac379544d12b3770c3c9e6369c35df25e002.png" src="_images/07dd63dff81f264ea6c75687c3f3ac379544d12b3770c3c9e6369c35df25e002.png" />
+</div>
+</div>
+<p><strong>Figure 1</strong> shows the time-averaged Outgoing Longwave Radiation over the period January 1979 -
+December 2018. The maximum values of the OLR are found in the tropics and it decreases toward the
+poles. The relative minimum near the equator, in yellow colour, corresponds to the ITCZ and the
+convection areas, where persistent and relatively high cloud cover reduces the LW radiation at the
+TOA. Antarctica is cooler than the corresponding northern latitudes (<span class="xref myst">Harrison et al.</span>).</p>
+<p><a id='timeseries-global'></a></p>
+</section>
+</section>
+<section id="use-case-2-global-time-series-of-the-olr">
+<h3><strong>Use case 2</strong>: Global time series of the OLR<a class="headerlink" href="#use-case-2-global-time-series-of-the-olr" title="Permalink to this heading">#</a></h3>
+<p>After looking at the time-averaged global distribution, in the next step, we further investigate the dataset. The OLR dataset is more than 40 years long, and another useful way of visualizing is the time series. We will calculate the global time series, plot it, and discuss the most important features.</p>
+<p>We start by opening the combined data with Xarray <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> function
+and subselect a time range from January 1979 to December 2018.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">xdf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">merged_netcdf_file</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">xdf</span> <span class="o">=</span> <span class="n">xdf</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1979-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-01-01&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="apply-weights-and-calculate-the-rolling-mean">
+<h4>Apply weights and calculate the rolling mean<a class="headerlink" href="#apply-weights-and-calculate-the-rolling-mean" title="Permalink to this heading">#</a></h4>
+<p>Next, we need to to account for differences in area of grid cells for polar and equatorial regions. We give different weights for polar and equatorial regions, and the way to do this is to use the cosine of the latitude. We then calculate the global values by using <code class="docutils literal notranslate"><span class="pre">sum</span></code> method. And we calculate the 12-month rolling mean by using the <code class="docutils literal notranslate"><span class="pre">rolling</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># calculate normalized weights</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">lat_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xdf</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">xdf</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">lat_field</span> <span class="o">/</span> <span class="mi">180</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">xdf</span><span class="o">.</span><span class="n">olr</span><span class="p">)</span>
+<span class="n">weight</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">weight_normalized</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+
+<span class="c1"># Add weights as second Xarray Data variable and apply weights to the OLR</span>
+<span class="n">xdf</span><span class="p">[</span><span class="s1">&#39;weight_normalized&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+    <span class="n">weight_normalized</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="p">[</span><span class="n">xdf</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">xdf</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span><span class="p">],</span> <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">])</span>
+<span class="n">xdf</span><span class="p">[</span><span class="s1">&#39;olr_norma&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xdf</span><span class="o">.</span><span class="n">olr</span> <span class="o">*</span> <span class="n">xdf</span><span class="o">.</span><span class="n">weight_normalized</span>
+
+<span class="c1"># calculate the global values</span>
+<span class="n">xdf_m</span> <span class="o">=</span> <span class="n">xdf</span><span class="o">.</span><span class="n">olr_norma</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">])</span>
+<span class="c1"># calculate the 12-month rolling mean</span>
+<span class="n">xdf_mean_rolling</span> <span class="o">=</span> <span class="n">xdf_m</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h4>Plot data<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<p>Now, let’s visualize the time series. Xarray offers built-in matplotlib methods to plot Data Arrays. We use the method <code class="docutils literal notranslate"><span class="pre">plot</span></code> to get the plot.<br>
+We also want to add custom xticks. Our x-axis is the time, and one of the ways to work with the time variable is to use library Pandas. This library can work with both date and time. We use method <code class="docutils literal notranslate"><span class="pre">date_range</span></code> to generate the ticks with frequency of two years.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting.</span>
+<span class="n">xdf_mean_rolling</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+
+<span class="c1"># Add title, x- and y-labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">bf{HIRS\ OLR-Globe }$</span><span class="se">\n</span><span class="s1">Yearly rolling mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;OLR [ W m$^{-2}$ ]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+
+<span class="c1"># Custom x-ticks</span>
+<span class="n">dateStart</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;1979-01-01&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">date_End</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">dates_rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">dateStart</span><span class="p">,</span> <span class="n">date_End</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;2YS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">dates_rng</span><span class="p">,</span> <span class="p">[</span><span class="n">dtz</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">dtz</span> <span class="ow">in</span> <span class="n">dates_rng</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./Example_2_olr_timeserie_Globe.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/a722aa3c69d58e5057da101d175ce021c5a7d281f551fb023d3387cb7e8b2bc8.png" src="_images/a722aa3c69d58e5057da101d175ce021c5a7d281f551fb023d3387cb7e8b2bc8.png" />
+</div>
+</div>
+<p><strong>Figure 2</strong>, shows the evolution of the global mean of the OLR using a 12-month rolling mean. This long
+CDR shows some interesting features such as the drop of OLR due to a global radiative perturbation
+in response to volcanic eruptions, for instance, El Chichon in 1982 and Pinatubo in 1991. The main
+atmospheric thermal effects of these two eruptions persist for about two years after the eruption.
+The figure also shows some inter-annual variations that are suggested to be related to “El Niño” or
+“La Niña” Southern Oscillation.</p>
+<p><a id='timeseries-arctic'></a></p>
+</section>
+</section>
+<section id="use-case-3-olr-evolution-in-the-arctic">
+<h3><strong>Use case 3</strong>: OLR evolution in the Arctic<a class="headerlink" href="#use-case-3-olr-evolution-in-the-arctic" title="Permalink to this heading">#</a></h3>
+<p>In the final use case, we will calculate, plot and discuss the OLR time series in the Arctic region. We can re-use code from the previous use case, but we need to add one additional step: select the Arctic region from the original global dataset. <br></p>
+<p>We start by reading the dataset with xarray <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> method. We have used <code class="docutils literal notranslate"><span class="pre">sel</span></code> method before to select the data based on time coordinate. This time, we will select the latitude coordinate label.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read the dataset</span>
+<span class="n">xdf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">merged_netcdf_file</span><span class="p">,</span> <span class="n">decode_times</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">mask_and_scale</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="c1"># Select time and latitude range</span>
+<span class="n">xdf</span> <span class="o">=</span> <span class="n">xdf</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;1979-01-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2019-01-01&#39;</span><span class="p">))</span>
+<span class="n">lat_slice</span> <span class="o">=</span> <span class="nb">slice</span><span class="p">(</span><span class="mi">70</span><span class="p">,</span> <span class="mi">90</span><span class="p">)</span>
+<span class="n">xdf</span> <span class="o">=</span> <span class="n">xdf</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">lat</span><span class="o">=</span><span class="n">lat_slice</span><span class="p">)</span>
+
+<span class="c1"># Calculate normalized weights</span>
+<span class="n">_</span><span class="p">,</span> <span class="n">lat_field</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">xdf</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">xdf</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
+<span class="n">weight</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="n">lat_field</span><span class="o">/</span><span class="mi">180</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ma</span><span class="o">.</span><span class="n">masked_invalid</span><span class="p">(</span><span class="n">xdf</span><span class="o">.</span><span class="n">olr</span><span class="p">)</span>
+<span class="n">weight</span><span class="p">[</span><span class="n">data</span><span class="o">.</span><span class="n">mask</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+<span class="n">weight_normalized</span> <span class="o">=</span> <span class="n">weight</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">nansum</span><span class="p">(</span><span class="n">weight</span><span class="p">)</span>
+
+<span class="c1"># Add weights as second Xarray Data variable and apply weights to the OLR</span>
+<span class="n">xdf</span><span class="p">[</span><span class="s1">&#39;weight_normalized&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">DataArray</span><span class="p">(</span>
+    <span class="n">weight_normalized</span><span class="p">,</span> <span class="n">coords</span><span class="o">=</span><span class="p">[</span><span class="n">xdf</span><span class="o">.</span><span class="n">lat</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">xdf</span><span class="o">.</span><span class="n">lon</span><span class="o">.</span><span class="n">values</span><span class="p">],</span> <span class="n">dims</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">])</span>
+<span class="n">xdf</span><span class="p">[</span><span class="s1">&#39;olr_norma&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">xdf</span><span class="o">.</span><span class="n">olr</span> <span class="o">*</span> <span class="n">xdf</span><span class="o">.</span><span class="n">weight_normalized</span>
+
+<span class="c1"># calculate the global values</span>
+<span class="n">xdf_m</span> <span class="o">=</span> <span class="n">xdf</span><span class="o">.</span><span class="n">olr_norma</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lon&#39;</span><span class="p">])</span>
+<span class="c1"># calculate the 12-month rolling mean</span>
+<span class="n">xdf_Arctic_mean_rolling</span> <span class="o">=</span> <span class="n">xdf_m</span><span class="o">.</span><span class="n">rolling</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">center</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">dropna</span><span class="p">(</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+
+<span class="c1"># Plotting.</span>
+<span class="n">xdf_Arctic_mean_rolling</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">16</span><span class="p">,</span> <span class="mi">8</span><span class="p">])</span>
+
+<span class="c1"># Add title, x- and y-labels</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;$</span><span class="se">\\</span><span class="s1">bf{HIRS\ OLR-Arctic\ [70°N, 90°N] }$</span><span class="se">\n</span><span class="s1">Yearly rolling mean&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;OLR [ W m$^{-2}$ ]&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Year&quot;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">17</span><span class="p">)</span>
+
+<span class="c1"># Custom x ticks</span>
+<span class="n">dateStart</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;1979-01-01&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">date_End</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="s1">&#39;2019-01-01&#39;</span><span class="p">,</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;%Y-%m-</span><span class="si">%d</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="n">dates_rng</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">date_range</span><span class="p">(</span><span class="n">dateStart</span><span class="p">,</span> <span class="n">date_End</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;2YS&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">dates_rng</span><span class="p">,</span> <span class="p">[</span><span class="n">dtz</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%Y&#39;</span><span class="p">)</span> <span class="k">for</span> <span class="n">dtz</span> <span class="ow">in</span> <span class="n">dates_rng</span><span class="p">],</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+
+<span class="c1"># Save figure to the disk </span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;./Example_3_olr_timeserie_Arctic.png&#39;</span><span class="p">,</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/c3a5517cf9f5299785e0428cad82c877c45402590b59a36c17f452777b3e46a6.png" src="_images/c3a5517cf9f5299785e0428cad82c877c45402590b59a36c17f452777b3e46a6.png" />
+</div>
+</div>
+<p><strong>Figure 3</strong>, shows the evolution of the OLR in the Arctic region [70°N-90°N] for the period 1979-2019
+also using a yearly rolling mean. From the image, we can infer an increase in the OLR in the Arctic
+region with time. This increase is strongly marked as from 1998 and in line with the increase of
+temperature in the Arctic (<span class="xref myst">Hansen et al, 2010</span>), while the relative stability of the first part of the time
+series is more difficult to interpret due to the major volcanic eruptions in this period.</p>
+</section>
+</section>
+<section id="get-more-information-about-earth-radiation-budget">
+<h2>Get more information about Earth Radiation Budget:<a class="headerlink" href="#get-more-information-about-earth-radiation-budget" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/">Climate Data Store</a></p></li>
+</ul>
+<p><a id='references'></a></p>
+</section>
+<section id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
+<p><a id='hansen'></a>Hansen, J., Ruedy, R., Sato, M., &amp; Lo, K., (2010). <em>Global surface temperature change</em>. Reviews of Geophysics, 48(4).</p>
+<p><a id='harrison'></a>Harrison, E.F., Gurney, R. J., Foster, J. L., Gurney, R. J., &amp; Parkinson, C. L. (1993). <em>Atlas of satellite observations related to global change</em>. Chapter: Radiation Budget at the top of the atmosphere. Cambridge University Press.</p>
+<p><span class="xref myst">Back to top the Page</span></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="reanalysis-heatwave.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="projections-cmip6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Plot an Ensemble of CMIP6 Climate Projections</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">1. Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-preparations">2. Prerequisites and data preparations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-access-the-notebook">2.1 How to access the notebook</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">2.2 Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">2.3 Download data using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#unpack-and-merge-data">Unpack and merge data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases">3. Use Cases</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-climatology-of-the-outgoing-longwave-radiation-olr"><strong>Use case 1</strong>: Climatology of the Outgoing Longwave Radiation (OLR)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset-subselect-and-calculate-temporal-mean">Load dataset, subselect and calculate temporal mean</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-temporal-mean-and-convert-longitude-to-180-180-grid">Calculate temporal mean and convert longitude to [-180, 180] grid</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-data">Plot data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-global-time-series-of-the-olr"><strong>Use case 2</strong>: Global time series of the OLR</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-weights-and-calculate-the-rolling-mean">Apply weights and calculate the rolling mean</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Plot data</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-3-olr-evolution-in-the-arctic"><strong>Use case 3</strong>: OLR evolution in the Arctic</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">Get more information about Earth Radiation Budget:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#references">References</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

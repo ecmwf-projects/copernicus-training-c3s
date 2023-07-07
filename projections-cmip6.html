@@ -1,531 +1,472 @@
 
+
 <!DOCTYPE html>
 
-<html>
+
+<html lang="en" >
+
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
     <title>Plot an Ensemble of CMIP6 Climate Projections &#8212; C3S Training</title>
-    
-  <link href="_static/css/theme.css" rel="stylesheet">
-  <link href="_static/css/index.ff1ffe594081f20da1ef19478df9384b.css" rel="stylesheet">
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
 
-    
-  <link rel="stylesheet"
-    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
-  <link rel="preload" as="font" type="font/woff2" crossorigin
-    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
-    
-      
-
-    
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
-    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
-    
-  <link rel="preload" as="script" href="_static/js/index.be7d3bbb2ef33a8344ce.js">
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/clipboard.min.js"></script>
     <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
     <script src="_static/togglebutton.js"></script>
-    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
-    <script src="_static/sphinx-book-theme.d59cb220de22ca1c485ebbdc042f0030.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
 const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'projections-cmip6';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Analysis of Projected versus Historical Climatology with CORDEX Data" href="projections-cordex.html" />
-    <link rel="prev" title="Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S" href="reanalysis-heatwave.html" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="docsearch:language" content="None">
-    
-
-    <!-- Google Analytics -->
-    
+    <link rel="prev" title="Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data" href="erb-outgoing-longwave-radiation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
-  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
-    
-    <div class="container-fluid" id="banner"></div>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
 
-    
-
-    <div class="container-xl">
-      <div class="row">
-          
-<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
-    
-        <div class="navbar-brand-box">
-    <a class="navbar-brand text-wrap" href="index.html">
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
       
-        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+      <div class="bd-sidebar-primary bd-sidebar">
         
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
       
-      
-      <img src="_static/C3S–POS–LINE.png" class="logo" alt="logo">
-      
-      
-      <h1 class="site-logo" id="site-title">C3S Training</h1>
-      
-    </a>
-</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
-  <i class="icon fas fa-search"></i>
-  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
-    <div class="bd-toc-item active">
-        <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="intro.html">
-   Copernicus Climate Change Service (C3S) Data Tutorials
-  </a>
- </li>
-</ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Climate Data Store (CDS)
- </span>
-</p>
+    
+    
+    <img src="_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Copernicus Climate Change Service (C3S) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="cds-tutorial.html">
-   CDS tutorial
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="cds-tutorial.html">CDS tutorial</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Reanalysis Tutorials
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="reanalysis-climatology.html">
-   Climatology
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="reanalysis-heatwave.html">
-   Heatwave Analysis
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="reanalysis-climatology.html">Climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reanalysis-heatwave.html">Heatwave Analysis</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tutorials on Climate Projections
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   Climate Projections (CMIP6)
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="projections-cordex.html">
-   Climate Projections (CORDEX)
-  </a>
- </li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Climate Projections (CMIP6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projections-cordex.html">Climate Projections (CORDEX)</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tutorials on Seasonal Forecasts
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Seasonal Forecasts</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="sf-anomalies.html">
-   Seasonal Forecast Anomalies
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tutorials on Climate Indices
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="ci-windchill.html">
-   Windchill Index Calculation
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference internal" href="ci-windchill.html">Windchill Index Calculation</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Tutorials on Bias Correction
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">
-   Python library (ibicus) and tutorials on bias correction
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">Python library (ibicus) and tutorials on bias correction</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading">
- <span class="caption-text">
-  Atmosphere Monitoring Tutorials
- </span>
-</p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Atmosphere Monitoring Tutorials</span></p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">
-   Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
-  </a>
- </li>
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)</a></li>
 </ul>
 
     </div>
-</nav> <!-- To handle the deprecated key -->
-
-<div class="navbar_extra_footer">
-  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
-</div>
-
-</div>
-
-
-          
-
-
-          
-<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
-    
-    <div class="topbar container-xl fixed-top">
-    <div class="topbar-contents row">
-        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
-        <div class="col pl-md-4 topbar-main">
-            
-            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
-                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
-                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
-                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
-                <i class="fas fa-bars"></i>
-                <i class="fas fa-arrow-left"></i>
-                <i class="fas fa-arrow-up"></i>
-            </button>
-            
-            
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
-            class="fas fa-download"></i></button>
-
-    <div class="dropdown-buttons">
-        <!-- ipynb file if we had a myst markdown file -->
-        
-        <!-- Download raw file -->
-        <a class="dropdown-buttons" href="_sources/projections-cmip6.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
-        <!-- Download PDF via print -->
-        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
-                onclick="printPdf(this)" data-toggle="tooltip" data-placement="left">.pdf</button>
+</nav></div>
     </div>
-</div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
 
-            <!-- Source interaction buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
-    <div class="dropdown-buttons sourcebuttons">
-        <a class="repository-button"
-            href="https://github.com/ecmwf-projects/copernicus-training-c3s"><button type="button" class="btn btn-secondary topbarbtn"
-                data-toggle="tooltip" data-placement="left" title="Source repository"><i
-                    class="fab fa-github"></i>repository</button></a>
-        <a class="issues-button"
-            href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Fprojections-cmip6.html&body=Your%20issue%20content%20here."><button
-                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
-                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+      </div>
+      
+      <main id="main-content" class="bd-main">
         
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
     </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/projections-cmip6.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
 </div>
 
-            <!-- Full screen (wrap in <a> to have style consistency -->
 
-<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
-        title="Fullscreen mode"><i
-            class="fas fa-expand"></i></button></a>
 
-            <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/projections-cmip6.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Fprojections-cmip6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/projections-cmip6.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
     </div>
+  
 </div>
+</div>
+              
+              
 
-        </div>
-
-        <!-- Table of contents -->
-        <div class="d-none d-md-block col-md-2 bd-toc show noprint">
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Plot an Ensemble of CMIP6 Climate Projections</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
             
-            <div class="tocsection onthispage pt-5 pb-3">
-                <i class="fas fa-list"></i> Contents
+            <div>
+                <h2> Contents </h2>
             </div>
-            <nav id="bd-toc-nav" aria-label="Page">
+            <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#about">
-   About
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data">
-   Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#install-cds-api-via-pip">
-   Install CDS API via pip
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-libraries">
-   Load libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#request-data-from-the-cds-programmatically-with-the-cds-api">
-   Request data from the CDS programmatically with the CDS API
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unzip-the-downloaded-data-files">
-   Unzip the downloaded data files
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-a-list-of-the-extracted-files">
-     Create a list of the extracted files
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-and-prepare-cmip6-data-for-one-model-and-one-experiment">
-   Load and prepare CMIP6 data for one model and one experiment
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#load-and-inspect-data">
-     Load and inspect data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spatial-aggregation">
-     Spatial aggregation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#temporal-aggregation">
-     Temporal aggregation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conversion-from-kelvin-to-celsius">
-     Conversion from Kelvin to Celsius
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-additional-data-dimensions-to-later-combine-data-from-multiple-models-experiments">
-     Create additional data dimensions (to later combine data from multiple models &amp; experiments)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-and-prepare-cmip6-data-for-all-models-and-experiments">
-   Load and prepare CMIP6 data for all models and experiments
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualize-the-cmip6-annual-global-average-temperature-between-1850-to-2100">
-   Visualize the CMIP6 annual global average temperature between 1850 to 2100
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-quantiles-for-model-ensemble">
-     Calculate quantiles for model ensemble
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#view-time-series">
-     View time-series
-    </a>
-   </li>
-  </ul>
- </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api-via-pip">Install CDS API via pip</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-libraries">Load libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-data-from-the-cds-programmatically-with-the-cds-api">Request data from the CDS programmatically with the CDS API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unzip-the-downloaded-data-files">Unzip the downloaded data files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-list-of-the-extracted-files">Create a list of the extracted files</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-prepare-cmip6-data-for-one-model-and-one-experiment">Load and prepare CMIP6 data for one model and one experiment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-inspect-data">Load and inspect data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-aggregation">Spatial aggregation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-aggregation">Temporal aggregation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-from-kelvin-to-celsius">Conversion from Kelvin to Celsius</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-additional-data-dimensions-to-later-combine-data-from-multiple-models-experiments">Create additional data dimensions (to later combine data from multiple models &amp; experiments)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-prepare-cmip6-data-for-all-models-and-experiments">Load and prepare CMIP6 data for all models and experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-cmip6-annual-global-average-temperature-between-1850-to-2100">Visualize the CMIP6 annual global average temperature between 1850 to 2100</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-quantiles-for-model-ensemble">Calculate quantiles for model ensemble</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-time-series">View time-series</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
 </div>
-    <div id="main-content" class="row">
-        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
-            <!-- Table of contents that is only displayed when printing the page -->
-            <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Plot an Ensemble of CMIP6 Climate Projections</h1>
-                <!-- Table of contents -->
-                <div id="print-main-content">
-                    <div id="jb-print-toc">
-                        
-                        <div>
-                            <h2> Contents </h2>
-                        </div>
-                        <nav aria-label="Page">
-                            <ul class="visible nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#about">
-   About
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#data">
-   Data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#install-cds-api-via-pip">
-   Install CDS API via pip
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-libraries">
-   Load libraries
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#request-data-from-the-cds-programmatically-with-the-cds-api">
-   Request data from the CDS programmatically with the CDS API
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#unzip-the-downloaded-data-files">
-   Unzip the downloaded data files
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-a-list-of-the-extracted-files">
-     Create a list of the extracted files
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-and-prepare-cmip6-data-for-one-model-and-one-experiment">
-   Load and prepare CMIP6 data for one model and one experiment
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#load-and-inspect-data">
-     Load and inspect data
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#spatial-aggregation">
-     Spatial aggregation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#temporal-aggregation">
-     Temporal aggregation
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#conversion-from-kelvin-to-celsius">
-     Conversion from Kelvin to Celsius
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#create-additional-data-dimensions-to-later-combine-data-from-multiple-models-experiments">
-     Create additional data dimensions (to later combine data from multiple models &amp; experiments)
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#load-and-prepare-cmip6-data-for-all-models-and-experiments">
-   Load and prepare CMIP6 data for all models and experiments
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#visualize-the-cmip6-annual-global-average-temperature-between-1850-to-2100">
-   Visualize the CMIP6 annual global average temperature between 1850 to 2100
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#calculate-quantiles-for-model-ensemble">
-     Calculate quantiles for model ensemble
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#view-time-series">
-     View time-series
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
 
-                        </nav>
-                    </div>
-                </div>
-            </div>
-            
-              <div>
+              
                 
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
   <p><img alt="logo" src="_images/LogoLine_horizon_C3S.png" /></p>
-<br><div class="tex2jax_ignore mathjax_ignore section" id="plot-an-ensemble-of-cmip6-climate-projections">
-<h1>Plot an Ensemble of CMIP6 Climate Projections<a class="headerlink" href="#plot-an-ensemble-of-cmip6-climate-projections" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="about">
-<h2>About<a class="headerlink" href="#about" title="Permalink to this headline">¶</a></h2>
-<p>This notebook provides a practical introduction on how to access and process <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/dataset/projections-cmip6?tab=overview">CMIP6 global climate projections</a> data available in the Climate Data Store (CDS) of the Copernicus Climate Change Service (C3S). The workflow shows how to compute and visualize the output of an ensemble of models for the annual global average temperature between 1850 to 2100. You will use the <code class="docutils literal notranslate"><span class="pre">historical</span></code> experiment for the temporal period 1850 to 2014 and the three scenarios <code class="docutils literal notranslate"><span class="pre">SSP1-2.6</span></code>, <code class="docutils literal notranslate"><span class="pre">SSP2-4.5</span></code> and <code class="docutils literal notranslate"><span class="pre">SSP5-8.5</span></code> for the period from 2015 to 2100.</p>
+<br><section class="tex2jax_ignore mathjax_ignore" id="plot-an-ensemble-of-cmip6-climate-projections">
+<h1>Plot an Ensemble of CMIP6 Climate Projections<a class="headerlink" href="#plot-an-ensemble-of-cmip6-climate-projections" title="Permalink to this heading">#</a></h1>
+<section id="about">
+<h2>About<a class="headerlink" href="#about" title="Permalink to this heading">#</a></h2>
+<p>This notebook provides a practical introduction on how to access and process <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip6?tab=overview">CMIP6 global climate projections</a> data available in the Climate Data Store (CDS) of the Copernicus Climate Change Service (C3S). The workflow shows how to compute and visualize the output of an ensemble of models for the annual global average temperature between 1850 to 2100. You will use the <code class="docutils literal notranslate"><span class="pre">historical</span></code> experiment for the temporal period 1850 to 2014 and the three scenarios <code class="docutils literal notranslate"><span class="pre">SSP1-2.6</span></code>, <code class="docutils literal notranslate"><span class="pre">SSP2-4.5</span></code> and <code class="docutils literal notranslate"><span class="pre">SSP5-8.5</span></code> for the period from 2015 to 2100.</p>
 <p>For the sake of simplicity, and to facilitate data download, the tutorial will make use of some of the coarser resolution models that have a smaller data size. It is nevertheless only a choice for this exercise and not a recommendation (since ideally all models, including those with highest resolution, should be used). Many more models are available on the CDS, and when calculating an ensemble of models, it is best practice to use as many as possible for a more reliable output. See <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/CMIP6%3A+Global+climate+projections#CMIP6:Globalclimateprojections-Models,gridsandpressurelevels">here</a> a full list of models included in the CDS-CMIP6 dataset.</p>
 <p>Learn <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/CMIP6%3A+Global+climate+projections#CMIP6:Globalclimateprojections">here</a> more about CMIP6 global climate projections and the CMIP6 experiments in the CDS.</p>
 <p>The notebook has the following outline:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p>Request data from the CDS programmatically with the CDS API</p></li>
 <li><p>Unzip the downloaded data files</p></li>
 <li><p>Load and prepare CMIP6 data for one model and one experiment</p></li>
 <li><p>Load and prepare CMIP6 data for all models and experiments</p></li>
 <li><p>Visualize CMIP6 annual global average temperature between 1850 to 2100</p></li>
 </ol>
-</div>
-<div class="section" id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this headline">¶</a></h2>
-<p>This notebook introduces you to <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/dataset/projections-cmip6?tab=overview">CMIP6 Global climate projections</a>. The datasets used in the notebook have the following specifications:</p>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<p>This notebook introduces you to <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip6?tab=overview">CMIP6 Global climate projections</a>. The datasets used in the notebook have the following specifications:</p>
 <blockquote>
 <div><p><strong>Data</strong>: CMIP6 global climate projections of near-surface air temperature <br>
 <strong>Experiments</strong>: Historical, SSP1-2.6, SSP2-4.5, SSP5-8.5 <br>
@@ -550,9 +491,9 @@ td, th {
     <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/projections-cmip6.ipynb">
         <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
   </tr>
-</table><hr></div>
-<div class="section" id="install-cds-api-via-pip">
-<h2>Install CDS API via pip<a class="headerlink" href="#install-cds-api-via-pip" title="Permalink to this headline">¶</a></h2>
+</table><hr></section>
+<section id="install-cds-api-via-pip">
+<h2>Install CDS API via pip<a class="headerlink" href="#install-cds-api-via-pip" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install cdsapi
@@ -560,9 +501,9 @@ td, th {
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="load-libraries">
-<h2>Load libraries<a class="headerlink" href="#load-libraries" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="load-libraries">
+<h2>Load libraries<a class="headerlink" href="#load-libraries" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># General libs for file paths, data extraction, etc</span>
@@ -591,9 +532,9 @@ td, th {
 </div>
 </div>
 </div>
-<hr></div>
-<div class="section" id="request-data-from-the-cds-programmatically-with-the-cds-api">
-<h2>Request data from the CDS programmatically with the CDS API<a class="headerlink" href="#request-data-from-the-cds-programmatically-with-the-cds-api" title="Permalink to this headline">¶</a></h2>
+<hr></section>
+<section id="request-data-from-the-cds-programmatically-with-the-cds-api">
+<h2>Request data from the CDS programmatically with the CDS API<a class="headerlink" href="#request-data-from-the-cds-programmatically-with-the-cds-api" title="Permalink to this heading">#</a></h2>
 <p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -630,7 +571,7 @@ td, th {
 </div>
 </div>
 <blockquote>
-<div><p><strong>Note:</strong> Note that these are a selection of the lightest models (in terms of data volume), to facilitate download for the sake of this exercise. There are many <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#%21/dataset/projections-cmip6?tab=overview">more models available on the CDS</a>.</p>
+<div><p><strong>Note:</strong> Note that these are a selection of the lightest models (in terms of data volume), to facilitate download for the sake of this exercise. There are many <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/projections-cmip6?tab=overview">more models available on the CDS</a>.</p>
 </div></blockquote>
 <p>Now we can download the data for each model and experiment sequentially. We will do this separately for the historical experiments and for the various future scenarios, given that they refer to two different time periods.</p>
 <p>Before you run the cells below, the terms and conditions on the use of the data need to have been accepted in the CDS. You can view and accept these conditions by logging into the <a class="reference external" href="http://cds.climate.copernicus.eu">CDS</a>, searching for the dataset, then scrolling to the end of the <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">data</span></code> section.</p>
@@ -684,9 +625,9 @@ td, th {
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="unzip-the-downloaded-data-files">
-<h2>Unzip the downloaded data files<a class="headerlink" href="#unzip-the-downloaded-data-files" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="unzip-the-downloaded-data-files">
+<h2>Unzip the downloaded data files<a class="headerlink" href="#unzip-the-downloaded-data-files" title="Permalink to this heading">#</a></h2>
 <p>From the CDS, CMIP6 data are available as <code class="docutils literal notranslate"><span class="pre">NetCDF</span></code> files compressed into <code class="docutils literal notranslate"><span class="pre">zip</span></code> archives. For this reason, before we can load any data, we have to extract the files. Having downloaded the four experiments <code class="docutils literal notranslate"><span class="pre">historical</span></code>, <code class="docutils literal notranslate"><span class="pre">SSP1-2.6</span></code>, <code class="docutils literal notranslate"><span class="pre">SSP2-4.5</span></code> and <code class="docutils literal notranslate"><span class="pre">SSP5-8.5</span></code> as seperate zip files, we can use the functions from the <code class="docutils literal notranslate"><span class="pre">zipfile</span></code> Python package to extract their contents. For each zip file we first construct a <code class="docutils literal notranslate"><span class="pre">ZipFile()</span></code> object, then we apply the function <code class="docutils literal notranslate"><span class="pre">extractall()</span></code> to extract its content.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -698,8 +639,8 @@ td, th {
 </div>
 </div>
 </div>
-<div class="section" id="create-a-list-of-the-extracted-files">
-<h3>Create a list of the extracted files<a class="headerlink" href="#create-a-list-of-the-extracted-files" title="Permalink to this headline">¶</a></h3>
+<section id="create-a-list-of-the-extracted-files">
+<h3>Create a list of the extracted files<a class="headerlink" href="#create-a-list-of-the-extracted-files" title="Permalink to this heading">#</a></h3>
 <p>To facilitate batch processing later in the tutorial, here we create a list of the extracted NetCDF files:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -728,20 +669,20 @@ td, th {
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="load-and-prepare-cmip6-data-for-one-model-and-one-experiment">
-<h2>Load and prepare CMIP6 data for one model and one experiment<a class="headerlink" href="#load-and-prepare-cmip6-data-for-one-model-and-one-experiment" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="load-and-prepare-cmip6-data-for-one-model-and-one-experiment">
+<h2>Load and prepare CMIP6 data for one model and one experiment<a class="headerlink" href="#load-and-prepare-cmip6-data-for-one-model-and-one-experiment" title="Permalink to this heading">#</a></h2>
 <p>Now that we have downloaded and extracted the data, we can prepare it in order to view a time series of the spread of annual global temperature for the model ensemble. These preparation steps include the following:</p>
-<ol class="simple">
+<ol class="arabic simple">
 <li><p><strong>Spatial aggregation</strong>: to have a single global temperature value for each model/experiment dataset, and for each time step</p></li>
 <li><p><strong>Temporal aggregation</strong>: from monthly to yearly</p></li>
 <li><p><strong>Conversion of temperature units</strong> from degrees Kelvin to Celsius</p></li>
 <li><p><strong>Addition of data dimensions</strong> in preparation for the merging of datasets from different models and experiments</p></li>
 </ol>
 <p>In this section we apply these steps to a single dataset from one model and one experiment. In the next section we merge data from all models/experiments in preparation for the final processing and plotting of the temperature time series.</p>
-<div class="section" id="load-and-inspect-data">
-<h3>Load and inspect data<a class="headerlink" href="#load-and-inspect-data" title="Permalink to this headline">¶</a></h3>
+<section id="load-and-inspect-data">
+<h3>Load and inspect data<a class="headerlink" href="#load-and-inspect-data" title="Permalink to this heading">#</a></h3>
 <p>We begin by loading the first of the NetCDF files in our list. We will use the Python library <a class="reference external" href="http://xarray.pydata.org/en/stable/">xarray</a> and its function <code class="docutils literal notranslate"><span class="pre">open_dataset</span></code> to read NetCDF files.</p>
 <p>The result is a <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> object with four dimensions: <code class="docutils literal notranslate"><span class="pre">bnds</span></code>, <code class="docutils literal notranslate"><span class="pre">lat</span></code>, <code class="docutils literal notranslate"><span class="pre">lon</span></code>, <code class="docutils literal notranslate"><span class="pre">time</span></code>, of which the dimension <code class="docutils literal notranslate"><span class="pre">bnds</span></code> is not callable.</p>
 <div class="cell docutils container">
@@ -1222,9 +1163,9 @@ seaIce: CICE-HadGEM3-GSI8 (eORCA1 tripolar primarily 1 deg; 360 x 330 longitude/
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="spatial-aggregation">
-<h3>Spatial aggregation<a class="headerlink" href="#spatial-aggregation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="spatial-aggregation">
+<h3>Spatial aggregation<a class="headerlink" href="#spatial-aggregation" title="Permalink to this heading">#</a></h3>
 <p>The next step is to aggregate the temperature values spatially (i.e. average over the latitude and longitude dimensions) and compute the global monthly near-surface temperature.</p>
 <p>A very important consideration however is that the gridded data cells do not all correspond to the same areas. The size covered by each data point varies as a function of latitude. We need to take this into account when averaging. One way to do this is to use the cosine of the latitude as a proxy for the varying sizes.</p>
 <p>This can be implemented by first calculating weights as a function of the cosine of the latitude, then applying these weights to the data array with the xarray function <code class="docutils literal notranslate"><span class="pre">weighted()</span></code>:</p>
@@ -1245,9 +1186,9 @@ seaIce: CICE-HadGEM3-GSI8 (eORCA1 tripolar primarily 1 deg; 360 x 330 longitude/
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="temporal-aggregation">
-<h3>Temporal aggregation<a class="headerlink" href="#temporal-aggregation" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="temporal-aggregation">
+<h3>Temporal aggregation<a class="headerlink" href="#temporal-aggregation" title="Permalink to this heading">#</a></h3>
 <p>We now aggregate the monthly global near-surface air temperature values to annual global near-surface air temperature values. This operation can be done in two steps: first, all the values for one specific year have to be grouped with the function <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> and second, we can create the average of each group with the function <code class="docutils literal notranslate"><span class="pre">mean()</span></code>.</p>
 <p>The result is a one-dimensional DataArray. Please note that this operation changes the name of the dimension from <code class="docutils literal notranslate"><span class="pre">time</span></code> to <code class="docutils literal notranslate"><span class="pre">year</span></code>.</p>
 <div class="cell docutils container">
@@ -1257,9 +1198,9 @@ seaIce: CICE-HadGEM3-GSI8 (eORCA1 tripolar primarily 1 deg; 360 x 330 longitude/
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="conversion-from-kelvin-to-celsius">
-<h3>Conversion from Kelvin to Celsius<a class="headerlink" href="#conversion-from-kelvin-to-celsius" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="conversion-from-kelvin-to-celsius">
+<h3>Conversion from Kelvin to Celsius<a class="headerlink" href="#conversion-from-kelvin-to-celsius" title="Permalink to this heading">#</a></h3>
 <p>The metadata of the original data (before it was stripped during the subsequent processing steps) tells us that the near-surface air temperature data values are in units of Kelvin. We will convert them to degrees Celsius by subtracting 273.15 from the data values.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1268,9 +1209,9 @@ seaIce: CICE-HadGEM3-GSI8 (eORCA1 tripolar primarily 1 deg; 360 x 330 longitude/
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="create-additional-data-dimensions-to-later-combine-data-from-multiple-models-experiments">
-<h3>Create additional data dimensions (to later combine data from multiple models &amp; experiments)<a class="headerlink" href="#create-additional-data-dimensions-to-later-combine-data-from-multiple-models-experiments" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="create-additional-data-dimensions-to-later-combine-data-from-multiple-models-experiments">
+<h3>Create additional data dimensions (to later combine data from multiple models &amp; experiments)<a class="headerlink" href="#create-additional-data-dimensions-to-later-combine-data-from-multiple-models-experiments" title="Permalink to this heading">#</a></h3>
 <p>Finally, we will create additional dimensions for the model and for the experiment. These we will label with the model and experiment name as taken from the metadata of the original data (see above). These will be useful when we repeat the processes above for all models and experiments, and combine them into one array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1282,10 +1223,10 @@ seaIce: CICE-HadGEM3-GSI8 (eORCA1 tripolar primarily 1 deg; 360 x 330 longitude/
 </div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="load-and-prepare-cmip6-data-for-all-models-and-experiments">
-<h2>Load and prepare CMIP6 data for all models and experiments<a class="headerlink" href="#load-and-prepare-cmip6-data-for-all-models-and-experiments" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+<section id="load-and-prepare-cmip6-data-for-all-models-and-experiments">
+<h2>Load and prepare CMIP6 data for all models and experiments<a class="headerlink" href="#load-and-prepare-cmip6-data-for-all-models-and-experiments" title="Permalink to this heading">#</a></h2>
 <p>To repeat the steps above for all models and all experiments, we will collect all of the commands we have used so far into a function, which we can then apply to a batch of files corresponding to the data from all models and experiments.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1752,12 +1693,12 @@ Data variables:
 </div>
 </div>
 </div>
-</div>
-<div class="section" id="visualize-the-cmip6-annual-global-average-temperature-between-1850-to-2100">
-<h2>Visualize the CMIP6 annual global average temperature between 1850 to 2100<a class="headerlink" href="#visualize-the-cmip6-annual-global-average-temperature-between-1850-to-2100" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="visualize-the-cmip6-annual-global-average-temperature-between-1850-to-2100">
+<h2>Visualize the CMIP6 annual global average temperature between 1850 to 2100<a class="headerlink" href="#visualize-the-cmip6-annual-global-average-temperature-between-1850-to-2100" title="Permalink to this heading">#</a></h2>
 <p>We will now create a plot of the model ensemble of near-surface air temperature for the historical and future periods, according to the three selected scenarios.</p>
-<div class="section" id="calculate-quantiles-for-model-ensemble">
-<h3>Calculate quantiles for model ensemble<a class="headerlink" href="#calculate-quantiles-for-model-ensemble" title="Permalink to this headline">¶</a></h3>
+<section id="calculate-quantiles-for-model-ensemble">
+<h3>Calculate quantiles for model ensemble<a class="headerlink" href="#calculate-quantiles-for-model-ensemble" title="Permalink to this heading">#</a></h3>
 <p>Rather than plotting the data from all models, we will instead view the range of values as given by quantiles, including the 10th (near to lower limit), the 50th (mid-range) and the 90th (near to upper limit) quantiles:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1771,9 +1712,9 @@ Data variables:
 <blockquote>
 <div><p><strong>Note:</strong> The warning message is due to the presence of NaN (Not a Number) data given that the historical and scenario datasets represent only parts (historical and future respectively) of the entire time series. As these two datasets have been merged, NaN values will exist (e.g. there will be no data for the historical experiment for the future period).</p>
 </div></blockquote>
-</div>
-<div class="section" id="view-time-series">
-<h3>View time-series<a class="headerlink" href="#view-time-series" title="Permalink to this headline">¶</a></h3>
+</section>
+<section id="view-time-series">
+<h3>View time-series<a class="headerlink" href="#view-time-series" title="Permalink to this heading">#</a></h3>
 <p>Finally we will visualise this data in one time-series plot. We will use the matplotlib function <code class="docutils literal notranslate"><span class="pre">plot()</span></code>. The dimension <code class="docutils literal notranslate"><span class="pre">year</span></code> will be the x-axis and the near-surface air temperature values in degrees Celsius will be the y-axis.</p>
 <p>The plotting function below has four main parts:</p>
 <ul class="simple">
@@ -1806,14 +1747,14 @@ Data variables:
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="_images/projections-cmip6_78_0.png" src="_images/projections-cmip6_78_0.png" />
+<img alt="_images/8afffe1e920a4cf407977b98a594f200b9f6adb89f106ed5abde748a83eb292d.png" src="_images/8afffe1e920a4cf407977b98a594f200b9f6adb89f106ed5abde748a83eb292d.png" />
 </div>
 </div>
 <p>The visualization of the <code class="docutils literal notranslate"><span class="pre">CMIP6</span> <span class="pre">annual</span> <span class="pre">global</span> <span class="pre">average</span> <span class="pre">temperature</span> <span class="pre">(1850</span> <span class="pre">to</span> <span class="pre">2100)</span></code> above shows that the global average temperature was more or less stable in the pre-industrial phase, but steadily increases since the 1990s. It shows further that, depending on the SSP scenario, the course and increase of the global annual temperature differs. While for the best case <code class="docutils literal notranslate"><span class="pre">SSP1-2.6</span></code> scenario, the global annual temperature could stabilize around 15 degC, in the worst case <code class="docutils literal notranslate"><span class="pre">SSP5-8.5</span></code> scenario, the global annual temperature could increase to above 20 degC.</p>
 <hr><p></p>
-<span style='float:right'><p style=\"text-align:right;\">This project is licensed under <a href="./LICENSE">APACHE License 2.0</a>. | <a href=\"https://github.com/ecmwf-projects/copernicus-training">View on GitHub</a></span></div>
-</div>
-</div>
+<span style='float:right'><p style=\"text-align:right;\">This project is licensed under <a href="./LICENSE">APACHE License 2.0</a>. | <a href=\"https://github.com/ecmwf-projects/copernicus-training">View on GitHub</a></span></section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1827,7 +1768,7 @@ Data variables:
             mode: "python"
         },
         kernelOptions: {
-            kernelName: "python3",
+            name: "python3",
             path: "./."
         },
         predefinedOutput: true
@@ -1835,44 +1776,127 @@ Data variables:
     </script>
     <script>kernelName = 'python3'</script>
 
-              </div>
+                </article>
               
-            
-                <!-- Previous / next buttons -->
-<div class='prev-next-area'> 
-    <a class='left-prev' id="prev-link" href="reanalysis-heatwave.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S</p>
-        </div>
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="erb-outgoing-longwave-radiation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data</p>
+      </div>
     </a>
-    <a class='right-next' id="next-link" href="projections-cordex.html" title="next page">
-    <div class="prev-next-info">
+    <a class="right-next"
+       href="projections-cordex.html"
+       title="next page">
+      <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Analysis of Projected versus Historical Climatology with CORDEX Data</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
-</div>
-            
-        </div>
-    </div>
-    <footer class="footer">
-  <p>
-    
-      By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)<br/>
-    
-        &copy; Copyright 2021.<br/>
-  </p>
-</footer>
-</main>
-
-
       </div>
-    </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
   
-  <script src="_static/js/index.be7d3bbb2ef33a8344ce.js"></script>
+</div>
 
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api-via-pip">Install CDS API via pip</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-libraries">Load libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request-data-from-the-cds-programmatically-with-the-cds-api">Request data from the CDS programmatically with the CDS API</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#unzip-the-downloaded-data-files">Unzip the downloaded data files</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-list-of-the-extracted-files">Create a list of the extracted files</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-prepare-cmip6-data-for-one-model-and-one-experiment">Load and prepare CMIP6 data for one model and one experiment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-inspect-data">Load and inspect data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#spatial-aggregation">Spatial aggregation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#temporal-aggregation">Temporal aggregation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#conversion-from-kelvin-to-celsius">Conversion from Kelvin to Celsius</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#create-additional-data-dimensions-to-later-combine-data-from-multiple-models-experiments">Create additional data dimensions (to later combine data from multiple models &amp; experiments)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-and-prepare-cmip6-data-for-all-models-and-experiments">Load and prepare CMIP6 data for all models and experiments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualize-the-cmip6-annual-global-average-temperature-between-1850-to-2100">Visualize the CMIP6 annual global average temperature between 1850 to 2100</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculate-quantiles-for-model-ensemble">Calculate quantiles for model ensemble</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#view-time-series">View time-series</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
   </body>
 </html>
