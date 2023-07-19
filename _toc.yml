@@ -27,6 +27,7 @@ parts:
  - caption: Tutorials on Seasonal Forecasts
    chapters:
    - file: sf-anomalies
+   - file: sf-verification
  - caption: Tutorials on Climate Indices
    chapters:
    - file: ci-windchill
