@@ -1,0 +1,2349 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Observing major flood events with GLOFAS &#8212; C3S Training</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'glofas-bangladesh-floods';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assesment" href="visualising-fwi-for-esotc.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="intro.html">
+                    Copernicus Climate Change Service (C3S) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="cds-tutorial.html">CDS tutorial</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="reanalysis-climatology.html">Climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reanalysis-heatwave.html">Heatwave Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="projections-cmip6.html">Climate Projections (CMIP6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="projections-cordex.html">Climate Projections (CORDEX)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Seasonal Forecasts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sf-verification.html">Seasonal Forecast Verification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="ci-windchill.html">Windchill Index Calculation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">Python library (ibicus) and tutorials on bias correction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials using EFFIS and GloFAS data</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="visualising-fwi-for-esotc.html">Visualising Fire Weather Index (FWI)</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Observing floods with GloFAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Atmosphere Monitoring Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/glofas-bangladesh-floods.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Fglofas-bangladesh-floods.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/glofas-bangladesh-floods.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Observing major flood events with GLOFAS</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-your-environment">Setup your environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api">Install CDS API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-and-download-the-data">Search and download the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-cds-api-key">Enter your CDS API key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-river-discharge-data-we-want">Find the river discharge data we want</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-and-view-the-data">Explore and view the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-an-overview-of-the-study-area">Getting an overview of the study area</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-upstream-area-data">Accessing the upstream area data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-the-upstream-area-to-the-domain-of-the-data">Reduce the upstream area to the domain of the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mask-the-river-discharge-data">Mask the river discharge data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-the-june-2022-river-discharge-to-the-previous-10-years">Compare the June 2022 river discharge to the previous 10 years</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-the-number-of-days-that-the-river-discharge-exceeded-the-90th-percentile-of-the-10-year-period">Map the number of days that the river discharge exceeded the 90th percentile of the 10-year period.</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><img alt="logo" src="../img/LogoLine_horizon_CEMS.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="observing-major-flood-events-with-glofas">
+<h1>Observing major flood events with GLOFAS<a class="headerlink" href="#observing-major-flood-events-with-glofas" title="Permalink to this heading">#</a></h1>
+<section id="about">
+<h2>About<a class="headerlink" href="#about" title="Permalink to this heading">#</a></h2>
+<p>This tutorial will demonstrate how to investigate a specific flood event using data from the GLObal Flood
+Awareness Service (GLOFAS). For this example we look at the major flood event in Bangladesh in June 2022
+and assess the excess river discharge in comparison to the long-term (10-year) discharge statistics.</p>
+<p>GloFAS is a product and service of the Copernicus Emergency Management Service. The Joint Research Centre of the European Commission is the entrusted entity responsible for CEMS GloFAS in terms of management, technical implementation and evolution. ECMWF is the designated contractor to implement the operational functionalities of the CEMS-COMP (Hydrological Forecast Computational Centre).</p>
+<p>The tutorial is structured as follows:</p>
+<ol class="arabic simple" start="0">
+<li><p>(Install and import the required python packages)</p></li>
+<li><p>Download the data of interest from the C3S Climate Data Store (CDS);</p></li>
+<li><p>Explore the data with xarray, apply mask using the auxilary data, and produce demonstrative map plots;</p></li>
+<li><p>Compute and plot time-series of the June 2022 river discharge against the 10-year period;</p></li>
+<li><p>Compute and display a map of the number of days in June 2022 that the river discharge exceeded the
+90th percentile of the 10-year period.</p></li>
+</ol>
+<p>The steps and methods here serve as demonstrative examples and could be applied to other events and datasets,
+e.g. fire and heatwave events.</p>
+<p><img alt="logo" src="../img/cems_glofas_global.png" /></p>
+<style>
+td, th {
+   border: 1px solid white;
+   border-collapse: collapse;
+}
+</style>
+<table align="left">
+  <tr>
+    <th>Run the tutorial via free cloud platforms: </th>
+    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=glofas-bangladesh-floods.ipynb">
+        <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
+    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/glofas-bangladesh-floods.ipynb">
+        <img src = "https://kaggle.com/static/images/open-in-kaggle.svg" alt = "Kaggle"></th>
+    <th><a href="https://colab.research.google.com/github/ecmwf-projects/ecmwf-projects/copernicus-training-c3s/blob/main/glofas-bangladesh-floods.ipynb">
+        <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
+  </tr>
+</table></section>
+<section id="setup-your-environment">
+<h2>Setup your environment<a class="headerlink" href="#setup-your-environment" title="Permalink to this heading">#</a></h2>
+<p>Before we begin we must prepare our environment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various python libraries that we will need.</p>
+<section id="install-cds-api">
+<h3>Install CDS API<a class="headerlink" href="#install-cds-api" title="Permalink to this heading">#</a></h3>
+<p>To install the CDS API, run the following command. We use an exclamation mark to pass the command to the shell (not to the Python interpreter).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip -q install cdsapi
+
+<span class="c1"># Other requirements:</span>
+<span class="o">!</span>pip -q install cfgrib ecmwflibs
+<span class="o">!</span>pip -q install xarray netcdf4
+<span class="o">!</span>pip -q install matplotlib
+<span class="o">!</span>pip -q install cartopy
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="import-libraries">
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
+<p>We will be working with data in NetCDF format. To best handle this data we will use libraries for working with multidimensional arrays, in particular Xarray. We will also need libraries for plotting and viewing data, in this case we will use Matplotlib and Cartopy.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># CDS API</span>
+<span class="kn">import</span> <span class="nn">cdsapi</span>
+
+<span class="c1"># Libraries for working with multidimensional arrays</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+
+<span class="c1"># Libraries for plotting and visualising data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+
+<span class="c1"># Disable warnings for data download via API</span>
+<span class="kn">import</span> <span class="nn">urllib3</span> 
+<span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+<span class="c1"># Disable xarray runtime warnings</span>
+<span class="kn">import</span> <span class="nn">warnings</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">simplefilter</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="ne">RuntimeWarning</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="search-and-download-the-data">
+<h2>Search and download the data<a class="headerlink" href="#search-and-download-the-data" title="Permalink to this heading">#</a></h2>
+<section id="enter-your-cds-api-key">
+<h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this heading">#</a></h3>
+<p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API.</p>
+<p>If you have not set up your CDS API credentials with a <code class="docutils literal notranslate"><span class="pre">~/.cdsapirc</span></code> file, it is possible to provide the credentials when initialising the <code class="docutils literal notranslate"><span class="pre">cdsapi.Client</span></code>. To do this we must define the two variables needed to establish a connection: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> . The <code class="docutils literal notranslate"><span class="pre">URL</span></code> for the cds api is common and you do not need to modify that field. The <code class="docutils literal notranslate"><span class="pre">KEY</span></code> is string of characters made up of your your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+<p>NOTE: If you have set up your cdsapi key using a ~/.cdsapirc you do not need to add your key below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;~/.cdsapirc&quot;</span><span class="p">):</span>
+    <span class="n">cdsapi_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
+    <span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;##################################&#39;</span>
+    <span class="n">cdsapi_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">URL</span><span class="p">,</span>
+        <span class="s1">&#39;key&#39;</span><span class="p">:</span> <span class="n">KEY</span><span class="p">,</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here we specify a data directory in which we will download our data and all output files that we will generate:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;./data_dir&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="find-the-river-discharge-data-we-want">
+<h3>Find the river discharge data we want<a class="headerlink" href="#find-the-river-discharge-data-we-want" title="Permalink to this heading">#</a></h3>
+<p>The historical GLOFAS data can be found in
+<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/cems-glofas-historical">CDS catalogue entry</a>.</p>
+<p>We are going to look at the Bangladesh flood in June 2022. For our analysis we are going to compare June 2022
+against all the June data from the 10-year reference period: 2012 to 2021. This period has been chosen for
+demonstrative purposes, a thorough analysis would choose a much longer reference period.</p>
+<p>For our study we are going to make the following selection on the download page:</p>
+<ul class="simple">
+<li><p><strong>System version</strong>: version 4.0</p></li>
+<li><p><strong>Hydrological model</strong>: LISFLOOD</p></li>
+<li><p><strong>Product type</strong>: Consolidated</p></li>
+<li><p><strong>Variable</strong>: River discharge in the last 24 hours’</p></li>
+<li><p><strong>Year</strong>: 2012 to 2022</p></li>
+<li><p><strong>Month</strong>: June</p></li>
+<li><p><strong>Day</strong>: All days</p></li>
+<li><p><strong>Area</strong>: [30, 85, 20, 95,] = A bounding box for Bangladesh</p></li>
+<li><p><strong>Format</strong>: Grib</p></li>
+</ul>
+<p>At the end of the download form, select <strong>“Show API request”</strong>. This will reveal a block of code, which you can simply copy and paste into a cell of your Jupyter Notebook (see cells below).</p>
+<section id="download-data">
+<h4>Download data<a class="headerlink" href="#download-data" title="Permalink to this heading">#</a></h4>
+<p>… having copied the API request into the cell below, running this will retrieve and download the data you requested into your local directory. However, before you run the cell below, the <strong>terms and conditions</strong> of this particular dataset need to have been accepted in the CDS. The option to view and accept these conditions is given at the end of the download form, just above the <strong>“Show API request”</strong> option.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s2">/glofas-2012_2022.grib&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">download_file</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span>
+        <span class="o">**</span><span class="n">cdsapi_kwargs</span>
+    <span class="p">)</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+        <span class="s1">&#39;cems-glofas-historical&#39;</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;system_version&#39;</span><span class="p">:</span> <span class="s1">&#39;version_4_0&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;hydrological_model&#39;</span><span class="p">:</span> <span class="s1">&#39;lisflood&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;product_type&#39;</span><span class="p">:</span> <span class="s1">&#39;consolidated&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;river_discharge_in_the_last_24_hours&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;hyear&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2023</span><span class="p">)],</span>
+            <span class="s1">&#39;hmonth&#39;</span><span class="p">:</span> <span class="s1">&#39;june&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;hday&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">day</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)],</span>
+            <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;grib&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;area&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">95</span><span class="p">,],</span>
+        <span class="p">},</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">download_file</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="explore-and-view-the-data">
+<h2>Explore and view the data<a class="headerlink" href="#explore-and-view-the-data" title="Permalink to this heading">#</a></h2>
+<p>We open the data with xarray which can handle both grib and netcdf formats. The xarray dataset objects allows
+exploration of the data contents including attributes, metadata and coordinates.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glofas_data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">download_file</span><span class="p">)</span>
+<span class="n">glofas_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:     (time: 330, latitude: 202, longitude: 202)
+Coordinates:
+  * time        (time) datetime64[ns] 2012-06-01 2012-06-02 ... 2022-06-30
+    step        timedelta64[ns] ...
+    surface     float64 ...
+  * latitude    (latitude) float64 30.02 29.97 29.92 29.87 ... 20.07 20.02 19.98
+  * longitude   (longitude) float64 84.97 85.02 85.07 ... 94.92 94.97 95.03
+    valid_time  (time) datetime64[ns] ...
+Data variables:
+    dis24       (time, latitude, longitude) float32 ...
+Attributes:
+    GRIB_edition:            2
+    GRIB_centre:             ecmf
+    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts
+    GRIB_subCentre:          0
+    Conventions:             CF-1.7
+    institution:             European Centre for Medium-Range Weather Forecasts
+    history:                 2023-08-23T09:43 GRIB to CDM+CF via cfgrib-0.9.1...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-edd920f1-a6af-4101-9a31-b5ecfa1211fb' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-edd920f1-a6af-4101-9a31-b5ecfa1211fb' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 330</li><li><span class='xr-has-index'>latitude</span>: 202</li><li><span class='xr-has-index'>longitude</span>: 202</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-c47c2c91-ce32-4c73-8155-8fe96719fb8c' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c47c2c91-ce32-4c73-8155-8fe96719fb8c' class='xr-section-summary' >Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2012-06-01 ... 2022-06-30</div><input id='attrs-369544b1-bfaf-496d-89da-7ed06291476a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-369544b1-bfaf-496d-89da-7ed06291476a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8d2664b7-3033-4263-8914-718171f5f3d2' class='xr-var-data-in' type='checkbox'><label for='data-8d2664b7-3033-4263-8914-718171f5f3d2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>initial time of forecast</dd><dt><span>standard_name :</span></dt><dd>forecast_reference_time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2012-06-01T00:00:00.000000000&#x27;, &#x27;2012-06-02T00:00:00.000000000&#x27;,
+       &#x27;2012-06-03T00:00:00.000000000&#x27;, ..., &#x27;2022-06-28T00:00:00.000000000&#x27;,
+       &#x27;2022-06-29T00:00:00.000000000&#x27;, &#x27;2022-06-30T00:00:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>step</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>timedelta64[ns]</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-5394e20d-d48b-4a74-ae26-e556af3b28af' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5394e20d-d48b-4a74-ae26-e556af3b28af' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-33cf6264-3a36-4321-a92e-575ebf981c2f' class='xr-var-data-in' type='checkbox'><label for='data-33cf6264-3a36-4321-a92e-575ebf981c2f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time since forecast_reference_time</dd><dt><span>standard_name :</span></dt><dd>forecast_period</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=timedelta64[ns]]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>surface</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-cc178674-eb86-4b28-906c-e1337b6e62ce' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-cc178674-eb86-4b28-906c-e1337b6e62ce' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f2b400ef-2bcd-4cb4-a859-eea7e7b9b5b6' class='xr-var-data-in' type='checkbox'><label for='data-f2b400ef-2bcd-4cb4-a859-eea7e7b9b5b6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>original GRIB coordinate for key: level(surface)</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>[1 values with dtype=float64]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>30.02 29.97 29.92 ... 20.02 19.98</div><input id='attrs-d4281672-d70e-4893-a621-bd88b4e6957b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d4281672-d70e-4893-a621-bd88b4e6957b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4ca2c15a-6e2a-4e96-825c-66282942ef58' class='xr-var-data-in' type='checkbox'><label for='data-4ca2c15a-6e2a-4e96-825c-66282942ef58' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>stored_direction :</span></dt><dd>decreasing</dd></dl></div><div class='xr-var-data'><pre>array([30.025, 29.975, 29.925, ..., 20.075, 20.025, 19.975])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>84.97 85.02 85.07 ... 94.97 95.03</div><input id='attrs-0487a783-5919-4154-bb0c-f2fa47a6faee' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0487a783-5919-4154-bb0c-f2fa47a6faee' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-21ec5bc1-6a7a-4970-bbd8-5a1362009014' class='xr-var-data-in' type='checkbox'><label for='data-21ec5bc1-6a7a-4970-bbd8-5a1362009014' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([84.975, 85.025, 85.075, ..., 94.925, 94.975, 95.025])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>valid_time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-66b1fc32-6d02-4f6e-a0db-7bb3600418f9' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-66b1fc32-6d02-4f6e-a0db-7bb3600418f9' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-12e0c78c-d69e-4bae-945f-51e284b5e92a' class='xr-var-data-in' type='checkbox'><label for='data-12e0c78c-d69e-4bae-945f-51e284b5e92a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>[330 values with dtype=datetime64[ns]]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d65f40f8-0ea4-467e-a589-8914f04a062a' class='xr-section-summary-in' type='checkbox'  checked><label for='section-d65f40f8-0ea4-467e-a589-8914f04a062a' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>dis24</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e4a39128-2150-46c5-b26b-8e9212ab755e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e4a39128-2150-46c5-b26b-8e9212ab755e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-619df314-054c-4128-b74f-852a4ab35c8f' class='xr-var-data-in' type='checkbox'><label for='data-619df314-054c-4128-b74f-852a4ab35c8f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>GRIB_paramId :</span></dt><dd>240024</dd><dt><span>GRIB_dataType :</span></dt><dd>sfo</dd><dt><span>GRIB_numberOfPoints :</span></dt><dd>40804</dd><dt><span>GRIB_typeOfLevel :</span></dt><dd>surface</dd><dt><span>GRIB_stepUnits :</span></dt><dd>1</dd><dt><span>GRIB_stepType :</span></dt><dd>avg</dd><dt><span>GRIB_gridType :</span></dt><dd>regular_ll</dd><dt><span>GRIB_NV :</span></dt><dd>0</dd><dt><span>GRIB_Nx :</span></dt><dd>202</dd><dt><span>GRIB_Ny :</span></dt><dd>202</dd><dt><span>GRIB_cfName :</span></dt><dd>unknown</dd><dt><span>GRIB_cfVarName :</span></dt><dd>dis24</dd><dt><span>GRIB_gridDefinitionDescription :</span></dt><dd>Latitude/longitude</dd><dt><span>GRIB_iDirectionIncrementInDegrees :</span></dt><dd>0.05</dd><dt><span>GRIB_iScansNegatively :</span></dt><dd>0</dd><dt><span>GRIB_jDirectionIncrementInDegrees :</span></dt><dd>0.05</dd><dt><span>GRIB_jPointsAreConsecutive :</span></dt><dd>0</dd><dt><span>GRIB_jScansPositively :</span></dt><dd>0</dd><dt><span>GRIB_latitudeOfFirstGridPointInDegrees :</span></dt><dd>30.025</dd><dt><span>GRIB_latitudeOfLastGridPointInDegrees :</span></dt><dd>19.975</dd><dt><span>GRIB_longitudeOfFirstGridPointInDegrees :</span></dt><dd>84.975</dd><dt><span>GRIB_longitudeOfLastGridPointInDegrees :</span></dt><dd>95.025</dd><dt><span>GRIB_missingValue :</span></dt><dd>3.4028234663852886e+38</dd><dt><span>GRIB_name :</span></dt><dd>Mean discharge in the last 24 hours</dd><dt><span>GRIB_shortName :</span></dt><dd>dis24</dd><dt><span>GRIB_units :</span></dt><dd>m**3 s**-1</dd><dt><span>long_name :</span></dt><dd>Mean discharge in the last 24 hours</dd><dt><span>units :</span></dt><dd>m**3 s**-1</dd><dt><span>standard_name :</span></dt><dd>unknown</dd></dl></div><div class='xr-var-data'><pre>[13465320 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-1eb22b42-c4f3-499a-8540-2e1eb0791df1' class='xr-section-summary-in' type='checkbox'  ><label for='section-1eb22b42-c4f3-499a-8540-2e1eb0791df1' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-d28150b6-6cdc-4d0b-8eee-e0f473d13edd' class='xr-index-data-in' type='checkbox'/><label for='index-d28150b6-6cdc-4d0b-8eee-e0f473d13edd' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2012-06-01&#x27;, &#x27;2012-06-02&#x27;, &#x27;2012-06-03&#x27;, &#x27;2012-06-04&#x27;,
+               &#x27;2012-06-05&#x27;, &#x27;2012-06-06&#x27;, &#x27;2012-06-07&#x27;, &#x27;2012-06-08&#x27;,
+               &#x27;2012-06-09&#x27;, &#x27;2012-06-10&#x27;,
+               ...
+               &#x27;2022-06-21&#x27;, &#x27;2022-06-22&#x27;, &#x27;2022-06-23&#x27;, &#x27;2022-06-24&#x27;,
+               &#x27;2022-06-25&#x27;, &#x27;2022-06-26&#x27;, &#x27;2022-06-27&#x27;, &#x27;2022-06-28&#x27;,
+               &#x27;2022-06-29&#x27;, &#x27;2022-06-30&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=330, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-62ad9773-f045-4073-9d51-6e0034d7e18c' class='xr-index-data-in' type='checkbox'/><label for='index-62ad9773-f045-4073-9d51-6e0034d7e18c' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([            30.025, 29.974999999999998, 29.924999999999997,
+       29.874999999999996, 29.824999999999996, 29.774999999999995,
+       29.724999999999994, 29.674999999999994, 29.624999999999993,
+       29.574999999999992,
+       ...
+       20.424999999999862,  20.37499999999986,  20.32499999999986,
+        20.27499999999986,  20.22499999999986,  20.17499999999986,
+       20.124999999999858, 20.074999999999857, 20.024999999999856,
+                   19.975],
+      dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=202))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-19ffab95-f81e-4875-b98d-90b66c8c41d2' class='xr-index-data-in' type='checkbox'/><label for='index-19ffab95-f81e-4875-b98d-90b66c8c41d2' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([           84.975, 85.02499999999999, 85.07499999999999,
+       85.12499999999999, 85.17499999999998, 85.22499999999998,
+       85.27499999999998, 85.32499999999997, 85.37499999999997,
+       85.42499999999997,
+       ...
+       94.57499999999945, 94.62499999999945, 94.67499999999944,
+       94.72499999999944, 94.77499999999944, 94.82499999999943,
+       94.87499999999943, 94.92499999999943, 94.97499999999943,
+                  95.025],
+      dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=202))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-8ba700aa-b2db-44c9-b214-fe5cc45cfa7d' class='xr-section-summary-in' type='checkbox'  checked><label for='section-8ba700aa-b2db-44c9-b214-fe5cc45cfa7d' class='xr-section-summary' >Attributes: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>GRIB_edition :</span></dt><dd>2</dd><dt><span>GRIB_centre :</span></dt><dd>ecmf</dd><dt><span>GRIB_centreDescription :</span></dt><dd>European Centre for Medium-Range Weather Forecasts</dd><dt><span>GRIB_subCentre :</span></dt><dd>0</dd><dt><span>Conventions :</span></dt><dd>CF-1.7</dd><dt><span>institution :</span></dt><dd>European Centre for Medium-Range Weather Forecasts</dd><dt><span>history :</span></dt><dd>2023-08-23T09:43 GRIB to CDM+CF via cfgrib-0.9.10.4/ecCodes-2.27.0 with {&quot;source&quot;: &quot;data_dir/glofas-2012_2022.grib&quot;, &quot;filter_by_keys&quot;: {}, &quot;encode_cf&quot;: [&quot;parameter&quot;, &quot;time&quot;, &quot;geography&quot;, &quot;vertical&quot;]}</dd></dl></div></li></ul></div></div></div></div>
+</div>
+<section id="getting-an-overview-of-the-study-area">
+<h3>Getting an overview of the study area<a class="headerlink" href="#getting-an-overview-of-the-study-area" title="Permalink to this heading">#</a></h3>
+<p>Now we will produce a simple map of the data. First we will define a function for producing a map plot that
+we will use several times in this note book:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a simple plotting function that we can use throughout this notebook</span>
+<span class="k">def</span> <span class="nf">plot_map</span><span class="p">(</span>
+    <span class="n">plot_data</span><span class="p">,</span>
+    <span class="n">title</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">cbar_label</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">,</span>
+    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;PuBu&#39;</span><span class="p">,</span>
+    <span class="n">extent</span><span class="o">=</span><span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">],</span>
+    <span class="o">**</span><span class="n">pcolorkwargs</span>
+<span class="p">):</span>
+    <span class="c1"># Populate the title and cbar_label with attributes from the plot_data if they have not been</span>
+    <span class="c1">#  explicitly specified</span>
+    <span class="n">title</span> <span class="o">=</span> <span class="n">title</span> <span class="ow">or</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;long_name&#39;</span><span class="p">,</span> <span class="n">title</span><span class="p">)</span>
+    <span class="n">cbar_label</span> <span class="o">=</span> <span class="n">cbar_label</span> <span class="ow">or</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">attrs</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;units&#39;</span><span class="p">,</span> <span class="n">cbar_label</span><span class="p">)</span>
+
+    <span class="c1"># Create a figure with a cartopy projection assigned which allows plotting geospatial data</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span>
+        <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">9</span><span class="p">),</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()}</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Plot the data on our figure</span>
+    <span class="n">im</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
+        <span class="n">plot_data</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">plot_data</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">plot_data</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="n">cmap</span><span class="p">,</span> <span class="o">**</span><span class="n">pcolorkwargs</span>
+    <span class="p">)</span>
+
+    <span class="c1"># Add some additional features</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">draw_labels</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span> 
+    <span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Add country borders in red</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+
+    <span class="c1"># Set the plot domain/extent</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">(</span><span class="n">extent</span><span class="p">,</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+    <span class="c1"># Add a colour bar</span>
+    <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span><span class="n">fraction</span><span class="o">=</span><span class="mf">0.04</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
+    <span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="n">cbar_label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span> 
+</pre></div>
+</div>
+</div>
+</div>
+<p>To produce the map plot, we first need to flatten the time dimension.
+This can be done by either specifying a date (e.g. glofas_data.dis24.isel(time=1)) or by taking a value
+such as the mean as we do here:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mean_data</span> <span class="o">=</span> <span class="n">glofas_data</span><span class="o">.</span><span class="n">dis24</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">mean_data</span> <span class="o">=</span> <span class="n">mean_data</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="o">**</span><span class="n">glofas_data</span><span class="o">.</span><span class="n">dis24</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+<span class="n">plot_map</span><span class="p">(</span>
+    <span class="n">mean_data</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="mf">40e3</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">cbar_label</span> <span class="o">=</span> <span class="s2">&quot;m³ s⁻¹&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/b9aa1d8191001169e554c86fe821a88801ba02c9a1152042861504233500cc34.png" src="_images/b9aa1d8191001169e554c86fe821a88801ba02c9a1152042861504233500cc34.png" />
+</div>
+</div>
+</section>
+<section id="accessing-the-upstream-area-data">
+<h3>Accessing the upstream area data<a class="headerlink" href="#accessing-the-upstream-area-data" title="Permalink to this heading">#</a></h3>
+<p>We know that the river discharge is only valid in the rivers, therefore it is possible to mask the data with
+knowledge of the the river locations. We do this by using the upstream area data which is provided as an
+auxilary data product for GloFAS. The upstream area denotes the total upstream area for each river pixel,
+expressed in m2. More information can be found on the
+<a class="reference external" href="https://confluence.ecmwf.int/display/CEMS/Auxiliary+Data">CEMS-Floods auxiliary data page</a>.</p>
+<p>Below we download the data directly and open the netCDF file using xarray.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># choose a target location to download the file:</span>
+<span class="n">upstream_area_fname</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;uparea_glofas_v4_0.nc&quot;</span>
+<span class="n">upstream_area_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="n">upstream_area_fname</span><span class="p">)</span>
+<span class="c1"># If we have not already downloaded the file, we download it</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">upstream_area_file</span><span class="p">):</span>
+   <span class="n">u_version</span><span class="o">=</span><span class="mi">2</span> <span class="c1"># file version</span>
+   <span class="n">upstream_data_url</span> <span class="o">=</span> <span class="p">(</span>
+      <span class="sa">f</span><span class="s2">&quot;https://confluence.ecmwf.int/download/attachments/242067380/</span><span class="si">{</span><span class="n">upstream_area_file</span><span class="si">}</span><span class="s2">?&quot;</span>
+      <span class="sa">f</span><span class="s2">&quot;version=</span><span class="si">{</span><span class="n">u_version</span><span class="si">}</span><span class="s2">&amp;modificationDate=1668604690076&amp;api=v2&amp;download=true&quot;</span>
+   <span class="p">)</span>
+   <span class="kn">import</span> <span class="nn">requests</span>
+   <span class="n">result</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">upstream_data_url</span><span class="p">)</span>
+   <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">upstream_area_file</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+      <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">result</span><span class="o">.</span><span class="n">content</span><span class="p">)</span>
+<span class="c1"># Open the file and print the contents</span>
+<span class="n">upstream_area</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">upstream_area_file</span><span class="p">)</span>
+<span class="n">upstream_area</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:    (longitude: 7200, latitude: 3000)
+Coordinates:
+  * longitude  (longitude) float64 -180.0 -179.9 -179.9 ... 179.9 179.9 180.0
+  * latitude   (latitude) float64 89.97 89.92 89.88 ... -59.88 -59.92 -59.97
+Data variables:
+    uparea     (latitude, longitude) float32 ...
+Attributes:
+    CDI:                        Climate Data Interface version 1.9.10 (https:...
+    Conventions:                CF-1.9
+    GDAL_PCRASTER_VALUESCALE:   VS_SCALAR
+    GDAL_AREA_OR_POINT:         Area
+    GDAL:                       GDAL 3.2.1, released 2020/12/29
+    NCO:                        netCDF Operators version 4.9.7 (Homepage = ht...
+    history_of_appended_files:  Fri Dec 10 11:49:42 2021: Appended file ldd_O...
+    history:                    Mon Nov 14 17:49:16 2022: cdo chname,lon,long...
+    CDO:                        Climate Data Operators version 1.9.10 (https:...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-4c4d0978-1c44-416d-bbea-45ebaf71279d' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-4c4d0978-1c44-416d-bbea-45ebaf71279d' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>longitude</span>: 7200</li><li><span class='xr-has-index'>latitude</span>: 3000</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-6bcadd5a-b625-4789-aadc-cbb4c11727ce' class='xr-section-summary-in' type='checkbox'  checked><label for='section-6bcadd5a-b625-4789-aadc-cbb4c11727ce' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-180.0 -179.9 ... 179.9 180.0</div><input id='attrs-fefb3fe8-212a-4364-933f-79b52e411357' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fefb3fe8-212a-4364-933f-79b52e411357' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-43aef025-cf75-4948-a4fa-7c2c89f3ae19' class='xr-var-data-in' type='checkbox'><label for='data-43aef025-cf75-4948-a4fa-7c2c89f3ae19' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>axis :</span></dt><dd>X</dd></dl></div><div class='xr-var-data'><pre>array([-179.975, -179.925, -179.875, ...,  179.875,  179.925,  179.975])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>89.97 89.92 89.88 ... -59.92 -59.97</div><input id='attrs-b11fee1f-fbbc-4f8b-8fae-1d9fef83ab2a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b11fee1f-fbbc-4f8b-8fae-1d9fef83ab2a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-efcac35b-d4c7-411d-af7c-5ae4f6e0e9ea' class='xr-var-data-in' type='checkbox'><label for='data-efcac35b-d4c7-411d-af7c-5ae4f6e0e9ea' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>axis :</span></dt><dd>Y</dd></dl></div><div class='xr-var-data'><pre>array([ 89.975,  89.925,  89.875, ..., -59.875, -59.925, -59.975])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e4c4ecf4-53ab-4da7-ab92-9ee4778c4b7b' class='xr-section-summary-in' type='checkbox'  checked><label for='section-e4c4ecf4-53ab-4da7-ab92-9ee4778c4b7b' class='xr-section-summary' >Data variables: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>uparea</span></div><div class='xr-var-dims'>(latitude, longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-08fbaed9-dd19-438f-be80-6b0adf7373a4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-08fbaed9-dd19-438f-be80-6b0adf7373a4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5980834c-bc1a-4140-8f0d-aadfa4284487' class='xr-var-data-in' type='checkbox'><label for='data-5980834c-bc1a-4140-8f0d-aadfa4284487' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Upstream area of each river pixel</dd><dt><span>units :</span></dt><dd>m2</dd><dt><span>lon :</span></dt><dd>longitude</dd><dt><span>lat :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>[21600000 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-3ad6cc43-ee2c-487c-afae-7303fddf0665' class='xr-section-summary-in' type='checkbox'  ><label for='section-3ad6cc43-ee2c-487c-afae-7303fddf0665' class='xr-section-summary' >Indexes: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-8072e453-8c98-43c3-862c-bc6ae2dbbf92' class='xr-index-data-in' type='checkbox'/><label for='index-8072e453-8c98-43c3-862c-bc6ae2dbbf92' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([           -179.975, -179.92499999999998,            -179.875,
+                  -179.825,            -179.775,            -179.725,
+       -179.67499999999998,            -179.625,            -179.575,
+                  -179.525,
+       ...
+        179.52499999999995,  179.57499999999996,  179.62499999999997,
+        179.67499999999998,             179.725,  179.77499999999995,
+        179.82499999999996,  179.87499999999997,  179.92499999999998,
+                   179.975],
+      dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=7200))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-f915bc20-f70e-4a89-9a43-970f8a88bf99' class='xr-index-data-in' type='checkbox'/><label for='index-f915bc20-f70e-4a89-9a43-970f8a88bf99' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([             89.975,              89.925,              89.875,
+         89.82499999999999,   89.77499999999999,              89.725,
+                    89.675,              89.625,   89.57499999999999,
+         89.52499999999999,
+       ...
+       -59.525000000000006,  -59.57499999999999,             -59.625,
+        -59.67499999999998, -59.724999999999994, -59.775000000000006,
+        -59.82499999999999,             -59.875,  -59.92499999999998,
+       -59.974999999999994],
+      dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=3000))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-a6ac0221-07bc-4465-b6b8-c1c250b2ff23' class='xr-section-summary-in' type='checkbox'  checked><label for='section-a6ac0221-07bc-4465-b6b8-c1c250b2ff23' class='xr-section-summary' >Attributes: <span>(9)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>CDI :</span></dt><dd>Climate Data Interface version 1.9.10 (https://mpimet.mpg.de/cdi)</dd><dt><span>Conventions :</span></dt><dd>CF-1.9</dd><dt><span>GDAL_PCRASTER_VALUESCALE :</span></dt><dd>VS_SCALAR</dd><dt><span>GDAL_AREA_OR_POINT :</span></dt><dd>Area</dd><dt><span>GDAL :</span></dt><dd>GDAL 3.2.1, released 2020/12/29</dd><dt><span>NCO :</span></dt><dd>netCDF Operators version 4.9.7 (Homepage = http://nco.sf.net, Code = http://github.com/nco/nco)</dd><dt><span>history_of_appended_files :</span></dt><dd>Fri Dec 10 11:49:42 2021: Appended file ldd_ORIG_03min.nc had following &quot;history&quot; attribute:
+Wed Nov 18 13:59:27 2020: ncks -A -v lat,lon /hugetmp/NOT_Permanent/LDD/LDD_BOX/data/flwdir_202001_03min.nc /hugetmp/NOT_Permanent/LDD/LDD_BOX/res/CHECKED/ldd_Global_03min.nc
+Wed Nov 18 13:59:27 2020: cdo -invertlat tmp_5.nc /hugetmp/NOT_Permanent/LDD/LDD_BOX/res/CHECKED/ldd_Global_03min.nc
+Wed Nov 18 13:59:27 2020: GDAL CreateCopy( tmp_5.nc, ... )
+</dd><dt><span>history :</span></dt><dd>Mon Nov 14 17:49:16 2022: cdo chname,lon,longitude uparea_v4_0_l.nc uparea_v4_0_ll.nc
+Mon Nov 14 17:48:33 2022: cdo chname,lat,latitude uparea_v4_0.nc uparea_v4_0_l.nc
+Mon Nov 14 17:47:27 2022: cdo chname,Band1,uparea uparea_v4_0_md.nc uparea_v4_0.nc
+Mon Nov 14 17:41:58 2022: cdo sellonlatbox,-179.975,179.975,89.975,-59.975 upArea_repaired.nc uparea_v4_0_st.nc
+Fri Dec 10 11:49:42 2021: ncks -A -v lat,lon ldd_ORIG_03min.nc upArea_repaired.nc
+Fri Dec 10 11:49:39 2021: cdo -invertlat tmp_upArea.nc upArea_repaired.nc
+Fri Dec 10 11:49:37 2021: GDAL CreateCopy( tmp_upArea.nc, ... )</dd><dt><span>CDO :</span></dt><dd>Climate Data Operators version 1.9.10 (https://mpimet.mpg.de/cdo)</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+<section id="reduce-the-upstream-area-to-the-domain-of-the-data">
+<h3>Reduce the upstream area to the domain of the data<a class="headerlink" href="#reduce-the-upstream-area-to-the-domain-of-the-data" title="Permalink to this heading">#</a></h3>
+<p>The upstream area data covers the entire globe, we must therefore reduce it to the domain of our area of
+interest, Bangladesh. To avoid hard-coding and to ensure that the sub-area selected matches exactly
+we extract the domain limits from the river discarge data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Reduce the Upstream area data to the domain of the river discharge</span>
+
+<span class="c1"># Get the latitude and longitude limits of the data</span>
+<span class="n">lat_limits</span> <span class="o">=</span> <span class="p">[</span><span class="n">glofas_data</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">lon_limits</span> <span class="o">=</span> <span class="p">[</span><span class="n">glofas_data</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]]</span>
+<span class="n">up_lats</span> <span class="o">=</span> <span class="n">upstream_area</span><span class="o">.</span><span class="n">latitude</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+<span class="n">up_lons</span> <span class="o">=</span> <span class="n">upstream_area</span><span class="o">.</span><span class="n">longitude</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">tolist</span><span class="p">()</span>
+
+<span class="n">lat_slice_index</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nb">round</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="n">up_lats</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">up_lats</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">up_lats</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lat_limits</span>
+<span class="p">]</span>
+<span class="n">lon_slice_index</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="nb">round</span><span class="p">((</span><span class="n">i</span><span class="o">-</span><span class="n">up_lons</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">/</span><span class="p">(</span><span class="n">up_lons</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">-</span><span class="n">up_lons</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">lon_limits</span>
+<span class="p">]</span>
+
+<span class="c1"># Slice upstream area to bangladesh region:</span>
+<span class="n">red_upstream_area</span> <span class="o">=</span> <span class="n">upstream_area</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span>
+    <span class="n">latitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">lat_slice_index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lat_slice_index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+    <span class="n">longitude</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="n">lon_slice_index</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">lon_slice_index</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span>
+<span class="p">)</span>
+
+<span class="c1"># There are very minor rounding differences, so we update with the lat/lons from the glofas data</span>
+<span class="n">red_upstream_area</span> <span class="o">=</span> <span class="n">red_upstream_area</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span>
+    <span class="s1">&#39;latitude&#39;</span><span class="p">:</span> <span class="n">glofas_data</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+    <span class="s1">&#39;longitude&#39;</span><span class="p">:</span> <span class="n">glofas_data</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="c1"># Add the upstream area to the main data object and print the updated glofas data object:</span>
+<span class="n">glofas_data</span><span class="p">[</span><span class="s1">&#39;uparea&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">red_upstream_area</span><span class="p">[</span><span class="s1">&#39;uparea&#39;</span><span class="p">]</span>
+<span class="n">glofas_data</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt;
+Dimensions:     (time: 330, latitude: 202, longitude: 202)
+Coordinates:
+  * time        (time) datetime64[ns] 2012-06-01 2012-06-02 ... 2022-06-30
+    step        timedelta64[ns] 1 days
+    surface     float64 0.0
+  * latitude    (latitude) float64 30.02 29.97 29.92 29.87 ... 20.07 20.02 19.98
+  * longitude   (longitude) float64 84.97 85.02 85.07 ... 94.92 94.97 95.03
+    valid_time  (time) datetime64[ns] ...
+Data variables:
+    dis24       (time, latitude, longitude) float32 0.0 0.0 ... 3.042e+04
+    uparea      (latitude, longitude) float32 ...
+Attributes:
+    GRIB_edition:            2
+    GRIB_centre:             ecmf
+    GRIB_centreDescription:  European Centre for Medium-Range Weather Forecasts
+    GRIB_subCentre:          0
+    Conventions:             CF-1.7
+    institution:             European Centre for Medium-Range Weather Forecasts
+    history:                 2023-08-23T09:43 GRIB to CDM+CF via cfgrib-0.9.1...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-bed199b6-69d7-47c9-901d-2bc079c698f8' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-bed199b6-69d7-47c9-901d-2bc079c698f8' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 330</li><li><span class='xr-has-index'>latitude</span>: 202</li><li><span class='xr-has-index'>longitude</span>: 202</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-57c490d1-29c1-49ad-8e45-39aea377a990' class='xr-section-summary-in' type='checkbox'  checked><label for='section-57c490d1-29c1-49ad-8e45-39aea377a990' class='xr-section-summary' >Coordinates: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>2012-06-01 ... 2022-06-30</div><input id='attrs-da4a0551-836f-4090-96f3-e00ab7c3cc36' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-da4a0551-836f-4090-96f3-e00ab7c3cc36' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d995d0ef-f1ec-446f-bf1d-20d8ddb248a6' class='xr-var-data-in' type='checkbox'><label for='data-d995d0ef-f1ec-446f-bf1d-20d8ddb248a6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>initial time of forecast</dd><dt><span>standard_name :</span></dt><dd>forecast_reference_time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;2012-06-01T00:00:00.000000000&#x27;, &#x27;2012-06-02T00:00:00.000000000&#x27;,
+       &#x27;2012-06-03T00:00:00.000000000&#x27;, ..., &#x27;2022-06-28T00:00:00.000000000&#x27;,
+       &#x27;2022-06-29T00:00:00.000000000&#x27;, &#x27;2022-06-30T00:00:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>step</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>timedelta64[ns]</div><div class='xr-var-preview xr-preview'>1 days</div><input id='attrs-f3f559f1-a0d2-4358-904d-6ab846d9967f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f3f559f1-a0d2-4358-904d-6ab846d9967f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-89269fc2-762f-4064-ad05-de1760f9b7f9' class='xr-var-data-in' type='checkbox'><label for='data-89269fc2-762f-4064-ad05-de1760f9b7f9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>time since forecast_reference_time</dd><dt><span>standard_name :</span></dt><dd>forecast_period</dd></dl></div><div class='xr-var-data'><pre>array(86400000000000, dtype=&#x27;timedelta64[ns]&#x27;)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>surface</span></div><div class='xr-var-dims'>()</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>0.0</div><input id='attrs-75d54d1a-2118-4460-893f-f7cb8b23eed8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-75d54d1a-2118-4460-893f-f7cb8b23eed8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-38c4e112-1e75-4a2b-afa0-f55ff131e7ea' class='xr-var-data-in' type='checkbox'><label for='data-38c4e112-1e75-4a2b-afa0-f55ff131e7ea' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>original GRIB coordinate for key: level(surface)</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><pre>array(0.)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>30.02 29.97 29.92 ... 20.02 19.98</div><input id='attrs-3dfa4be5-8b58-4c82-aca6-100f82ffedb2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3dfa4be5-8b58-4c82-aca6-100f82ffedb2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-52d3d434-c13a-4169-aa95-ecf907e713d2' class='xr-var-data-in' type='checkbox'><label for='data-52d3d434-c13a-4169-aa95-ecf907e713d2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>stored_direction :</span></dt><dd>decreasing</dd></dl></div><div class='xr-var-data'><pre>array([30.025, 29.975, 29.925, ..., 20.075, 20.025, 19.975])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>longitude</span></div><div class='xr-var-dims'>(longitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>84.97 85.02 85.07 ... 94.97 95.03</div><input id='attrs-f3c009bb-1fb9-4921-af21-16582809d21a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f3c009bb-1fb9-4921-af21-16582809d21a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1106c2bf-18c5-4015-85c0-d853ce04126c' class='xr-var-data-in' type='checkbox'><label for='data-1106c2bf-18c5-4015-85c0-d853ce04126c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd></dl></div><div class='xr-var-data'><pre>array([84.975, 85.025, 85.075, ..., 94.925, 94.975, 95.025])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>valid_time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0916873d-b062-48f3-ae16-179b7d59b81d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0916873d-b062-48f3-ae16-179b7d59b81d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b5117c24-60af-4e12-80d4-91cc8597eaff' class='xr-var-data-in' type='checkbox'><label for='data-b5117c24-60af-4e12-80d4-91cc8597eaff' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>[330 values with dtype=datetime64[ns]]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-35744a26-4fe7-4c9a-af4f-991a0df2efd6' class='xr-section-summary-in' type='checkbox'  checked><label for='section-35744a26-4fe7-4c9a-af4f-991a0df2efd6' class='xr-section-summary' >Data variables: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>dis24</span></div><div class='xr-var-dims'>(time, latitude, longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>0.0 0.0 0.0 ... 0.03125 3.042e+04</div><input id='attrs-178db59a-3730-4a47-81b2-353a496634e2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-178db59a-3730-4a47-81b2-353a496634e2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cf3d9c1a-34da-4aeb-990f-90d239451ced' class='xr-var-data-in' type='checkbox'><label for='data-cf3d9c1a-34da-4aeb-990f-90d239451ced' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>GRIB_paramId :</span></dt><dd>240024</dd><dt><span>GRIB_dataType :</span></dt><dd>sfo</dd><dt><span>GRIB_numberOfPoints :</span></dt><dd>40804</dd><dt><span>GRIB_typeOfLevel :</span></dt><dd>surface</dd><dt><span>GRIB_stepUnits :</span></dt><dd>1</dd><dt><span>GRIB_stepType :</span></dt><dd>avg</dd><dt><span>GRIB_gridType :</span></dt><dd>regular_ll</dd><dt><span>GRIB_NV :</span></dt><dd>0</dd><dt><span>GRIB_Nx :</span></dt><dd>202</dd><dt><span>GRIB_Ny :</span></dt><dd>202</dd><dt><span>GRIB_cfName :</span></dt><dd>unknown</dd><dt><span>GRIB_cfVarName :</span></dt><dd>dis24</dd><dt><span>GRIB_gridDefinitionDescription :</span></dt><dd>Latitude/longitude</dd><dt><span>GRIB_iDirectionIncrementInDegrees :</span></dt><dd>0.05</dd><dt><span>GRIB_iScansNegatively :</span></dt><dd>0</dd><dt><span>GRIB_jDirectionIncrementInDegrees :</span></dt><dd>0.05</dd><dt><span>GRIB_jPointsAreConsecutive :</span></dt><dd>0</dd><dt><span>GRIB_jScansPositively :</span></dt><dd>0</dd><dt><span>GRIB_latitudeOfFirstGridPointInDegrees :</span></dt><dd>30.025</dd><dt><span>GRIB_latitudeOfLastGridPointInDegrees :</span></dt><dd>19.975</dd><dt><span>GRIB_longitudeOfFirstGridPointInDegrees :</span></dt><dd>84.975</dd><dt><span>GRIB_longitudeOfLastGridPointInDegrees :</span></dt><dd>95.025</dd><dt><span>GRIB_missingValue :</span></dt><dd>3.4028234663852886e+38</dd><dt><span>GRIB_name :</span></dt><dd>Mean discharge in the last 24 hours</dd><dt><span>GRIB_shortName :</span></dt><dd>dis24</dd><dt><span>GRIB_units :</span></dt><dd>m**3 s**-1</dd><dt><span>long_name :</span></dt><dd>Mean discharge in the last 24 hours</dd><dt><span>units :</span></dt><dd>m**3 s**-1</dd><dt><span>standard_name :</span></dt><dd>unknown</dd></dl></div><div class='xr-var-data'><pre>array([[[0.000000e+00, 0.000000e+00, ..., 5.806250e+01, 5.464062e+02],
+        [0.000000e+00, 0.000000e+00, ..., 1.500000e+00, 9.687500e-01],
+        ...,
+        [1.250000e-01, 1.250000e-01, ..., 3.125000e-02, 3.279125e+03],
+        [0.000000e+00, 1.250000e-01, ..., 3.125000e-02, 3.278500e+03]],
+
+       [[0.000000e+00, 0.000000e+00, ..., 6.018750e+01, 6.048750e+02],
+        [0.000000e+00, 0.000000e+00, ..., 1.375000e+00, 1.000000e+00],
+        ...,
+        [1.250000e-01, 1.250000e-01, ..., 3.125000e-02, 3.314031e+03],
+        [0.000000e+00, 1.250000e-01, ..., 3.125000e-02, 3.313312e+03]],
+
+       ...,
+
+       [[1.093750e+00, 0.000000e+00, ..., 1.688281e+02, 2.466719e+03],
+        [1.671875e+00, 4.375000e-01, ..., 1.421875e+00, 1.343750e+00],
+        ...,
+        [2.968750e-01, 3.906250e-01, ..., 1.250000e-01, 2.971944e+04],
+        [4.687500e-02, 2.812500e-01, ..., 3.125000e-02, 2.971702e+04]],
+
+       [[5.781250e-01, 0.000000e+00, ..., 1.676250e+02, 2.375141e+03],
+        [6.718750e-01, 2.656250e-01, ..., 1.359375e+00, 1.296875e+00],
+        ...,
+        [3.125000e-01, 4.062500e-01, ..., 9.375000e-02, 3.041544e+04],
+        [4.687500e-02, 2.812500e-01, ..., 3.125000e-02, 3.041558e+04]]],
+      dtype=float32)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>uparea</span></div><div class='xr-var-dims'>(latitude, longitude)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-63e09bf3-74ad-46dc-87ce-151f3cbce33d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-63e09bf3-74ad-46dc-87ce-151f3cbce33d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a6c05035-40d2-410a-bc84-7cc05d2a2b6b' class='xr-var-data-in' type='checkbox'><label for='data-a6c05035-40d2-410a-bc84-7cc05d2a2b6b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Upstream area of each river pixel</dd><dt><span>units :</span></dt><dd>m2</dd><dt><span>lon :</span></dt><dd>longitude</dd><dt><span>lat :</span></dt><dd>latitude</dd></dl></div><div class='xr-var-data'><pre>[40804 values with dtype=float32]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d6394b9f-52fa-4ea5-aff3-3d4613f02923' class='xr-section-summary-in' type='checkbox'  ><label for='section-d6394b9f-52fa-4ea5-aff3-3d4613f02923' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-36ddbc9e-0110-40d5-b82a-5323ec57af8d' class='xr-index-data-in' type='checkbox'/><label for='index-36ddbc9e-0110-40d5-b82a-5323ec57af8d' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;2012-06-01&#x27;, &#x27;2012-06-02&#x27;, &#x27;2012-06-03&#x27;, &#x27;2012-06-04&#x27;,
+               &#x27;2012-06-05&#x27;, &#x27;2012-06-06&#x27;, &#x27;2012-06-07&#x27;, &#x27;2012-06-08&#x27;,
+               &#x27;2012-06-09&#x27;, &#x27;2012-06-10&#x27;,
+               ...
+               &#x27;2022-06-21&#x27;, &#x27;2022-06-22&#x27;, &#x27;2022-06-23&#x27;, &#x27;2022-06-24&#x27;,
+               &#x27;2022-06-25&#x27;, &#x27;2022-06-26&#x27;, &#x27;2022-06-27&#x27;, &#x27;2022-06-28&#x27;,
+               &#x27;2022-06-29&#x27;, &#x27;2022-06-30&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=330, freq=None))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-0654a9b5-9302-425c-a40e-c2efb7ced5a9' class='xr-index-data-in' type='checkbox'/><label for='index-0654a9b5-9302-425c-a40e-c2efb7ced5a9' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([            30.025, 29.974999999999998, 29.924999999999997,
+       29.874999999999996, 29.824999999999996, 29.774999999999995,
+       29.724999999999994, 29.674999999999994, 29.624999999999993,
+       29.574999999999992,
+       ...
+       20.424999999999862,  20.37499999999986,  20.32499999999986,
+        20.27499999999986,  20.22499999999986,  20.17499999999986,
+       20.124999999999858, 20.074999999999857, 20.024999999999856,
+                   19.975],
+      dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;, length=202))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>longitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-b6d8da3e-618a-4b96-ab0a-eba9fa3ac066' class='xr-index-data-in' type='checkbox'/><label for='index-b6d8da3e-618a-4b96-ab0a-eba9fa3ac066' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([           84.975, 85.02499999999999, 85.07499999999999,
+       85.12499999999999, 85.17499999999998, 85.22499999999998,
+       85.27499999999998, 85.32499999999997, 85.37499999999997,
+       85.42499999999997,
+       ...
+       94.57499999999945, 94.62499999999945, 94.67499999999944,
+       94.72499999999944, 94.77499999999944, 94.82499999999943,
+       94.87499999999943, 94.92499999999943, 94.97499999999943,
+                  95.025],
+      dtype=&#x27;float64&#x27;, name=&#x27;longitude&#x27;, length=202))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-9e70299d-c937-491d-8603-96f5b5f4d014' class='xr-section-summary-in' type='checkbox'  checked><label for='section-9e70299d-c937-491d-8603-96f5b5f4d014' class='xr-section-summary' >Attributes: <span>(7)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>GRIB_edition :</span></dt><dd>2</dd><dt><span>GRIB_centre :</span></dt><dd>ecmf</dd><dt><span>GRIB_centreDescription :</span></dt><dd>European Centre for Medium-Range Weather Forecasts</dd><dt><span>GRIB_subCentre :</span></dt><dd>0</dd><dt><span>Conventions :</span></dt><dd>CF-1.7</dd><dt><span>institution :</span></dt><dd>European Centre for Medium-Range Weather Forecasts</dd><dt><span>history :</span></dt><dd>2023-08-23T09:43 GRIB to CDM+CF via cfgrib-0.9.10.4/ecCodes-2.27.0 with {&quot;source&quot;: &quot;data_dir/glofas-2012_2022.grib&quot;, &quot;filter_by_keys&quot;: {}, &quot;encode_cf&quot;: [&quot;parameter&quot;, &quot;time&quot;, &quot;geography&quot;, &quot;vertical&quot;]}</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+<section id="mask-the-river-discharge-data">
+<h3>Mask the river discharge data<a class="headerlink" href="#mask-the-river-discharge-data" title="Permalink to this heading">#</a></h3>
+<p>We now mask the data to where the upstream area is &gt;= 250km2, and plot it to see how it looks</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glofas_data_masked</span> <span class="o">=</span> <span class="n">glofas_data</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">glofas_data</span><span class="o">.</span><span class="n">uparea</span><span class="o">&gt;=</span><span class="mf">250.e6</span><span class="p">)</span>
+<span class="n">mean_masked_data</span> <span class="o">=</span> <span class="n">glofas_data_masked</span><span class="o">.</span><span class="n">dis24</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">glofas_data_masked</span><span class="o">.</span><span class="n">dis24</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+<span class="n">plot_map</span><span class="p">(</span>
+    <span class="n">mean_masked_data</span><span class="p">,</span>
+    <span class="n">vmax</span><span class="o">=</span><span class="mf">40e3</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+    <span class="n">cbar_label</span> <span class="o">=</span> <span class="s2">&quot;m³ s⁻¹&quot;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/0d376e8cfab8292e993101159f36f00dfc3159c6be8df7ab42773db16a33475c.png" src="_images/0d376e8cfab8292e993101159f36f00dfc3159c6be8df7ab42773db16a33475c.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="compare-the-june-2022-river-discharge-to-the-previous-10-years">
+<h2>Compare the June 2022 river discharge to the previous 10 years<a class="headerlink" href="#compare-the-june-2022-river-discharge-to-the-previous-10-years" title="Permalink to this heading">#</a></h2>
+<p>We want to see how the June 2022 floods compare to the historical period accross the entire domain.
+We chose a histroical period of 10 years for demonstrative purposes, a thorough analysis would
+use a longer reference period.</p>
+<p>The first step is to calculate some climatological statistics to represent our 10 year period (2012 to 2022).</p>
+<p>Below we calculate the mean river discharge over the geospatial domain,
+then calculate 10 year mean, maximum, minimum and the 10th and 90th percentiles of the gespatial mean
+for each day in June.</p>
+<p>We then calculate the geospatial mean for each day in June in 2022.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># select the 2012-2021 data</span>
+<span class="n">glofas_historical_period</span> <span class="o">=</span> <span class="n">glofas_data_masked</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;2012&quot;</span><span class="p">,</span><span class="s2">&quot;2021&quot;</span><span class="p">))</span>
+
+<span class="n">glofas_dis24_domain_mean</span> <span class="o">=</span> <span class="n">glofas_historical_period</span><span class="o">.</span><span class="n">dis24</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="s2">&quot;longitude&quot;</span><span class="p">,</span> <span class="s2">&quot;latitude&quot;</span><span class="p">])</span>
+<span class="c1"># calculate the mean discharge over the whole domain, for each day in June</span>
+<span class="n">glofas_xy_climatology</span> <span class="o">=</span> <span class="n">glofas_dis24_domain_mean</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.day&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+
+<span class="c1"># calculate the minimum and maximum discharge over the whole domain, for each day in June</span>
+<span class="n">glofas_xy_clim_min</span> <span class="o">=</span> <span class="n">glofas_dis24_domain_mean</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.day&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="n">glofas_xy_clim_max</span> <span class="o">=</span> <span class="n">glofas_dis24_domain_mean</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.day&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+<span class="c1"># Calculate the 10th and 90th percentiles of discharge rate of the whole domain</span>
+<span class="n">glofas_xy_clim_quantiles</span> <span class="o">=</span> <span class="n">glofas_dis24_domain_mean</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.day&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.9</span><span class="p">])</span>
+
+<span class="c1"># calculate the mean discharge over the whole domain for each day in June 2022</span>
+<span class="n">glofas_xy_2022</span> <span class="o">=</span> <span class="n">glofas_data_masked</span><span class="o">.</span><span class="n">dis24</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="s2">&quot;2022&quot;</span><span class="p">)</span>
+<span class="n">glofas_xy_2022_mean</span> <span class="o">=</span> <span class="n">glofas_xy_2022</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="s1">&#39;longitude&#39;</span><span class="p">,</span><span class="s1">&#39;latitude&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.day&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Plot these various statistics using matplotlib plotting methods.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a figure and axis</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">()</span>
+
+<span class="c1"># Plot the minimum to maximum range</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span> <span class="n">glofas_xy_clim_min</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">glofas_xy_clim_max</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;min/max percentile range&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Plot the 10th to 90th percentile range</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span>
+    <span class="n">glofas_xy_clim_quantiles</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">quantile</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">glofas_xy_clim_quantiles</span><span class="o">.</span><span class="n">isel</span><span class="p">(</span><span class="n">quantile</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;10th/90th percentile range&#39;</span>
+<span class="p">)</span>
+
+<span class="c1"># Plot the mean for the 10 year period</span>
+<span class="p">(</span><span class="n">line_base</span><span class="p">,)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span> <span class="n">glofas_xy_climatology</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;Reference period mean&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Plot the region where 2022 is greater than the mean in blue</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">glofas_xy_2022_mean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">glofas_xy_climatology</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span> <span class="nb">int</span><span class="p">(</span><span class="n">glofas_xy_2022_mean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])],</span>
+    <span class="n">glofas_xy_2022_mean</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;b&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">where</span><span class="o">=</span><span class="n">glofas_xy_2022_mean</span><span class="o">.</span><span class="n">values</span> <span class="o">&gt;=</span> <span class="n">glofas_xy_climatology</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span> <span class="nb">int</span><span class="p">(</span><span class="n">glofas_xy_2022_mean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])],</span>
+    <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">&quot;2022 excess discharge&quot;</span>
+<span class="p">)</span>
+
+<span class="c1"># Plot the region where 2022 is less than the mean in red</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span>
+    <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">glofas_xy_2022_mean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">glofas_xy_climatology</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span> <span class="nb">int</span><span class="p">(</span><span class="n">glofas_xy_2022_mean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])],</span>
+    <span class="n">glofas_xy_2022_mean</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span>
+    <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span>
+    <span class="n">where</span><span class="o">=</span><span class="n">glofas_xy_2022_mean</span><span class="o">.</span><span class="n">values</span> <span class="o">&lt;</span> <span class="n">glofas_xy_climatology</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span> <span class="nb">int</span><span class="p">(</span><span class="n">glofas_xy_2022_mean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])],</span>
+    <span class="n">interpolate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Plot the 2022 data points</span>
+<span class="n">dots</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">int</span><span class="p">(</span><span class="n">glofas_xy_2022_mean</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="n">glofas_xy_2022_mean</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="n">color</span><span class="o">=</span><span class="s2">&quot;k&quot;</span><span class="p">,</span>
+    <span class="c1"># label=&quot;2022&quot;,</span>
+    <span class="n">zorder</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># Add a legend and axis labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Day in June&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Daily river discharge ($m^</span><span class="si">{3}</span><span class="s2">s^{-1}$)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Text(0, 0.5, &#39;Daily river discharge ($m^{3}s^{-1}$)&#39;)
+</pre></div>
+</div>
+<img alt="_images/bc7a7f44d5527d69bf94f705642153ebeb50f0afb69da435676865cc78a8391f.png" src="_images/bc7a7f44d5527d69bf94f705642153ebeb50f0afb69da435676865cc78a8391f.png" />
+</div>
+</div>
+<p>From this plot, we see that around the 13th of June the 2022 floods began to exceed the 10-year historical maximum, and this continued until the 22nd.</p>
+<p>However, this plot doesn’t give us an idea of how the severity of the flooding varied spatially, so let’s have a look at that.</p>
+</section>
+<section id="map-the-number-of-days-that-the-river-discharge-exceeded-the-90th-percentile-of-the-10-year-period">
+<h2>Map the number of days that the river discharge exceeded the 90th percentile of the 10-year period.<a class="headerlink" href="#map-the-number-of-days-that-the-river-discharge-exceeded-the-90th-percentile-of-the-10-year-period" title="Permalink to this heading">#</a></h2>
+<p>We can also look at the spatial distribution of this data and xarray provides some useful tools for indexing
+calcualating various statisitics. Below we calculate the 10th and 90th percentiles accross the domain
+then compute where the river discharge exceeded the 90th percentile. This is a boolean data array where
+1 indicates the 90th percentile was exceeded and 0 indicates it was not.</p>
+<p>There are a number of commented out commands which can be used to calculate other statistics which you can
+investigate at your leisure.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the climatology for the historical period: 2012-2021</span>
+<span class="n">glofas_historical_period</span> <span class="o">=</span> <span class="n">glofas_data_masked</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s2">&quot;2012&quot;</span><span class="p">,</span><span class="s2">&quot;2021&quot;</span><span class="p">))</span>
+
+<span class="c1"># glofas_climatology = glofas_data_masked.groupby(&#39;time.dayofyear&#39;).mean(&quot;time&quot;)</span>
+<span class="n">glofas_climat_quantiles</span> <span class="o">=</span> <span class="n">glofas_historical_period</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.dayofyear&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">,</span> <span class="n">q</span><span class="o">=</span><span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mf">0.9</span><span class="p">])</span>
+
+<span class="c1"># # Calculate the anomaly w.r.t the above climatology</span>
+<span class="c1"># glofas_anomaly = glofas_data_masked.groupby(&#39;time.dayofyear&#39;) - glofas_climatology</span>
+<span class="c1"># # Calculate this a relative anomaly</span>
+<span class="c1"># glofas_relanom = glofas_anomaly.groupby(&#39;time.dayofyear&#39;)/glofas_climatology</span>
+
+<span class="n">glofas_high</span> <span class="o">=</span> <span class="n">glofas_data_masked</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.dayofyear&#39;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">glofas_climat_quantiles</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">quantile</span><span class="o">=</span><span class="mf">0.9</span><span class="p">)</span>
+<span class="n">glofas_high</span> <span class="o">=</span> <span class="n">glofas_high</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">glofas_data</span><span class="o">.</span><span class="n">uparea</span><span class="o">&gt;</span><span class="mf">250e6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then plot the map using our predefined plotting function</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot the data:</span>
+<span class="n">year</span><span class="o">=</span><span class="s1">&#39;2022&#39;</span>
+<span class="n">number_of_high_days</span> <span class="o">=</span> <span class="n">glofas_high</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="n">year</span><span class="p">)</span><span class="o">.</span><span class="n">dis24</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">number_of_high_days</span> <span class="o">=</span> <span class="n">number_of_high_days</span><span class="o">.</span><span class="n">assign_attrs</span><span class="p">(</span><span class="n">glofas_high</span><span class="o">.</span><span class="n">dis24</span><span class="o">.</span><span class="n">attrs</span><span class="p">)</span>
+<span class="n">plot_map</span><span class="p">(</span>
+    <span class="n">number_of_high_days</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Purples&#39;</span><span class="p">,</span> <span class="n">cbar_label</span><span class="o">=</span><span class="s1">&#39;Number of days&#39;</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="_images/4abed668d137956ffa55fe9d6e2d41e536bd1207bd01123a41ca9864f1ba7cb0.png" src="_images/4abed668d137956ffa55fe9d6e2d41e536bd1207bd01123a41ca9864f1ba7cb0.png" />
+</div>
+</div>
+<p>We can see that some areas to the northeast of Dhaka experienced discharge exceeding the 90th percentile for over 20 days in June.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="visualising-fwi-for-esotc.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assesment</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-your-environment">Setup your environment</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api">Install CDS API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-and-download-the-data">Search and download the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-cds-api-key">Enter your CDS API key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-river-discharge-data-we-want">Find the river discharge data we want</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#explore-and-view-the-data">Explore and view the data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-an-overview-of-the-study-area">Getting an overview of the study area</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-the-upstream-area-data">Accessing the upstream area data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#reduce-the-upstream-area-to-the-domain-of-the-data">Reduce the upstream area to the domain of the data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mask-the-river-discharge-data">Mask the river discharge data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#compare-the-june-2022-river-discharge-to-the-previous-10-years">Compare the June 2022 river discharge to the previous 10 years</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#map-the-number-of-days-that-the-river-discharge-exceeded-the-90th-percentile-of-the-10-year-period">Map the number of days that the river discharge exceeded the 90th percentile of the 10-year period.</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
