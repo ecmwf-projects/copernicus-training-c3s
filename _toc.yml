@@ -36,6 +36,12 @@ parts:
    chapters:
    - url: https://ibicus.readthedocs.io/en/latest/getting_started/overview.html
      title: Python library (ibicus) and tutorials on bias correction
+ - caption: Tutorials using EFFIS and GloFAS data
+   chapters:
+   - file: visualising-fwi-for-esotc
+     title: Visualising Fire Weather Index (FWI)
+   - file: glofas-bangladesh-floods
+     title: Observing floods with GloFAS
  - caption: Atmosphere Monitoring Tutorials
    chapters:
    - url: https://ecmwf-projects.github.io/copernicus-training-cams/
