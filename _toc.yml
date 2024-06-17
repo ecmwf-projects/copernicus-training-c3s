@@ -12,6 +12,8 @@ parts:
    chapters:
    - file: reanalysis-climatology
      title: Climatology
+   - file: reanalysis-temp-record
+     title: Climate Records
    - file: reanalysis-heatwave
      title: Heatwave Analysis
  - caption: Tutorials on Observations
