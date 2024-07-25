@@ -6,8 +6,8 @@ root: intro
 parts:
  - caption: Climate Data Store (CDS)
    chapters:
-   - file: cds-tutorial
-     title: CDS tutorial
+   - url: https://cds-beta.climate.copernicus.eu/user-guide
+     title: CDS user guide
  - caption: Tutorials on Reanalysis
    chapters:
    - file: reanalysis-climatology
