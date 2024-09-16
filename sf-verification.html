@@ -488,7 +488,7 @@ document.write(`
 </li>
 <li><p>4 - Visualize verification plots</p></li>
 </ul>
-<p>Please see here the full documentation of the <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/C3S+Seasonal+Forecasts%3A+datasets+documentation">C3S Seasonal Forecast Datasets</a>. This notebook will use data from the CDS dataset <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/seasonal-monthly-single-levels?tab=overview">seasonal forecast monthly statistics on single levels</a> (as opposed to multiple levels in the atmosphere).</p>
+<p>Please see here the full documentation of the <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/C3S+Seasonal+Forecasts%3A+datasets+documentation">C3S Seasonal Forecast Datasets</a>. This notebook will use data from the CDS dataset <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/seasonal-monthly-single-levels?tab=overview">seasonal forecast monthly statistics on single levels</a> (as opposed to multiple levels in the atmosphere).</p>
 <div class="alert alert-block alert-success">
 <b>NOTE</b>: <br>
     An example on the use of the code of this notebook to create verification plots for the operational seasonal forecast systems available in the CDS can be found in a <a href="https://confluence.ecmwf.int/display/CKB/C3S+seasonal+forecasts+verification+plots">dedicated page</a> of the documentation hosted in the Copernicus Knowledge Base.    
@@ -577,10 +577,10 @@ document.write(`
 </div>
 </div>
 </div>
-<p>The first step is to request data from the Climate Data Store programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">CDSAPI_URL</span></code> and <code class="docutils literal notranslate"><span class="pre">CDSAPI_KEY</span></code> which build together your CDS API key. Below, you have to replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> with your personal CDS key. Please find <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">here</a> your personal CDS key.</p>
+<p>The first step is to request data from the Climate Data Store programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">CDSAPI_URL</span></code> and <code class="docutils literal notranslate"><span class="pre">CDSAPI_KEY</span></code> which build together your CDS API key. Below, you have to replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> with your personal CDS key. Please find <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">here</a> your personal CDS key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CDSAPI_URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">CDSAPI_URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds-beta.climate.copernicus.eu/api&#39;</span>
 <span class="n">CDSAPI_KEY</span> <span class="o">=</span> <span class="s1">&#39;########################################&#39;</span>
 
 <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">CDSAPI_URL</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">CDSAPI_KEY</span><span class="p">)</span>
@@ -603,10 +603,10 @@ document.write(`
 <strong>Leadtime month</strong>: <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">to</span> <span class="pre">6</span></code> <em>All available lead times (March to August)</em></p>
 </div></blockquote>
 <p>Note we will also be defining some variable, <code class="docutils literal notranslate"><span class="pre">origin</span></code>, with the forecast system details to be included in the <code class="docutils literal notranslate"><span class="pre">config</span></code> variable. Additionally it defines a base name variable <code class="docutils literal notranslate"><span class="pre">hcst_bname</span></code> to be used throughout the notebook.</p>
-<p>If you have not already done so, you will need to accept the <strong>terms &amp; conditions</strong> of the data before you can download it. These can be viewed and accepted in the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/seasonal-monthly-single-levels?tab=form">CDS download page</a> by scrolling to the end of the download form.</p>
+<p>If you have not already done so, you will need to accept the <strong>terms &amp; conditions</strong> of the data before you can download it. These can be viewed and accepted in the <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/seasonal-monthly-single-levels?tab=download">CDS download page</a> by scrolling to the end of the download form.</p>
 <div class="alert alert-block alert-info">
 <b>NOTE</b>: <br>
-    An API request can be generated automatically from the <a href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/seasonal-monthly-single-levels?tab=form">CDS download page</a>. At the end of the download form there is a <code>Show API request</code> icon, which allows to copy-paste a snippet of code equivalent to the one used below.</div><div class="cell docutils container">
+    An API request can be generated automatically from the <a href="https://cds-beta.climate.copernicus.eu/datasets/seasonal-monthly-single-levels?tab=download">CDS download page</a>. At the end of the download form there is a <code>Show API request</code> icon, which allows to copy-paste a snippet of code equivalent to the one used below.</div><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">origin</span> <span class="o">=</span> <span class="s1">&#39;cmcc.s35&#39;</span>
 <span class="n">origin_labels</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;institution&#39;</span><span class="p">:</span> <span class="s1">&#39;CMCC&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;SPSv3.5&#39;</span><span class="p">}</span>
@@ -622,7 +622,7 @@ document.write(`
 <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
     <span class="s1">&#39;seasonal-monthly-single-levels&#39;</span><span class="p">,</span>
     <span class="p">{</span>
-        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;grib&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;data_format&#39;</span><span class="p">:</span> <span class="s1">&#39;grib&#39;</span><span class="p">,</span>
         <span class="s1">&#39;originating_centre&#39;</span><span class="p">:</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;origin&#39;</span><span class="p">],</span>
         <span class="s1">&#39;system&#39;</span><span class="p">:</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;system&#39;</span><span class="p">],</span>
         <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="n">config</span><span class="p">[</span><span class="s1">&#39;list_vars&#39;</span><span class="p">],</span>
@@ -657,7 +657,7 @@ document.write(`
 </section>
 <section id="b-retrieve-observations-data-era5">
 <h3>1b. Retrieve observations data (ERA5)<a class="headerlink" href="#b-retrieve-observations-data-era5" title="Permalink to this heading">#</a></h3>
-<p>Now we will request from the CDS the observation data that will be used as the ground truth against which the hindcast data will be compared. In this notebook we will be using as observational reference the CDS dataset <code class="docutils literal notranslate"><span class="pre">reanalysis-era5-single-levels-monthly-means</span></code> which contains <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/reanalysis-era5-single-levels-monthly-means?tab=overview">ERA5</a> monthly averaged data from the CDS. In order to compare it with the hindcast data we have just downloaded above, we will ask the CDS to regrid it to the same grid used by the C3S seasonal forecasts.</p>
+<p>Now we will request from the CDS the observation data that will be used as the ground truth against which the hindcast data will be compared. In this notebook we will be using as observational reference the CDS dataset <code class="docutils literal notranslate"><span class="pre">reanalysis-era5-single-levels-monthly-means</span></code> which contains <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/reanalysis-era5-single-levels-monthly-means?tab=overview">ERA5</a> monthly averaged data from the CDS. In order to compare it with the hindcast data we have just downloaded above, we will ask the CDS to regrid it to the same grid used by the C3S seasonal forecasts.</p>
 <p>Running the code block below will download the ERA5 data from the CDS as specified by the following API keywords:</p>
 <blockquote>
 <div><p><strong>Format</strong>: <code class="docutils literal notranslate"><span class="pre">Grib</span></code> <br>
@@ -688,7 +688,7 @@ document.write(`
         <span class="c1"># We can ask CDS to interpolate ERA5 to the same grid used by C3S seasonal forecasts</span>
         <span class="s1">&#39;grid&#39;</span><span class="p">:</span> <span class="s1">&#39;1/1&#39;</span><span class="p">,</span>
         <span class="s1">&#39;area&#39;</span><span class="p">:</span> <span class="s1">&#39;89.5/0.5/-89.5/359.5&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;grib&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;data_format&#39;</span><span class="p">:</span> <span class="s1">&#39;grib&#39;</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="n">obs_fname</span><span class="p">)</span>
 </pre></div>

@@ -526,10 +526,10 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
 </section>
 <section id="enter-your-cds-api-key">
 <h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this heading">#</a></h3>
-<p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="http://cds.climate.copernicus.eu">http://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+<p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="https://cds-beta.climate.copernicus.eu">https://cds-beta.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">https://cds-beta.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds-beta.climate.copernicus.eu/api&#39;</span>
 <span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;##################################&#39;</span>
 </pre></div>
 </div>
@@ -588,7 +588,7 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
         <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span>
         <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="s1">&#39;15&#39;</span><span class="p">,</span>
         <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s1">&#39;06:00&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;netcdf&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;data_format&#39;</span><span class="p">:</span> <span class="s1">&#39;netcdf_legacy&#39;</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">UERRA_ws10m.nc&#39;</span><span class="p">)</span>
 </pre></div>
@@ -618,7 +618,7 @@ Requirement already satisfied: colorama in c:\users\cxcs\anaconda3\lib\site-pack
         <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="s1">&#39;01&#39;</span><span class="p">,</span>
         <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="s1">&#39;15&#39;</span><span class="p">,</span>
         <span class="s1">&#39;time&#39;</span><span class="p">:</span> <span class="s1">&#39;06:00&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;netcdf&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;data_format&#39;</span><span class="p">:</span> <span class="s1">&#39;netcdf_legacy&#39;</span><span class="p">,</span>
     <span class="p">},</span>
     <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">UERRA_t2m.nc&#39;</span><span class="p">)</span>
 </pre></div>

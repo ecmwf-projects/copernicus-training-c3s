@@ -465,7 +465,7 @@ document.write(`
 <br><section class="tex2jax_ignore mathjax_ignore" id="calculation-of-global-distribution-and-timeseries-of-outgoing-longwave-radiation-olr-using-noaa-ncei-hirs-data">
 <h1>Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data<a class="headerlink" href="#calculation-of-global-distribution-and-timeseries-of-outgoing-longwave-radiation-olr-using-noaa-ncei-hirs-data" title="Permalink to this heading">#</a></h1>
 <p>This notebook-tutorial provides a practical introduction to the HIRS dataset available on
-<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">C3S Earth’s radiation budget from 1979 to present derived from satellite observations</a>.<br />
+<a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">C3S Earth’s radiation budget from 1979 to present derived from satellite observations</a>.<br />
 <br>
 We give a short introduction to the ECV Earth Radiation Budget, Outgoing Longwave Radiation (OLR) and provide three use cases of the dataset: plot the time-averaged global distribution of OLR (Use Case 1), calculate global timeseries of OLR (Use Case 2) and plot the Arctic weighted mean timeseries between 1979 and 2019 (Use Case 3).
 We provide step-by-step instructions on data preparation. Use cases come with extensive documentation and each line of code is explained.<br />
@@ -486,7 +486,6 @@ Two figures below are results of Use Case 1 and 2, and the result of a successfu
 </li>
 <li><p><span class="xref myst">References</span></p></li>
 </ul>
-<p><a id='intro'></a></p>
 </section>
 <section id="introduction">
 <h2>1. Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
@@ -497,13 +496,12 @@ Two figures below are results of Use Case 1 and 2, and the result of a successfu
 <br>
 <p>Please find further information about the dataset as well as the data in the Climate Data Store catalogue entry Earth’s Radiation Budget, sections “Overview”, “Download data” and “Documentation”:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a></p></li>
+<li><p><a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a></p></li>
 </ul>
 <p>The tutorial video describes the “Earth Radiation Budget” Essential Climate Variable and the methods and satellite instruments used to produce the data provided in the CDS catalogue entry:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://datastore.copernicus-climate.eu/documents/satellite-earth-radiation-budget/C3S_D312b_Lot1.4.2.5_201902_Tutorial_ECVEarthRadiationBudget_v1.4.mp4">Tutorial video on the Earth Radiation Budget Essential Climate Variable</a></p></li>
 </ul>
-<p><a id='preparation'></a></p>
 </section>
 <section id="prerequisites-and-data-preparations">
 <h2>2. Prerequisites and data preparations<a class="headerlink" href="#prerequisites-and-data-preparations" title="Permalink to this heading">#</a></h2>
@@ -563,7 +561,6 @@ We will be working with data in NetCDF format. To best handle NetCDF data we wil
 </div>
 </div>
 </div>
-<p><a id='cdsapi'></a></p>
 </section>
 <section id="download-data-using-cds-api">
 <h3>2.3 Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Permalink to this heading">#</a></h3>
@@ -572,10 +569,10 @@ We will be working with data in NetCDF format. To best handle NetCDF data we wil
 <h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h4>
 <p>We will request data from the CDS programmatically with the help of the <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/Climate+Data+Store+%28CDS%29+infrastructure+and+API">CDS API</a>.<br />
 First, we need to manually set the CDS API credentials. To do so, we need to define two variables: URL and KEY.
-To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">https://cds-beta.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api/v2&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds-beta.climate.copernicus.eu/api&#39;</span>
 <span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;#########&#39;</span>
 </pre></div>
 </div>
@@ -596,8 +593,8 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 </section>
 <section id="search-for-data">
 <h4>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h4>
-<p>To search for data, visit the CDS website: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>.
-Here you can search for HIRS OLR data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a>.
+<p>To search for data, visit the CDS website: <a class="reference external" href="https://cds-beta.climate.copernicus.eu/">https://cds-beta.climate.copernicus.eu/</a>.
+Here you can search for HIRS OLR data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a>.
 The Earth Radiation Budget (ERB) comprises the quantification of the incoming radiation from the Sun and the outgoing reflected shortwave and emitted longwave radiation. This catalogue entry comprises data from a number of sources.</p>
 <p>Having selected the correct catalogue entry, we now need to specify what origin, variables, temporal and geographic coverage we are interested in.
 These can all be selected in the <strong>“Download data”</strong> tab. In this tab a form appears in which we will select the following parameters to download:</p>
@@ -617,7 +614,8 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
     <span class="s1">&#39;satellite-earth-radiation-budget&#39;</span><span class="p">,</span>
     <span class="p">{</span>
-        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;download_format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;data_format&#39;</span><span class="p">:</span> <span class="s1">&#39;netcdf_legacy&#39;</span><span class="p">,</span>
         <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;noaa_ncei_hirs&#39;</span><span class="p">,</span>
         <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;outgoing_longwave_radiation&#39;</span><span class="p">,</span>
         <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%04d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1979</span><span class="p">,</span> <span class="mi">2023</span><span class="p">)],</span>
@@ -669,13 +667,11 @@ After that, we delete all individual files.</p>
 </div>
 </div>
 </div>
-<p><a id='usecases'></a></p>
 </section>
 </section>
 </section>
 <section id="use-cases">
 <h2>3. Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this heading">#</a></h2>
-<p><a id='global-climatology'></a></p>
 <section id="use-case-1-climatology-of-the-outgoing-longwave-radiation-olr">
 <h3><strong>Use case 1</strong>: Climatology of the Outgoing Longwave Radiation (OLR)<a class="headerlink" href="#use-case-1-climatology-of-the-outgoing-longwave-radiation-olr" title="Permalink to this heading">#</a></h3>
 <p>Firstly, we should get an overview of the parameter by plotting the time-averaged global distribution.
@@ -772,7 +768,6 @@ December 2018. The maximum values of the OLR are found in the tropics and it dec
 poles. The relative minimum near the equator, in yellow colour, corresponds to the ITCZ and the
 convection areas, where persistent and relatively high cloud cover reduces the LW radiation at the
 TOA. Antarctica is cooler than the corresponding northern latitudes (<span class="xref myst">Harrison et al.</span>).</p>
-<p><a id='timeseries-global'></a></p>
 </section>
 </section>
 <section id="use-case-2-global-time-series-of-the-olr">
@@ -848,7 +843,6 @@ in response to volcanic eruptions, for instance, El Chichon in 1982 and Pinatubo
 atmospheric thermal effects of these two eruptions persist for about two years after the eruption.
 The figure also shows some inter-annual variations that are suggested to be related to “El Niño” or
 “La Niña” Southern Oscillation.</p>
-<p><a id='timeseries-arctic'></a></p>
 </section>
 </section>
 <section id="use-case-3-olr-evolution-in-the-arctic">
@@ -915,15 +909,14 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
 <section id="get-more-information-about-earth-radiation-budget">
 <h2>Get more information about Earth Radiation Budget:<a class="headerlink" href="#get-more-information-about-earth-radiation-budget" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/">Climate Data Store</a></p></li>
+<li><p><a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
+<li><p><a class="reference external" href="https://cds-beta.climate.copernicus.eu/">Climate Data Store</a></p></li>
 </ul>
-<p><a id='references'></a></p>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
-<p><a id='hansen'></a>Hansen, J., Ruedy, R., Sato, M., &amp; Lo, K., (2010). <em>Global surface temperature change</em>. Reviews of Geophysics, 48(4).</p>
-<p><a id='harrison'></a>Harrison, E.F., Gurney, R. J., Foster, J. L., Gurney, R. J., &amp; Parkinson, C. L. (1993). <em>Atlas of satellite observations related to global change</em>. Chapter: Radiation Budget at the top of the atmosphere. Cambridge University Press.</p>
+<p>Hansen, J., Ruedy, R., Sato, M., &amp; Lo, K., (2010). <em>Global surface temperature change</em>. Reviews of Geophysics, 48(4).</p>
+<p>Harrison, E.F., Gurney, R. J., Foster, J. L., Gurney, R. J., &amp; Parkinson, C. L. (1993). <em>Atlas of satellite observations related to global change</em>. Chapter: Radiation Budget at the top of the atmosphere. Cambridge University Press.</p>
 <p><span class="xref myst">Back to top the Page</span></p>
 </section>
 </section>
