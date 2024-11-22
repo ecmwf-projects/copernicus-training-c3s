@@ -18,8 +18,12 @@ parts:
      title: Heatwave Analysis
  - caption: Tutorials on Observations
    chapters:
-   - file: erb-outgoing-longwave-radiation
-     title: Outgoing Longwave Radiation     
+   - file: ecv-notebooks/erb-outgoing-longwave-radiation
+     title: Outgoing Longwave Radiation
+   - file: ecv-notebooks/total-column-water-vapour-combi
+     title: Total Column Water Vapour
+   - file: ecv-notebooks/total-ozone-columns
+     title: Total Column Ozone
  - caption: Tutorials on Climate Projections
    chapters:
    - file: projections-cmip6
@@ -48,5 +52,4 @@ parts:
    chapters:
    - url: https://ecmwf-projects.github.io/copernicus-training-cams/
      title: Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
-
 
