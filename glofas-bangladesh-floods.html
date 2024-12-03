@@ -167,7 +167,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-ozone-columns.html">Total Column Ozone</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
 <ul class="nav bd-sidenav">
@@ -421,12 +423,12 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-your-environment">Setup your environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api">Install CDS API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-ewds-api">Install EWDS API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-and-download-the-data">Search and download the data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-cds-api-key">Enter your CDS API key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-ewds-api-key">Enter your EWDS API key</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-river-discharge-data-we-want">Find the river discharge data we want</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
 </ul>
@@ -465,7 +467,7 @@ and assess the excess river discharge in comparison to the long-term (10-year) d
 <p>The tutorial is structured as follows:</p>
 <ol class="arabic simple" start="0">
 <li><p>(Install and import the required python packages)</p></li>
-<li><p>Download the data of interest from the C3S Climate Data Store (CDS);</p></li>
+<li><p>Download the data of interest from the Early warning Data Store (EWDS);;</p></li>
 <li><p>Explore the data with xarray, apply mask using the auxilary data, and produce demonstrative map plots;</p></li>
 <li><p>Compute and plot time-series of the June 2022 river discharge against the 10-year period;</p></li>
 <li><p>Compute and display a map of the number of days in June 2022 that the river discharge exceeded the
@@ -493,13 +495,13 @@ td, th {
 </table><br></section>
 <section id="setup-your-environment">
 <h2>Setup your environment<a class="headerlink" href="#setup-your-environment" title="Permalink to this heading">#</a></h2>
-<p>Before we begin we must prepare our environment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various python libraries that we will need.</p>
-<section id="install-cds-api">
-<h3>Install CDS API<a class="headerlink" href="#install-cds-api" title="Permalink to this heading">#</a></h3>
-<p>To install the CDS API, run the following command. We use an exclamation mark to pass the command to the shell (not to the Python interpreter).</p>
+<p>Before we begin we must prepare our environment. This includes installing the Application Programming Interface (API) of the EWDS, and importing the various python libraries that we will need.</p>
+<section id="install-ewds-api">
+<h3>Install EWDS API<a class="headerlink" href="#install-ewds-api" title="Permalink to this heading">#</a></h3>
+<p>To install the EWDS API, run the following command. We use an exclamation mark to pass the command to the shell (not to the Python interpreter).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip -q install cdsapi
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip -q install cdsapi #<span class="s1">&#39;cdsapi&gt;=0.7.2&#39;</span>
 
 <span class="c1"># Other requirements:</span>
 <span class="o">!</span>pip -q install cfgrib ecmwflibs
@@ -513,7 +515,7 @@ td, th {
 </section>
 <section id="import-libraries">
 <h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
-<p>We will be working with data in NetCDF format. To best handle this data we will use libraries for working with multidimensional arrays, in particular Xarray. We will also need libraries for plotting and viewing data, in this case we will use Matplotlib and Cartopy.</p>
+<p>We will be working with data in Grib and Grib format. To best handle this data we will use libraries for working with multidimensional arrays, in particular Xarray. We will also need libraries for plotting and viewing data, in this case we will use Matplotlib and Cartopy.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">os</span>
@@ -539,22 +541,31 @@ td, th {
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">Running</span> <span class="n">cells</span> <span class="k">with</span> <span class="s1">&#39;Python 3.12.3&#39;</span> <span class="n">requires</span> <span class="n">the</span> <span class="n">ipykernel</span> <span class="n">package</span><span class="o">.</span>
+
+<span class="n">Run</span> <span class="n">the</span> <span class="n">following</span> <span class="n">command</span> <span class="n">to</span> <span class="n">install</span> <span class="s1">&#39;ipykernel&#39;</span> <span class="n">into</span> <span class="n">the</span> <span class="n">Python</span> <span class="n">environment</span><span class="o">.</span> 
+
+<span class="ne">Command</span>: &#39;/bin/python3.12 -m pip install ipykernel -U --user --force-reinstall&#39;
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
 <section id="search-and-download-the-data">
 <h2>Search and download the data<a class="headerlink" href="#search-and-download-the-data" title="Permalink to this heading">#</a></h2>
-<section id="enter-your-cds-api-key">
-<h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this heading">#</a></h3>
-<p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API.</p>
-<p>If you have not set up your CDS API credentials with a <code class="docutils literal notranslate"><span class="pre">~/.cdsapirc</span></code> file, it is possible to provide the credentials when initialising the <code class="docutils literal notranslate"><span class="pre">cdsapi.Client</span></code>. To do this we must define the two variables needed to establish a connection: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> . The <code class="docutils literal notranslate"><span class="pre">URL</span></code> for the cds api is common and you do not need to modify that field. The <code class="docutils literal notranslate"><span class="pre">KEY</span></code> is string of characters made up of your your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="https://cds-beta.climate.copernicus.eu/">https://cds-beta.climate.copernicus.eu/</a>), then visit <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">https://cds-beta.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+<section id="enter-your-ewds-api-key">
+<h3>Enter your EWDS API key<a class="headerlink" href="#enter-your-ewds-api-key" title="Permalink to this heading">#</a></h3>
+<p>We will request data from the Early Warning Data Store (EWDS) programmatically with the help of the EWDS API.</p>
+<p>If you have not set up your EWDS API credentials with a <code class="docutils literal notranslate"><span class="pre">~/.cdsapirc</span></code> file, it is possible to provide the credentials when initialising the <code class="docutils literal notranslate"><span class="pre">cdsapi.Client</span></code>. To do this we must define the two variables needed to establish a connection: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> . The <code class="docutils literal notranslate"><span class="pre">URL</span></code> for the EWDS api is common and you do not need to modify that field. The <code class="docutils literal notranslate"><span class="pre">KEY</span></code> is string of characters made up of your your personal User ID and EWDS API key. To obtain these, first register or login to the EWDS (<a class="reference external" href="https://ewds.climate.copernicus.eu/">https://ewds.climate.copernicus.eu/</a>), then visit <a class="reference external" href="https://ewds.climate.copernicus.eu/how-to-api">https://ewds.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <p>NOTE: If you have set up your cdsapi key using a ~/.cdsapirc you do not need to add your key below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="s2">&quot;~/.cdsapirc&quot;</span><span class="p">):</span>
     <span class="n">cdsapi_kwargs</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds-beta.climate.copernicus.eu/api&#39;</span>
+    <span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://ewds.climate.copernicus.eu/api&#39;</span>
     <span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;##################################&#39;</span>
     <span class="n">cdsapi_kwargs</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;url&#39;</span><span class="p">:</span> <span class="n">URL</span><span class="p">,</span>
@@ -577,7 +588,7 @@ td, th {
 <section id="find-the-river-discharge-data-we-want">
 <h3>Find the river discharge data we want<a class="headerlink" href="#find-the-river-discharge-data-we-want" title="Permalink to this heading">#</a></h3>
 <p>The historical GLOFAS data can be found in
-<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/cems-glofas-historical">CDS catalogue entry</a>.</p>
+<a class="reference external" href="https://ewds.climate.copernicus.eu/datasets">EWDS catalogue entry</a>.</p>
 <p>We are going to look at the Bangladesh flood in June 2022. For our analysis we are going to compare June 2022
 against all the June data from the 10-year reference period: 2012 to 2021. This period has been chosen for
 demonstrative purposes, a thorough analysis would choose a much longer reference period.</p>
@@ -588,36 +599,35 @@ demonstrative purposes, a thorough analysis would choose a much longer reference
 <li><p><strong>Product type</strong>: Consolidated</p></li>
 <li><p><strong>Variable</strong>: River discharge in the last 24 hours’</p></li>
 <li><p><strong>Year</strong>: 2012 to 2022</p></li>
-<li><p><strong>Month</strong>: June</p></li>
+<li><p><strong>Month</strong>: 06</p></li>
 <li><p><strong>Day</strong>: All days</p></li>
-<li><p><strong>Area</strong>: [30, 85, 20, 95,] = A bounding box for Bangladesh</p></li>
-<li><p><strong>Format</strong>: Grib</p></li>
+<li><p><strong>Area</strong>: [30, 85, 20, 95] = A bounding box for Bangladesh</p></li>
+<li><p><strong>data_format</strong>: Grib</p></li>
+<li><p><strong>download_format</strong>: unarchived</p></li>
 </ul>
 <p>At the end of the download form, select <strong>“Show API request”</strong>. This will reveal a block of code, which you can simply copy and paste into a cell of your Jupyter Notebook (see cells below).</p>
 <section id="download-data">
 <h4>Download data<a class="headerlink" href="#download-data" title="Permalink to this heading">#</a></h4>
-<p>… having copied the API request into the cell below, running this will retrieve and download the data you requested into your local directory. However, before you run the cell below, the <strong>terms and conditions</strong> of this particular dataset need to have been accepted in the CDS. The option to view and accept these conditions is given at the end of the download form, just above the <strong>“Show API request”</strong> option.</p>
+<p>… having copied the API request into the cell below, running this will retrieve and download the data you requested into your local directory. However, before you run the cell below, the <strong>terms and conditions</strong> of this particular dataset need to have been accepted in the EWDS. The option to view and accept these conditions is given at the end of the download form, just above the <strong>“Show API request”</strong> option.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s2">/glofas-2012_2022.grib&quot;</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">download_file</span><span class="p">):</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span>
-        <span class="o">**</span><span class="n">cdsapi_kwargs</span>
-    <span class="p">)</span>
-    <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-        <span class="s1">&#39;cems-glofas-historical&#39;</span><span class="p">,</span>
-        <span class="p">{</span>
-            <span class="s1">&#39;system_version&#39;</span><span class="p">:</span> <span class="s1">&#39;version_4_0&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;hydrological_model&#39;</span><span class="p">:</span> <span class="s1">&#39;lisflood&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;product_type&#39;</span><span class="p">:</span> <span class="s1">&#39;consolidated&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;river_discharge_in_the_last_24_hours&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;hyear&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2023</span><span class="p">)],</span>
-            <span class="s1">&#39;hmonth&#39;</span><span class="p">:</span> <span class="s1">&#39;june&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;hday&#39;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">day</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)],</span>
-            <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;grib&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;area&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">95</span><span class="p">,],</span>
-        <span class="p">},</span>
-    <span class="p">)</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">download_file</span><span class="p">)</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">()</span>
+    <span class="n">DATASET</span><span class="o">=</span><span class="s2">&quot;cems-glofas-historical&quot;</span>
+    <span class="n">REQUEST</span><span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;system_version&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;version_4_0&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;hydrological_model&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;lisflood&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;product_type&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;consolidated&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;variable&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;river_discharge_in_the_last_24_hours&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;hyear&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">year</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2012</span><span class="p">,</span> <span class="mi">2023</span><span class="p">)],</span>
+            <span class="s2">&quot;hmonth&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;06&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;hday&quot;</span><span class="p">:</span> <span class="p">[</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">day</span><span class="si">:</span><span class="s2">02d</span><span class="si">}</span><span class="s2">&quot;</span> <span class="k">for</span> <span class="n">day</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">31</span><span class="p">)],</span>
+            <span class="s2">&quot;data_format&quot;</span><span class="p">:</span> <span class="s2">&quot;grib2&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;download_format&quot;</span><span class="p">:</span> <span class="s2">&quot;unarchived&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;area&quot;</span><span class="p">:</span> <span class="p">[</span><span class="mi">30</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">95</span><span class="p">]</span>
+             <span class="p">}</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">DATASET</span><span class="p">,</span><span class="n">REQUEST</span><span class="p">)</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">download_file</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -631,7 +641,7 @@ demonstrative purposes, a thorough analysis would choose a much longer reference
 exploration of the data contents including attributes, metadata and coordinates.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glofas_data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">download_file</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">glofas_data</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">download_file</span><span class="p">,</span> <span class="n">engine</span><span class="o">=</span><span class="s2">&quot;cfgrib&quot;</span><span class="p">)</span>
 <span class="n">glofas_data</span>
 </pre></div>
 </div>
@@ -1131,7 +1141,7 @@ expressed in m2. More information can be found on the
 <span class="n">upstream_area_file</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="n">upstream_area_fname</span><span class="p">)</span>
 <span class="c1"># If we have not already downloaded the file, we download it</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">isfile</span><span class="p">(</span><span class="n">upstream_area_file</span><span class="p">):</span>
-   <span class="n">u_version</span><span class="o">=</span><span class="mi">2</span> <span class="c1"># file version</span>
+   <span class="n">u_version</span><span class="o">=</span><span class="mi">4</span> <span class="c1"># file version</span>
    <span class="n">upstream_data_url</span> <span class="o">=</span> <span class="p">(</span>
       <span class="sa">f</span><span class="s2">&quot;https://confluence.ecmwf.int/download/attachments/242067380/</span><span class="si">{</span><span class="n">upstream_area_file</span><span class="si">}</span><span class="s2">?&quot;</span>
       <span class="sa">f</span><span class="s2">&quot;version=</span><span class="si">{</span><span class="n">u_version</span><span class="si">}</span><span class="s2">&amp;modificationDate=1668604690076&amp;api=v2&amp;download=true&quot;</span>
@@ -2273,12 +2283,12 @@ investigate at your leisure.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#about">About</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setup-your-environment">Setup your environment</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-cds-api">Install CDS API</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#install-ewds-api">Install EWDS API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search-and-download-the-data">Search and download the data</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-cds-api-key">Enter your CDS API key</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enter-your-ewds-api-key">Enter your EWDS API key</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-river-discharge-data-we-want">Find the river discharge data we want</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data">Download data</a></li>
 </ul>
