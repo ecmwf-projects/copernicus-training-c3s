@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset &#8212; C3S Training</title>
+    <title>Calculation of global climatology of Earth Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset &#8212; C3S Training</title>
   
   
   
@@ -57,11 +57,9 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/srb-climatology-and-anomaly';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/erb-clara-climatology';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Exploring Total Column Water Vapour information in the COMBI dataset" href="total-column-water-vapour-combi.html" />
-    <link rel="prev" title="Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data" href="erb-outgoing-longwave-radiation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -123,6 +121,8 @@
     <div class="bd-container__inner bd-page-width">
       
       
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -190,9 +190,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../reanalysis-heatwave.html">Heatwave Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Total Column Ozone</a></li>
 </ul>
@@ -276,7 +276,7 @@
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/ecv-notebooks/srb-climatology-and-anomaly.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/ecv-notebooks/erb-clara-climatology.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -324,7 +324,7 @@
       
       
       
-      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/srb-climatology-and-anomaly.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/erb-clara-climatology.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -354,7 +354,7 @@
       
       
       
-      <li><a href="../_sources/ecv-notebooks/srb-climatology-and-anomaly.ipynb" target="_blank"
+      <li><a href="../_sources/ecv-notebooks/erb-clara-climatology.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -438,7 +438,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</h1>
+    <h1><a id='page-top'></a> Calculation of global climatology of Earth Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -448,11 +448,12 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="introduction"></a> Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description"><a id="description"></a> Dataset description</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition"><a id="data"></a> Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
@@ -460,16 +461,18 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset">Load dataset</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution">Use case 1: The mean global Surface Incoming Shortwave (SIS) radiation distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-sis">Calculation of the temporal average of SIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-sis">Plot of the temporal average of SIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases"><a id="usecases"></a> Use Cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution"><a id="uc1"></a> Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-olr"><a id="calculation_1"></a> Calculation of the temporal average of OLR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-olr"><a id="plot_1"></a> Plot of the temporal average of OLR</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe">Use case 2: Relative Anomaly. Hot summer of the year 2003 in Europe</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-in-relation-to-the-temporal-average-of-sis">Plot of the relative anomaly in 2003 of SIS for Europe in relation to the temporal average of SIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution"><a id="uc2"></a> Use case 2: The mean global Reflected Solar Flux (RSF) distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-rsf"><a id="calculation_2"></a> Calculation of the temporal average of RSF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-rsf"><a id="plot_2"></a> Plot of the temporal average of RSF</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-surface-radiation-budget">Get more information about Surface Radiation Budget</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget"><a id="references"></a> Get more information about Earth Radiation Budget</a></li>
 </ul>
             </nav>
         </div>
@@ -482,32 +485,48 @@ document.write(`
                 <article class="bd-article">
                   
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="calculation-of-global-climatology-and-relative-anomalies-of-surface-radiation-budget-from-eumetsat-s-cm-saf-clara-a3-dataset">
-<h1>Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#calculation-of-global-climatology-and-relative-anomalies-of-surface-radiation-budget-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Link to this heading">#</a></h1>
-<p>This notebook provides you with an introduction on EUMETSAT’s CM SAF <strong>CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store</a> (CDS). The dataset contains data for Essential Climate Variables (ECVs) <em>Surface Radiation Budget</em>, as well as <em>Cloud Properties and Earth Radiation Budget</em>, while this notebook focuses on <strong>Surface Radiation Budget</strong> as part of the ECV <em>Surface Radiation Budget</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-surface-radiation-budget?tab=overview">Surface radiation budget from 1979 to present derived from satellite observations</a>.</p>
+<section class="tex2jax_ignore mathjax_ignore" id="calculation-of-global-climatology-of-earth-radiation-budget-from-eumetsat-s-cm-saf-clara-a3-dataset">
+<h1><a id='page-top'></a> Calculation of global climatology of Earth Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#calculation-of-global-climatology-of-earth-radiation-budget-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Link to this heading">#</a></h1>
+<p>This notebook provides you with an introduction on EUMETSAT’s CM SAF <strong>CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store</a> (CDS). The dataset contains data for Essential Climate Variables (ECVs) <em>Earth Radiation Budget</em>, as well as <em>Cloud Properties and Surface Radiation Budget</em>, while this notebook focuses on <strong>Earth Radiation Budget</strong> as part of the ECV <em>Earth Radiation Budget</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a>.</p>
 <p>The notebook covers the full process from scratch and starts with a short introdution to the dataset and how to access the data from the Climate Data Store of the Copernicus Climate Change Service (C3S). This is followed by a step-by-step guide on how to process and visualize the data. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests. After a short introduction how to use a Jupyter notebook the analysis starts.<br>
 Two figures below are results of Use Case 1 and 2, and the result of a successful run of the code.</p>
-<p><img alt="logo" src="../_images/srb-climatology-and-anomaly-banner.png" /></p>
+<p><img alt="img" src="img/erb-claraA3-banner.png" /></p>
+<p>The notebook has two main use cases with the following outline:</p>
+<section id="table-of-contents">
+<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="#introduction"><span class="xref myst">Introduction</span></a></p></li>
+<li><p><a class="reference internal" href="#data"><span class="xref myst">Prerequisites and data acquisition</span></a></p></li>
+<li><p><a class="reference internal" href="#usecases"><span class="xref myst">Use Cases</span></a></p>
+<ul>
+<li><p><a class="reference internal" href="#uc1"><span class="xref myst">Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution</span></a></p></li>
+<li><p><a class="reference internal" href="#uc2"><span class="xref myst">Use case 2: The mean global Reflected Solar Flux (RSF) distribution</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="#references"><span class="xref myst">Get more information about Earth Radiation Budget</span></a></p></li>
+</ul>
+</section>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
-<p>This tutorial is about surface radiation parameters of EUMETSAT’s CM SAF CLARA-A3 dataset. It covers step by step the process from retrieving the data to the processing and finally the visualisation of the results.</p>
-<p>The CLARA-A3 dataset provides information of various Surface Radiation Budget (SRB) and Earth Radiation Budget (ERB) parameters as well as Cloud Properties parameters.</p>
-<p>In the following, we will concentrate on the surface radiation part. The CLARA-A3 dataset is the successor of CLARA-A2.1 and comprises almost 44 years (latest status: 09/2023) of continuous observations of radiation and clouds from space, thereby monitoring their spatial and temporal variability on Earth.</p>
-<p>CLARA-A3 comes not just with a temporal extension, but also with significant algorithm, calibration and product improvements. The CLARA-A3 radiation dataset contains all surface and Earth (top-of-the-atmosphere) fluxes, and thus, it enables studies of the full surface radiation budget.</p>
-<p>In the following, two examples are presented to illustrate some ideas on the usage, visualisation, and analysis of the CLARA-A3 surface radiation dataset.</p>
+<h2><a id='introduction'></a> Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>This tutorial is about Earth radiation (top of atmosphere) parameters of EUMETSAT’s CM SAF CLARA-A3 dataset. It covers step by step the process from retrieving the data to the processing and finally the visualisation of the results.</p>
+<p>The CLARA-A3 dataset provides information of various Earth Radiation Budget (ERB) and Surface Radiation Budget (SRB) parameters as well as Cloud Properties parameters. Each ECV is covered by an own Jupyter Notebook (please also take a look at <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 SRB</a> and <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 Clouds</a>).</p>
+<div style="text-align: justify">In the following, we will concentrate on the earth radiation part. The CLARA-A3 dataset is the successor of CLARA-A2.1 and comprises almost 44 years (latest status: 09/2023) of continuous observations of radiation and clouds from space, thereby monitoring their spatial and temporal variability on Earth. Earth Radiation Budget parameters were not included in CLARA-A2.1<br> 
+The CLARA-A3 radiation dataset contains all surface and Earth (top-of-the-atmosphere) fluxes, and thus, it enables studies of the full earth radiation budget.</div>
+<p>In the following, two examples are presented to illustrate some ideas on the usage, visualisation, and analysis of the CLARA-A3 earth radiation dataset.</p>
 <section id="dataset-description">
-<h3>Dataset description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h3>
+<h3><a id='description'></a> Dataset description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h3>
 <p>Please find further information about the datasets as well as the data in the Climate Data Store sections “Overview”, “Download data” and “Documentation”:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-surface-radiation-budget?tab=overview">Surface Radiation Budget</a></p></li>
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-cloud-properties?tab=overview">Cloud Properties</a></p></li>
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth Radiation Budget</a></p></li>
+<li><p>Earth Radiation: Budget <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview</a></p></li>
+<li><p>Surface Radiation Budget: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview</a></p></li>
+<li><p>Cloud Properties: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview</a></p></li>
 </ul>
+<p>A <a class="reference external" href="https://datastore.copernicus-climate.eu/documents/satellite-earth-radiation-budget/C3S2_312a_Lot1.4.0.3_202306_Tutorial_ECV_EarthRadiationBudget_final.mp4">tutorial video</a> describes the ECV <em>Earth Radiation Budget</em> and its impact on the atmospheric conditions. In addition, it provides you with a small introduction of the satellite instruments and retrieval methods followed by general information about the dataset and support options provided by the CDS.</p>
 </section>
 </section>
 <section id="prerequisites-and-data-acquisition">
-<h2>Prerequisites and data acquisition<a class="headerlink" href="#prerequisites-and-data-acquisition" title="Link to this heading">#</a></h2>
-<p>This tutorial is in the form of a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a>. It can be run on a cloud environment, or on your own computer. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
+<h2><a id='data'></a> Prerequisites and data acquisition<a class="headerlink" href="#prerequisites-and-data-acquisition" title="Link to this heading">#</a></h2>
+<p>This tutorial is in the form of a Jupyter notebook. It can be run on a cloud environment, or on your own computer. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
 <style>
 td, th {
    border: 1px solid white;
@@ -517,16 +536,33 @@ td, th {
 <table align="left">
   <tr>
     <th>Run the tutorial via free cloud platforms: </th>
-    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=ecv-notebooks/srb-climatology-and-anomaly.ipynb">
+    <th><a href="https://notebooks.gesis.org/binder/jupyter/user/ecmwf-projects--us-training-c3s-0vneba36/doc/tree/srb-claraA3.ipynb">
         <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
-    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/srb-climatology-and-anomaly.ipynb">
+    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/gh-pages/&#95;sources/srb-claraA3.ipynb">
         <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
   </tr>
-</table>
-<p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it. We use an exclamation mark to pass the command to the shell (not to the Python interpreter).</p>
+</table><p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it. We use an exclamation mark to pass the command to the shell (not to the Python interpreter).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>cdsapi
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cdsapi
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cdsapi in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (0.7.0)
+Requirement already satisfied: cads-api-client&gt;=0.9.2 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from cdsapi) (1.1.0)
+Requirement already satisfied: requests&gt;=2.5.0 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from cdsapi) (2.32.3)
+Requirement already satisfied: tqdm in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from cdsapi) (4.66.4)
+Requirement already satisfied: attrs in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from cads-api-client&gt;=0.9.2-&gt;cdsapi) (23.2.0)
+Requirement already satisfied: multiurl in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from cads-api-client&gt;=0.9.2-&gt;cdsapi) (0.3.1)
+Requirement already satisfied: typing-extensions in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from cads-api-client&gt;=0.9.2-&gt;cdsapi) (4.12.2)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (3.3.2)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (3.7)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2.2.2)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2024.8.30)
+Requirement already satisfied: pytz in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from multiurl-&gt;cads-api-client&gt;=0.9.2-&gt;cdsapi) (2024.1)
+Requirement already satisfied: python-dateutil in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from multiurl-&gt;cads-api-client&gt;=0.9.2-&gt;cdsapi) (2.9.0)
+Requirement already satisfied: six&gt;=1.5 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from python-dateutil-&gt;multiurl-&gt;cads-api-client&gt;=0.9.2-&gt;cdsapi) (1.16.0)
 </pre></div>
 </div>
 </div>
@@ -541,6 +577,7 @@ td, th {
 
 <span class="c1"># Libraries for working with multidimensional arrays</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># Library to work with zip-archives and OS-functions</span>
 <span class="kn">import</span> <span class="nn">zipfile</span>
@@ -549,7 +586,6 @@ td, th {
 <span class="c1"># Libraries for plotting and visualising data</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
-<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
 
 <span class="c1"># Disable warnings for data download via API</span>
 <span class="kn">import</span> <span class="nn">urllib3</span>
@@ -561,16 +597,19 @@ td, th {
 </section>
 <section id="download-data-using-cds-api">
 <h3>Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h3>
-<p>This section provides all necessary settings and input data to successfully run the use cases, and produce the figures.</p>
+<p>This section is provides all necessary settings and input data to successfully run the use cases, and produce the figures.</p>
 </section>
 <section id="set-up-cds-api-credentials">
 <h3>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h3>
-<p>To set up your CDS API credentials, please login/register on the <a class="reference external" href="https://cds-beta.climate.copernicus.eu/">CDS</a>, then follow the <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">instructions here</a> to obtain your API key.</p>
-<p>You can add this API key to your current session by uncommenting the code below and replacing <code class="docutils literal notranslate"><span class="pre">#########</span></code> with your API key.</p>
+<p>We will request data from the <a class="reference external" href="https://cds.climate.copernicus.eu/">Climate Data Store (CDS)</a>. In case you don’t have an account yet, please click on “Login/register” at the right top and select “Create new account”. With the process finished you are able to login to the CDS and can search for your preferred data.</p>
+<p>We will request data from the CDS programmatically with the help of the CDS API.
+First, we need to manually set the CDS API credentials.
+To do so, we need to define two variables: URL and KEY.
+To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api&#39;</span>
-<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;###############&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;############&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -578,7 +617,7 @@ td, th {
 <p>Next, we specify a data directory in which we will download our data and all output files that we will generate. We will also create a directory, if it doesn’t already exist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;./data&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;./Data&#39;</span>
 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -595,15 +634,15 @@ td, th {
 </section>
 <section id="search-for-data">
 <h3>Search for data<a class="headerlink" href="#search-for-data" title="Link to this heading">#</a></h3>
-<p>To search for data, visit the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">CDS website</a>.
-Here we can search for “Surface Radiation Budget” or simply “SRB” data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-surface-radiation-budget?tab=overview">Surface Radiation Budget from 1979 to present derived from satellite observations</a>.
-The Surface Radiation Budget (SRB) comprises the quantification of the incoming radiation from the Sun and the outgoing reflected shortwave and emitted longwave radiation, and also net fluxes. This catalogue entry comprises data from a number of sources.</p>
-<p>Once we reached the landing page, feel free to have a look at the documentation and information provided.</p>
+<p>To search for data, visit the <a class="reference external" href="https://cds.climate.copernicus.eu/">CDS website</a>.
+Here we can search for “Earth Radiation Budget” or simply “ERB” data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a>.
+The Earth Radiation Budget (ERB) comprises the quantification of the reflected radiation from the Sun and the emitted longwave radiation from  Earth. This catalogue entry comprises data from a number of sources.</p>
+<p>Once you reached the landing page, feel free to have a look at the documentation and information provided.</p>
 <p>The data can be found in the “Download data”-tab with a form to select certain variables, years etc. For our use case we select as follows:</p>
 <ul class="simple">
 <li><p>Product family: <code class="docutils literal notranslate"><span class="pre">CLARA-A3</span> <span class="pre">(CM</span> <span class="pre">SAF</span> <span class="pre">cLoud,</span> <span class="pre">Albedo</span> <span class="pre">and</span> <span class="pre">surface</span> <span class="pre">RAdiation</span> <span class="pre">dataset</span> <span class="pre">from</span> <span class="pre">AVHRR</span> <span class="pre">data)</span></code></p></li>
 <li><p>Origin: <code class="docutils literal notranslate"><span class="pre">EUMETSAT</span> <span class="pre">(European</span> <span class="pre">Organisation</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">Exploitation</span> <span class="pre">of</span> <span class="pre">Meteorological</span> <span class="pre">Satellites)</span></code></p></li>
-<li><p>Variable: <code class="docutils literal notranslate"><span class="pre">Surface</span> <span class="pre">downwelling</span> <span class="pre">shortwave</span> <span class="pre">flux</span></code></p></li>
+<li><p>Variable: <code class="docutils literal notranslate"><span class="pre">Outgoing</span> <span class="pre">longwave</span> <span class="pre">radiation</span> <span class="pre">(Outgoing</span> <span class="pre">LW)</span></code>, <code class="docutils literal notranslate"><span class="pre">Outgoing</span> <span class="pre">shortwave</span> <span class="pre">radiation</span> <span class="pre">(Outgoing</span> <span class="pre">SW)</span></code></p></li>
 <li><p>Climate data record type: <code class="docutils literal notranslate"><span class="pre">Thematic</span> <span class="pre">Climate</span> <span class="pre">Data</span> <span class="pre">Record</span> <span class="pre">(TCDR)</span></code></p></li>
 <li><p>Time aggregation: <code class="docutils literal notranslate"><span class="pre">Monthly</span> <span class="pre">mean</span></code></p></li>
 <li><p>Year: <code class="docutils literal notranslate"><span class="pre">Every</span> <span class="pre">year</span> <span class="pre">from</span> <span class="pre">1979-2020</span> <span class="pre">(shortcut</span> <span class="pre">with</span> <span class="pre">&quot;Select</span> <span class="pre">all&quot;</span> <span class="pre">at</span> <span class="pre">the</span> <span class="pre">bottom</span> <span class="pre">right)</span></code></p></li>
@@ -612,78 +651,85 @@ The Surface Radiation Budget (SRB) comprises the quantification of the incoming 
 <li><p>Format: <code class="docutils literal notranslate"><span class="pre">Zip</span> <span class="pre">file</span> <span class="pre">(.zip)</span></code></p></li>
 </ul>
 <p>Please make sure all <strong>Terms of use</strong> are accepted. This can be done at the bottom of the <strong>Download data</strong> tab.</p>
-<p>At the bottom left of the page, click on <strong>Show API request</strong> and copy &amp; paste the text into the Jupyter notebook. The first line can be skipped since it is already part of the <strong>Import libraries</strong> section. The lines for “year” and “month” are simplified to make it more readable. The name of the download (zip) file is adjusted to make it easier to identify.</p>
-<p>Note: The download may take a few minutes. Feel free to have a look at the various information on the Surface Radiation Budget page in the CDS or already get familiar with the next steps.</p>
+<p>At the bottom left of the page, click on <strong>Show API request</strong> and copy &amp; paste the text into the Jupyter notebook. The first line can be skipped since it is already part of the <strong>Import libraries</strong> section.</p>
+<p>Note: The download may take a few minutes. Feel free to have a look at the various information on the Earth Radiation Budget page in the CDS or already get familiar with the next steps.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">downloaded_zip_file</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/download_claraA3_srb.zip&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
 
-<span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">downloaded_zip_file</span><span class="p">):</span>
-    <span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
-
-    <span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
-        <span class="s1">&#39;satellite-surface-radiation-budget&#39;</span><span class="p">,</span>
-        <span class="p">{</span>
-            <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;product_family&#39;</span><span class="p">:</span> <span class="s1">&#39;clara_a3&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;eumetsat&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;surface_downwelling_shortwave_flux&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;climate_data_record_type&#39;</span><span class="p">:</span> <span class="s1">&#39;thematic_climate_data_record&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;time_aggregation&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly_mean&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%04d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1979</span><span class="p">,</span> <span class="mi">2021</span><span class="p">)],</span>
-            <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mnth</span><span class="p">)</span> <span class="k">for</span> <span class="n">mnth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
-        <span class="p">},</span>
-        <span class="n">downloaded_zip_file</span>
-    <span class="p">)</span>
+<span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+    <span class="s1">&#39;satellite-earth-radiation-budget&#39;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;product_family&#39;</span><span class="p">:</span> <span class="s1">&#39;clara_a3&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;eumetsat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;outgoing_longwave_radiation&#39;</span><span class="p">,</span> <span class="s1">&#39;outgoing_shortwave_radiation&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s1">&#39;climate_data_record_type&#39;</span><span class="p">:</span> <span class="s1">&#39;thematic_climate_data_record&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;time_aggregation&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly_mean&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%04d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1979</span><span class="p">,</span> <span class="mi">2021</span><span class="p">)],</span>
+        <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mnth</span><span class="p">)</span> <span class="k">for</span> <span class="n">mnth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
+    <span class="p">},</span>
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/download_claraA3_erb.zip&#39;</span><span class="p">,</span>
+<span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-09 11:58:24,603 WARNING [2024-12-09T11:58:24.615101] You are using a deprecated API endpoint. If you are using cdsapi, please upgrade to the latest version.
-2024-12-09 11:58:24,603 INFO Request ID is ab817712-6af9-42a3-b5fd-44a0f93ff2fd
-2024-12-09 11:58:25,060 INFO status has been updated to accepted
-2024-12-09 11:58:45,367 INFO status has been updated to running
-2024-12-09 12:04:44,229 INFO status has been updated to successful
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-11-21 09:57:22,719 INFO [2024-01-09T00:00:00] NOAA/NCEI HIRS OLR was reprocessed from 2007 till 2023. Please see the Known issues section under the Documentation tab for more details.
+2024-11-21 09:57:22,720 WARNING [2024-11-21T09:57:22.557261] You are using a deprecated API endpoint. If you are using cdsapi, please upgrade to the latest version.
+2024-11-21 09:57:22,720 INFO Request ID is 6a487593-8270-44e5-b5fc-60daac399280
+2024-11-21 09:57:22,886 INFO status has been updated to accepted
+2024-11-21 09:57:26,765 INFO status has been updated to running
+2024-11-21 10:07:47,814 INFO status has been updated to successful
 </pre></div>
 </div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ecda21da9a9c49d2926481bdb3bd937f", "version_major": 2, "version_minor": 0}</script></div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "38ebb9e3e3904427b0572efb9d1f54dd", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;./Data/download_claraA3_erb.zip&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <p>The zip-file should be downloaded and saved at the correct place, that we have defined earlier. The zip archive containing one variable for monthly mean needs several GB of storage space.</p>
-<p>The following lines unzip the data. <strong>DATADIR + ‘/download_claraA3_srb.zip</strong> is the path to the zip-file. The first line constructs a ZipFile() object, the second line applies the function <strong>extractall</strong> to extract the content.</p>
+<p>The following lines unzip the data. <strong>DATADIR + ‘/download_claraA3_erb.zip</strong> is the path to the zip-file. The first line constructs a ZipFile() object, the second line applies the function <strong>extractall</strong> to extract the content.</p>
 <p>DATADIR/’_ is the path we want to store the files.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/download_claraA3_srb.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/download_claraA3_erb.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
     <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 <p>With the zip-file unziped and files at the right place we can start reading and processing the data.</p>
+<p><a id='load'></a></p>
 </section>
 <section id="load-dataset">
 <h3>Load dataset<a class="headerlink" href="#load-dataset" title="Link to this heading">#</a></h3>
-<p>The following line starting with “file” considers only files in the given directory starting the “SISmm” and ending with “.nc” and creates a list with all matching files. The “*” means “everything” and takes every file into account. This is quite useful since year and month are part of the file names.</p>
+<p>The following line starting with “file” considers only files in the given directory starting the “OLRmm”, “RSFmm” and ending with “.nc” and creates a list with all matching files. The “*” means “everything” and takes every file into account. This is quite useful since year and month are part of the file names.</p>
 <p>The second line reads the defined file list with the xarray function “open_mfdataset” (mf - multiple file) and concatenates them according to the time dimension.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file</span> <span class="o">=</span> <span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/SISmm*.nc&#39;</span>
-<span class="n">dataset_sis</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_olr</span> <span class="o">=</span> <span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/OLRmm*.nc&#39;</span>
+<span class="n">file_rsf</span> <span class="o">=</span> <span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/RSFmm*.nc&#39;</span>
+
+<span class="n">dataset_olr</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">file_olr</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">)</span>
+<span class="n">dataset_rsf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">file_rsf</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<p>Please find below the xarray dataset of the Surface Radiation Budget exemplary:</p>
+<p>Please find below the xarray dataset of the Earth Radiation Budget exemplary:</p>
 <p>It provides information about the:</p>
 <ul class="simple">
 <li><p>Dimensions: Lat and Lon with 0.25°x0.25° resolution and a lenght of 720/1440 and 504 months (42 years * 12 months)</p></li>
 <li><p>Coordinates: Spatial coordinates for Latitude and Longitude, temporal coordinates for time</p></li>
-<li><p>Data variables: List of different variables (in our case “SIS” is relevant)</p></li>
+<li><p>Data variables: List of different variables (in our case “LW_flux” and “SW_flux” are relevant)</p></li>
 <li><p>Attributes: Various important information about the dataset</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_sis</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_olr</span>
 </pre></div>
 </div>
 </div>
@@ -1051,41 +1097,39 @@ dl.xr-attrs {
   stroke: currentColor;
   fill: currentColor;
 }
-</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 19GB
-Dimensions:        (time: 504, lat: 720, nb2: 2, lon: 1440)
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 10GB
+Dimensions:                   (time: 504, lat: 720, bnds: 2, lon: 1440)
 Coordinates:
-  * lon            (lon) float64 12kB -179.9 -179.6 -179.4 ... 179.4 179.6 179.9
-  * lat            (lat) float64 6kB -89.88 -89.62 -89.38 ... 89.38 89.62 89.88
-  * time           (time) datetime64[ns] 4kB 1979-01-01 ... 2020-12-01
-Dimensions without coordinates: nb2
+  * lon                       (lon) float64 12kB -179.9 -179.6 ... 179.6 179.9
+  * lat                       (lat) float64 6kB -89.88 -89.62 ... 89.62 89.88
+  * time                      (time) datetime64[ns] 4kB 1979-01-01 ... 2020-1...
+Dimensions without coordinates: bnds
 Data variables:
-    lat_bnds       (time, lat, nb2) float64 6MB dask.array&lt;chunksize=(1, 720, 2), meta=np.ndarray&gt;
-    lon_bnds       (time, lon, nb2) float64 12MB dask.array&lt;chunksize=(1, 1440, 2), meta=np.ndarray&gt;
-    record_status  (time) int8 504B dask.array&lt;chunksize=(1,), meta=np.ndarray&gt;
-    time_bnds      (time, nb2) datetime64[ns] 8kB dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;
-    SIS            (time, lat, lon) float32 2GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
-    SISCLS         (time, lat, lon) float32 2GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
-    SIS_dms        (time, lat, lon) float64 4GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
-    SIS_nobs       (time, lat, lon) float64 4GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
-    SISCLS_dms     (time, lat, lon) float64 4GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
-    SIS_stdv       (time, lat, lon) float32 2GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
-Attributes: (12/44)
+    lat_bnds                  (time, lat, bnds) float64 6MB dask.array&lt;chunksize=(1, 720, 2), meta=np.ndarray&gt;
+    lon_bnds                  (time, lon, bnds) float64 12MB dask.array&lt;chunksize=(1, 1440, 2), meta=np.ndarray&gt;
+    time_bnds                 (time, bnds) datetime64[ns] 8kB dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;
+    record_status             (time) uint8 504B dask.array&lt;chunksize=(1,), meta=np.ndarray&gt;
+    number_of_lw_daily_means  (time, lat, lon) float32 2GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
+    LW_flux                   (time, lat, lon) float64 4GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
+    number_of_lw_inst_obs     (time, lat, lon) float32 2GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
+    bitflags_lw               (time, lat, lon) float32 2GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
+Attributes: (12/38)
+    geospatial_lat_min:         -90.0
+    geospatial_lat_max:         90.0
+    geospatial_lon_min:         -180.0
+    geospatial_lon_max:         180.0
     title:                      CM SAF Cloud, Albedo and Radiation dataset, A...
     summary:                    This file contains AVHRR-based Thematic Clima...
-    id:                         DOI:10.5676/EUM_SAF_CM/CLARA_AVHRR/V003
-    product_class:              Radiation products, monthly means
-    Conventions:                CF-1.7,ACDD-1.3
-    standard_name_vocabulary:   Standard Name Table (v70, 10 December 2019)
     ...                         ...
-    Level1_intercalibration:    1.0
-    date_created:               2022-05-19T09:29:13Z
+    variable_id:                LW_flux
     license:                    The CM SAF data are owned by EUMETSAT and are...
-    CMSAF_platform_and_orbits:   TIROSN=497;
-    CMSAF_L3_processor:         CMSAFGACL3_V3.0; AOD-climate-corrected
-    CMSAF_L2_processor:         PPS2018-patch5, CPPv6.0; P2R, V1.0</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-03e81540-e06b-4004-9264-878490c281bc' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-03e81540-e06b-4004-9264-878490c281bc' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 504</li><li><span class='xr-has-index'>lat</span>: 720</li><li><span>nb2</span>: 2</li><li><span class='xr-has-index'>lon</span>: 1440</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-4b5afba8-a1b3-4f66-9246-4ef0c909e790' class='xr-section-summary-in' type='checkbox'  checked><label for='section-4b5afba8-a1b3-4f66-9246-4ef0c909e790' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-179.9 -179.6 ... 179.6 179.9</div><input id='attrs-47ac41ab-7701-4272-844c-cf95155875cb' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-47ac41ab-7701-4272-844c-cf95155875cb' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-816dbd99-43f5-4460-a04a-67d71ce1cc0e' class='xr-var-data-in' type='checkbox'><label for='data-816dbd99-43f5-4460-a04a-67d71ce1cc0e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>axis :</span></dt><dd>X</dd><dt><span>bounds :</span></dt><dd>lon_bnds</dd></dl></div><div class='xr-var-data'><pre>array([-179.875, -179.625, -179.375, ...,  179.375,  179.625,  179.875])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-89.88 -89.62 ... 89.62 89.88</div><input id='attrs-a9ff6234-260b-417b-9439-30f7c37ec772' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a9ff6234-260b-417b-9439-30f7c37ec772' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-689a6cf8-6c06-4291-8e12-6b83c5be2aa5' class='xr-var-data-in' type='checkbox'><label for='data-689a6cf8-6c06-4291-8e12-6b83c5be2aa5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>axis :</span></dt><dd>Y</dd><dt><span>bounds :</span></dt><dd>lat_bnds</dd></dl></div><div class='xr-var-data'><pre>array([-89.875, -89.625, -89.375, ...,  89.375,  89.625,  89.875])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1979-01-01 ... 2020-12-01</div><input id='attrs-efb8d985-c74a-4fa6-a734-be3518e2b72b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-efb8d985-c74a-4fa6-a734-be3518e2b72b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c15e45c3-bbc3-4ca6-b471-831a10fd19f0' class='xr-var-data-in' type='checkbox'><label for='data-c15e45c3-bbc3-4ca6-b471-831a10fd19f0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>bounds :</span></dt><dd>time_bnds</dd><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;1979-01-01T00:00:00.000000000&#x27;, &#x27;1979-02-01T00:00:00.000000000&#x27;,
+    source:                     FCDR AVHRR-GAC : ERA-5 : OSISAF : USGS : IGBP
+    lineage:                    pygac/gac2pps.py : NWC/PPS version v2018 : CL...
+    CMSAF_L2_processor:         CLARA-A3 TOA toa_flux v2.0
+    CMSAF_L3_processor:         CLARA-A3 TOA dailymean v2.4</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-c65f1d8a-f60c-41c3-8b1b-f001729f7dbe' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-c65f1d8a-f60c-41c3-8b1b-f001729f7dbe' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 504</li><li><span class='xr-has-index'>lat</span>: 720</li><li><span>bnds</span>: 2</li><li><span class='xr-has-index'>lon</span>: 1440</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-5eacd65d-7b85-4db4-9478-fa51e8b69f75' class='xr-section-summary-in' type='checkbox'  checked><label for='section-5eacd65d-7b85-4db4-9478-fa51e8b69f75' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-179.9 -179.6 ... 179.6 179.9</div><input id='attrs-8cfb26ae-b340-4094-9c98-8519aa81f583' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8cfb26ae-b340-4094-9c98-8519aa81f583' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c578a5c1-7d09-4290-8531-f85de247f82f' class='xr-var-data-in' type='checkbox'><label for='data-c578a5c1-7d09-4290-8531-f85de247f82f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>bounds :</span></dt><dd>lon_bnds</dd></dl></div><div class='xr-var-data'><pre>array([-179.875, -179.625, -179.375, ...,  179.375,  179.625,  179.875])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-89.88 -89.62 ... 89.62 89.88</div><input id='attrs-43d374aa-6caa-4c68-979a-395a56a1533a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-43d374aa-6caa-4c68-979a-395a56a1533a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-3391b4fb-81c3-4270-ab87-37fe240e2620' class='xr-var-data-in' type='checkbox'><label for='data-3391b4fb-81c3-4270-ab87-37fe240e2620' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>bounds :</span></dt><dd>lat_bnds</dd></dl></div><div class='xr-var-data'><pre>array([-89.875, -89.625, -89.375, ...,  89.375,  89.625,  89.875])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1979-01-01 ... 2020-12-01</div><input id='attrs-f716f7de-2ebb-446c-ac6c-bfbdd3a63807' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-f716f7de-2ebb-446c-ac6c-bfbdd3a63807' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f12414ca-5f29-49b9-9e44-819b8e45991e' class='xr-var-data-in' type='checkbox'><label for='data-f12414ca-5f29-49b9-9e44-819b8e45991e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>long_name :</span></dt><dd>Time</dd><dt><span>bounds :</span></dt><dd>time_bnds</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;1979-01-01T00:00:00.000000000&#x27;, &#x27;1979-02-01T00:00:00.000000000&#x27;,
        &#x27;1979-03-01T00:00:00.000000000&#x27;, ..., &#x27;2020-10-01T00:00:00.000000000&#x27;,
        &#x27;2020-11-01T00:00:00.000000000&#x27;, &#x27;2020-12-01T00:00:00.000000000&#x27;],
-      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-c9ffad25-0fd8-498b-addf-66403f931923' class='xr-section-summary-in' type='checkbox'  checked><label for='section-c9ffad25-0fd8-498b-addf-66403f931923' class='xr-section-summary' >Data variables: <span>(10)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>lat_bnds</span></div><div class='xr-var-dims'>(time, lat, nb2)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 2), meta=np.ndarray&gt;</div><input id='attrs-3dcb87aa-5811-4b4f-86af-04a2108c0323' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3dcb87aa-5811-4b4f-86af-04a2108c0323' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f3093388-9d26-43be-8662-5079de368a8c' class='xr-var-data-in' type='checkbox'><label for='data-f3093388-9d26-43be-8662-5079de368a8c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Latitude Bounds</dd></dl></div><div class='xr-var-data'><table>
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-fabe8b6c-bddf-4a4c-b011-7b2c395422b8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-fabe8b6c-bddf-4a4c-b011-7b2c395422b8' class='xr-section-summary' >Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>lat_bnds</span></div><div class='xr-var-dims'>(time, lat, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 2), meta=np.ndarray&gt;</div><input id='attrs-13224132-ad24-4a53-b9ab-62df3b9e4109' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-13224132-ad24-4a53-b9ab-62df3b9e4109' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4bfb25b7-ee6a-4909-b489-f82bf749530d' class='xr-var-data-in' type='checkbox'><label for='data-4bfb25b7-ee6a-4909-b489-f82bf749530d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Latitude bounds</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1199,7 +1243,7 @@ Attributes: (12/44)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon_bnds</span></div><div class='xr-var-dims'>(time, lon, nb2)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 1440, 2), meta=np.ndarray&gt;</div><input id='attrs-d8121dc5-2646-4d3a-a2af-6e1fdc99dc7f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d8121dc5-2646-4d3a-a2af-6e1fdc99dc7f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-ef7fd523-ab37-422d-b73f-b05209c4744f' class='xr-var-data-in' type='checkbox'><label for='data-ef7fd523-ab37-422d-b73f-b05209c4744f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Longitude Bounds</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon_bnds</span></div><div class='xr-var-dims'>(time, lon, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 1440, 2), meta=np.ndarray&gt;</div><input id='attrs-fd00102c-a61b-483c-a7b6-9988bf8021a5' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-fd00102c-a61b-483c-a7b6-9988bf8021a5' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8e361411-63f0-482e-8ccf-dea87b77f369' class='xr-var-data-in' type='checkbox'><label for='data-8e361411-63f0-482e-8ccf-dea87b77f369' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Longitude bounds</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1313,80 +1357,7 @@ Attributes: (12/44)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>record_status</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1,), meta=np.ndarray&gt;</div><input id='attrs-c4374767-82fc-4b9c-ab1a-5d96aaa96505' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c4374767-82fc-4b9c-ab1a-5d96aaa96505' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-22474b7c-86ba-4154-8e9c-11eeac10a7e7' class='xr-var-data-in' type='checkbox'><label for='data-22474b7c-86ba-4154-8e9c-11eeac10a7e7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>comment :</span></dt><dd>Overall status of each record (timestamp) in this file. If a record is flagged as not ok, it is recommended not to use it.</dd><dt><span>flag_meanings :</span></dt><dd>ok void bad_quality</dd><dt><span>flag_values :</span></dt><dd>[0 1 2]</dd><dt><span>long_name :</span></dt><dd>Record Status</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table style="border-collapse: collapse;">
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 504 B </td>
-                        <td> 1 B </td>
-                    </tr>
-                    
-                    <tr>
-                        <th> Shape </th>
-                        <td> (504,) </td>
-                        <td> (1,) </td>
-                    </tr>
-                    <tr>
-                        <th> Dask graph </th>
-                        <td colspan="2"> 504 chunks in 1009 graph layers </td>
-                    </tr>
-                    <tr>
-                        <th> Data type </th>
-                        <td colspan="2"> int8 numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
-  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
-  <line x1="6" y1="0" x2="6" y2="25" />
-  <line x1="12" y1="0" x2="12" y2="25" />
-  <line x1="18" y1="0" x2="18" y2="25" />
-  <line x1="25" y1="0" x2="25" y2="25" />
-  <line x1="31" y1="0" x2="31" y2="25" />
-  <line x1="37" y1="0" x2="37" y2="25" />
-  <line x1="44" y1="0" x2="44" y2="25" />
-  <line x1="50" y1="0" x2="50" y2="25" />
-  <line x1="56" y1="0" x2="56" y2="25" />
-  <line x1="63" y1="0" x2="63" y2="25" />
-  <line x1="69" y1="0" x2="69" y2="25" />
-  <line x1="75" y1="0" x2="75" y2="25" />
-  <line x1="81" y1="0" x2="81" y2="25" />
-  <line x1="88" y1="0" x2="88" y2="25" />
-  <line x1="94" y1="0" x2="94" y2="25" />
-  <line x1="100" y1="0" x2="100" y2="25" />
-  <line x1="107" y1="0" x2="107" y2="25" />
-  <line x1="113" y1="0" x2="113" y2="25" />
-  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >504</text>
-  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time_bnds</span></div><div class='xr-var-dims'>(time, nb2)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;</div><input id='attrs-5410aa2c-769b-4c77-b6ce-976a068e7fe0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5410aa2c-769b-4c77-b6ce-976a068e7fe0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7c9b1a1f-91bc-41ef-8f1e-6deeb7ffe768' class='xr-var-data-in' type='checkbox'><label for='data-7c9b1a1f-91bc-41ef-8f1e-6deeb7ffe768' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Time Bounds</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time_bnds</span></div><div class='xr-var-dims'>(time, bnds)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;</div><input id='attrs-e02145c8-c899-46bc-8309-664ed7dec092' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e02145c8-c899-46bc-8309-664ed7dec092' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7429f225-db98-414c-918d-4b4e65cc4ab0' class='xr-var-data-in' type='checkbox'><label for='data-7429f225-db98-414c-918d-4b4e65cc4ab0' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Time bounds</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1459,7 +1430,80 @@ Attributes: (12/44)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SIS</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-0516a6bc-a8e7-423b-b621-99f87d321a31' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0516a6bc-a8e7-423b-b621-99f87d321a31' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-026b3093-32c5-40ca-bcc1-7868d2c75ea7' class='xr-var-data-in' type='checkbox'><label for='data-026b3093-32c5-40ca-bcc1-7868d2c75ea7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>surface_downwelling_shortwave_flux</dd><dt><span>long_name :</span></dt><dd>Surface Downwelling Shortwave Radiation</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>cell_methods :</span></dt><dd>area: time: mean</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>record_status</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>uint8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1,), meta=np.ndarray&gt;</div><input id='attrs-3d159f97-64c0-4e1b-87cd-cbe5f2455f1c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3d159f97-64c0-4e1b-87cd-cbe5f2455f1c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2b222319-e865-4ad8-ad31-8e0a54a415df' class='xr-var-data-in' type='checkbox'><label for='data-2b222319-e865-4ad8-ad31-8e0a54a415df' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Record Status</dd><dt><span>comment :</span></dt><dd>Overall status of each record (timestamp) in this file. If a record is flagged as not ok, it is recommended not to use it.</dd><dt><span>flag_meanings :</span></dt><dd>ok void bad_quality</dd><dt><span>flag_values :</span></dt><dd>[0 1 2]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 504 B </td>
+                        <td> 1 B </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (504,) </td>
+                        <td> (1,) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 504 chunks in 1009 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> uint8 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="6" y1="0" x2="6" y2="25" />
+  <line x1="12" y1="0" x2="12" y2="25" />
+  <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="25" y1="0" x2="25" y2="25" />
+  <line x1="31" y1="0" x2="31" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="44" y1="0" x2="44" y2="25" />
+  <line x1="50" y1="0" x2="50" y2="25" />
+  <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="63" y1="0" x2="63" y2="25" />
+  <line x1="69" y1="0" x2="69" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="81" y1="0" x2="81" y2="25" />
+  <line x1="88" y1="0" x2="88" y2="25" />
+  <line x1="94" y1="0" x2="94" y2="25" />
+  <line x1="100" y1="0" x2="100" y2="25" />
+  <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >504</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>number_of_lw_daily_means</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-ad1e833d-b2ea-4956-a083-62fb746baa55' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ad1e833d-b2ea-4956-a083-62fb746baa55' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4a2ae84b-8dfc-4f63-a56f-5bc5f56df2bf' class='xr-var-data-in' type='checkbox'><label for='data-4a2ae84b-8dfc-4f63-a56f-5bc5f56df2bf' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_range :</span></dt><dd>[  0 254]</dd><dt><span>long_name :</span></dt><dd>Number of longwave daily means contributing to monthly mean</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1573,7 +1617,121 @@ Attributes: (12/44)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SISCLS</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-c747a9b6-d778-48f6-9952-4ad1c94d6d31' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c747a9b6-d778-48f6-9952-4ad1c94d6d31' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1131fa3e-7256-4192-b36f-f53db487bed9' class='xr-var-data-in' type='checkbox'><label for='data-1131fa3e-7256-4192-b36f-f53db487bed9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>surface_downwelling_shortwave_flux_assuming_clear_sky</dd><dt><span>long_name :</span></dt><dd>Surface Downwelling Shortwave Radiation assuming clear-sky conditions</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>cell_methods :</span></dt><dd>area: time: mean</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>LW_flux</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-a099efba-534a-4e5c-8c71-a2954b64f41c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a099efba-534a-4e5c-8c71-a2954b64f41c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-658a2d66-6f66-43fc-ad44-a34a70fc8956' class='xr-var-data-in' type='checkbox'><label for='data-658a2d66-6f66-43fc-ad44-a34a70fc8956' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_range :</span></dt><dd>[    0 15000]</dd><dt><span>standard_name :</span></dt><dd>toa_outgoing_longwave_flux</dd><dt><span>long_name :</span></dt><dd>TOA outgoing longwave radiation (OLR)</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>ancillary_variables :</span></dt><dd>bitflags_lw number_of_lw_daily_means</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 3.89 GiB </td>
+                        <td> 7.91 MiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (504, 720, 1440) </td>
+                        <td> (1, 720, 1440) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 504 chunks in 1009 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> float64 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="205" height="135" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
+  <line x1="10" y1="60" x2="35" y2="85" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="11" y2="61" />
+  <line x1="12" y1="2" x2="12" y2="62" />
+  <line x1="14" y1="4" x2="14" y2="64" />
+  <line x1="15" y1="5" x2="15" y2="65" />
+  <line x1="16" y1="6" x2="16" y2="66" />
+  <line x1="18" y1="8" x2="18" y2="68" />
+  <line x1="19" y1="9" x2="19" y2="69" />
+  <line x1="20" y1="10" x2="20" y2="70" />
+  <line x1="22" y1="12" x2="22" y2="72" />
+  <line x1="23" y1="13" x2="23" y2="73" />
+  <line x1="24" y1="14" x2="24" y2="74" />
+  <line x1="26" y1="16" x2="26" y2="76" />
+  <line x1="27" y1="17" x2="27" y2="77" />
+  <line x1="29" y1="19" x2="29" y2="79" />
+  <line x1="30" y1="20" x2="30" y2="80" />
+  <line x1="31" y1="21" x2="31" y2="81" />
+  <line x1="33" y1="23" x2="33" y2="83" />
+  <line x1="34" y1="24" x2="34" y2="84" />
+  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 35.903485391229815,25.903485391229815 35.903485391229815,85.90348539122982 10.0,60.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="131" y2="1" />
+  <line x1="12" y1="2" x2="132" y2="2" />
+  <line x1="14" y1="4" x2="134" y2="4" />
+  <line x1="15" y1="5" x2="135" y2="5" />
+  <line x1="16" y1="6" x2="136" y2="6" />
+  <line x1="18" y1="8" x2="138" y2="8" />
+  <line x1="19" y1="9" x2="139" y2="9" />
+  <line x1="20" y1="10" x2="140" y2="10" />
+  <line x1="22" y1="12" x2="142" y2="12" />
+  <line x1="23" y1="13" x2="143" y2="13" />
+  <line x1="24" y1="14" x2="144" y2="14" />
+  <line x1="26" y1="16" x2="146" y2="16" />
+  <line x1="27" y1="17" x2="147" y2="17" />
+  <line x1="29" y1="19" x2="149" y2="19" />
+  <line x1="30" y1="20" x2="150" y2="20" />
+  <line x1="31" y1="21" x2="151" y2="21" />
+  <line x1="33" y1="23" x2="153" y2="23" />
+  <line x1="34" y1="24" x2="154" y2="24" />
+  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
+  <line x1="130" y1="0" x2="155" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 130.0,0.0 155.90348539122982,25.903485391229815 35.903485391229815,25.903485391229815" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
+  <line x1="35" y1="85" x2="155" y2="85" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
+  <line x1="155" y1="25" x2="155" y2="85" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="35.903485391229815,25.903485391229815 155.90348539122982,25.903485391229815 155.90348539122982,85.90348539122982 35.903485391229815,85.90348539122982" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="95.903485" y="105.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" >1440</text>
+  <text x="175.903485" y="55.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,175.903485,55.903485)">720</text>
+  <text x="12.951743" y="92.951743" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,12.951743,92.951743)">504</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>number_of_lw_inst_obs</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-3b0a09de-4490-4810-b820-18a1db49cf3e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3b0a09de-4490-4810-b820-18a1db49cf3e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cb60d560-0d0a-495c-961b-ff40943081df' class='xr-var-data-in' type='checkbox'><label for='data-cb60d560-0d0a-495c-961b-ff40943081df' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_range :</span></dt><dd>[  0 254]</dd><dt><span>long_name :</span></dt><dd>Number of longwave instantaneous obs. contributing to daily mean</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -1687,349 +1845,7 @@ Attributes: (12/44)
 </svg>
         </td>
     </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SIS_dms</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-92a06e73-5fe0-4dfc-8503-90988419a1f2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-92a06e73-5fe0-4dfc-8503-90988419a1f2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6c7bfb8f-8a8c-494e-a2f4-697949c27b12' class='xr-var-data-in' type='checkbox'><label for='data-6c7bfb8f-8a8c-494e-a2f4-697949c27b12' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Number of Daily Averages used to derive the Monthly Average</dd><dt><span>units :</span></dt><dd>counts</dd><dt><span>missing_data :</span></dt><dd>-99</dd><dt><span>cell_methods :</span></dt><dd>area: time: sum</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table style="border-collapse: collapse;">
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 3.89 GiB </td>
-                        <td> 7.91 MiB </td>
-                    </tr>
-                    
-                    <tr>
-                        <th> Shape </th>
-                        <td> (504, 720, 1440) </td>
-                        <td> (1, 720, 1440) </td>
-                    </tr>
-                    <tr>
-                        <th> Dask graph </th>
-                        <td colspan="2"> 504 chunks in 1009 graph layers </td>
-                    </tr>
-                    <tr>
-                        <th> Data type </th>
-                        <td colspan="2"> float64 numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="205" height="135" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
-  <line x1="10" y1="60" x2="35" y2="85" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
-  <line x1="11" y1="1" x2="11" y2="61" />
-  <line x1="12" y1="2" x2="12" y2="62" />
-  <line x1="14" y1="4" x2="14" y2="64" />
-  <line x1="15" y1="5" x2="15" y2="65" />
-  <line x1="16" y1="6" x2="16" y2="66" />
-  <line x1="18" y1="8" x2="18" y2="68" />
-  <line x1="19" y1="9" x2="19" y2="69" />
-  <line x1="20" y1="10" x2="20" y2="70" />
-  <line x1="22" y1="12" x2="22" y2="72" />
-  <line x1="23" y1="13" x2="23" y2="73" />
-  <line x1="24" y1="14" x2="24" y2="74" />
-  <line x1="26" y1="16" x2="26" y2="76" />
-  <line x1="27" y1="17" x2="27" y2="77" />
-  <line x1="29" y1="19" x2="29" y2="79" />
-  <line x1="30" y1="20" x2="30" y2="80" />
-  <line x1="31" y1="21" x2="31" y2="81" />
-  <line x1="33" y1="23" x2="33" y2="83" />
-  <line x1="34" y1="24" x2="34" y2="84" />
-  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 35.903485391229815,25.903485391229815 35.903485391229815,85.90348539122982 10.0,60.0" style="fill:#8B4903A0;stroke-width:0"/>
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
-  <line x1="11" y1="1" x2="131" y2="1" />
-  <line x1="12" y1="2" x2="132" y2="2" />
-  <line x1="14" y1="4" x2="134" y2="4" />
-  <line x1="15" y1="5" x2="135" y2="5" />
-  <line x1="16" y1="6" x2="136" y2="6" />
-  <line x1="18" y1="8" x2="138" y2="8" />
-  <line x1="19" y1="9" x2="139" y2="9" />
-  <line x1="20" y1="10" x2="140" y2="10" />
-  <line x1="22" y1="12" x2="142" y2="12" />
-  <line x1="23" y1="13" x2="143" y2="13" />
-  <line x1="24" y1="14" x2="144" y2="14" />
-  <line x1="26" y1="16" x2="146" y2="16" />
-  <line x1="27" y1="17" x2="147" y2="17" />
-  <line x1="29" y1="19" x2="149" y2="19" />
-  <line x1="30" y1="20" x2="150" y2="20" />
-  <line x1="31" y1="21" x2="151" y2="21" />
-  <line x1="33" y1="23" x2="153" y2="23" />
-  <line x1="34" y1="24" x2="154" y2="24" />
-  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
-  <line x1="130" y1="0" x2="155" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 130.0,0.0 155.90348539122982,25.903485391229815 35.903485391229815,25.903485391229815" style="fill:#8B4903A0;stroke-width:0"/>
-
-  <!-- Horizontal lines -->
-  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
-  <line x1="35" y1="85" x2="155" y2="85" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
-  <line x1="155" y1="25" x2="155" y2="85" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="35.903485391229815,25.903485391229815 155.90348539122982,25.903485391229815 155.90348539122982,85.90348539122982 35.903485391229815,85.90348539122982" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="95.903485" y="105.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" >1440</text>
-  <text x="175.903485" y="55.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,175.903485,55.903485)">720</text>
-  <text x="12.951743" y="92.951743" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,12.951743,92.951743)">504</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SIS_nobs</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-c0341440-e18b-410c-aaa3-3b508c603aff' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-c0341440-e18b-410c-aaa3-3b508c603aff' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-235187f3-ed46-4504-b1de-ae1e8e575883' class='xr-var-data-in' type='checkbox'><label for='data-235187f3-ed46-4504-b1de-ae1e8e575883' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>surface_downwelling_shortwave_flux number_of_observations</dd><dt><span>long_name :</span></dt><dd>Number of Observations of the surface_downwelling_shortwave_flux</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>cell_methods :</span></dt><dd>area: time: sum</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table style="border-collapse: collapse;">
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 3.89 GiB </td>
-                        <td> 7.91 MiB </td>
-                    </tr>
-                    
-                    <tr>
-                        <th> Shape </th>
-                        <td> (504, 720, 1440) </td>
-                        <td> (1, 720, 1440) </td>
-                    </tr>
-                    <tr>
-                        <th> Dask graph </th>
-                        <td colspan="2"> 504 chunks in 1009 graph layers </td>
-                    </tr>
-                    <tr>
-                        <th> Data type </th>
-                        <td colspan="2"> float64 numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="205" height="135" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
-  <line x1="10" y1="60" x2="35" y2="85" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
-  <line x1="11" y1="1" x2="11" y2="61" />
-  <line x1="12" y1="2" x2="12" y2="62" />
-  <line x1="14" y1="4" x2="14" y2="64" />
-  <line x1="15" y1="5" x2="15" y2="65" />
-  <line x1="16" y1="6" x2="16" y2="66" />
-  <line x1="18" y1="8" x2="18" y2="68" />
-  <line x1="19" y1="9" x2="19" y2="69" />
-  <line x1="20" y1="10" x2="20" y2="70" />
-  <line x1="22" y1="12" x2="22" y2="72" />
-  <line x1="23" y1="13" x2="23" y2="73" />
-  <line x1="24" y1="14" x2="24" y2="74" />
-  <line x1="26" y1="16" x2="26" y2="76" />
-  <line x1="27" y1="17" x2="27" y2="77" />
-  <line x1="29" y1="19" x2="29" y2="79" />
-  <line x1="30" y1="20" x2="30" y2="80" />
-  <line x1="31" y1="21" x2="31" y2="81" />
-  <line x1="33" y1="23" x2="33" y2="83" />
-  <line x1="34" y1="24" x2="34" y2="84" />
-  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 35.903485391229815,25.903485391229815 35.903485391229815,85.90348539122982 10.0,60.0" style="fill:#8B4903A0;stroke-width:0"/>
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
-  <line x1="11" y1="1" x2="131" y2="1" />
-  <line x1="12" y1="2" x2="132" y2="2" />
-  <line x1="14" y1="4" x2="134" y2="4" />
-  <line x1="15" y1="5" x2="135" y2="5" />
-  <line x1="16" y1="6" x2="136" y2="6" />
-  <line x1="18" y1="8" x2="138" y2="8" />
-  <line x1="19" y1="9" x2="139" y2="9" />
-  <line x1="20" y1="10" x2="140" y2="10" />
-  <line x1="22" y1="12" x2="142" y2="12" />
-  <line x1="23" y1="13" x2="143" y2="13" />
-  <line x1="24" y1="14" x2="144" y2="14" />
-  <line x1="26" y1="16" x2="146" y2="16" />
-  <line x1="27" y1="17" x2="147" y2="17" />
-  <line x1="29" y1="19" x2="149" y2="19" />
-  <line x1="30" y1="20" x2="150" y2="20" />
-  <line x1="31" y1="21" x2="151" y2="21" />
-  <line x1="33" y1="23" x2="153" y2="23" />
-  <line x1="34" y1="24" x2="154" y2="24" />
-  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
-  <line x1="130" y1="0" x2="155" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 130.0,0.0 155.90348539122982,25.903485391229815 35.903485391229815,25.903485391229815" style="fill:#8B4903A0;stroke-width:0"/>
-
-  <!-- Horizontal lines -->
-  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
-  <line x1="35" y1="85" x2="155" y2="85" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
-  <line x1="155" y1="25" x2="155" y2="85" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="35.903485391229815,25.903485391229815 155.90348539122982,25.903485391229815 155.90348539122982,85.90348539122982 35.903485391229815,85.90348539122982" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="95.903485" y="105.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" >1440</text>
-  <text x="175.903485" y="55.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,175.903485,55.903485)">720</text>
-  <text x="12.951743" y="92.951743" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,12.951743,92.951743)">504</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SISCLS_dms</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-e2c1d309-3458-4488-b22f-5e3541810f92' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e2c1d309-3458-4488-b22f-5e3541810f92' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-24839094-f626-4bac-b6a8-ff30db33748a' class='xr-var-data-in' type='checkbox'><label for='data-24839094-f626-4bac-b6a8-ff30db33748a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Number of Daily Averages used to derive the Monthly Average</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>cell_methods :</span></dt><dd>area: time: sum</dd><dt><span>missing_data :</span></dt><dd>-99</dd></dl></div><div class='xr-var-data'><table>
-    <tr>
-        <td>
-            <table style="border-collapse: collapse;">
-                <thead>
-                    <tr>
-                        <td> </td>
-                        <th> Array </th>
-                        <th> Chunk </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    
-                    <tr>
-                        <th> Bytes </th>
-                        <td> 3.89 GiB </td>
-                        <td> 7.91 MiB </td>
-                    </tr>
-                    
-                    <tr>
-                        <th> Shape </th>
-                        <td> (504, 720, 1440) </td>
-                        <td> (1, 720, 1440) </td>
-                    </tr>
-                    <tr>
-                        <th> Dask graph </th>
-                        <td colspan="2"> 504 chunks in 1009 graph layers </td>
-                    </tr>
-                    <tr>
-                        <th> Data type </th>
-                        <td colspan="2"> float64 numpy.ndarray </td>
-                    </tr>
-                </tbody>
-            </table>
-        </td>
-        <td>
-        <svg width="205" height="135" style="stroke:rgb(0,0,0);stroke-width:1" >
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
-  <line x1="10" y1="60" x2="35" y2="85" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
-  <line x1="11" y1="1" x2="11" y2="61" />
-  <line x1="12" y1="2" x2="12" y2="62" />
-  <line x1="14" y1="4" x2="14" y2="64" />
-  <line x1="15" y1="5" x2="15" y2="65" />
-  <line x1="16" y1="6" x2="16" y2="66" />
-  <line x1="18" y1="8" x2="18" y2="68" />
-  <line x1="19" y1="9" x2="19" y2="69" />
-  <line x1="20" y1="10" x2="20" y2="70" />
-  <line x1="22" y1="12" x2="22" y2="72" />
-  <line x1="23" y1="13" x2="23" y2="73" />
-  <line x1="24" y1="14" x2="24" y2="74" />
-  <line x1="26" y1="16" x2="26" y2="76" />
-  <line x1="27" y1="17" x2="27" y2="77" />
-  <line x1="29" y1="19" x2="29" y2="79" />
-  <line x1="30" y1="20" x2="30" y2="80" />
-  <line x1="31" y1="21" x2="31" y2="81" />
-  <line x1="33" y1="23" x2="33" y2="83" />
-  <line x1="34" y1="24" x2="34" y2="84" />
-  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 35.903485391229815,25.903485391229815 35.903485391229815,85.90348539122982 10.0,60.0" style="fill:#8B4903A0;stroke-width:0"/>
-
-  <!-- Horizontal lines -->
-  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
-  <line x1="11" y1="1" x2="131" y2="1" />
-  <line x1="12" y1="2" x2="132" y2="2" />
-  <line x1="14" y1="4" x2="134" y2="4" />
-  <line x1="15" y1="5" x2="135" y2="5" />
-  <line x1="16" y1="6" x2="136" y2="6" />
-  <line x1="18" y1="8" x2="138" y2="8" />
-  <line x1="19" y1="9" x2="139" y2="9" />
-  <line x1="20" y1="10" x2="140" y2="10" />
-  <line x1="22" y1="12" x2="142" y2="12" />
-  <line x1="23" y1="13" x2="143" y2="13" />
-  <line x1="24" y1="14" x2="144" y2="14" />
-  <line x1="26" y1="16" x2="146" y2="16" />
-  <line x1="27" y1="17" x2="147" y2="17" />
-  <line x1="29" y1="19" x2="149" y2="19" />
-  <line x1="30" y1="20" x2="150" y2="20" />
-  <line x1="31" y1="21" x2="151" y2="21" />
-  <line x1="33" y1="23" x2="153" y2="23" />
-  <line x1="34" y1="24" x2="154" y2="24" />
-  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
-  <line x1="130" y1="0" x2="155" y2="25" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="10.0,0.0 130.0,0.0 155.90348539122982,25.903485391229815 35.903485391229815,25.903485391229815" style="fill:#8B4903A0;stroke-width:0"/>
-
-  <!-- Horizontal lines -->
-  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
-  <line x1="35" y1="85" x2="155" y2="85" style="stroke-width:2" />
-
-  <!-- Vertical lines -->
-  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
-  <line x1="155" y1="25" x2="155" y2="85" style="stroke-width:2" />
-
-  <!-- Colored Rectangle -->
-  <polygon points="35.903485391229815,25.903485391229815 155.90348539122982,25.903485391229815 155.90348539122982,85.90348539122982 35.903485391229815,85.90348539122982" style="fill:#ECB172A0;stroke-width:0"/>
-
-  <!-- Text -->
-  <text x="95.903485" y="105.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" >1440</text>
-  <text x="175.903485" y="55.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,175.903485,55.903485)">720</text>
-  <text x="12.951743" y="92.951743" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,12.951743,92.951743)">504</text>
-</svg>
-        </td>
-    </tr>
-</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>SIS_stdv</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-6f324b5d-0f42-4e5d-bba2-b013abf3c97e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6f324b5d-0f42-4e5d-bba2-b013abf3c97e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-91bebc42-063b-45df-9968-a08b7bd975e3' class='xr-var-data-in' type='checkbox'><label for='data-91bebc42-063b-45df-9968-a08b7bd975e3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Standard Deviation of the surface_downwelling_shortwave_flux</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>cell_methods :</span></dt><dd>area: time: standard_deviation</dd><dt><span>missing_data :</span></dt><dd>-999.0</dd></dl></div><div class='xr-var-data'><table>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bitflags_lw</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-154a341a-55c6-420e-9497-c64c3eca1e0e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-154a341a-55c6-420e-9497-c64c3eca1e0e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-1bdf00b1-4731-4862-baa4-18b179eb6639' class='xr-var-data-in' type='checkbox'><label for='data-1bdf00b1-4731-4862-baa4-18b179eb6639' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_range :</span></dt><dd>[    0 65534]</dd><dt><span>long_name :</span></dt><dd>Bitwise quality flags_lw</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>flag_meanings :</span></dt><dd>MISSINGDAYS_WARNING MISSINGDAYS_INVALID</dd><dt><span>flag_masks :</span></dt><dd>[1 2]</dd></dl></div><div class='xr-var-data'><table>
     <tr>
         <td>
             <table style="border-collapse: collapse;">
@@ -2143,52 +1959,55 @@ Attributes: (12/44)
 </svg>
         </td>
     </tr>
-</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-6f2e667b-afb7-4771-8e38-348a597118cf' class='xr-section-summary-in' type='checkbox'  ><label for='section-6f2e667b-afb7-4771-8e38-348a597118cf' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-e7ff5bfa-0aa9-404f-a025-aa1d6ad72818' class='xr-index-data-in' type='checkbox'/><label for='index-e7ff5bfa-0aa9-404f-a025-aa1d6ad72818' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-179.875, -179.625, -179.375, -179.125, -178.875, -178.625, -178.375,
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-f224394f-e59b-4c17-95db-8afd28bcca8f' class='xr-section-summary-in' type='checkbox'  ><label for='section-f224394f-e59b-4c17-95db-8afd28bcca8f' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-dea5efa4-e5dd-473e-97b3-91a02bfd3de2' class='xr-index-data-in' type='checkbox'/><label for='index-dea5efa4-e5dd-473e-97b3-91a02bfd3de2' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-179.875, -179.625, -179.375, -179.125, -178.875, -178.625, -178.375,
        -178.125, -177.875, -177.625,
        ...
         177.625,  177.875,  178.125,  178.375,  178.625,  178.875,  179.125,
         179.375,  179.625,  179.875],
-      dtype=&#x27;float64&#x27;, name=&#x27;lon&#x27;, length=1440))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-bec7db52-201f-443e-ae08-f0c2620f723e' class='xr-index-data-in' type='checkbox'/><label for='index-bec7db52-201f-443e-ae08-f0c2620f723e' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-89.875, -89.625, -89.375, -89.125, -88.875, -88.625, -88.375, -88.125,
+      dtype=&#x27;float64&#x27;, name=&#x27;lon&#x27;, length=1440))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-03741f86-faee-4df3-a6db-3903cfb474a9' class='xr-index-data-in' type='checkbox'/><label for='index-03741f86-faee-4df3-a6db-3903cfb474a9' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-89.875, -89.625, -89.375, -89.125, -88.875, -88.625, -88.375, -88.125,
        -87.875, -87.625,
        ...
         87.625,  87.875,  88.125,  88.375,  88.625,  88.875,  89.125,  89.375,
         89.625,  89.875],
-      dtype=&#x27;float64&#x27;, name=&#x27;lat&#x27;, length=720))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-c1a96a13-b554-4e66-b4fa-aff1fd1676d6' class='xr-index-data-in' type='checkbox'/><label for='index-c1a96a13-b554-4e66-b4fa-aff1fd1676d6' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;1979-01-01&#x27;, &#x27;1979-02-01&#x27;, &#x27;1979-03-01&#x27;, &#x27;1979-04-01&#x27;,
+      dtype=&#x27;float64&#x27;, name=&#x27;lat&#x27;, length=720))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-fa9e9362-aabf-4e47-8935-8c1d514ac3a7' class='xr-index-data-in' type='checkbox'/><label for='index-fa9e9362-aabf-4e47-8935-8c1d514ac3a7' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;1979-01-01&#x27;, &#x27;1979-02-01&#x27;, &#x27;1979-03-01&#x27;, &#x27;1979-04-01&#x27;,
                &#x27;1979-05-01&#x27;, &#x27;1979-06-01&#x27;, &#x27;1979-07-01&#x27;, &#x27;1979-08-01&#x27;,
                &#x27;1979-09-01&#x27;, &#x27;1979-10-01&#x27;,
                ...
                &#x27;2020-03-01&#x27;, &#x27;2020-04-01&#x27;, &#x27;2020-05-01&#x27;, &#x27;2020-06-01&#x27;,
                &#x27;2020-07-01&#x27;, &#x27;2020-08-01&#x27;, &#x27;2020-09-01&#x27;, &#x27;2020-10-01&#x27;,
                &#x27;2020-11-01&#x27;, &#x27;2020-12-01&#x27;],
-              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=504, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-2b7912a4-a8e0-41c4-8b07-fd6ff7a00592' class='xr-section-summary-in' type='checkbox'  ><label for='section-2b7912a4-a8e0-41c4-8b07-fd6ff7a00592' class='xr-section-summary' >Attributes: <span>(44)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>CM SAF Cloud, Albedo and Radiation dataset, AVHRR-based edition 3 (CLARA-A3)</dd><dt><span>summary :</span></dt><dd>This file contains AVHRR-based Thematic Climate Data Records (TCDR) produced by the Satellite Application Facility on Climate Monitoring (CM SAF).</dd><dt><span>id :</span></dt><dd>DOI:10.5676/EUM_SAF_CM/CLARA_AVHRR/V003</dd><dt><span>product_class :</span></dt><dd>Radiation products, monthly means</dd><dt><span>Conventions :</span></dt><dd>CF-1.7,ACDD-1.3</dd><dt><span>standard_name_vocabulary :</span></dt><dd>Standard Name Table (v70, 10 December 2019)</dd><dt><span>Metadata_Conventions :</span></dt><dd>Unidata Dataset Discovery v1.0</dd><dt><span>institution :</span></dt><dd>EUMETSAT/CMSAF</dd><dt><span>project :</span></dt><dd>Satellite Application Facility on Climate Monitoring (CM SAF)</dd><dt><span>digital_object_identifier :</span></dt><dd>10.5676/EUM_SAF_CM/CLARA_AVHRR/V003</dd><dt><span>creator_name :</span></dt><dd>DE/DWD</dd><dt><span>creator_url :</span></dt><dd>https://www.cmsaf.eu/</dd><dt><span>creator_email :</span></dt><dd>contact.cmsaf@dwd.de</dd><dt><span>references :</span></dt><dd>https://doi.org/10.5676/EUM_SAF_CM/CLARA_AVHRR/V003</dd><dt><span>source :</span></dt><dd>AVHRR global area coverage (GAC)</dd><dt><span>instrument_vocabulary :</span></dt><dd>GCMD Instruments, Version 9.1.5</dd><dt><span>cdm_data_type :</span></dt><dd>grid</dd><dt><span>filename :</span></dt><dd>SISmm19790101000000319AVPOS01GL.nc</dd><dt><span>time_coverage_start :</span></dt><dd>1979-01-01T00:00:00Z</dd><dt><span>time_coverage_end :</span></dt><dd>1979-02-01T00:00:00Z</dd><dt><span>time_coverage_duration :</span></dt><dd>P1M</dd><dt><span>time_coverage_resolution :</span></dt><dd>P1M</dd><dt><span>geospatial_lat_units :</span></dt><dd>degrees_north</dd><dt><span>geospatial_lat_resolution :</span></dt><dd>0.25 degree</dd><dt><span>geospatial_lat_min :</span></dt><dd>-90.0</dd><dt><span>geospatial_lat_max :</span></dt><dd>90.0</dd><dt><span>geospatial_lon_units :</span></dt><dd>degrees_east</dd><dt><span>geospatial_lon_resolution :</span></dt><dd>0.25 degree</dd><dt><span>geospatial_lon_min :</span></dt><dd>-180.0</dd><dt><span>geospatial_lon_max :</span></dt><dd>180.0</dd><dt><span>product_version :</span></dt><dd>3.0</dd><dt><span>variable_id :</span></dt><dd>SIS</dd><dt><span>CMSAF_gac_parameter_id :</span></dt><dd>11202</dd><dt><span>platform_vocabulary :</span></dt><dd>GCMD Platforms, Version 9.1.5</dd><dt><span>platform :</span></dt><dd>Earth Observation Satellites &gt; NOAA POES (Polar Orbiting Environmental Satellites)</dd><dt><span>instrument :</span></dt><dd>AVHRR &gt; Advanced Very High Resolution Radiometer</dd><dt><span>CMSAF_parameter_id :</span></dt><dd>CM-11202</dd><dt><span>CMSAF_parameter_code :</span></dt><dd>SIS_R3_CLARA_3_TCDR</dd><dt><span>Level1_intercalibration :</span></dt><dd>1.0</dd><dt><span>date_created :</span></dt><dd>2022-05-19T09:29:13Z</dd><dt><span>license :</span></dt><dd>The CM SAF data are owned by EUMETSAT and are available to all users free of charge and with no conditions to use. If you wish to use these products, EUMETSAT&#x27;s copyright credit must be shown by displaying the words &quot;Copyright (c) (2022) EUMETSAT&quot; under/in each of these SAF Products used in a project or shown in a publication or website.
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=504, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-13541a5f-3846-4104-8d68-dfd9ff2ef931' class='xr-section-summary-in' type='checkbox'  ><label for='section-13541a5f-3846-4104-8d68-dfd9ff2ef931' class='xr-section-summary' >Attributes: <span>(38)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>geospatial_lat_min :</span></dt><dd>-90.0</dd><dt><span>geospatial_lat_max :</span></dt><dd>90.0</dd><dt><span>geospatial_lon_min :</span></dt><dd>-180.0</dd><dt><span>geospatial_lon_max :</span></dt><dd>180.0</dd><dt><span>title :</span></dt><dd>CM SAF Cloud, Albedo and Radiation dataset, AVHRR-based edition 3 (CLARA-A3): Monthly Mean TOA Outgoing Longwave Radiation (OLR)</dd><dt><span>summary :</span></dt><dd>This file contains AVHRR-based Thematic Climate Data Records (TCDR) produced by the Satellite Application Facility on Climate Monitoring (CM SAF)</dd><dt><span>id :</span></dt><dd>DOI:10.5676/EUM_SAF_CM/CLARA_AVHRR/V003</dd><dt><span>cmsaf_product_id :</span></dt><dd>CM-11342</dd><dt><span>product_version :</span></dt><dd>3.0</dd><dt><span>creator_name :</span></dt><dd>BE/RMIB</dd><dt><span>creator_email :</span></dt><dd>contact.cmsaf@dwd.de</dd><dt><span>creator_url :</span></dt><dd>http://www.cmsaf.eu/</dd><dt><span>institution :</span></dt><dd>EUMETSAT/CMSAF</dd><dt><span>project :</span></dt><dd>Satellite Application Facility on Climate Monitoring (CM SAF)</dd><dt><span>references :</span></dt><dd>https://doi.org/10.5676/EUM_SAF_CM/CLARA_AVHRR/V003</dd><dt><span>keywords_vocabulary :</span></dt><dd>GCMD Science Keywords, Version 8.6</dd><dt><span>keywords :</span></dt><dd>EARTH SCIENCE &gt; ATMOSPHERE &gt; ATMOSPHERIC RADIATION &gt; RADIATIVE FLUX</dd><dt><span>Conventions :</span></dt><dd>CF-1.7,ACDD-1.3</dd><dt><span>standard_name_vocabulary :</span></dt><dd>Standard Name Table (v57, 11 July 2018)</dd><dt><span>date_created :</span></dt><dd>2022-03-07T08:53:36Z</dd><dt><span>geospatial_lat_units :</span></dt><dd>degrees_north</dd><dt><span>geospatial_lat_resolution :</span></dt><dd>0.25 degree</dd><dt><span>geospatial_lon_units :</span></dt><dd>degrees_east</dd><dt><span>geospatial_lon_resolution :</span></dt><dd>0.25 degree</dd><dt><span>time_coverage_start :</span></dt><dd>1979-01-01T00:00:00Z</dd><dt><span>time_coverage_end :</span></dt><dd>1979-02-01T00:00:00Z</dd><dt><span>time_coverage_duration :</span></dt><dd>P1M</dd><dt><span>time_coverage_resolution :</span></dt><dd>P1M</dd><dt><span>platform :</span></dt><dd>TIROS-N &gt; Television Infrared Observation Satellite-N</dd><dt><span>platform_vocabulary :</span></dt><dd>GCMD Platforms, Version 8.6</dd><dt><span>instrument :</span></dt><dd>AVHRR &gt; Advanced Very High Resolution Radiometer</dd><dt><span>instrument_vocabulary :</span></dt><dd>GCMD Instruments, Version 8.6</dd><dt><span>variable_id :</span></dt><dd>LW_flux</dd><dt><span>license :</span></dt><dd>The CM SAF data are owned by EUMETSAT and are available to all users free of charge and with no conditions to use. If you wish to use these products, EUMETSAT&#x27;s copyright credit must be shown by displaying the words &quot;Copyright (c) (2022) EUMETSAT&quot; under/in each of these SAF Products used in a project or shown in a publication or website.
 
-Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_CM/CLARA_AVHRR/V003 and also register as a user at http://cm-saf.eumetsat.int/ to receive latest information on CM SAF services and to get access to the CM SAF User Help Desk.</dd><dt><span>CMSAF_platform_and_orbits :</span></dt><dd> TIROSN=497;</dd><dt><span>CMSAF_L3_processor :</span></dt><dd>CMSAFGACL3_V3.0; AOD-climate-corrected</dd><dt><span>CMSAF_L2_processor :</span></dt><dd>PPS2018-patch5, CPPv6.0; P2R, V1.0</dd></dl></div></li></ul></div></div></div></div>
+Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_CM/CLARA_AVHRR/V003 and also register as a user at http://cm-saf.eumetsat.int/ to receive latest information on CM SAF services and to get access to the CM SAF User Help Desk.</dd><dt><span>source :</span></dt><dd>FCDR AVHRR-GAC : ERA-5 : OSISAF : USGS : IGBP</dd><dt><span>lineage :</span></dt><dd>pygac/gac2pps.py : NWC/PPS version v2018 : CLARA-A3 TOA toa_flux v2.0 : CLARA-A3 TOA dailymean v2.4</dd><dt><span>CMSAF_L2_processor :</span></dt><dd>CLARA-A3 TOA toa_flux v2.0</dd><dt><span>CMSAF_L3_processor :</span></dt><dd>CLARA-A3 TOA dailymean v2.4</dd></dl></div></li></ul></div></div></div></div>
 </div>
 </section>
 </section>
-<section id="use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution">
-<h2>Use case 1: The mean global Surface Incoming Shortwave (SIS) radiation distribution<a class="headerlink" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution" title="Link to this heading">#</a></h2>
-<p>Use Case #1 aims to give an overview about the SIS radiation distribution. We do that by plotting the global mean SIS from the CLARA-A3 dataset. Please note that you need to open the dataset to be able to execute this usecase, as described in the previous section.</p>
-<section id="calculation-of-the-temporal-average-of-sis">
-<h3>Calculation of the temporal average of SIS<a class="headerlink" href="#calculation-of-the-temporal-average-of-sis" title="Link to this heading">#</a></h3>
-<p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_sis” and the variable Surface Incoming Radiation or “SIS”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
+<section id="use-cases">
+<h2><a id='usecases'></a> Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">#</a></h2>
+</section>
+<section id="use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution">
+<h2><a id='uc1'></a> Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution<a class="headerlink" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution" title="Link to this heading">#</a></h2>
+<p>Use Case #1 aims to give an overview about the OLR distribution. We do that by plotting the global mean OLR from the CLARA-A3 dataset. Please note that we need to open the dataset to be able to execute this usecase, as described in the previous section <a class="reference internal" href="#load"><span class="xref myst">“Load dataset”</span></a>.</p>
+<section id="calculation-of-the-temporal-average-of-olr">
+<h3><a id='calculation_1'></a> Calculation of the temporal average of OLR<a class="headerlink" href="#calculation-of-the-temporal-average-of-olr" title="Link to this heading">#</a></h3>
+<p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_olr” and the variable Outgoing Longwave Radiation or “LW_flux”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate temporal average</span>
-<span class="n">average</span> <span class="o">=</span> <span class="n">dataset_sis</span><span class="p">[</span><span class="s1">&#39;SIS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<span class="n">average</span> <span class="o">=</span> <span class="n">dataset_olr</span><span class="p">[</span><span class="s1">&#39;LW_flux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
 
 <span class="c1"># Get longitude and latitude coordinates. Both are variables of the dataset and available with</span>
 <span class="c1"># the &quot;.variables[&#39;lat/lon&#39;]&quot; function; [:] usually means [&quot;from&quot;:&quot;till&quot;] but</span>
 <span class="c1"># without numbers it means &quot;everything&quot;</span>
-<span class="n">lon</span> <span class="o">=</span> <span class="n">dataset_sis</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
-<span class="n">lat</span> <span class="o">=</span> <span class="n">dataset_sis</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">dataset_olr</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">dataset_olr</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="plot-of-the-temporal-average-of-sis">
-<h3>Plot of the temporal average of SIS<a class="headerlink" href="#plot-of-the-temporal-average-of-sis" title="Link to this heading">#</a></h3>
+<section id="plot-of-the-temporal-average-of-olr">
+<h3><a id='plot_1'></a> Plot of the temporal average of OLR<a class="headerlink" href="#plot-of-the-temporal-average-of-olr" title="Link to this heading">#</a></h3>
 <p>With the calculation done the data is ready for a plot. Please find the plot and settings in the next section.</p>
 <p>Some further notes:</p>
 <ul class="simple">
@@ -2204,10 +2023,10 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
 
 <span class="c1"># Plot the data and set colorbar, minimum and maximum values</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;magma_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">400</span><span class="p">)</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlGnBu&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
 
 <span class="c1"># Set title and size</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean Surface Incoming Radiation from CLARA-A3 for 1979-2020&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean Outgoing Longwave Radiation from CLARA-A3 for 1979-2020&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
 
 <span class="c1"># Define gridlines with linewidth, color, opacity and style</span>
 <span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
@@ -2222,10 +2041,10 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 
 <span class="c1"># Set colorbar and adjust size, location and text</span>
 <span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Surface Incoming Radiation (W/m²)&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Outgoing Longwave Radiation (W/m²)&#39;</span><span class="p">)</span>
 
 <span class="c1"># Save figure in defined path and name</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">FIGPATH</span> <span class="o">+</span> <span class="s1">&#39;/SISmm_mean.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">FIGPATH</span> <span class="o">+</span> <span class="s1">&#39;/OLRmm_mean.png&#39;</span><span class="p">)</span>
 
 <span class="c1"># Show plot and close it afterwards to reduce the amount of storage</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -2234,46 +2053,36 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/a4da33a575fe9071034d924a4b53a08d1d7a8bdc5386b4313b1e9472184a8e91.png" src="../_images/a4da33a575fe9071034d924a4b53a08d1d7a8bdc5386b4313b1e9472184a8e91.png" />
+<img alt="../_images/1b14559670a84f139d6b9f34f2c0732ef796d464b33c7ae896c5dfe2bcce3e95.png" src="../_images/1b14559670a84f139d6b9f34f2c0732ef796d464b33c7ae896c5dfe2bcce3e95.png" />
 </div>
 </div>
-<p><strong>Figure 1</strong> shows the global mean values of the Surface Incoming Shortwave radiation (SIS). The highest values of Surface Incoming Radiation (SIS) are observed in the tropical regions and gradually decreasing towards the poles. There are however some irregularities. They are mostly caused by cloud coverage. So, the maximum values of SIS occur in the tropical and subtropical deserts (Sahara, Atacama, Namib deserts) and not at the equator where cloudy days are more common. Another example of high SIS values is the eastern parts of the tropical oceans, where trade winds cause a decrease in cloudiness (eastern parts of the Pacific and Atlantic oceans near the North American and African continents respectively). Monsoons in eastern and south-eastern Asia cause a decrease in the surface radiation as well. The sun does not rise above the horizon during the winter seasons in the Polar Regions, thus the annual averaged SIS values are the lowest there.</p>
+<p><strong>Figure 1</strong> shows the global mean values of the Outgoing Longwave Radiation (OLR).</p>
 </section>
 </section>
-<section id="use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe">
-<h2>Use case 2: Relative Anomaly. Hot summer of the year 2003 in Europe<a class="headerlink" href="#use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe" title="Link to this heading">#</a></h2>
-<p>Please note that you need to open the dataset to be able to execute this usecase, as described in the previous load data section.</p>
-<p>The spatial resolution of the CLARA-A3 radiation dataset is 0.25ºx0.25º that is roughly equal to 25x25 km. With this resolution, it is possible to conduct a regional analysis using the CLARA-A3 radiation datasets. Furthermore, we can use the CLARA-A3 radiation datasets to investigate recent meteorological events. This could be a research project for a student or provide complementary information on a special event, e.g., the analysis of recent heat waves. In recent years, a high number of heat waves appeared in Europe. Particularly interesting is the summer 2003.</p>
-<p>Firstly, we will select the data for year 2003 using <code class="docutils literal notranslate"><span class="pre">sel</span></code> argument.</p>
-<p>Then, we split the SRB data according to the seasons by using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method, with <code class="docutils literal notranslate"><span class="pre">'time.season'</span></code> as an argument, and then averaged over the years.
-Seasons are defined as follows:</p>
-<ul class="simple">
-<li><p>Spring: March, April, May</p></li>
-<li><p>Summer: June, July, August</p></li>
-<li><p>Autumn: September, October, November</p></li>
-<li><p>Winter: December, January, February</p></li>
-</ul>
+<section id="use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution">
+<h2><a id='uc2'></a> Use case 2: The mean global Reflected Solar Flux (RSF) distribution<a class="headerlink" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution" title="Link to this heading">#</a></h2>
+<p>Use Case #2 aims to give an overview about the RSF distribution. We do that by plotting the global mean RSF from the CLARA-A3 dataset. Please note that we need to open the dataset to be able to execute this usecase, as described in the previous section <a class="reference internal" href="#load"><span class="xref myst">“Load dataset”</span></a>.</p>
+<section id="calculation-of-the-temporal-average-of-rsf">
+<h3><a id='calculation_2'></a> Calculation of the temporal average of RSF<a class="headerlink" href="#calculation-of-the-temporal-average-of-rsf" title="Link to this heading">#</a></h3>
+<p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_olr” and the variable Reflected Solar Flux or “SW_flux”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Select the &#39;JJA&#39; season for the year 2003</span>
-<span class="n">jja_data_2003</span> <span class="o">=</span> <span class="n">dataset_sis</span><span class="p">[</span><span class="s1">&#39;SIS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">time</span><span class="o">=</span><span class="nb">slice</span><span class="p">(</span><span class="s1">&#39;2003-06-01&#39;</span><span class="p">,</span> <span class="s1">&#39;2003-08-31&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate temporal average</span>
+<span class="n">average</span> <span class="o">=</span> <span class="n">dataset_rsf</span><span class="p">[</span><span class="s1">&#39;SW_flux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
 
-<span class="c1"># Calculate the climatology (average) for the &#39;JJA&#39; season over all years</span>
-<span class="n">jja_climatology</span> <span class="o">=</span> <span class="n">dataset_sis</span><span class="p">[</span><span class="s1">&#39;SIS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;time.season&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">)</span>
-
-<span class="c1"># Calculate the anomaly for the year 2003 by subtracting the climatology</span>
-<span class="n">anomaly_2003</span> <span class="o">=</span> <span class="n">jja_data_2003</span> <span class="o">-</span> <span class="n">jja_climatology</span>
-
-<span class="c1"># Calculate the relative anomaly by dividing the anomaly by the climatology</span>
-<span class="n">relative_anomaly_2003</span> <span class="o">=</span> <span class="n">anomaly_2003</span> <span class="o">/</span> <span class="n">jja_climatology</span> <span class="o">*</span> <span class="mi">100</span>
+<span class="c1"># Get longitude and latitude coordinates. Both are variables of the dataset and available with</span>
+<span class="c1"># the &quot;.variables[&#39;lat/lon&#39;]&quot; function; [:] usually means [&quot;from&quot;:&quot;till&quot;] but</span>
+<span class="c1"># without numbers it means &quot;everything&quot;</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">dataset_rsf</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">dataset_rsf</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-in-relation-to-the-temporal-average-of-sis">
-<h3>Plot of the relative anomaly in 2003 of SIS for Europe in relation to the temporal average of SIS<a class="headerlink" href="#plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-in-relation-to-the-temporal-average-of-sis" title="Link to this heading">#</a></h3>
+</section>
+<section id="plot-of-the-temporal-average-of-rsf">
+<h3><a id='plot_2'></a> Plot of the temporal average of RSF<a class="headerlink" href="#plot-of-the-temporal-average-of-rsf" title="Link to this heading">#</a></h3>
 <p>With the calculation done the data is ready for a plot. Please find the plot and settings in the next section.</p>
-<p>Note: A warnung can occur due to nan’s in the dataset and possible cases where a “divide by nan” happens. That can be ignored.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create figure and size</span>
@@ -2283,61 +2092,46 @@ Seasons are defined as follows:</p>
 <span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
 
 <span class="c1"># Plot the data and set colorbar, minimum and maximum values</span>
-<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span>
-    <span class="n">relative_anomaly_2003</span><span class="o">.</span><span class="n">lon</span><span class="p">,</span>
-    <span class="n">relative_anomaly_2003</span><span class="o">.</span><span class="n">lat</span><span class="p">,</span>
-    <span class="n">relative_anomaly_2003</span><span class="o">.</span><span class="n">sel</span><span class="p">(</span><span class="n">season</span><span class="o">=</span><span class="s1">&#39;JJA&#39;</span><span class="p">),</span>
-    <span class="n">vmin</span><span class="o">=-</span><span class="mi">15</span><span class="p">,</span>
-    <span class="n">vmax</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
-    <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;RdYlBu_r&#39;</span><span class="p">,</span>
-    <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
-<span class="p">)</span>
-
-<span class="c1"># Only plot Europe</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mf">12.</span><span class="p">,</span> <span class="mf">32.</span><span class="p">,</span> <span class="mf">33.</span><span class="p">,</span> <span class="mf">65.</span><span class="p">])</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Wistia_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
 
 <span class="c1"># Set title and size</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Surface incoming radiation anomaly, summer 2003&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean Reflected Solar Flux from CLARA-A3 for 1979-2020&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Define gridlines with linewidth, color, opacity and style</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
 
 <span class="c1"># Set x- and y-axis labels to True or False</span>
 <span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="n">gl</span><span class="o">.</span><span class="n">bottom_labels</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">gl</span><span class="o">.</span><span class="n">left_labels</span> <span class="o">=</span> <span class="kc">True</span>
 
-<span class="c1"># Define gridlines with linewidth, color, opacity and style</span>
-<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
-
-<span class="c1"># Add country borders, and coastlines.</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">,</span> <span class="n">edgecolor</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
-
-<span class="c1"># Add title</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Surface incoming radiation anomaly, summer 2003&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="c1"># Set coastlines</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
 
 <span class="c1"># Set colorbar and adjust size, location and text</span>
-<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
-<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;SIS Relative Anomaly [ % ]&#39;</span><span class="p">)</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Reflected Solar Flux (W/m²)&#39;</span><span class="p">)</span>
 
 <span class="c1"># Save figure in defined path and name</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">FIGPATH</span> <span class="o">+</span> <span class="s1">&#39;/SISmm_Anomaly2003.png&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">FIGPATH</span> <span class="o">+</span> <span class="s1">&#39;/RSFmm_mean.png&#39;</span><span class="p">)</span>
+
+<span class="c1"># Show plot and close it afterwards to reduce the amount of storage</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/8e9564e33489b650cc3d20747668a60441e325d8cfac6b22b3e616f9780358e2.png" src="../_images/8e9564e33489b650cc3d20747668a60441e325d8cfac6b22b3e616f9780358e2.png" />
+<img alt="../_images/8fee8c83fd804a40c207529b7e7dfdcd6e077c8c1c7956bf6db8d10f55827468.png" src="../_images/8fee8c83fd804a40c207529b7e7dfdcd6e077c8c1c7956bf6db8d10f55827468.png" />
 </div>
 </div>
-<p><strong>Figure 2</strong> shows SIS relative anomaly for the summer 2003 (in relation of summer 1979-2020). The summer of 2003 was anomalously hot and dry with the most extreme heat wave in August. The unusually dry spring contributed to enhanced heating. Long-lasting anticyclones during the summer season caused clear-sky conditions and led to high surface radiative fluxes.</p>
-<p>The heat wave mostly affected western and central Europe. In southern and central Germany, the difference (anomaly) to the mean climatological SIS values, were as high as 30 W/m2. The climatological mean SIS values for central Europe are 200 W/m2, this increase corresponds to a relative increase of 15%. European Mediterranean countries: Spain, France, Italy, Serbia, Greece and Turkey experienced SIS values 10-15 % higher than the climatological mean. At the same time, in the northern part of Europe, the summer was nice and warm.</p>
-<p>The dry spring and hot summer had an effect on the crop yields throughout Europe. On the other hand, the ice-cream sales boomed. Also, winemakers praise 2003 as being exceptionally good for winemaking.</p>
+<p><strong>Figure 2</strong> shows the global mean values of the Reflected Solar Flux (RSF).</p>
 </section>
 </section>
-<section id="get-more-information-about-surface-radiation-budget">
-<h2>Get more information about Surface Radiation Budget<a class="headerlink" href="#get-more-information-about-surface-radiation-budget" title="Link to this heading">#</a></h2>
+<section id="get-more-information-about-earth-radiation-budget">
+<h2><a id='references'></a> Get more information about Earth Radiation Budget<a class="headerlink" href="#get-more-information-about-earth-radiation-budget" title="Link to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-surface-radiation-budget?tab=overview">About
-Surface radiation budget from 1979 to present derived from satellite observations
-</a></p></li>
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">About Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/">About the Climate Data Store</a></p></li>
 </ul>
 </section>
@@ -2373,24 +2167,6 @@ Surface radiation budget from 1979 to present derived from satellite observation
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
-    <a class="left-prev"
-       href="erb-outgoing-longwave-radiation.html"
-       title="previous page">
-      <i class="fa-solid fa-angle-left"></i>
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="total-column-water-vapour-combi.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exploring Total Column Water Vapour information in the COMBI dataset</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -2407,11 +2183,12 @@ Surface radiation budget from 1979 to present derived from satellite observation
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="introduction"></a> Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description"><a id="description"></a> Dataset description</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition"><a id="data"></a> Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
@@ -2419,16 +2196,18 @@ Surface radiation budget from 1979 to present derived from satellite observation
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset">Load dataset</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution">Use case 1: The mean global Surface Incoming Shortwave (SIS) radiation distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-sis">Calculation of the temporal average of SIS</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-sis">Plot of the temporal average of SIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases"><a id="usecases"></a> Use Cases</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution"><a id="uc1"></a> Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-olr"><a id="calculation_1"></a> Calculation of the temporal average of OLR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-olr"><a id="plot_1"></a> Plot of the temporal average of OLR</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe">Use case 2: Relative Anomaly. Hot summer of the year 2003 in Europe</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-relative-anomaly-in-2003-of-sis-for-europe-in-relation-to-the-temporal-average-of-sis">Plot of the relative anomaly in 2003 of SIS for Europe in relation to the temporal average of SIS</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution"><a id="uc2"></a> Use case 2: The mean global Reflected Solar Flux (RSF) distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-rsf"><a id="calculation_2"></a> Calculation of the temporal average of RSF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-rsf"><a id="plot_2"></a> Plot of the temporal average of RSF</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-surface-radiation-budget">Get more information about Surface Radiation Budget</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget"><a id="references"></a> Get more information about Earth Radiation Budget</a></li>
 </ul>
   </nav></div>
 
