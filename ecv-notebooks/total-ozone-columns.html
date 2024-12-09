@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Exploring an ozone product available through the Climate Data Store (CDS) &#8212; C3S Training</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/total-ozone-columns';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -75,19 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,12 +109,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -129,9 +137,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -141,12 +153,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="C3S Training - Home"/>
+    <script>document.write(`<img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="C3S Training - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -169,6 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Total Column Ozone</a></li>
 </ul>
@@ -213,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -222,14 +246,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -254,14 +278,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/ecv-notebooks/total-ozone-columns.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -382,26 +406,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -442,11 +468,11 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="exploring-an-ozone-product-available-through-the-climate-data-store-cds">
-<h1>Exploring an ozone product available through the Climate Data Store (CDS)<a class="headerlink" href="#exploring-an-ozone-product-available-through-the-climate-data-store-cds" title="Permalink to this heading">#</a></h1>
+<h1>Exploring an ozone product available through the Climate Data Store (CDS)<a class="headerlink" href="#exploring-an-ozone-product-available-through-the-climate-data-store-cds" title="Link to this heading">#</a></h1>
 <p>In this notebook we show a practical example on how to investigate ozone products from the <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-ozone-v1?tab=overview">CDS</a>. We will explore here the spatial and temporal ozone distribution of the total ozone columns. Total colum means here, the sum over all ozone from ground till top of the atmosphere. These are generally measured from space using earthshine backscattered radiance
 observations from nadir-viewing instruments. For altitude dependent information we refer to the ozone vertical profiles.
 In a first step we will show how to retrieve one of the total ozone column dataset from the CDS. This dataset consists out of gridded monthly ozone files, which contain global distributions of ozone vertical columns on a global latitude, longitude grid.
@@ -479,13 +505,13 @@ td, th {
 </table>
 <br>
 <section id="the-merged-total-column-product">
-<h2>The merged total column product<a class="headerlink" href="#the-merged-total-column-product" title="Permalink to this heading">#</a></h2>
+<h2>The merged total column product<a class="headerlink" href="#the-merged-total-column-product" title="Link to this heading">#</a></h2>
 <p>In this notebook we choose to demonstrate the GTO-ECV product. GTO-ECV is a merged data product, meaning that it was build from an ensemble of bias-corrected single sensor products. The spatial resolution is 1°x1°. An interesting feature of this product is that it provides a consistent and accurate long-term total ozone dataset covering the period from July 1995 until April 2023. Note that this dataset can be extended in time on the CDS, as new data become available. Detailed information on GTO-ECV and on all other ozone products can be found in the <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-ozone-v1?tab=documentation">documentation section of the CDS catalogue entry</a>.</p>
 </section>
 <section id="time-series-diagram-of-ozone">
-<h2>Time series diagram of ozone<a class="headerlink" href="#time-series-diagram-of-ozone" title="Permalink to this heading">#</a></h2>
+<h2>Time series diagram of ozone<a class="headerlink" href="#time-series-diagram-of-ozone" title="Link to this heading">#</a></h2>
 <section id="import-the-python-modules">
-<h3>Import the python modules<a class="headerlink" href="#import-the-python-modules" title="Permalink to this heading">#</a></h3>
+<h3>Import the python modules<a class="headerlink" href="#import-the-python-modules" title="Link to this heading">#</a></h3>
 <p>First we import the python modules that contain the high-level functions that we will use for our purposes. Most of the libraries are commonly used libraries.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -506,7 +532,7 @@ td, th {
 </div>
 </section>
 <section id="downloading-the-gto-ecv-product">
-<h3>Downloading the GTO-ECV product<a class="headerlink" href="#downloading-the-gto-ecv-product" title="Permalink to this heading">#</a></h3>
+<h3>Downloading the GTO-ECV product<a class="headerlink" href="#downloading-the-gto-ecv-product" title="Link to this heading">#</a></h3>
 <p>The library that takes care of downloading the data from the CDS is the <em>cadspi</em> library. Which can be installed in a common way with the <em>pip</em> command. We only need to set manually the CDS API credentials, see the information on the <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api"><em>How to use the CDS API</em></a> webpage.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -531,7 +557,7 @@ td, th {
 by choosing the desired fields and clicking on <em>show API request code</em>.</p>
 </section>
 <section id="set-up-cds-api-credentials">
-<h3>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h3>
+<h3>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h3>
 <p>To set up your CDS API credentials, please login/register on the <a class="reference external" href="https://cds.climate.copernicus.eu/">CDS</a>, then follow the <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api">instructions here</a> to obtain your API key.</p>
 <p>You can add this API key to your current session by uncommenting the code below and replacing <code class="docutils literal notranslate"><span class="pre">#########</span></code> with your API key.</p>
 <div class="cell docutils container">
@@ -565,7 +591,7 @@ by choosing the desired fields and clicking on <em>show API request code</em>.</
 </div>
 </section>
 <section id="analysis-and-visualisation-of-the-data">
-<h3>Analysis and visualisation of the data<a class="headerlink" href="#analysis-and-visualisation-of-the-data" title="Permalink to this heading">#</a></h3>
+<h3>Analysis and visualisation of the data<a class="headerlink" href="#analysis-and-visualisation-of-the-data" title="Link to this heading">#</a></h3>
 <p>Making the ozone dataset accessible in our notebook is done by converting the downloaded datafiles to a list of xarray objects by using:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -632,7 +658,7 @@ The blank areas in the plot correspond to missing data (e.g. yearly polar night 
 </section>
 </section>
 <section id="the-evolution-of-the-global-ozone-distribution-during-the-course-of-the-year-2021">
-<h2>The evolution of the global ozone distribution during the course of the year 2021<a class="headerlink" href="#the-evolution-of-the-global-ozone-distribution-during-the-course-of-the-year-2021" title="Permalink to this heading">#</a></h2>
+<h2>The evolution of the global ozone distribution during the course of the year 2021<a class="headerlink" href="#the-evolution-of-the-global-ozone-distribution-during-the-course-of-the-year-2021" title="Link to this heading">#</a></h2>
 <p>In this section we will create a series of maps which show the total ozone columns during the year 2021. We use the same dataset as in the previous section, but now limited to the year 2021.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -680,7 +706,7 @@ The blank areas in the plot correspond to missing data (e.g. yearly polar night 
 <p>These plots illustrate the seasonal evolution of the global ozone distribution. The variability of stratospheric ozone in the Arctic and at mid-latitudes is particularly important in spring when returning sunlight (after the polar night) alters stratospheric temperatures via shortwave heating, thus modifying atmospheric dynamics. During the mid-latitude summer season and in the tropics, ozone columns are smaller and show less variability. The Southern hemisphere is characterised by the ozone hole, which develops each year in early spring (from September to November). The signature of this ozone hole is captured in the data noting that at high southern latitudes data remain unavailable (the blank regions corresponds to the polar night when no measurements can be performed).</p>
 </section>
 <section id="the-evolution-of-the-ozone-hole-above-antarctica">
-<h2>The evolution of the ozone hole above Antarctica<a class="headerlink" href="#the-evolution-of-the-ozone-hole-above-antarctica" title="Permalink to this heading">#</a></h2>
+<h2>The evolution of the ozone hole above Antarctica<a class="headerlink" href="#the-evolution-of-the-ozone-hole-above-antarctica" title="Link to this heading">#</a></h2>
 <p>A very interesting figure can be made by just changing the projection of the previous plot. Now we look in a polar projection over the South Pole to investigate
 the ozone hole over Antartica during austral spring.</p>
 <div class="cell docutils container">
@@ -716,7 +742,7 @@ the ozone hole over Antartica during austral spring.</p>
 <p>This plot shows the ozone hole in the Southern hemisphere seen from a polar projection. The ozone hole (dark region) develops each year in early spring (from September to November). As mentioned already, the blank regions are due to the polar night.</p>
 </section>
 <section id="time-series-of-the-ozone-hole-over-the-years-in-the-polar-projection-during-october">
-<h2>Time series of the ozone hole over the years in the polar projection during October<a class="headerlink" href="#time-series-of-the-ozone-hole-over-the-years-in-the-polar-projection-during-october" title="Permalink to this heading">#</a></h2>
+<h2>Time series of the ozone hole over the years in the polar projection during October<a class="headerlink" href="#time-series-of-the-ozone-hole-over-the-years-in-the-polar-projection-during-october" title="Link to this heading">#</a></h2>
 <p>In line with the two previous use cases, we can also show the evolution of the ozone hole over the years 1995 to 2022 during the month October.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -786,11 +812,10 @@ the sensors included in GTO-ECV in the later period. Moreover, the size of the G
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="total-column-water-vapour-combi.html"
@@ -810,10 +835,7 @@ the sensors included in GTO-ECV in the later period. Moreover, the size of the G
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -821,6 +843,7 @@ the sensors included in GTO-ECV in the later period. Moreover, the size of the G
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -860,9 +883,10 @@ By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Cen
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -886,8 +910,8 @@ By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Cen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

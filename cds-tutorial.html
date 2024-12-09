@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Climate Data Store Tutorial &#8212; C3S Training</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'cds-tutorial';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -73,19 +69,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -107,12 +107,22 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -127,9 +137,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -139,12 +153,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/C3S–POS–LINE.png" class="logo__image only-light" alt="C3S Training - Home"/>
+    <script>document.write(`<img src="_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="C3S Training - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -167,6 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-ozone-columns.html">Total Column Ozone</a></li>
 </ul>
@@ -211,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -220,14 +246,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -252,14 +278,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/cds-tutorial.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -380,26 +406,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -451,16 +479,16 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <p><img alt="logo" src="_images/LogoLine_horizon_C3S.png" /></p>
 <br><section class="tex2jax_ignore mathjax_ignore" id="climate-data-store-tutorial">
-<h1>Climate Data Store Tutorial<a class="headerlink" href="#climate-data-store-tutorial" title="Permalink to this heading">#</a></h1>
+<h1>Climate Data Store Tutorial<a class="headerlink" href="#climate-data-store-tutorial" title="Link to this heading">#</a></h1>
 <p>This notebook provides you an introduction to the Copernicus Climate Data Store (CDS), an overview of the type of data that can be accessed and gives practical examples how to access and retrieve data from the CDS. <strong>This notebook is not yet applicable for accessing and retrieving data from the new
 <a class="reference external" href="https://cds-beta.climate.copernicus.eu/">CDS-Beta</a>
 but will soon be updated</strong>.</p>
 <section id="outline">
-<h2>Outline<a class="headerlink" href="#outline" title="Permalink to this heading">#</a></h2>
+<h2>Outline<a class="headerlink" href="#outline" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>1 - About</p></li>
 <li><p>2 - C3S data retrieval</p>
@@ -490,28 +518,28 @@ td, th {
   </tr>
 </table><hr></section>
 <section id="about">
-<h2>About<a class="headerlink" href="#about" title="Permalink to this heading">#</a></h2>
+<h2>About<a class="headerlink" href="#about" title="Link to this heading">#</a></h2>
 <p>The <a class="reference external" href="https://cds.climate.copernicus.eu/">Copernicus Climate Data Store (CDS)</a> is the data access portal of the <a class="reference external" href="https://climate.copernicus.eu/">Copernicus Climate Change Service (C3S)</a> and offers access to <code class="docutils literal notranslate"><span class="pre">data</span></code> and <code class="docutils literal notranslate"><span class="pre">applications</span></code> about the Earth’s past, present and future climate.</p>
 <p><img alt="logo" src="_images/cds_landing_page.png" /></p>
 </section>
 <section id="data-retrieval">
-<h2>Data retrieval<a class="headerlink" href="#data-retrieval" title="Permalink to this heading">#</a></h2>
+<h2>Data retrieval<a class="headerlink" href="#data-retrieval" title="Link to this heading">#</a></h2>
 <p>There are two ways to access data from the Copernicus Climate Data Store (CDS):</p>
 <ul class="simple">
-<li><p><span class="xref myst">interactively</span> via the CDS web interface, or</p></li>
-<li><p><span class="xref myst">programmatically</span> with the CDS API</p></li>
+<li><p><a class="reference internal" href="#access_manual"><span class="xref myst">interactively</span></a> via the CDS web interface, or</p></li>
+<li><p><a class="reference internal" href="#access_programmatic"><span class="xref myst">programmatically</span></a> with the CDS API</p></li>
 </ul>
 <section id="access-data-interactively-via-the-cds-web-interface">
-<h3>Access data interactively via the CDS web interface<a class="headerlink" href="#access-data-interactively-via-the-cds-web-interface" title="Permalink to this heading">#</a></h3>
+<h3>Access data interactively via the CDS web interface<a class="headerlink" href="#access-data-interactively-via-the-cds-web-interface" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">CDS</span> <span class="pre">web</span> <span class="pre">interface</span></code> allows you to interactively <code class="docutils literal notranslate"><span class="pre">browse</span></code>, <code class="docutils literal notranslate"><span class="pre">select</span></code> and <code class="docutils literal notranslate"><span class="pre">download</span></code> datasets offered by the CDS. First, under <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/search?type=dataset">Datasets</a>, you can browse and select the dataset you are interested in. In a second step, you can then specify details of the data download form you wish to submit.</p>
 <section id="filter-and-select-a-dataset">
-<h4>Filter and select a dataset<a class="headerlink" href="#filter-and-select-a-dataset" title="Permalink to this heading">#</a></h4>
+<h4>Filter and select a dataset<a class="headerlink" href="#filter-and-select-a-dataset" title="Link to this heading">#</a></h4>
 <p>As a first step, you can <code class="docutils literal notranslate"><span class="pre">browse</span></code> and <code class="docutils literal notranslate"><span class="pre">filter</span></code> the dataset you are interested in. The <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/search?type=dataset">Datasets</a> interface allows you either to select data based on different categories, e.g. <code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">type</span></code>, <code class="docutils literal notranslate"><span class="pre">Variable</span> <span class="pre">domain</span></code>, <code class="docutils literal notranslate"><span class="pre">Spatial</span> <span class="pre">/</span> <span class="pre">Temporal</span> <span class="pre">coverage</span></code>, but also offers a free text search. The list of datasets in the main window allows you to select the dataset you are interested in.</p>
 <br><p><img alt="logo" src="_images/cds_web_interface_1.png" /></p>
 <br><p>Once you selected a dataset, you then get redirected to a data description section, which provides you an overview of the chosen dataset as well as the option to specify the dataset you would like to download and to also to submit the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code>.</p>
 <br></section>
 <section id="submit-the-download-data-form">
-<h4>Submit the <em>Download data</em> form<a class="headerlink" href="#submit-the-download-data-form" title="Permalink to this heading">#</a></h4>
+<h4>Submit the <em>Download data</em> form<a class="headerlink" href="#submit-the-download-data-form" title="Link to this heading">#</a></h4>
 <p>The <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">description</span></code> section (see 1) provides you an overview of the dataset, including a list of variables that are available. Under the tab <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">data</span></code>, the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code> opens (see 2) which allows you to  interactively filter the dataset based on specific keywords, e.g.:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">Product</span> <span class="pre">type</span></code></p></li>
@@ -522,7 +550,7 @@ td, th {
 </ul>
 <p>At the end of the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code>, you get three options: <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Toolbox</span> <span class="pre">request</span></code> and <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">Form</span></code>. If you want to download the data interactively, the data requests will be executed as soon as you click on the <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">Form</span></code> button.</p>
 <p><strong>Note:</strong> You need to be logged into the ADS portal and you have to accept the Terms and Conditions of the dataset before being able to download data.</p>
-<p>You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, if you want to request data programmatically. See <span class="xref myst">Section 2.2</span> for further information. You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Toolbox</span> <span class="pre">request</span></code>  if you want to request data via the CDS Toolbox. Learn more about the CDS Toolbox <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/toolbox">here</a>.</p>
+<p>You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, if you want to request data programmatically. See <a class="reference internal" href="#access_programmatic"><span class="xref myst">Section 2.2</span></a> for further information. You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Toolbox</span> <span class="pre">request</span></code>  if you want to request data via the CDS Toolbox. Learn more about the CDS Toolbox <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/toolbox">here</a>.</p>
 <div class="alert alert-block alert-success">
 <b>NOTE</b>: <br>
     Under the tab <code>Your requests</code> in the main menu, you can monitor the status of your data requests.</div>
@@ -530,10 +558,10 @@ td, th {
 <br></section>
 </section>
 <section id="access-data-programmatically-with-the-cds-api">
-<h3>Access data programmatically with the CDS API<a class="headerlink" href="#access-data-programmatically-with-the-cds-api" title="Permalink to this heading">#</a></h3>
+<h3>Access data programmatically with the CDS API<a class="headerlink" href="#access-data-programmatically-with-the-cds-api" title="Link to this heading">#</a></h3>
 <p>The <code class="docutils literal notranslate"><span class="pre">Climate</span> <span class="pre">Data</span> <span class="pre">Store</span> <span class="pre">Application</span> <span class="pre">Program</span> <span class="pre">Interface</span> <span class="pre">(CDS</span> <span class="pre">API)</span></code> is a Python library which allows you to access data from the CDS programmatically. The library is available for both Python versions, Python 2.7.x and Python 3, but we recommend to use the library under Python 3. In order to use the CDS API, follow the steps below:</p>
 <section id="install-the-cds-api-key">
-<h4>Install the CDS API key<a class="headerlink" href="#install-the-cds-api-key" title="Permalink to this heading">#</a></h4>
+<h4>Install the CDS API key<a class="headerlink" href="#install-the-cds-api-key" title="Link to this heading">#</a></h4>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Self-register</a> at the CDS registration page (if you do not have an account yet)</p></li>
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/user/login">Login</a> to the CDS portal and go to the <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">api-how-to page</a></p></li>
@@ -559,7 +587,7 @@ td, th {
 </div>
 <br></section>
 <section id="alternative-set-cds-api-credentials-manually">
-<h4>Alternative: Set CDS API credentials manually<a class="headerlink" href="#alternative-set-cds-api-credentials-manually" title="Permalink to this heading">#</a></h4>
+<h4>Alternative: Set CDS API credentials manually<a class="headerlink" href="#alternative-set-cds-api-credentials-manually" title="Link to this heading">#</a></h4>
 <p>Alternatively, you can also define variables for <code class="docutils literal notranslate"><span class="pre">url</span></code> and <code class="docutils literal notranslate"><span class="pre">key</span></code>. These variables can then be set when you define the <code class="docutils literal notranslate"><span class="pre">cdsapi.Client(url=URL,</span> <span class="pre">key=KEY)</span></code> in your script (see next section for the different components of a data retrieval request).</p>
 <p><strong>Please note:</strong> in the workflow notebooks, we will use this modality and set manually the CDS API key information for the data retrievals.</p>
 <div class="cell docutils container">
@@ -572,18 +600,18 @@ td, th {
 </div>
 <br></section>
 <section id="install-the-cds-api-client">
-<h4>Install the CDS API client<a class="headerlink" href="#install-the-cds-api-client" title="Permalink to this heading">#</a></h4>
+<h4>Install the CDS API client<a class="headerlink" href="#install-the-cds-api-client" title="Link to this heading">#</a></h4>
 <p>The next step is to install the <code class="docutils literal notranslate"><span class="pre">CDS</span> <span class="pre">API</span> <span class="pre">client</span></code>. You can do this with the package management system <code class="docutils literal notranslate"><span class="pre">pip</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install cdsapi
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cdsapi
 </pre></div>
 </div>
 </div>
 </div>
 <br></section>
 <section id="use-the-cds-api-client-for-data-access">
-<h4>Use the CDS API client for data access<a class="headerlink" href="#use-the-cds-api-client-for-data-access" title="Permalink to this heading">#</a></h4>
+<h4>Use the CDS API client for data access<a class="headerlink" href="#use-the-cds-api-client-for-data-access" title="Link to this heading">#</a></h4>
 <p>Once the <code class="docutils literal notranslate"><span class="pre">CDS</span> <span class="pre">API</span></code> is installed, it can be used to request data from the Climate Data Store.</p>
 <p>Below, you see the principle of a <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">retrieval</span></code> request. You always have to make sure to first import the <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> and define a <code class="docutils literal notranslate"><span class="pre">cdsapi.Client()</span></code> before you are able to execute an <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">request</span></code>. You can use the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/search?type=dataset">web interface</a> to browse through the datasets. At the end of the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code>, there is the option to choose <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>. If you click this button, the <code class="docutils literal notranslate"><span class="pre">API</span> <span class="pre">request</span></code> appears (see example below), which you can copy paste into your coding workflow.</p>
 <br>
@@ -596,7 +624,7 @@ td, th {
 </section>
 </section>
 <section id="further-resources">
-<h3>Further resources<a class="headerlink" href="#further-resources" title="Permalink to this heading">#</a></h3>
+<h3>Further resources<a class="headerlink" href="#further-resources" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://confluence.ecmwf.int/x/QhhsCg">Climate Data Store (ADS) documentation</a></p></li>
 <li><p><a class="reference external" href="https://confluence.ecmwf.int/x/RKOpD">Common Error Messages for CDS Requests</a></p></li>
@@ -605,11 +633,11 @@ td, th {
 <hr></section>
 </section>
 <section id="example-data-request">
-<h2>Example data request<a class="headerlink" href="#example-data-request" title="Permalink to this heading">#</a></h2>
+<h2>Example data request<a class="headerlink" href="#example-data-request" title="Link to this heading">#</a></h2>
 <section id="example-era5-land-hourly-data-from-1950-to-present">
-<h3>Example: <strong>ERA5-Land hourly data from 1950 to present</strong><a class="headerlink" href="#example-era5-land-hourly-data-from-1950-to-present" title="Permalink to this heading">#</a></h3>
+<h3>Example: <strong>ERA5-Land hourly data from 1950 to present</strong><a class="headerlink" href="#example-era5-land-hourly-data-from-1950-to-present" title="Link to this heading">#</a></h3>
 <blockquote>
-<div><p>Data used in <span class="xref myst">113_c3s_climate_indices</span></p>
+<div><p>Data used in <a class="reference internal" href="#./113_c3s_climate_indices.ipynb"><span class="xref myst">113_c3s_climate_indices</span></a></p>
 </div></blockquote>
 <p>CDS API name: <code class="docutils literal notranslate"><span class="pre">reanalysis-era5-land</span></code></p>
 <blockquote>
@@ -694,16 +722,12 @@ td, th {
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -711,6 +735,7 @@ td, th {
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -761,9 +786,10 @@ By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Cen
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -787,8 +813,8 @@ By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Cen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="./" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assessment &#8212; C3S Training</title>
   
@@ -15,52 +14,49 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
-    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
-    <script src="_static/jquery.js"></script>
-    <script src="_static/underscore.js"></script>
-    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="_static/doctools.js"></script>
-    <script src="_static/clipboard.min.js"></script>
-    <script src="_static/copybutton.js"></script>
-    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="_static/copybutton.js?v=f281be69"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="_static/togglebutton.js"></script>
+    <script src="_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script src="_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualising-fwi-for-esotc';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
@@ -75,19 +71,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -109,12 +109,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -129,9 +137,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="intro.html">
+  
   
   
   
@@ -141,12 +153,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/C3S–POS–LINE.png" class="logo__image only-light" alt="C3S Training - Home"/>
+    <script>document.write(`<img src="_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="C3S Training - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -169,6 +192,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-ozone-columns.html">Total Column Ozone</a></li>
 </ul>
@@ -213,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -222,14 +246,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -254,14 +278,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/visualising-fwi-for-esotc.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -382,26 +406,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -450,11 +476,11 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <p><img alt="logo" src="_images/LogoLine_horizon_CEMS.png" /></p>
 <br><section class="tex2jax_ignore mathjax_ignore" id="visualising-the-fire-weather-index-fwi-for-the-european-state-of-the-climate-esotc-assessment">
-<h1>Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assessment<a class="headerlink" href="#visualising-the-fire-weather-index-fwi-for-the-european-state-of-the-climate-esotc-assessment" title="Permalink to this heading">#</a></h1>
+<h1>Visualising the Fire Weather Index (FWI) for the European State of the Climate (ESOTC) assessment<a class="headerlink" href="#visualising-the-fire-weather-index-fwi-for-the-european-state-of-the-climate-esotc-assessment" title="Link to this heading">#</a></h1>
 <div class="alert alert-block alert-info">
 <b>Note:</b> The data used in this notebook were provided by the <a href="https://effis.jrc.ec.europa.eu">CEMS-EMS European Forest Fire Information System – EFFIS</a> of the European Commission Joint Research Centre and can be accessed via the <a href="https://ewds.climate.copernicus.eu/cdsapp#!/dataset/cems-fire-historical-v1?tab=overview">Climate Data Store</a>. If you use this data, we require that you to acknowledge the source using the citation below:
 <p>Copernicus Climate Change Service, Climate Data Store, (2019): Fire danger indices historical data from the Copernicus Emergency Management Service. Copernicus Climate Change Service (C3S) Climate Data Store (CDS). DOI: <a href="https://doi.org/10.24381/cds.0e89c522">10.24381/cds.0e89c522</a> (Accessed on DD-MMM-YYYY)</p>
@@ -483,15 +509,15 @@ td, th {
         <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
   </tr>
 </table><br><section id="importing-all-the-necessary-python-libraries">
-<h2>Importing all the necessary python libraries<a class="headerlink" href="#importing-all-the-necessary-python-libraries" title="Permalink to this heading">#</a></h2>
+<h2>Importing all the necessary python libraries<a class="headerlink" href="#importing-all-the-necessary-python-libraries" title="Link to this heading">#</a></h2>
 <p>Before we begin, we must prepare our enviroment. This includes installing the Application Programming Interface (API) of the CDS, and importing the various python libraries we will need.</p>
 <p>The following code cells install and import the cdsapi and several other packages used in this notebook.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># If necessary install the required packages.</span>
-<span class="o">!</span>pip -q install xarray 
-<span class="o">!</span>pip -q install <span class="s1">&#39;cdsapi&gt;=0.7.0&#39;</span>
-<span class="o">!</span>pip -q install matplotlib cartopy
+<span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>xarray<span class="w"> </span>
+<span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;cdsapi&gt;=0.7.0&#39;</span>
+<span class="o">!</span>pip<span class="w"> </span>-q<span class="w"> </span>install<span class="w"> </span>matplotlib<span class="w"> </span>cartopy
 </pre></div>
 </div>
 </div>
@@ -520,9 +546,9 @@ td, th {
 </div>
 </section>
 <section id="search-and-download-the-data">
-<h2>1. Search and download the data<a class="headerlink" href="#search-and-download-the-data" title="Permalink to this heading">#</a></h2>
+<h2>1. Search and download the data<a class="headerlink" href="#search-and-download-the-data" title="Link to this heading">#</a></h2>
 <section id="enter-your-cds-api-key">
-<h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this heading">#</a></h3>
+<h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Link to this heading">#</a></h3>
 <p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API.</p>
 <p>If you have not set up your CDS API credentials with a <code class="docutils literal notranslate"><span class="pre">~/.cdsapirc</span></code> file, it is possible to provide the credentials when initialising the <code class="docutils literal notranslate"><span class="pre">cdsapi.Client</span></code>. To do this we must define the two variables needed to establish a connection: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> . The <code class="docutils literal notranslate"><span class="pre">URL</span></code> for the cds api is common and you do not need to modify that field. The <code class="docutils literal notranslate"><span class="pre">KEY</span></code> is string of characters made up of your your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="https://cds-beta.climate.copernicus.eu">https://cds-beta.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">https://cds-beta.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <p>NOTE: If you have set up your cdsapi key using a ~/.cdsapirc you do not need to add your key below.</p>
@@ -555,7 +581,7 @@ td, th {
 </div>
 </section>
 <section id="find-the-fire-danger-indices-historical-data">
-<h3>Find the fire danger indices historical data<a class="headerlink" href="#find-the-fire-danger-indices-historical-data" title="Permalink to this heading">#</a></h3>
+<h3>Find the fire danger indices historical data<a class="headerlink" href="#find-the-fire-danger-indices-historical-data" title="Link to this heading">#</a></h3>
 <p>In this notebook we calculate and plot the diffrence between number of days when FWI&gt;50 in 2022 and mean number between 1991-2020. The data can be found in <a class="reference external" href="https://ewds.climate.copernicus.eu/cdsapp#!/dataset/cems-fire-historical-v1?tab=form">Fire danger indices historical data from the Copernicus Emergency Management Service</a></p>
 <div class="alert alert-block alert-info">
 <b>Note:</b> In this demonstrative example we're using only 5 years (2015-2020). For a representative climatology a period of 30 years is advised, and the latest ESOTC report use the period: 1991-2020.
@@ -625,9 +651,9 @@ td, th {
 </section>
 </section>
 <section id="calculate-the-esotc-fwi-metric">
-<h2>2: Calculate the ESoTC FWI metric<a class="headerlink" href="#calculate-the-esotc-fwi-metric" title="Permalink to this heading">#</a></h2>
+<h2>2: Calculate the ESoTC FWI metric<a class="headerlink" href="#calculate-the-esotc-fwi-metric" title="Link to this heading">#</a></h2>
 <section id="load-and-inspect-the-global-data-with-xarray">
-<h3>Load and inspect the global data with xarray<a class="headerlink" href="#load-and-inspect-the-global-data-with-xarray" title="Permalink to this heading">#</a></h3>
+<h3>Load and inspect the global data with xarray<a class="headerlink" href="#load-and-inspect-the-global-data-with-xarray" title="Link to this heading">#</a></h3>
 <p>To ensure that we do not run out of memory, we open the data using xarray’s in-built dask functionality via the keyword <code class="docutils literal notranslate"><span class="pre">chunks</span></code>. In the example below xarray will only load 365 time steps into memory at any one time.</p>
 <p>At this point we also set the longitude dimension to the range -180 to +180, the source data is provided from 0 to 360.</p>
 <div class="cell docutils container">
@@ -672,7 +698,7 @@ td, th {
 </div>
 </section>
 <section id="calculate-the-anomaly-in-the-number-of-days-with-fire-weather-index-50">
-<h3>Calculate the anomaly in the number of days with Fire Weather Index &gt; 50<a class="headerlink" href="#calculate-the-anomaly-in-the-number-of-days-with-fire-weather-index-50" title="Permalink to this heading">#</a></h3>
+<h3>Calculate the anomaly in the number of days with Fire Weather Index &gt; 50<a class="headerlink" href="#calculate-the-anomaly-in-the-number-of-days-with-fire-weather-index-50" title="Link to this heading">#</a></h3>
 <p>The first step is to extract the period we want to analyse (1st May to 30th September) and count the number of days per year where FWI is greater than our threshold, 50.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1752,7 +1778,7 @@ Coordinates:
 </section>
 </section>
 <section id="plot-the-data-as-maps">
-<h2>3. Plot the data as maps<a class="headerlink" href="#plot-the-data-as-maps" title="Permalink to this heading">#</a></h2>
+<h2>3. Plot the data as maps<a class="headerlink" href="#plot-the-data-as-maps" title="Link to this heading">#</a></h2>
 <p>First we define a plotting function that we will use throughout this section</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1848,7 +1874,7 @@ Coordinates:
 </div>
 <p>The figure above displays the 2020 anomaly, with respect to a 2015-2019 reference period, for the number of days where the FWI is considered high, i.e. &gt;50. Red indicates where there were more days with high FWI in 2020 than the refence period, and blue indicates that there were fewer days with high FWI.</p>
 <section id="produce-maps-for-each-of-the-esotc-regions">
-<h3>Produce maps for each of the ESOTC Regions<a class="headerlink" href="#produce-maps-for-each-of-the-esotc-regions" title="Permalink to this heading">#</a></h3>
+<h3>Produce maps for each of the ESOTC Regions<a class="headerlink" href="#produce-maps-for-each-of-the-esotc-regions" title="Link to this heading">#</a></h3>
 <p><strong>ESOTC Regions</strong></p>
 <p>Europe: 25°W–40°E, 34°–72°N <br>
 Southwestern Europe: 25°W–15°E, 34°–45°N <br>
@@ -1897,9 +1923,9 @@ Central Europe: 2°–24°E, 45°–55°N</p>
 </section>
 </section>
 <section id="plotting-timeseries-of-weekly">
-<h2>Plotting Timeseries of Weekly<a class="headerlink" href="#plotting-timeseries-of-weekly" title="Permalink to this heading">#</a></h2>
+<h2>Plotting Timeseries of Weekly<a class="headerlink" href="#plotting-timeseries-of-weekly" title="Link to this heading">#</a></h2>
 <section id="vs-1991-2020-as-climate">
-<h3>2022 vs 1991-2020 as Climate<a class="headerlink" href="#vs-1991-2020-as-climate" title="Permalink to this heading">#</a></h3>
+<h3>2022 vs 1991-2020 as Climate<a class="headerlink" href="#vs-1991-2020-as-climate" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">region</span><span class="p">,</span> <span class="n">config</span> <span class="ow">in</span> <span class="n">esotc_regions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -2023,11 +2049,10 @@ Northeastern Europe
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="ci-windchill.html"
@@ -2047,10 +2072,7 @@ Northeastern Europe
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -2058,6 +2080,7 @@ Northeastern Europe
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -2105,9 +2128,10 @@ By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Cen
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -2131,8 +2155,8 @@ By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Cen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>

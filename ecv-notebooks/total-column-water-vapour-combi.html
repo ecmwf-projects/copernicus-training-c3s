@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Exploring Total Column Water Vapour information in the COMBI dataset &#8212; C3S Training</title>
   
@@ -15,59 +14,56 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/total-column-water-vapour-combi';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Exploring an ozone product available through the Climate Data Store (CDS)" href="total-ozone-columns.html" />
-    <link rel="prev" title="Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data" href="erb-outgoing-longwave-radiation.html" />
+    <link rel="prev" title="Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset" href="srb-climatology-and-anomaly.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -77,19 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -111,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -131,9 +139,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -143,12 +155,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="C3S Training - Home"/>
+    <script>document.write(`<img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="C3S Training - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -171,6 +194,7 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Total Column Water Vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Total Column Ozone</a></li>
 </ul>
@@ -215,7 +239,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -224,14 +248,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -256,14 +280,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/ecv-notebooks/total-column-water-vapour-combi.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onBinder"
+   title="Launch on Binder"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_binder.svg">
+    <img alt="Binder logo" src="../_static/images/logo_binder.svg">
   </span>
 <span class="btn__text-container">Binder</span>
 </a>
@@ -384,26 +408,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -468,11 +494,11 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="exploring-total-column-water-vapour-information-in-the-combi-dataset">
-<h1>Exploring Total Column Water Vapour information in the COMBI dataset<a class="headerlink" href="#exploring-total-column-water-vapour-information-in-the-combi-dataset" title="Permalink to this heading">#</a></h1>
+<h1>Exploring Total Column Water Vapour information in the COMBI dataset<a class="headerlink" href="#exploring-total-column-water-vapour-information-in-the-combi-dataset" title="Link to this heading">#</a></h1>
 <p>This notebook-tutorial provides an introduction to the use of the
 combined global near-infrared (NIR) and microwave (MW) imager total column water vapour (<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=overview">TCWV</a>) data record (COMBI) for climate studies.</p>
 <p>The Water Vapour (WV) Essential Climate Variable (ECV) and the COMBI TCWV product are described in introduction. Then, a first use case provides an analysis of the time averaged global and seasonal climatological distributions of the total column water vapour as well as the monthly mean climatology. The second use case presents the time series and trend analysis of TCWV. Step-by-step instructions are provided on data preparation; the use cases are extensively documented and each line of code is explained.</p>
@@ -497,13 +523,13 @@ td, th {
 </table>
 <br><p><img alt="" src="../_images/wv-combi_banner.png" /></p>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>Anthropogenic activities and natural variations from years to decades shape the Earth’s climate. Water vapour has been recognised as an Essential Climate Variable (ECV) as it provides the basis for all cloud formation, cloud physics, and furthermore influences the Earth’s heat budget due to its high absorbance of long and short-wave radiation. It is a natural greenhouse gas with a global warming potential much higher than carbon dioxide. An increase in temperature will lead to an increase in water vapour and due to this coupling mechanism to the acceleration of global warming. Total column water vapour (TCWV) is a measure of the integrated water vapour content of the atmosphere.</p>
 <p>In the Copernicus Climate Data Store (CDS), the EUMETSAT Satellite Application Facility on Climate Monitoring has brokered the COMBI product. It combines the Special Sensor Microwave - Imager/Sensor (SSMI/S) TCWV retrievals in the microwave (MW) spectrum over ocean surfaces with the Medium Resolution Imaging Spectrometer (MERIS) retrievals, the Moderate-resolution Imaging Spectro-radiometer (MODIS) retrievals and the Ocean and Land Colour Imager (OLCI) retrievals in the near-infrared (NIR) domain over land surfaces. The COMBI product also covers sea-ice and coastal regions, but with a reduced quality. The TCWV dataset covers the time period July 2002 to December 2017.</p>
 <p>In this Jupyter notebook tutorial, we present examples, based on monthly mean TCWV products, to illustrate the philosophy on the usage, visualisation, and analysis of the TCWV dataset. First you get to sort out data access and retrieval, and get all the right libraries in place for the computations. Then we take you through a short process of inspecting the retrieved data to see if it’s all ok for analysis. You then have a chance to visualise your data, before we take you through some climatology analyses that you could use in your work.</p>
 </section>
 <section id="dataset-description">
-<h2>Dataset description<a class="headerlink" href="#dataset-description" title="Permalink to this heading">#</a></h2>
+<h2>Dataset description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h2>
 <p>You will find further information about the dataset in the Climate Data Store catalogue entry total column water vapour (see link to the entry below), sections “<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=overview">Overview</a>”, “<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=form">Download data</a>” and “<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=doc">Documentation</a>”:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=overview">Global monthly and daily high-spatial resolution of total column water vapour from 2002 to 2017 derived from satellite observations</a></p></li>
@@ -513,18 +539,18 @@ td, th {
 <p>In the “<a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=doc">Documentation</a>” you will find useful documents like the Product User Guide and Specification (PUGS) with general information on TCWV, the Validation Report, or the Algorithm Theoretical Basis Document (ATBD) that describes the retrieval algorithms.</p>
 </section>
 <section id="search-download-and-view-data">
-<h2>Search, download and view data<a class="headerlink" href="#search-download-and-view-data" title="Permalink to this heading">#</a></h2>
+<h2>Search, download and view data<a class="headerlink" href="#search-download-and-view-data" title="Link to this heading">#</a></h2>
 <p>Before we begin we must prepare our environment. This includes installing the Application Programming Interface (API) of the Climate Data Store (CDS), setting up our CDS API credentials and importing the various Python libraries that we will need.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Ensure that the cdsapi package is installed</span>
-<span class="o">!</span>pip install -q cdsapi
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>cdsapi
 </pre></div>
 </div>
 </div>
 </div>
 <section id="import-libraries">
-<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Link to this heading">#</a></h3>
 <p>The data have been stored in files written in NetCDF format. To best handle these, we will import the library <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a> which is specifically designed for manipulating multidimensional arrays in the field of geosciences. The libraries <a class="reference external" href="https://matplotlib.org/">Matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a> will also be imported for plotting and visualising the analysed data. We will also import the libraries <a class="reference external" href="https://docs.python.org/3/library/zipfile.html">zipfile</a> to work with zip-archives, <a class="reference external" href="https://docs.python.org/3/library/os.html">OS</a> to use OS-functions and pattern expansion, and <a class="reference external" href="https://urllib3.readthedocs.io/en/stable/">urllib3</a> for disabling warnings for data download via CDS API.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -558,9 +584,9 @@ td, th {
 </div>
 </section>
 <section id="download-data-using-cds-api">
-<h3>Download Data Using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Permalink to this heading">#</a></h3>
+<h3>Download Data Using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h3>
 <section id="set-up-cds-api-credentials">
-<h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h4>
+<h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h4>
 <p>To set up your CDS API credentials, please login/register on the <a class="reference external" href="https://cds.climate.copernicus.eu/">CDS</a>, then follow the <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api">instructions here</a> to obtain your API key.</p>
 <p>You can add this API key to your current session by uncommenting the code below and replacing <code class="docutils literal notranslate"><span class="pre">#########</span></code> with your API key.</p>
 <div class="cell docutils container">
@@ -583,7 +609,7 @@ td, th {
 </div>
 </section>
 <section id="search-for-data">
-<h4>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h4>
+<h4>Search for data<a class="headerlink" href="#search-for-data" title="Link to this heading">#</a></h4>
 <p>To search for data, we will visit the CDS website: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/home">https://cds.climate.copernicus.eu/cdsapp#!/home</a>.
 Here we can search for COMBI data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-total-column-water-vapour-land-ocean?tab=overview">Global monthly and daily high-spatial resolution of total column water vapour from 2002 to 2017 derived from satellite observations</a>.
 This catalogue entry provides data from various sources: C3S MERIS &amp; SSMI product and Near-infrared &amp; HOAPS combined product.</p>
@@ -601,7 +627,7 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 <p>At the end of the download form, select <strong>“Show API request”</strong>. This will reveal a block of code, which you can simply copy and paste into a cell of your Jupyter Notebook (see cell below) …</p>
 </section>
 <section id="download-data">
-<h4>Download data<a class="headerlink" href="#download-data" title="Permalink to this heading">#</a></h4>
+<h4>Download data<a class="headerlink" href="#download-data" title="Link to this heading">#</a></h4>
 <p>… Having copied the API request into the cell below, running this will retrieve and download the data we requested into our local directory. However, before we run the cell below, the terms and conditions of this particular dataset need to have been accepted in the CDS. The option to view and accept these conditions is given at the end of the download form, just above the <strong>“Show API request”</strong> option.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -638,9 +664,9 @@ These can all be selected in the <strong>“Download data”</strong> tab. In th
 </section>
 </section>
 <section id="view-data">
-<h3>View data<a class="headerlink" href="#view-data" title="Permalink to this heading">#</a></h3>
+<h3>View data<a class="headerlink" href="#view-data" title="Link to this heading">#</a></h3>
 <section id="inspect-data">
-<h4>Inspect data<a class="headerlink" href="#inspect-data" title="Permalink to this heading">#</a></h4>
+<h4>Inspect data<a class="headerlink" href="#inspect-data" title="Link to this heading">#</a></h4>
 <p>The data have been downloaded. We can now unzip the archive and merge all files into one NetCDF file to inspect them. NetCDF is a commonly used format for array-oriented scientifc data. We use the <a class="reference external" href="https://docs.xarray.dev/en/stable/index.html">Xarray</a> library to read and process these data. Xarray is an open source project and Python package that makes working with labelled multi-dimensional arrays simple and efficient. We will read the data from our NetCDF file into an <a class="reference external" href="https://docs.xarray.dev/en/stable/generated/xarray.Dataset.html">Xarray Dataset</a>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3012,7 +3038,7 @@ Attributes:
 </div>
 </section>
 <section id="plot-data">
-<h4>Plot data<a class="headerlink" href="#plot-data" title="Permalink to this heading">#</a></h4>
+<h4>Plot data<a class="headerlink" href="#plot-data" title="Link to this heading">#</a></h4>
 <p>We can visualize one time step to figure out what the data look like. Xarray offers built-in matplotlib functions that allow us to plot a <code class="docutils literal notranslate"><span class="pre">DataArray</span></code>. With the function <code class="docutils literal notranslate"><span class="pre">plot()</span></code>, we can easily plot <em>e.g.</em> the first time step of the loaded array.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3032,10 +3058,10 @@ Attributes:
 </section>
 </section>
 <section id="climatology-of-the-total-column-water-vapour">
-<h2>Climatology of the total column water vapour<a class="headerlink" href="#climatology-of-the-total-column-water-vapour" title="Permalink to this heading">#</a></h2>
+<h2>Climatology of the total column water vapour<a class="headerlink" href="#climatology-of-the-total-column-water-vapour" title="Link to this heading">#</a></h2>
 <p>In this section we will analyse the time averaged global and seasonal climatological distributions of the total column water vapour as well as the monthly mean climatology.</p>
 <section id="time-averaged-global-climatological-distribution-of-tcwv">
-<h3>Time averaged global climatological distribution of TCWV<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-tcwv" title="Permalink to this heading">#</a></h3>
+<h3>Time averaged global climatological distribution of TCWV<a class="headerlink" href="#time-averaged-global-climatological-distribution-of-tcwv" title="Link to this heading">#</a></h3>
 <p>Let us calculate the mean climatology of total column water vapour for the time period January 2003 to December 2017.</p>
 <p>First, to select the specific time range, we can use the Xarray method <code class="docutils literal notranslate"><span class="pre">sel</span></code> that indexes the data and dimensions by the appropriate indexers.
 Then, we apply the method <code class="docutils literal notranslate"><span class="pre">mean</span></code> to calculate the mean along the time dimension.</p>
@@ -3093,7 +3119,7 @@ Then, we apply the method <code class="docutils literal notranslate"><span class
 <p>The total column water vapour has a dominant structure along the equator and over water masses where most of the evaporation takes place, <em>i.e.</em> mainly in the tropics. Solar irradiance and its relative position on the Earth’s surface (solar zenith angle) controls evaporation, leading to the transition of water from the liquid phase to the gaseous phase, which is subsequently advected to higher altitudes. This is the main driver of the Inter-Tropical Convergence Zone (ITCZ) along the equator, visible as a band of high amount of total column water vapour from the East Pacific to the West Pacific, over Central America and Brazil, the Atlantic Ocean, Africa and the Indian Ocean.</p>
 </section>
 <section id="time-averaged-seasonal-climatological-distribution-of-tcwv">
-<h3>Time averaged seasonal climatological distribution of TCWV<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-tcwv" title="Permalink to this heading">#</a></h3>
+<h3>Time averaged seasonal climatological distribution of TCWV<a class="headerlink" href="#time-averaged-seasonal-climatological-distribution-of-tcwv" title="Link to this heading">#</a></h3>
 <p>Now, let us have a look at the seasonal climatological distribution of total column water vapour.</p>
 <p>First, we will use the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method, with <code class="docutils literal notranslate"><span class="pre">'time.season'</span></code> as an argument, to split the data according to the seasons; then we will average them over the years. <br>
 Seasons are defined as follows:</p>
@@ -3652,7 +3678,7 @@ Attributes:
 <p>The general pattern is overall the same as in <strong>Figure 1</strong> with higher values in the tropics and lower values in the extra tropics. The band of high amount of TCWV (particularly noticeable between South-East Asia and North Australia) oscillates around the equator, reaching its highest values in the Summer Hemisphere. It confirms the dominant influence of the solar radiation over the course of the inter-tropical convergence zone.</p>
 </section>
 <section id="zonally-averaged-monthly-mean-climatology-of-tcwv">
-<h3>Zonally averaged monthly mean climatology of TCWV<a class="headerlink" href="#zonally-averaged-monthly-mean-climatology-of-tcwv" title="Permalink to this heading">#</a></h3>
+<h3>Zonally averaged monthly mean climatology of TCWV<a class="headerlink" href="#zonally-averaged-monthly-mean-climatology-of-tcwv" title="Link to this heading">#</a></h3>
 <p>Let us now calculate the zonally averaged monthly mean climatology of the total column water vapour over the time period January 2003 - December 2017, and visualise it in the form of a Hovmöller diagram.</p>
 <p>A Hovmöller diagram is a common way of plotting meteorological or climatological data (such as the zonally averaged monthly mean TCWV) to depict their changes over time as a function of latitude or longitude. In our case, time will be recorded along the abscissa and latitude along the ordinate.</p>
 <p>First, we will apply the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method to group the <strong>“tcwv”</strong> <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> by month, and then we will compute the average for each monthly group and longitude band.</p>
@@ -4658,10 +4684,10 @@ Coordinates:
 </section>
 </section>
 <section id="time-series-and-trend-analysis-of-the-total-column-water-vapour">
-<h2>Time series and trend analysis of the total column water vapour<a class="headerlink" href="#time-series-and-trend-analysis-of-the-total-column-water-vapour" title="Permalink to this heading">#</a></h2>
+<h2>Time series and trend analysis of the total column water vapour<a class="headerlink" href="#time-series-and-trend-analysis-of-the-total-column-water-vapour" title="Link to this heading">#</a></h2>
 <p>After looking at the time averaged global distribution of the total column water vapour, we further investigate the dataset. The COMBI product spans over 15 years of satellite observations, and another useful way of analysing and visualizing the temporal evolution of total column water vapour is using the time series. We will calculate the global time series, plot it, and discuss most important features.</p>
 <section id="global-time-series-of-tcwv">
-<h3>Global time series of TCWV<a class="headerlink" href="#global-time-series-of-tcwv" title="Permalink to this heading">#</a></h3>
+<h3>Global time series of TCWV<a class="headerlink" href="#global-time-series-of-tcwv" title="Link to this heading">#</a></h3>
 <p>We first create a temporal subset for the period January 2003 to December 2017.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5272,7 +5298,7 @@ Attributes:
       dtype=&#x27;float32&#x27;, name=&#x27;lon&#x27;, length=720))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-749dab11-3291-442c-9824-ba25edcbaee2' class='xr-section-summary-in' type='checkbox'  checked><label for='section-749dab11-3291-442c-9824-ba25edcbaee2' class='xr-section-summary' >Attributes: <span>(6)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Total Column of Water</dd><dt><span>units :</span></dt><dd>kg/m2</dd><dt><span>standard_name :</span></dt><dd>atmosphere_water_vapor_content </dd><dt><span>ancillary_variables :</span></dt><dd>stdv num_obs</dd><dt><span>valid_range :</span></dt><dd>[ 0. 70.]</dd><dt><span>actual_range :</span></dt><dd>[ 0.7819019 68.77021  ]</dd></dl></div></li></ul></div></div></div></div>
 </div>
 <section id="spatial-aggregation">
-<h4>Spatial aggregation<a class="headerlink" href="#spatial-aggregation" title="Permalink to this heading">#</a></h4>
+<h4>Spatial aggregation<a class="headerlink" href="#spatial-aggregation" title="Link to this heading">#</a></h4>
 <p>We would like to visualise these data, not in maps but as one dimensional time series of global average values. To do this, we will first need to aggregate the data spatially to create a single global average at each time step. In order to aggregate over the latitudinal dimension, we need to take into account the variation in area as a function of latitude. We will do this by using the cosine of the latitude as a proxy:</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5293,7 +5319,7 @@ Attributes:
 </div>
 </section>
 <section id="id1">
-<h4>Plot data<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<h4>Plot data<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p>Now we can plot the time series of globally averaged TCWV data over time using the <code class="docutils literal notranslate"><span class="pre">plot()</span></code> method.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -5325,7 +5351,7 @@ Attributes:
 </section>
 </section>
 <section id="monthly-climatology-of-tcwv">
-<h3>Monthly climatology of TCWV<a class="headerlink" href="#monthly-climatology-of-tcwv" title="Permalink to this heading">#</a></h3>
+<h3>Monthly climatology of TCWV<a class="headerlink" href="#monthly-climatology-of-tcwv" title="Link to this heading">#</a></h3>
 <p>Let us now study the monthly climatology of the total column water vapour over the time period covered by the COMBI product.</p>
 <p>It corresponds to the mean and the associated standard deviation of the global time series of TCWV and is calculated for each month over the years 2003-2017.</p>
 <p>First, we will apply the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method to the Xarray <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> <strong>“tcwv_weighted_mean”</strong> which we have defined in the previous section. Then, we will compute the mean and the associated standard deviation by using the <code class="docutils literal notranslate"><span class="pre">mean()</span></code> and <code class="docutils literal notranslate"><span class="pre">std()</span></code> methods respectively.</p>
@@ -5453,7 +5479,7 @@ Attributes:
 <p>We observe a seasonal variation of TCWV with an amplitude of 3 kg/m<span class="math notranslate nohighlight">\(^{2}\)</span>, reaching its highest values around July-August and its lowest values around December-January. The mean difference of 1.025 kg/m<span class="math notranslate nohighlight">\(^{2}\)</span> between the highest seasonal envelope corresponding to the year 2010 and the lowest seasonal envelope corresponding to the year 2011 is related to the 2010-2012 “La Niña” event, one of the strongest on record. We will now procede to the seasonal decomposition of the total column water vapour to study this trend in more details.</p>
 </section>
 <section id="trend-analysis-and-seasonal-cycle-of-tcwv">
-<h3>Trend analysis and seasonal cycle of TCWV<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-tcwv" title="Permalink to this heading">#</a></h3>
+<h3>Trend analysis and seasonal cycle of TCWV<a class="headerlink" href="#trend-analysis-and-seasonal-cycle-of-tcwv" title="Link to this heading">#</a></h3>
 <p>The time series can be further analysed by extracting the trend, or the running annual mean, and the seasonal cycle.</p>
 <p>To this end, we will convert the Xarray <code class="docutils literal notranslate"><span class="pre">DataArray</span></code> into a time series with the <a class="reference external" href="https://pandas.pydata.org/">pandas</a> library. Then we will decompose it into the trend, the seasonal cycle and the residuals by using the <code class="docutils literal notranslate"><span class="pre">seasonal_decompose()</span></code> method. Finally we will visualize the results.</p>
 <div class="cell docutils container">
@@ -5484,11 +5510,11 @@ Attributes:
 </section>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading">#</a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading">#</a></h2>
 <p>In this notebook we have provided some use cases based on the COMBI TCWV data record to illustrate the way this dataset can be used to study, analyse and visualise this essential climate variable. The current dataset indicates a slight increase of total column water vapour between January 2003 and December 2017. Comparisons with other independent datasets can be made to further investigate the trends that can be attributed to global climate change, El-Niño events, etc.</p>
 </section>
 <section id="appendix">
-<h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this heading">#</a></h2>
+<h2>Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h2>
 <p>Clean up your directory of the netCDF files you unzipped.</p>
 <p>You can set the <code class="docutils literal notranslate"><span class="pre">save_merged_netcdf</span></code> flag to <code class="docutils literal notranslate"><span class="pre">True</span></code> (and choose a filename)
 if you want to merge the data into a single netcdf before closing</p>
@@ -5537,19 +5563,18 @@ if you want to merge the data into a single netcdf before closing</p>
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="erb-outgoing-longwave-radiation.html"
+       href="srb-climatology-and-anomaly.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data</p>
+        <p class="prev-next-title">Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
       </div>
     </a>
     <a class="right-next"
@@ -5561,10 +5586,7 @@ if you want to merge the data into a single netcdf before closing</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -5572,6 +5594,7 @@ if you want to merge the data into a single netcdf before closing</p>
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -5635,9 +5658,10 @@ By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Cen
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -5661,8 +5685,8 @@ By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Cen
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
