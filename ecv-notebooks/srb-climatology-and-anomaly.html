@@ -2167,7 +2167,7 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </section>
 <section id="use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution">
 <h2>Use case 1: The mean global Surface Incoming Shortwave (SIS) radiation distribution<a class="headerlink" href="#use-case-1-the-mean-global-surface-incoming-shortwave-sis-radiation-distribution" title="Link to this heading">#</a></h2>
-<p>Use Case #1 aims to give an overview about the SIS radiation distribution. We do that by plotting the global mean SIS from the CLARA-A3 dataset. Please note that you need to open the dataset to be able to execute this usecase, as described in the previous section <a class="reference internal" href="#load"><span class="xref myst">“Load dataset”</span></a>.</p>
+<p>Use Case #1 aims to give an overview about the SIS radiation distribution. We do that by plotting the global mean SIS from the CLARA-A3 dataset. Please note that you need to open the dataset to be able to execute this usecase, as described in the previous section.</p>
 <section id="calculation-of-the-temporal-average-of-sis">
 <h3>Calculation of the temporal average of SIS<a class="headerlink" href="#calculation-of-the-temporal-average-of-sis" title="Link to this heading">#</a></h3>
 <p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_sis” and the variable Surface Incoming Radiation or “SIS”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
