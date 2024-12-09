@@ -60,6 +60,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/erb-clara-climatology';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset" href="srb-climatology-and-anomaly.html" />
+    <link rel="prev" title="Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data" href="erb-outgoing-longwave-radiation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -121,8 +123,6 @@
     <div class="bd-container__inner bd-page-width">
       
       
-      
-        
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -190,8 +190,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../reanalysis-heatwave.html">Heatwave Analysis</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analysis of the CLARA Earth radiation budget product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Total Column Ozone</a></li>
@@ -448,12 +449,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="introduction"></a> Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description"><a id="description"></a> Dataset description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset description</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition"><a id="data"></a> Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
@@ -461,18 +461,17 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset">Load dataset</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases"><a id="usecases"></a> Use Cases</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution"><a id="uc1"></a> Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-olr"><a id="calculation_1"></a> Calculation of the temporal average of OLR</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-olr"><a id="plot_1"></a> Plot of the temporal average of OLR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution">Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-olr">Calculation of the temporal average of OLR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-olr">Plot of the temporal average of OLR</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution"><a id="uc2"></a> Use case 2: The mean global Reflected Solar Flux (RSF) distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-rsf"><a id="calculation_2"></a> Calculation of the temporal average of RSF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-rsf"><a id="plot_2"></a> Plot of the temporal average of RSF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution">Use case 2: The mean global Reflected Solar Flux (RSF) distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-rsf">Calculation of the temporal average of RSF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-rsf">Plot of the temporal average of RSF</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget"><a id="references"></a> Get more information about Earth Radiation Budget</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">Get more information about Earth Radiation Budget</a></li>
 </ul>
             </nav>
         </div>
@@ -487,45 +486,28 @@ document.write(`
   <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
 <section class="tex2jax_ignore mathjax_ignore" id="calculation-of-global-climatology-of-earth-radiation-budget-from-eumetsat-s-cm-saf-clara-a3-dataset">
 <h1><a id='page-top'></a> Calculation of global climatology of Earth Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#calculation-of-global-climatology-of-earth-radiation-budget-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Link to this heading">#</a></h1>
-<p>This notebook provides you with an introduction on EUMETSAT’s CM SAF <strong>CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu/#!/home">Climate Data Store</a> (CDS). The dataset contains data for Essential Climate Variables (ECVs) <em>Earth Radiation Budget</em>, as well as <em>Cloud Properties and Surface Radiation Budget</em>, while this notebook focuses on <strong>Earth Radiation Budget</strong> as part of the ECV <em>Earth Radiation Budget</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a>.</p>
+<p>This notebook provides you with an introduction on EUMETSAT’s CM SAF <strong>CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu">Climate Data Store</a> (CDS). The dataset contains data for Essential Climate Variables (ECVs) <em>Earth Radiation Budget</em>, as well as <em>Cloud Properties and Surface Radiation Budget</em>, while this notebook focuses on <strong>Earth Radiation Budget</strong> as part of the ECV <em>Earth Radiation Budget</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget">Earth’s radiation budget from 1979 to present derived from satellite observations</a>.</p>
 <p>The notebook covers the full process from scratch and starts with a short introdution to the dataset and how to access the data from the Climate Data Store of the Copernicus Climate Change Service (C3S). This is followed by a step-by-step guide on how to process and visualize the data. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests. After a short introduction how to use a Jupyter notebook the analysis starts.<br>
 Two figures below are results of Use Case 1 and 2, and the result of a successful run of the code.</p>
-<p><img alt="img" src="img/erb-claraA3-banner.png" /></p>
-<p>The notebook has two main use cases with the following outline:</p>
-<section id="table-of-contents">
-<h2>Table of Contents<a class="headerlink" href="#table-of-contents" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p><a class="reference internal" href="#introduction"><span class="xref myst">Introduction</span></a></p></li>
-<li><p><a class="reference internal" href="#data"><span class="xref myst">Prerequisites and data acquisition</span></a></p></li>
-<li><p><a class="reference internal" href="#usecases"><span class="xref myst">Use Cases</span></a></p>
-<ul>
-<li><p><a class="reference internal" href="#uc1"><span class="xref myst">Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution</span></a></p></li>
-<li><p><a class="reference internal" href="#uc2"><span class="xref myst">Use case 2: The mean global Reflected Solar Flux (RSF) distribution</span></a></p></li>
-</ul>
-</li>
-<li><p><a class="reference internal" href="#references"><span class="xref myst">Get more information about Earth Radiation Budget</span></a></p></li>
-</ul>
-</section>
+<p><img alt="img" src="../_images/erb-claraA3-banner.png" /></p>
 <section id="introduction">
-<h2><a id='introduction'></a> Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
 <p>This tutorial is about Earth radiation (top of atmosphere) parameters of EUMETSAT’s CM SAF CLARA-A3 dataset. It covers step by step the process from retrieving the data to the processing and finally the visualisation of the results.</p>
-<p>The CLARA-A3 dataset provides information of various Earth Radiation Budget (ERB) and Surface Radiation Budget (SRB) parameters as well as Cloud Properties parameters. Each ECV is covered by an own Jupyter Notebook (please also take a look at <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 SRB</a> and <a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-c3s/intro.html">CLARA-A3 Clouds</a>).</p>
-<div style="text-align: justify">In the following, we will concentrate on the earth radiation part. The CLARA-A3 dataset is the successor of CLARA-A2.1 and comprises almost 44 years (latest status: 09/2023) of continuous observations of radiation and clouds from space, thereby monitoring their spatial and temporal variability on Earth. Earth Radiation Budget parameters were not included in CLARA-A2.1<br> 
-The CLARA-A3 radiation dataset contains all surface and Earth (top-of-the-atmosphere) fluxes, and thus, it enables studies of the full earth radiation budget.</div>
+<p>In the following, we will concentrate on the earth radiation part. The CLARA-A3 dataset is the successor of CLARA-A2.1 and comprises almost 44 years (latest status: 09/2023) of continuous observations of radiation and clouds from space, thereby monitoring their spatial and temporal variability on Earth. Earth Radiation Budget parameters were not included in CLARA-A2.1</p>
+<p>The CLARA-A3 radiation dataset contains all surface and Earth (top-of-the-atmosphere) fluxes, and thus, it enables studies of the full earth radiation budget.</p>
 <p>In the following, two examples are presented to illustrate some ideas on the usage, visualisation, and analysis of the CLARA-A3 earth radiation dataset.</p>
 <section id="dataset-description">
-<h3><a id='description'></a> Dataset description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h3>
+<h3>Dataset description<a class="headerlink" href="#dataset-description" title="Link to this heading">#</a></h3>
 <p>Please find further information about the datasets as well as the data in the Climate Data Store sections “Overview”, “Download data” and “Documentation”:</p>
 <ul class="simple">
 <li><p>Earth Radiation: Budget <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview</a></p></li>
 <li><p>Surface Radiation Budget: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview</a></p></li>
 <li><p>Cloud Properties: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview</a></p></li>
 </ul>
-<p>A <a class="reference external" href="https://datastore.copernicus-climate.eu/documents/satellite-earth-radiation-budget/C3S2_312a_Lot1.4.0.3_202306_Tutorial_ECV_EarthRadiationBudget_final.mp4">tutorial video</a> describes the ECV <em>Earth Radiation Budget</em> and its impact on the atmospheric conditions. In addition, it provides you with a small introduction of the satellite instruments and retrieval methods followed by general information about the dataset and support options provided by the CDS.</p>
 </section>
 </section>
 <section id="prerequisites-and-data-acquisition">
-<h2><a id='data'></a> Prerequisites and data acquisition<a class="headerlink" href="#prerequisites-and-data-acquisition" title="Link to this heading">#</a></h2>
+<h2>Prerequisites and data acquisition<a class="headerlink" href="#prerequisites-and-data-acquisition" title="Link to this heading">#</a></h2>
 <p>This tutorial is in the form of a Jupyter notebook. It can be run on a cloud environment, or on your own computer. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
 <style>
 td, th {
@@ -536,33 +518,19 @@ td, th {
 <table align="left">
   <tr>
     <th>Run the tutorial via free cloud platforms: </th>
-    <th><a href="https://notebooks.gesis.org/binder/jupyter/user/ecmwf-projects--us-training-c3s-0vneba36/doc/tree/srb-claraA3.ipynb">
+    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/erb-clara-climatology.ipynb">
+        <img src = "https://kaggle.com/static/images/open-in-kaggle.svg" alt = "Kaggle"></th>
+    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=ecv-notebooks/erb-clara-climatology.ipynb">
         <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
-    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/gh-pages/&#95;sources/srb-claraA3.ipynb">
+    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/erb-clara-climatology.ipynb">
         <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
   </tr>
-</table><p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it. We use an exclamation mark to pass the command to the shell (not to the Python interpreter).</p>
+</table>
+<p><br><br></p>
+<p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it. We use an exclamation mark to pass the command to the shell (not to the Python interpreter).</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>cdsapi
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: cdsapi in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (0.7.0)
-Requirement already satisfied: cads-api-client&gt;=0.9.2 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from cdsapi) (1.1.0)
-Requirement already satisfied: requests&gt;=2.5.0 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from cdsapi) (2.32.3)
-Requirement already satisfied: tqdm in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from cdsapi) (4.66.4)
-Requirement already satisfied: attrs in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from cads-api-client&gt;=0.9.2-&gt;cdsapi) (23.2.0)
-Requirement already satisfied: multiurl in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from cads-api-client&gt;=0.9.2-&gt;cdsapi) (0.3.1)
-Requirement already satisfied: typing-extensions in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from cads-api-client&gt;=0.9.2-&gt;cdsapi) (4.12.2)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (3.3.2)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (3.7)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2.2.2)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from requests&gt;=2.5.0-&gt;cdsapi) (2024.8.30)
-Requirement already satisfied: pytz in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from multiurl-&gt;cads-api-client&gt;=0.9.2-&gt;cdsapi) (2024.1)
-Requirement already satisfied: python-dateutil in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from multiurl-&gt;cads-api-client&gt;=0.9.2-&gt;cdsapi) (2.9.0)
-Requirement already satisfied: six&gt;=1.5 in /opt/homebrew/Caskroom/miniforge/base/envs/TM-TESTING/lib/python3.11/site-packages (from python-dateutil-&gt;multiurl-&gt;cads-api-client&gt;=0.9.2-&gt;cdsapi) (1.16.0)
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>-q<span class="w"> </span>cdsapi
 </pre></div>
 </div>
 </div>
@@ -577,7 +545,6 @@ Requirement already satisfied: six&gt;=1.5 in /opt/homebrew/Caskroom/miniforge/b
 
 <span class="c1"># Libraries for working with multidimensional arrays</span>
 <span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
-<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="c1"># Library to work with zip-archives and OS-functions</span>
 <span class="kn">import</span> <span class="nn">zipfile</span>
@@ -617,7 +584,7 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 <p>Next, we specify a data directory in which we will download our data and all output files that we will generate. We will also create a directory, if it doesn’t already exist.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;./Data&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;./data&#39;</span>
 <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -677,15 +644,11 @@ The Earth Radiation Budget (ERB) comprises the quantification of the reflected r
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-11-21 09:57:22,719 INFO [2024-01-09T00:00:00] NOAA/NCEI HIRS OLR was reprocessed from 2007 till 2023. Please see the Known issues section under the Documentation tab for more details.
-2024-11-21 09:57:22,720 WARNING [2024-11-21T09:57:22.557261] You are using a deprecated API endpoint. If you are using cdsapi, please upgrade to the latest version.
-2024-11-21 09:57:22,720 INFO Request ID is 6a487593-8270-44e5-b5fc-60daac399280
-2024-11-21 09:57:22,886 INFO status has been updated to accepted
-2024-11-21 09:57:26,765 INFO status has been updated to running
-2024-11-21 10:07:47,814 INFO status has been updated to successful
-</pre></div>
-</div>
-<script type="application/vnd.jupyter.widget-view+json">{"model_id": "38ebb9e3e3904427b0572efb9d1f54dd", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;./Data/download_claraA3_erb.zip&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-09 16:13:53,119 INFO [2024-01-09T00:00:00] NOAA/NCEI HIRS OLR was reprocessed from 2007 till 2023. Please see the Known issues section under the Documentation tab for more details.
+2024-12-09 16:13:53,121 WARNING [2024-12-09T16:13:53.137329] You are using a deprecated API endpoint. If you are using cdsapi, please upgrade to the latest version.
+2024-12-09 16:13:53,121 INFO Request ID is 85037786-023d-424e-b6cf-6ea437e6ab74
+2024-12-09 16:13:53,325 INFO status has been updated to accepted
+2024-12-09 16:14:08,585 INFO status has been updated to running
 </pre></div>
 </div>
 </div>
@@ -702,7 +665,6 @@ The Earth Radiation Budget (ERB) comprises the quantification of the reflected r
 </div>
 </div>
 <p>With the zip-file unziped and files at the right place we can start reading and processing the data.</p>
-<p><a id='load'></a></p>
 </section>
 <section id="load-dataset">
 <h3>Load dataset<a class="headerlink" href="#load-dataset" title="Link to this heading">#</a></h3>
@@ -1982,14 +1944,11 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </div>
 </section>
 </section>
-<section id="use-cases">
-<h2><a id='usecases'></a> Use Cases<a class="headerlink" href="#use-cases" title="Link to this heading">#</a></h2>
-</section>
 <section id="use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution">
-<h2><a id='uc1'></a> Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution<a class="headerlink" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution" title="Link to this heading">#</a></h2>
-<p>Use Case #1 aims to give an overview about the OLR distribution. We do that by plotting the global mean OLR from the CLARA-A3 dataset. Please note that we need to open the dataset to be able to execute this usecase, as described in the previous section <a class="reference internal" href="#load"><span class="xref myst">“Load dataset”</span></a>.</p>
+<h2>Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution<a class="headerlink" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution" title="Link to this heading">#</a></h2>
+<p>Use Case #1 aims to give an overview about the OLR distribution. We do that by plotting the global mean OLR from the CLARA-A3 dataset. Please note that we need to open the dataset to be able to execute this usecase, as described in the previous “Load dataset” section.</p>
 <section id="calculation-of-the-temporal-average-of-olr">
-<h3><a id='calculation_1'></a> Calculation of the temporal average of OLR<a class="headerlink" href="#calculation-of-the-temporal-average-of-olr" title="Link to this heading">#</a></h3>
+<h3>Calculation of the temporal average of OLR<a class="headerlink" href="#calculation-of-the-temporal-average-of-olr" title="Link to this heading">#</a></h3>
 <p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_olr” and the variable Outgoing Longwave Radiation or “LW_flux”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2007,11 +1966,11 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </div>
 </section>
 <section id="plot-of-the-temporal-average-of-olr">
-<h3><a id='plot_1'></a> Plot of the temporal average of OLR<a class="headerlink" href="#plot-of-the-temporal-average-of-olr" title="Link to this heading">#</a></h3>
+<h3>Plot of the temporal average of OLR<a class="headerlink" href="#plot-of-the-temporal-average-of-olr" title="Link to this heading">#</a></h3>
 <p>With the calculation done the data is ready for a plot. Please find the plot and settings in the next section.</p>
 <p>Some further notes:</p>
 <ul class="simple">
-<li><p>Matplotlib provides a wide range of colorbars: <a class="reference external" href="https://matplotlib.org/stable/users/explain/colors/colormaps.html">https://matplotlib.org/stable/users/explain/colors/colormaps.html</a>; the addition <em>_r</em> reverses the colorbar</p></li>
+<li><p>Matplotlib provides a wide range of colorbars: <a class="reference external" href="https://matplotlib.org/stable/users/explain/colors/colormaps.html">https://matplotlib.org/stable/users/explain/colors/colormaps.html</a>; the addition <code class="docutils literal notranslate"><span class="pre">_r</span></code> reverses the colorbar</p></li>
 <li><p>The “add_subplot” part provides the option to plot more than one figure (e.g. a 2x2 matrix with four plots together). In this case (1,1,1) means that the panel is a 1x1 matrix and the following plot is the first subplot.</p></li>
 </ul>
 <div class="cell docutils container">
@@ -2060,10 +2019,10 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </section>
 </section>
 <section id="use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution">
-<h2><a id='uc2'></a> Use case 2: The mean global Reflected Solar Flux (RSF) distribution<a class="headerlink" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution" title="Link to this heading">#</a></h2>
-<p>Use Case #2 aims to give an overview about the RSF distribution. We do that by plotting the global mean RSF from the CLARA-A3 dataset. Please note that we need to open the dataset to be able to execute this usecase, as described in the previous section <a class="reference internal" href="#load"><span class="xref myst">“Load dataset”</span></a>.</p>
+<h2>Use case 2: The mean global Reflected Solar Flux (RSF) distribution<a class="headerlink" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution" title="Link to this heading">#</a></h2>
+<p>Use Case #2 aims to give an overview about the RSF distribution. We do that by plotting the global mean RSF from the CLARA-A3 dataset. Please note that we need to open the dataset to be able to execute this usecase, as described in the previous “Load dataset” section.</p>
 <section id="calculation-of-the-temporal-average-of-rsf">
-<h3><a id='calculation_2'></a> Calculation of the temporal average of RSF<a class="headerlink" href="#calculation-of-the-temporal-average-of-rsf" title="Link to this heading">#</a></h3>
+<h3>Calculation of the temporal average of RSF<a class="headerlink" href="#calculation-of-the-temporal-average-of-rsf" title="Link to this heading">#</a></h3>
 <p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_olr” and the variable Reflected Solar Flux or “SW_flux”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2081,7 +2040,7 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </div>
 </section>
 <section id="plot-of-the-temporal-average-of-rsf">
-<h3><a id='plot_2'></a> Plot of the temporal average of RSF<a class="headerlink" href="#plot-of-the-temporal-average-of-rsf" title="Link to this heading">#</a></h3>
+<h3>Plot of the temporal average of RSF<a class="headerlink" href="#plot-of-the-temporal-average-of-rsf" title="Link to this heading">#</a></h3>
 <p>With the calculation done the data is ready for a plot. Please find the plot and settings in the next section.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2129,7 +2088,7 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </section>
 </section>
 <section id="get-more-information-about-earth-radiation-budget">
-<h2><a id='references'></a> Get more information about Earth Radiation Budget<a class="headerlink" href="#get-more-information-about-earth-radiation-budget" title="Link to this heading">#</a></h2>
+<h2>Get more information about Earth Radiation Budget<a class="headerlink" href="#get-more-information-about-earth-radiation-budget" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">About Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
 <li><p><a class="reference external" href="https://cds.climate.copernicus.eu/">About the Climate Data Store</a></p></li>
@@ -2167,6 +2126,24 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
                 <footer class="prev-next-footer d-print-none">
                   
 <div class="prev-next-area">
+    <a class="left-prev"
+       href="erb-outgoing-longwave-radiation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="srb-climatology-and-anomaly.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
 </div>
                 </footer>
               
@@ -2183,12 +2160,11 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><a id="introduction"></a> Introduction</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description"><a id="description"></a> Dataset description</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset description</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition"><a id="data"></a> Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
@@ -2196,18 +2172,17 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset">Load dataset</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-cases"><a id="usecases"></a> Use Cases</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution"><a id="uc1"></a> Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-olr"><a id="calculation_1"></a> Calculation of the temporal average of OLR</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-olr"><a id="plot_1"></a> Plot of the temporal average of OLR</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution">Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-olr">Calculation of the temporal average of OLR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-olr">Plot of the temporal average of OLR</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution"><a id="uc2"></a> Use case 2: The mean global Reflected Solar Flux (RSF) distribution</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-rsf"><a id="calculation_2"></a> Calculation of the temporal average of RSF</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-rsf"><a id="plot_2"></a> Plot of the temporal average of RSF</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution">Use case 2: The mean global Reflected Solar Flux (RSF) distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-rsf">Calculation of the temporal average of RSF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-rsf">Plot of the temporal average of RSF</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget"><a id="references"></a> Get more information about Earth Radiation Budget</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">Get more information about Earth Radiation Budget</a></li>
 </ul>
   </nav></div>
 
