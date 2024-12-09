@@ -20,6 +20,8 @@ parts:
    chapters:
    - file: ecv-notebooks/erb-outgoing-longwave-radiation
      title: Outgoing Longwave Radiation
+   - file: ecv-notebooks/srb-climatology-and-anomaly
+     title: Surface radiation budget climatologies and anomalies
    - file: ecv-notebooks/total-column-water-vapour-combi
      title: Total Column Water Vapour
    - file: ecv-notebooks/total-ozone-columns
