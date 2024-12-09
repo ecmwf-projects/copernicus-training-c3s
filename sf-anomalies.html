@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -5300,7 +5300,7 @@ Coordinates:
 <section id="repeat-steps-for-hindcast-data-to-compare-forecast-and-hindcast-anomalies">
 <h4>Repeat steps for hindcast data (to compare forecast and hindcast anomalies)<a class="headerlink" href="#repeat-steps-for-hindcast-data-to-compare-forecast-and-hindcast-anomalies" title="Link to this heading">#</a></h4>
 <p>We would like now to repeat the steps for the hindcast data in order to show the forecast in the context of the reference climate. I.e. we will compare the seasonal forecast and hindcast anomalies for each lead-time month. In the final plot we will show the anomaly of each forecast ensemble member, while the model climate defined by the hindcasts will be represented in the form of tercile categories. This will put each ensemble member forecast anomaly into context and will give us an indication of its intensity.</p>
-<p>We therefore revisit the hindcast data (<code class="docutils literal notranslate"><span class="pre">tprate_hindcast</span></code>), which we loaded in <a class="reference internal" href="#hindcast_climate_mean"><span class="xref myst">section 2</span></a> above. We will apply the same steps to create a geographical subset and aggregate spatially.</p>
+<p>We therefore revisit the hindcast data (<code class="docutils literal notranslate"><span class="pre">tprate_hindcast</span></code>), which we loaded in section 2 above. We will apply the same steps to create a geographical subset and aggregate spatially.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tprate_hindcast_SAsia</span> <span class="o">=</span> <span class="n">ds_latlon_subset</span><span class="p">(</span><span class="n">tprate_hindcast</span><span class="p">,</span> <span class="n">sub</span><span class="p">)</span>

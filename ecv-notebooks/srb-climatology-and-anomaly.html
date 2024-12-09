@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -2241,7 +2241,7 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </section>
 <section id="use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe">
 <h2>Use case 2: Relative Anomaly. Hot summer of the year 2003 in Europe<a class="headerlink" href="#use-case-2-relative-anomaly-hot-summer-of-the-year-2003-in-europe" title="Link to this heading">#</a></h2>
-<p>Please note that you need to open the dataset to be able to execute this usecase, as described in the previous section <a class="reference internal" href="#load"><span class="xref myst">“Load dataset”</span></a>.</p>
+<p>Please note that you need to open the dataset to be able to execute this usecase, as described in the previous load data section.</p>
 <p>The spatial resolution of the CLARA-A3 radiation dataset is 0.25ºx0.25º that is roughly equal to 25x25 km. With this resolution, it is possible to conduct a regional analysis using the CLARA-A3 radiation datasets. Furthermore, we can use the CLARA-A3 radiation datasets to investigate recent meteorological events. This could be a research project for a student or provide complementary information on a special event, e.g., the analysis of recent heat waves. In recent years, a high number of heat waves appeared in Europe. Particularly interesting is the summer 2003.</p>
 <p>Firstly, we will select the data for year 2003 using <code class="docutils literal notranslate"><span class="pre">sel</span></code> argument.</p>
 <p>Then, we split the SRB data according to the seasons by using the <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> method, with <code class="docutils literal notranslate"><span class="pre">'time.season'</span></code> as an argument, and then averaged over the years.

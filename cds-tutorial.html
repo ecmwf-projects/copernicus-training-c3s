@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="_static/styles/sphinx-book-theme.css?v=a3416100" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css?v=be8a1c11" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -526,8 +526,8 @@ td, th {
 <h2>Data retrieval<a class="headerlink" href="#data-retrieval" title="Link to this heading">#</a></h2>
 <p>There are two ways to access data from the Copernicus Climate Data Store (CDS):</p>
 <ul class="simple">
-<li><p><a class="reference internal" href="#access_manual"><span class="xref myst">interactively</span></a> via the CDS web interface, or</p></li>
-<li><p><a class="reference internal" href="#access_programmatic"><span class="xref myst">programmatically</span></a> with the CDS API</p></li>
+<li><p>interactively via the CDS web interface, or</p></li>
+<li><p>programmatically with the CDS API</p></li>
 </ul>
 <section id="access-data-interactively-via-the-cds-web-interface">
 <h3>Access data interactively via the CDS web interface<a class="headerlink" href="#access-data-interactively-via-the-cds-web-interface" title="Link to this heading">#</a></h3>
@@ -550,7 +550,7 @@ td, th {
 </ul>
 <p>At the end of the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code>, you get three options: <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Toolbox</span> <span class="pre">request</span></code> and <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">Form</span></code>. If you want to download the data interactively, the data requests will be executed as soon as you click on the <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">Form</span></code> button.</p>
 <p><strong>Note:</strong> You need to be logged into the ADS portal and you have to accept the Terms and Conditions of the dataset before being able to download data.</p>
-<p>You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, if you want to request data programmatically. See <a class="reference internal" href="#access_programmatic"><span class="xref myst">Section 2.2</span></a> for further information. You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Toolbox</span> <span class="pre">request</span></code>  if you want to request data via the CDS Toolbox. Learn more about the CDS Toolbox <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/toolbox">here</a>.</p>
+<p>You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, if you want to request data programmatically. See Section 2.2 for further information. You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Toolbox</span> <span class="pre">request</span></code>  if you want to request data via the CDS Toolbox. Learn more about the CDS Toolbox <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/toolbox">here</a>.</p>
 <div class="alert alert-block alert-success">
 <b>NOTE</b>: <br>
     Under the tab <code>Your requests</code> in the main menu, you can monitor the status of your data requests.</div>
@@ -636,9 +636,6 @@ td, th {
 <h2>Example data request<a class="headerlink" href="#example-data-request" title="Link to this heading">#</a></h2>
 <section id="example-era5-land-hourly-data-from-1950-to-present">
 <h3>Example: <strong>ERA5-Land hourly data from 1950 to present</strong><a class="headerlink" href="#example-era5-land-hourly-data-from-1950-to-present" title="Link to this heading">#</a></h3>
-<blockquote>
-<div><p>Data used in <a class="reference internal" href="#./113_c3s_climate_indices.ipynb"><span class="xref myst">113_c3s_climate_indices</span></a></p>
-</div></blockquote>
 <p>CDS API name: <code class="docutils literal notranslate"><span class="pre">reanalysis-era5-land</span></code></p>
 <blockquote>
 <div><ul class="simple">
