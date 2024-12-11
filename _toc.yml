@@ -24,6 +24,8 @@ parts:
      title: Analysis of the CLARA Earth radiation budget product
    - file: ecv-notebooks/srb-climatology-and-anomaly
      title: Surface radiation budget climatologies and anomalies
+   - file: ecv-notebooks/cloud-cover-climatology.ipynb
+     title: Cloud fractional cover climatology
    - file: ecv-notebooks/total-column-water-vapour-combi
      title: Total Column Water Vapour
    - file: ecv-notebooks/total-ozone-columns
