@@ -60,7 +60,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/erb-clara-climatology';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset" href="srb-climatology-and-anomaly.html" />
+    <link rel="next" title="Analysis of the Earth’s Radiation Budget using the CERES product" href="erb-ceres-climatology.html" />
     <link rel="prev" title="Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data" href="erb-outgoing-longwave-radiation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -193,6 +193,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Analysis of the CLARA Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erb-ceres-climatology.html">Analysis of the CERES Earth radiation budget product</a></li>
 <li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
@@ -457,8 +458,10 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset">Load dataset</a></li>
 </ul>
@@ -567,9 +570,8 @@ td, th {
 <section id="download-data-using-cds-api">
 <h3>Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Link to this heading">#</a></h3>
 <p>This section is provides all necessary settings and input data to successfully run the use cases, and produce the figures.</p>
-</section>
 <section id="set-up-cds-api-credentials">
-<h3>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h3>
+<h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Link to this heading">#</a></h4>
 <p>We will request data from the <a class="reference external" href="https://cds.climate.copernicus.eu/">Climate Data Store (CDS)</a>. In case you don’t have an account yet, please click on “Login/register” at the right top and select “Create new account”. With the process finished you are able to login to the CDS and can search for your preferred data.</p>
 <p>We will request data from the CDS programmatically with the help of the CDS API.
 First, we need to manually set the CDS API credentials.
@@ -600,6 +602,7 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="search-for-data">
 <h3>Search for data<a class="headerlink" href="#search-for-data" title="Link to this heading">#</a></h3>
@@ -2142,11 +2145,11 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
       </div>
     </a>
     <a class="right-next"
-       href="srb-climatology-and-anomaly.html"
+       href="erb-ceres-climatology.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Calculation of global climatology and relative anomalies of Surface Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
+        <p class="prev-next-title">Analysis of the Earth’s Radiation Budget using the CERES product</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2172,8 +2175,10 @@ Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_C
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
+</ul>
+</li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset">Load dataset</a></li>
 </ul>
