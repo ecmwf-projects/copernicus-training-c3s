@@ -4,60 +4,62 @@
 format: jb-book
 root: intro
 parts:
- - caption: Climate Data Store (CDS)
-   chapters:
-   - url: https://cds-beta.climate.copernicus.eu/user-guide
-     title: CDS user guide
- - caption: Tutorials on Reanalysis
-   chapters:
-   - file: reanalysis-climatology
-     title: Climatology
-   - file: reanalysis-temp-record
-     title: Climate Records
-   - file: reanalysis-heatwave
-     title: Heatwave Analysis
- - caption: Tutorials on Observations
-   chapters:
-   - file: ecv-notebooks/erb-outgoing-longwave-radiation
-     title: Outgoing Longwave Radiation
-   - file: ecv-notebooks/erb-clara-climatology
-     title: Analysis of the CLARA Earth radiation budget product
-   - file: ecv-notebooks/srb-climatology-and-anomaly
-     title: Surface radiation budget climatologies and anomalies
-   - file: ecv-notebooks/cloud-cover-climatology.ipynb
-     title: Cloud fractional cover climatology
-   - file: ecv-notebooks/total-column-water-vapour-combi
-     title: Total Column Water Vapour
-   - file: ecv-notebooks/total-ozone-columns
-     title: Total Column Ozone
-   - file: ecv-notebooks/greenhouse-gases-level2-products
-     title: Greenhouse Gas Level 2 Products
- - caption: Tutorials on Climate Projections
-   chapters:
-   - file: projections-cmip6
-     title: Climate Projections (CMIP6)
-   - file: projections-cordex
-     title: Climate Projections (CORDEX)
- - caption: Tutorials on Seasonal Forecasts
-   chapters:
-   - file: sf-anomalies
-   - file: sf-verification
- - caption: Tutorials on Climate Indices
-   chapters:
-   - file: ci-windchill
-     title: Windchill Index Calculation
- - caption: Tutorials on Bias Correction
-   chapters:
-   - url: https://ibicus.readthedocs.io/en/latest/getting_started/overview.html
-     title: Python library (ibicus) and tutorials on bias correction
- - caption: Tutorials using EFFIS and GloFAS data
-   chapters:
-   - file: visualising-fwi-for-esotc
-     title: Visualising Fire Weather Index (FWI)
-   - file: glofas-bangladesh-floods
-     title: Observing floods with GloFAS
- - caption: Atmosphere Monitoring Tutorials
-   chapters:
-   - url: https://ecmwf-projects.github.io/copernicus-training-cams/
-     title: Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
+- caption: Climate Data Store (CDS)
+  chapters:
+  - url: https://cds-beta.climate.copernicus.eu/user-guide
+    title: CDS user guide
+- caption: Tutorials on Reanalysis
+  chapters:
+  - file: reanalysis-climatology
+    title: Climatology
+  - file: reanalysis-temp-record
+    title: Climate Records
+  - file: reanalysis-heatwave
+    title: Heatwave Analysis
+- caption: Tutorials on Observations
+  chapters:
+  - file: ecv-notebooks/erb-outgoing-longwave-radiation
+    title: Outgoing Longwave Radiation
+  - file: ecv-notebooks/erb-clara-climatology
+    title: Analysis of the CLARA Earth radiation budget product
+  - file: ecv-notebooks/erb-ceres-climatology
+    title: Analysis of the CERES Earth radiation budget product
+  - file: ecv-notebooks/srb-climatology-and-anomaly
+    title: Surface radiation budget climatologies and anomalies
+  - file: ecv-notebooks/cloud-cover-climatology.ipynb
+    title: Cloud fractional cover climatology
+  - file: ecv-notebooks/total-column-water-vapour-combi
+    title: Total Column Water Vapour
+  - file: ecv-notebooks/total-ozone-columns
+    title: Total Column Ozone
+  - file: ecv-notebooks/greenhouse-gases-level2-products
+    title: Greenhouse Gas Level 2 Products
+- caption: Tutorials on Climate Projections
+  chapters:
+  - file: projections-cmip6
+    title: Climate Projections (CMIP6)
+  - file: projections-cordex
+    title: Climate Projections (CORDEX)
+- caption: Tutorials on Seasonal Forecasts
+  chapters:
+  - file: sf-anomalies
+  - file: sf-verification
+- caption: Tutorials on Climate Indices
+  chapters:
+  - file: ci-windchill
+    title: Windchill Index Calculation
+- caption: Tutorials on Bias Correction
+  chapters:
+  - url: https://ibicus.readthedocs.io/en/latest/getting_started/overview.html
+    title: Python library (ibicus) and tutorials on bias correction
+- caption: Tutorials using EFFIS and GloFAS data
+  chapters:
+  - file: visualising-fwi-for-esotc
+    title: Visualising Fire Weather Index (FWI)
+  - file: glofas-bangladesh-floods
+    title: Observing floods with GloFAS
+- caption: Atmosphere Monitoring Tutorials
+  chapters:
+  - url: https://ecmwf-projects.github.io/copernicus-training-cams/
+    title: Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)
 
