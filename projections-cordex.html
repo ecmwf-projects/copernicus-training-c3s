@@ -158,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference external" href="https://cds-beta.climate.copernicus.eu/user-guide">CDS user guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cds.climate.copernicus.eu/user-guide">CDS user guide</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
 <ul class="nav bd-sidenav">
@@ -169,8 +169,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-clara-climatology.html">Analysis of the CLARA Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-ceres-climatology.html">Analysis of the CERES Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-ozone-columns.html">Total Column Ozone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
 <ul class="current nav bd-sidenav">
@@ -447,7 +452,7 @@ document.write(`
 <h1>Analysis of Projected versus Historical Climatology with CORDEX Data<a class="headerlink" href="#analysis-of-projected-versus-historical-climatology-with-cordex-data" title="Permalink to this heading">#</a></h1>
 <section id="about">
 <h2>About<a class="headerlink" href="#about" title="Permalink to this heading">#</a></h2>
-<p>This notebook is a practical introduction to <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/projections-cordex-domains-single-levels?tab=overview">CORDEX regional climate model data on single levels</a>. CORDEX data are available for 14 regional domains and variable spatial resolutions, from 0.11 x 0.11 degrees up to 0.44 x 0.44 degrees. This workflow will demonstrate how to compute the difference in the air temperature climatology for 2071-2100 (according to a projected scenario) relative to the reference period 1971-2000 in Africa, with a spatial resolution of 0.44 x 0.44 degrees.</p>
+<p>This notebook is a practical introduction to <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/projections-cordex-domains-single-levels?tab=overview">CORDEX regional climate model data on single levels</a>. CORDEX data are available for 14 regional domains and variable spatial resolutions, from 0.11 x 0.11 degrees up to 0.44 x 0.44 degrees. This workflow will demonstrate how to compute the difference in the air temperature climatology for 2071-2100 (according to a projected scenario) relative to the reference period 1971-2000 in Africa, with a spatial resolution of 0.44 x 0.44 degrees.</p>
 <p>We will use the historical experiment to compute the past climatology and repeat the steps to compute the projected climatology according to the scenario RCP4.5. Finally, we will take the difference between the two in order to assess the extent of change. This is called the “delta method” which takes the climate change signal as the difference between the future and past considering that the model biases are the same and can therefore be removed with the subtraction.</p>
 <p>This particular example uses data from the Canadian Regional Climate Model <code class="docutils literal notranslate"><span class="pre">CCCma_CanRCM4</span></code>, with lateral boundary conditions from the Global Climate Model (GCM) <code class="docutils literal notranslate"><span class="pre">CanESM2</span></code>, also Canadian. This coupled model is referred to as <code class="docutils literal notranslate"><span class="pre">CanRCM4</span> <span class="pre">-</span> <span class="pre">CanESM2</span></code>. See <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/CORDEX%3A+Regional+climate+projections#CORDEX:Regionalclimateprojections-DrivingGlobalClimateModelsandRegionalClimateModels">here</a> a full list of models included in the CDS-CORDEX subset.</p>
 <p><strong>Note:</strong> The workflow uses a specific model, scenario and geographical area, but you can use any model, scenario or domain, and indeed any period or variable. To have a more accurate idea of projected climate change, it is typical to calculate an ensemble of multiple models. Only for the sake of simplicity do we focus on one model.</p>
@@ -470,7 +475,7 @@ document.write(`
 </section>
 <section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
-<p>This notebook introduces you to <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/projections-cordex-domains-single-levels?tab=overview">CORDEX regional climate model data on single levels</a>. The data used in the notebook has the following specifications:</p>
+<p>This notebook introduces you to <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/projections-cordex-domains-single-levels?tab=overview">CORDEX regional climate model data on single levels</a>. The data used in the notebook has the following specifications:</p>
 <blockquote>
 <div><p><strong>Data</strong>: <code class="docutils literal notranslate"><span class="pre">CORDEX</span> <span class="pre">regional</span> <span class="pre">climate</span> <span class="pre">model</span> <span class="pre">data</span> <span class="pre">on</span> <span class="pre">single</span> <span class="pre">levels</span> <span class="pre">-</span> <span class="pre">Experiment:</span> <span class="pre">Historical</span></code> <br>
 <strong>Temporal coverage</strong>: <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">Jan</span> <span class="pre">1971</span> <span class="pre">to</span> <span class="pre">31</span> <span class="pre">Dec</span> <span class="pre">2000</span></code> <br>
@@ -545,10 +550,10 @@ td, th {
 <hr></section>
 <section id="request-data-from-the-cds-programmatically-with-the-cds-api">
 <h2>Request data from the CDS programmatically with the CDS API<a class="headerlink" href="#request-data-from-the-cds-programmatically-with-the-cds-api" title="Permalink to this heading">#</a></h2>
-<p>The first step is to request data from the Climate Data Store programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. Below, you have to replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> with your personal CDS key. Please find <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">here</a> your personal CDS key.</p>
+<p>The first step is to request data from the Climate Data Store programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. Below, you have to replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> with your personal CDS key. Please find <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api">here</a> your personal CDS key.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds-beta.climate.copernicus.eu/api&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api&#39;</span>
 <span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;##################################&#39;</span>
 </pre></div>
 </div>
@@ -567,7 +572,7 @@ td, th {
 <li><p><strong>RCP4.5 experiment</strong>: Daily aggregated RCP4.5 projections of 2m air temperature (from the CanRCM4 - CanESM2 model) from 2071 to 2100 for Africa</p></li>
 </ul>
 <blockquote>
-<div><p><strong>Note:</strong> Before you run the cells below, the terms and conditions on the use of the data need to have been accepted in the CDS. You can view and accept these conditions by logging into the <a class="reference external" href="https://cds-beta.climate.copernicus.eu">CDS</a>, searching for the dataset, then scrolling to the end of the <em>Download data</em> section.</p>
+<div><p><strong>Note:</strong> Before you run the cells below, the terms and conditions on the use of the data need to have been accepted in the CDS. You can view and accept these conditions by logging into the <a class="reference external" href="https://cds.climate.copernicus.eu">CDS</a>, searching for the dataset, then scrolling to the end of the <em>Download data</em> section.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

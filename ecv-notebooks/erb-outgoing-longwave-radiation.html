@@ -64,7 +64,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/erb-outgoing-longwave-radiation';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Exploring Total Column Water Vapour information in the COMBI dataset" href="total-column-water-vapour-combi.html" />
+    <link rel="next" title="Calculation of global climatology of Earth Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset" href="erb-clara-climatology.html" />
     <link rel="prev" title="Analysis of September 2020 European Heatwave using ERA5 Climate Reanalysis Data from C3S" href="../reanalysis-heatwave.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -158,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference external" href="https://cds-beta.climate.copernicus.eu/user-guide">CDS user guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cds.climate.copernicus.eu/user-guide">CDS user guide</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
 <ul class="nav bd-sidenav">
@@ -169,8 +169,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erb-clara-climatology.html">Analysis of the CLARA Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erb-ceres-climatology.html">Analysis of the CERES Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Total Column Ozone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
 <ul class="nav bd-sidenav">
@@ -466,7 +471,7 @@ document.write(`
 <br><section class="tex2jax_ignore mathjax_ignore" id="calculation-of-global-distribution-and-timeseries-of-outgoing-longwave-radiation-olr-using-noaa-ncei-hirs-data">
 <h1>Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data<a class="headerlink" href="#calculation-of-global-distribution-and-timeseries-of-outgoing-longwave-radiation-olr-using-noaa-ncei-hirs-data" title="Permalink to this heading">#</a></h1>
 <p>This notebook-tutorial provides a practical introduction to the HIRS dataset available on
-<a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">C3S Earth’s radiation budget from 1979 to present derived from satellite observations</a>.</p>
+<a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">C3S Earth’s radiation budget from 1979 to present derived from satellite observations</a>.</p>
 <p>We give a short introduction to the ECV Earth Radiation Budget, Outgoing Longwave Radiation (OLR) and provide three use cases of the dataset: plot the time-averaged global distribution of OLR (Use Case 1), calculate global timeseries of OLR (Use Case 2) and plot the Arctic weighted mean timeseries between 1979 and 2019 (Use Case 3).
 We provide step-by-step instructions on data preparation. Use cases come with extensive documentation and each line of code is explained.<br />
 Two figures below are results of Use Case 1 and 2, and the result of a successful run of the code.</p>
@@ -480,7 +485,7 @@ Two figures below are results of Use Case 1 and 2, and the result of a successfu
 <br>
 <p>Please find further information about the dataset as well as the data in the Climate Data Store catalogue entry Earth’s Radiation Budget, sections “Overview”, “Download data” and “Documentation”:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a></p></li>
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a></p></li>
 </ul>
 <p>The tutorial video describes the “Earth Radiation Budget” Essential Climate Variable and the methods and satellite instruments used to produce the data provided in the CDS catalogue entry:</p>
 <ul class="simple">
@@ -502,8 +507,6 @@ td, th {
 <table align="left">
   <tr>
     <th>Run the tutorial via free cloud platforms: </th>
-    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/erb-outgoing-longwave-radiation.ipynb">
-        <img src = "https://kaggle.com/static/images/open-in-kaggle.svg" alt = "Kaggle"></th>
     <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=ecv-notebooks/erb-outgoing-longwave-radiation.ipynb">
         <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
     <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/erb-outgoing-longwave-radiation.ipynb">
@@ -513,9 +516,9 @@ td, th {
 <p><br><br></p>
 <p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it:</p>
 <p><code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">cdsapi</span></code></p>
-<p><strong>Run the tutorial in local environment</strong><br />
-If you would like to run this notebook in your own environment, we suggest you install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which is the easiest way to get all libraries installed.<br />
-We will be working with data in NetCDF format. To best handle NetCDF data we will use libraries for working with multidimensional arrays, in particular <a class="reference external" href="https://numpy.org/doc/stable/">Numpy</a>, <a class="reference external" href="https://pandas.pydata.org/docs/">Pandas</a> and <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a>. We will also need libraries for plotting and viewing data, in this case, we will use <a class="reference external" href="https://matplotlib.org/stable/index.html">Matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a>. Pylab and <a class="reference external" href="https://urllib3.readthedocs.io/en/stable/">urllib3</a> change the plot style, and urllib for disabling warnings for data download via CDS API.</p>
+<p><strong>Run the tutorial in local environment</strong></p>
+<p>If you would like to run this notebook in your own environment, we suggest you install <a class="reference external" href="https://docs.anaconda.com/anaconda/install/">Anaconda</a>, which is the easiest way to get all libraries installed.</p>
+<p>We will be working with data in NetCDF format. To best handle NetCDF data we will use libraries for working with multidimensional arrays, in particular <a class="reference external" href="https://numpy.org/doc/stable/">Numpy</a>, <a class="reference external" href="https://pandas.pydata.org/docs/">Pandas</a> and <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a>. We will also need libraries for plotting and viewing data, in this case, we will use <a class="reference external" href="https://matplotlib.org/stable/index.html">Matplotlib</a> and <a class="reference external" href="https://scitools.org.uk/cartopy/docs/latest/">Cartopy</a>. Pylab and <a class="reference external" href="https://urllib3.readthedocs.io/en/stable/">urllib3</a> change the plot style, and urllib for disabling warnings for data download via CDS API.</p>
 </section>
 <section id="import-libraries">
 <h3>2.2 Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
@@ -553,10 +556,10 @@ We will be working with data in NetCDF format. To best handle NetCDF data we wil
 <h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h4>
 <p>We will request data from the CDS programmatically with the help of the <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/Climate+Data+Store+%28CDS%29+infrastructure+and+API">CDS API</a>.<br />
 First, we need to manually set the CDS API credentials. To do so, we need to define two variables: URL and KEY.
-To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">https://cds-beta.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api">https://cds.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds-beta.climate.copernicus.eu/api&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api&#39;</span>
 <span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;#########&#39;</span>
 </pre></div>
 </div>
@@ -577,8 +580,8 @@ To obtain these, first login to the CDS, then visit <a class="reference external
 </section>
 <section id="search-for-data">
 <h4>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h4>
-<p>To search for data, visit the CDS website: <a class="reference external" href="https://cds-beta.climate.copernicus.eu/">https://cds-beta.climate.copernicus.eu/</a>.
-Here you can search for HIRS OLR data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a>.
+<p>To search for data, visit the CDS website: <a class="reference external" href="https://cds.climate.copernicus.eu/">https://cds.climate.copernicus.eu/</a>.
+Here you can search for HIRS OLR data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s Radiation Budget from 1979 to present derived from satellite observations</a>.
 The Earth Radiation Budget (ERB) comprises the quantification of the incoming radiation from the Sun and the outgoing reflected shortwave and emitted longwave radiation. This catalogue entry comprises data from a number of sources.</p>
 <p>Having selected the correct catalogue entry, we now need to specify what origin, variables, temporal and geographic coverage we are interested in.
 These can all be selected in the <strong>“Download data”</strong> tab. In this tab a form appears in which we will select the following parameters to download:</p>
@@ -751,7 +754,7 @@ We use the method <code class="docutils literal notranslate"><span class="pre">m
 December 2018. The maximum values of the OLR are found in the tropics and it decreases toward the
 poles. The relative minimum near the equator, in yellow colour, corresponds to the ITCZ and the
 convection areas, where persistent and relatively high cloud cover reduces the LW radiation at the
-TOA. Antarctica is cooler than the corresponding northern latitudes (<span class="xref myst">Harrison et al.</span>).</p>
+TOA. Antarctica is cooler than the corresponding northern latitudes (Harrison et al.).</p>
 </section>
 </section>
 <section id="use-case-2-global-time-series-of-the-olr">
@@ -886,22 +889,21 @@ The figure also shows some inter-annual variations that are suggested to be rela
 <p><strong>Figure 3</strong>, shows the evolution of the OLR in the Arctic region [70°N-90°N] for the period 1979-2019
 also using a yearly rolling mean. From the image, we can infer an increase in the OLR in the Arctic
 region with time. This increase is strongly marked as from 1998 and in line with the increase of
-temperature in the Arctic (<span class="xref myst">Hansen et al, 2010</span>), while the relative stability of the first part of the time
+temperature in the Arctic (Hansen et al, 2010), while the relative stability of the first part of the time
 series is more difficult to interpret due to the major volcanic eruptions in this period.</p>
 </section>
 </section>
 <section id="get-more-information-about-earth-radiation-budget">
 <h2>Get more information about Earth Radiation Budget:<a class="headerlink" href="#get-more-information-about-earth-radiation-budget" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
-<li><p><a class="reference external" href="https://cds-beta.climate.copernicus.eu/">Climate Data Store</a></p></li>
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/">Climate Data Store</a></p></li>
 </ul>
 </section>
 <section id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this heading">#</a></h2>
 <p>Hansen, J., Ruedy, R., Sato, M., &amp; Lo, K., (2010). <em>Global surface temperature change</em>. Reviews of Geophysics, 48(4).</p>
 <p>Harrison, E.F., Gurney, R. J., Foster, J. L., Gurney, R. J., &amp; Parkinson, C. L. (1993). <em>Atlas of satellite observations related to global change</em>. Chapter: Radiation Budget at the top of the atmosphere. Cambridge University Press.</p>
-<p><span class="xref myst">Back to top the Page</span></p>
 </section>
 </section>
 
@@ -946,11 +948,11 @@ series is more difficult to interpret due to the major volcanic eruptions in thi
       </div>
     </a>
     <a class="right-next"
-       href="total-column-water-vapour-combi.html"
+       href="erb-clara-climatology.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Exploring Total Column Water Vapour information in the COMBI dataset</p>
+        <p class="prev-next-title"><a id='page-top'></a> Calculation of global climatology of Earth Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

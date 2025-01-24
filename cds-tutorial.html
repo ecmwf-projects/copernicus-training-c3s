@@ -156,7 +156,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference external" href="https://cds-beta.climate.copernicus.eu/user-guide">CDS user guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cds.climate.copernicus.eu/user-guide">CDS user guide</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
 <ul class="nav bd-sidenav">
@@ -167,8 +167,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-clara-climatology.html">Analysis of the CLARA Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-ceres-climatology.html">Analysis of the CERES Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-ozone-columns.html">Total Column Ozone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
 <ul class="nav bd-sidenav">
@@ -457,7 +462,7 @@ document.write(`
 <br><section class="tex2jax_ignore mathjax_ignore" id="climate-data-store-tutorial">
 <h1>Climate Data Store Tutorial<a class="headerlink" href="#climate-data-store-tutorial" title="Permalink to this heading">#</a></h1>
 <p>This notebook provides you an introduction to the Copernicus Climate Data Store (CDS), an overview of the type of data that can be accessed and gives practical examples how to access and retrieve data from the CDS. <strong>This notebook is not yet applicable for accessing and retrieving data from the new
-<a class="reference external" href="https://cds-beta.climate.copernicus.eu/">CDS-Beta</a>
+<a class="reference external" href="https://cds.climate.copernicus.eu/">CDS</a>
 but will soon be updated</strong>.</p>
 <section id="outline">
 <h2>Outline<a class="headerlink" href="#outline" title="Permalink to this heading">#</a></h2>
@@ -498,8 +503,8 @@ td, th {
 <h2>Data retrieval<a class="headerlink" href="#data-retrieval" title="Permalink to this heading">#</a></h2>
 <p>There are two ways to access data from the Copernicus Climate Data Store (CDS):</p>
 <ul class="simple">
-<li><p><span class="xref myst">interactively</span> via the CDS web interface, or</p></li>
-<li><p><span class="xref myst">programmatically</span> with the CDS API</p></li>
+<li><p>interactively via the CDS web interface, or</p></li>
+<li><p>programmatically with the CDS API</p></li>
 </ul>
 <section id="access-data-interactively-via-the-cds-web-interface">
 <h3>Access data interactively via the CDS web interface<a class="headerlink" href="#access-data-interactively-via-the-cds-web-interface" title="Permalink to this heading">#</a></h3>
@@ -522,7 +527,7 @@ td, th {
 </ul>
 <p>At the end of the <code class="docutils literal notranslate"><span class="pre">&quot;Download</span> <span class="pre">data&quot;</span> <span class="pre">form</span></code>, you get three options: <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Toolbox</span> <span class="pre">request</span></code> and <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">Form</span></code>. If you want to download the data interactively, the data requests will be executed as soon as you click on the <code class="docutils literal notranslate"><span class="pre">Submit</span> <span class="pre">Form</span></code> button.</p>
 <p><strong>Note:</strong> You need to be logged into the ADS portal and you have to accept the Terms and Conditions of the dataset before being able to download data.</p>
-<p>You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, if you want to request data programmatically. See <span class="xref myst">Section 2.2</span> for further information. You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Toolbox</span> <span class="pre">request</span></code>  if you want to request data via the CDS Toolbox. Learn more about the CDS Toolbox <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/toolbox">here</a>.</p>
+<p>You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">API</span> <span class="pre">request</span></code>, if you want to request data programmatically. See Section 2.2 for further information. You will need the <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">Toolbox</span> <span class="pre">request</span></code>  if you want to request data via the CDS Toolbox. Learn more about the CDS Toolbox <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/toolbox">here</a>.</p>
 <div class="alert alert-block alert-success">
 <b>NOTE</b>: <br>
     Under the tab <code>Your requests</code> in the main menu, you can monitor the status of your data requests.</div>
@@ -608,9 +613,6 @@ td, th {
 <h2>Example data request<a class="headerlink" href="#example-data-request" title="Permalink to this heading">#</a></h2>
 <section id="example-era5-land-hourly-data-from-1950-to-present">
 <h3>Example: <strong>ERA5-Land hourly data from 1950 to present</strong><a class="headerlink" href="#example-era5-land-hourly-data-from-1950-to-present" title="Permalink to this heading">#</a></h3>
-<blockquote>
-<div><p>Data used in <span class="xref myst">113_c3s_climate_indices</span></p>
-</div></blockquote>
 <p>CDS API name: <code class="docutils literal notranslate"><span class="pre">reanalysis-era5-land</span></code></p>
 <blockquote>
 <div><ul class="simple">

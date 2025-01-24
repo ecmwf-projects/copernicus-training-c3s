@@ -1,0 +1,2231 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>How to access and use a satellite-derived GHG Level 2 data product using XCO2_EMMA as an example? &#8212; C3S Training</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/greenhouse-gases-level2-products';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Plot an Ensemble of CMIP6 Climate Projections" href="../projections-cmip6.html" />
+    <link rel="prev" title="Exploring an ozone product available through the Climate Data Store (CDS)" href="total-ozone-columns.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Copernicus Climate Change Service (C3S) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://cds.climate.copernicus.eu/user-guide">CDS user guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-climatology.html">Climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-temp-record.html">Climate Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-heatwave.html">Heatwave Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erb-clara-climatology.html">Analysis of the CLARA Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erb-ceres-climatology.html">Analysis of the CERES Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Total Column Ozone</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Greenhouse Gas Level 2 Products</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../projections-cmip6.html">Climate Projections (CMIP6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections-cordex.html">Climate Projections (CORDEX)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Seasonal Forecasts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sf-verification.html">Seasonal Forecast Verification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ci-windchill.html">Windchill Index Calculation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">Python library (ibicus) and tutorials on bias correction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials using EFFIS and GloFAS data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../visualising-fwi-for-esotc.html">Visualising Fire Weather Index (FWI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glofas-bangladesh-floods.html">Observing floods with GloFAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Atmosphere Monitoring Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/ecv-notebooks/greenhouse-gases-level2-products.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/greenhouse-gases-level2-products.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ecv-notebooks/greenhouse-gases-level2-products.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>How to access and use a satellite-derived GHG Level 2 data product using XCO2_EMMA as an example?</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries-used-in-this-tutorial">Import libraries used in this tutorial</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-download-from-cds">Data download from CDS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-some-options-that-are-used-in-this-tutorial">Set some options that are used in this tutorial</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-data-files-with-xarray">Open data files with xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-latitudinal-distribution-of-xco2">Use case 1: The latitudinal distribution of XCO2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-xco2-vs-latitude">Computing XCO2 vs latitude</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generation-of-xy-plot-showing-xco2-vs-latitude">Generation of xy plot showing XCO2 vs latitude</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-2-showing-daily-data-on-a-map">Application 2: Showing daily data on a map</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="how-to-access-and-use-a-satellite-derived-ghg-level-2-data-product-using-xco2-emma-as-an-example">
+<h1>How to access and use a satellite-derived GHG Level 2 data product using XCO2_EMMA as an example?<a class="headerlink" href="#how-to-access-and-use-a-satellite-derived-ghg-level-2-data-product-using-xco2-emma-as-an-example" title="Permalink to this heading">#</a></h1>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>This is a Jupyter Notebook (JN) illustrating how to access and use a satellite-derived Greenhouse Gas (GHG) atmospheric carbon dioxide (CO2) Level 2 data product as generated via the Copernicus Climate Change Service (C3S) and made available via the Copernicus Climate Data Store <a class="reference external" href="https://cds.climate.copernicus.eu/">CDS</a>.</p>
+<p>Here we illustrate the use of a GHG Level 2 (L2) product using product XCO2_EMMA as an example. A CO2 L2 data product contains CO2 information for individual satellite ground pixels (also called footprints or soundings). XCO2 is the column-averaged dry-air mole fraction of atmospheric CO2 in parts per million (ppm). EMMA is the name of the multi-satellite XCO2 (and XCH4) merging algorithm developed to generate product XCO2_EMMA using as input individual Level 2 XCO2 products from different satellite sensors (here: SCIAMACHY/ENVISAT, GOSAT, GOSAT-2 and OCO-2; see, e.g., <a class="reference external" href="https://amt.copernicus.org/articles/13/789/2020/">Reuter et al., 2020</a>).</p>
+<p>Within C3S also other L2 products are generated and made available via the CDS. These products are (i) XCO2 from individual satellite sensors, (ii) XCH4 products, where XCH4 is the column-averaged dry-air mole fraction of CH4 in parts per billion (ppb), and (iii) mid tropospheric CO2 and CH4 mixing ratio products. Detailed information on all these products is available via the CDS. In addition to L2 products, also Level 3 (L3) products are available. A L3 product is based on a corresponding L2 product. A L3 product is  obtained by spatio-temporally averaging a corresponding L2 product. How to access and use a L3 GHG product is shown in a separate Jupyter Notebook.</p>
+<p>For this JN we use XCO2_EMMA version 4.4, which covers the period 2003 - 2021.</p>
+<p>This JN shows how to download a data product from the CDS, explains how to access the main variables and how to use them for a given applications. We focus on two use cases related to the spatial and temporal variation of atmospheric CO2 concentrations and their observational coverage.</p>
+<p>The first use case is related to the latitudial distribution of XCO2. We show how XCO2 averages and standard devations per latitude band can be computed and plotted. For this we use two days of observations, one in April and one in September. We explain that the observed latitudinal distributions are closely related to the seasonal cycle of CO2 due to uptake and release of CO2 by vegetation.</p>
+<p>For the second use case we show how a map of the spatial distribution of the individual ground pixel XCO2 observations can be generated. We show that the spatial coverage of the daily observations is very sparse due to strict quality filtering of the individual XCO2 retrievals. Most applications therefore require appropriate spatio-temporal averaging (see, for example, the use of C3S GHG XCO2 and XCH4 data for assessments such as Copernicus European State of the Climate (ESOTC) as shown on the <a class="reference external" href="https://climate.copernicus.eu/climate-indicators/greenhouse-gas-concentrations">GHG concentration climate indicators website</a>.</p>
+</section>
+<section id="prerequisites-and-data-acquisition">
+<h2>Prerequisites and data acquisition<a class="headerlink" href="#prerequisites-and-data-acquisition" title="Permalink to this heading">#</a></h2>
+<p>This tutorial is in the form of a Jupyter notebook. It can be run on a cloud environment, or on your own computer. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
+<style>
+td, th {
+   border: 1px solid white;
+   border-collapse: collapse;
+}
+</style>
+<table align="left">
+  <tr>
+    <th>Run the tutorial via free cloud platforms: </th>
+    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/greenhouse-gases-level2-products.ipynb">
+        <img src = "https://kaggle.com/static/images/open-in-kaggle.svg" alt = "Kaggle"></th>
+    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=ecv-notebooks/greenhouse-gases-level2-products.ipynb">
+        <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
+    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/greenhouse-gases-level2-products.ipynb">
+        <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
+  </tr>
+</table>
+<p><br><br></p>
+<section id="import-libraries-used-in-this-tutorial">
+<h3>Import libraries used in this tutorial<a class="headerlink" href="#import-libraries-used-in-this-tutorial" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cdsapi</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="c1"># from netCDF4 import Dataset</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="data-download-from-cds">
+<h2>Data download from CDS<a class="headerlink" href="#data-download-from-cds" title="Permalink to this heading">#</a></h2>
+<p>C3S GHG data products can be obtained from the CDS via the CDS user interface, or via the cdsapi as is demonstrated in this tutorial.</p>
+<p>The satellite-derived CO2 products, and documentation are available here:
+<a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-carbon-dioxide">https://cds.climate.copernicus.eu/datasets/satellite-carbon-dioxide</a></p>
+<p>Product XCO2_EMMA can be downloaded by manual selection in the “Download data” tab. Please select:</p>
+<ul class="simple">
+<li><p>Processing level: Level 2</p></li>
+<li><p>Variable: Column-average dry-air mole fraction of atmospheric Carbon Dioxide (XCO2) and related variables</p></li>
+<li><p>Sensor and algorithm: MERGED and EMMA</p></li>
+</ul>
+<p>For the following we assume that data for 2 days have been downloaded:</p>
+<ul class="simple">
+<li><p>File 1: 15-April-2020</p></li>
+<li><p>File 2: 15-September-2020</p></li>
+</ul>
+<p>It is also assumed that the following version and format of the data is selected:</p>
+<ul class="simple">
+<li><p>Version: 4.4</p></li>
+<li><p>Format: Zip file</p></li>
+</ul>
+<p>The corresponding file names are:</p>
+<ul class="simple">
+<li><p>File 1: 20200415-C3S-L2_GHG-GHG_PRODUCTS-MERGED-MERGED-EMMA-DAILY-v4.4.nc</p></li>
+<li><p>File 2: 20200915-C3S-L2_GHG-GHG_PRODUCTS-MERGED-MERGED-EMMA-DAILY-v4.4.nc</p></li>
+</ul>
+<p>The following code block will download these data files and extract them to the current directory ready for use in this tutorial. This assumes that you have installed the cdsapi and configured you .cdsapirc file with your key, as described in the “Climate Data Store Tutorial”.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;#################&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">download_zip_file</span> <span class="o">=</span> <span class="s2">&quot;download.zip&quot;</span>
+<span class="n">dataset</span> <span class="o">=</span> <span class="s2">&quot;satellite-carbon-dioxide&quot;</span>
+<span class="n">request</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;processing_level&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;level_2&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="s1">&#39;xco2&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;sensor_and_algorithm&#39;</span><span class="p">:</span> <span class="s1">&#39;merged_emma&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;2020&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;04&#39;</span><span class="p">,</span> <span class="s1">&#39;09&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;day&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;15&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;version&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;4_4&#39;</span><span class="p">],</span>
+    <span class="s2">&quot;format&quot;</span><span class="p">:</span> <span class="s2">&quot;zip&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
+<span class="n">client</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">request</span><span class="p">)</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="n">download_zip_file</span><span class="p">)</span>
+
+<span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">download_zip_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">zf</span><span class="p">:</span>
+    <span class="n">zf</span><span class="o">.</span><span class="n">extractall</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-16 16:19:44,452 INFO [2024-09-28T00:00:00] **Welcome to the New Climate Data Store (CDS)!** This new system is in its early days of full operations and still undergoing enhancements and fine tuning. Some disruptions are to be expected. Your 
+[feedback](https://jira.ecmwf.int/plugins/servlet/desk/portal/1/create/202) is key to improve the user experience on the new CDS for the benefit of everyone. Thank you.
+2024-12-16 16:19:44,453 INFO [2024-09-26T00:00:00] Watch our [Forum](https://forum.ecmwf.int/) for Announcements, news and other discussed topics.
+2024-12-16 16:19:44,453 INFO [2024-09-16T00:00:00] Remember that you need to have an ECMWF account to use the new CDS. **Your old CDS credentials will not work in new CDS!**
+2024-12-16 16:19:44,454 WARNING [2024-06-16T00:00:00] CDS API syntax is changed and some keys or parameter names may have also changed. To avoid requests failing, please use the &quot;Show API request code&quot; tool on the dataset Download Form to check you are using the correct syntax for your API request.
+2024-12-16 16:19:46,520 INFO Request ID is 4e85e161-18c8-48fd-bfc3-421cda3187cb
+2024-12-16 16:19:46,581 INFO status has been updated to accepted
+2024-12-16 16:19:52,336 INFO status has been updated to running
+2024-12-16 16:20:01,746 INFO status has been updated to successful
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "ca2bc9fad2a14e5f881a41e28f9cf216", "version_major": 2, "version_minor": 0}</script></div>
+</div>
+<section id="set-some-options-that-are-used-in-this-tutorial">
+<h3>Set some options that are used in this tutorial<a class="headerlink" href="#set-some-options-that-are-used-in-this-tutorial" title="Permalink to this heading">#</a></h3>
+<p>Here some information on the selected product (which will be used later for the plots):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">product_id</span> <span class="o">=</span> <span class="s1">&#39;XCO2_EMMA&#39;</span> 
+<span class="n">product_version</span> <span class="o">=</span> <span class="s1">&#39;4.4&#39;</span>  
+<span class="n">product_str</span> <span class="o">=</span> <span class="n">product_id</span><span class="o">+</span><span class="s1">&#39; (v&#39;</span><span class="o">+</span><span class="n">product_version</span><span class="o">+</span><span class="s1">&#39;)&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Here some information on the selected days and corresponding file names:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># For file 1:</span>
+<span class="n">year_1_str</span> <span class="o">=</span> <span class="s1">&#39;2020&#39;</span><span class="p">;</span> <span class="n">month_1_str</span> <span class="o">=</span> <span class="s1">&#39;04&#39;</span><span class="p">;</span> <span class="n">month_name_1_str</span> <span class="o">=</span> <span class="s1">&#39;Apr&#39;</span><span class="p">;</span> <span class="n">day_1_str</span> <span class="o">=</span> <span class="s1">&#39;15&#39;</span>
+<span class="n">L2_file_1</span> <span class="o">=</span> <span class="s1">&#39;20200415-C3S-L2_XCO2-GHG_PRODUCTS-MERGED-MERGED-EMMA-DAILY-v4.4.nc&#39;</span>
+<span class="n">file_1_date</span> <span class="o">=</span> <span class="n">year_1_str</span><span class="o">+</span><span class="n">month_1_str</span><span class="o">+</span><span class="n">day_1_str</span>
+<span class="n">file_1_date2</span> <span class="o">=</span> <span class="n">day_1_str</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">month_name_1_str</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">year_1_str</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">L2_file_1</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;File 1 exists: </span><span class="si">{</span><span class="n">L2_file_1</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File 1 not found, please data downloaded and extracted correctly&#39;</span><span class="p">)</span>
+
+<span class="c1"># For file 2:</span>
+<span class="n">year_2_str</span> <span class="o">=</span> <span class="s1">&#39;2020&#39;</span><span class="p">;</span> <span class="n">month_2_str</span> <span class="o">=</span> <span class="s1">&#39;09&#39;</span><span class="p">;</span> <span class="n">month_name_2_str</span> <span class="o">=</span> <span class="s1">&#39;Sep&#39;</span><span class="p">;</span> <span class="n">day_2_str</span> <span class="o">=</span> <span class="s1">&#39;15&#39;</span>
+<span class="n">L2_file_2</span> <span class="o">=</span> <span class="s1">&#39;20200915-C3S-L2_XCO2-GHG_PRODUCTS-MERGED-MERGED-EMMA-DAILY-v4.4.nc&#39;</span>
+<span class="n">file_2_date</span> <span class="o">=</span> <span class="n">year_2_str</span><span class="o">+</span><span class="n">month_2_str</span><span class="o">+</span><span class="n">day_2_str</span>
+<span class="n">file_2_date2</span> <span class="o">=</span> <span class="n">day_2_str</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">month_name_2_str</span><span class="o">+</span><span class="s1">&#39;-&#39;</span><span class="o">+</span><span class="n">year_2_str</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">L2_file_2</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;File 2 exists: </span><span class="si">{</span><span class="n">L2_file_2</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+   <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;File 2 not found, please data downloaded and extracted correctly&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>File 1 exists: 20200415-C3S-L2_XCO2-GHG_PRODUCTS-MERGED-MERGED-EMMA-DAILY-v4.4.nc
+File 2 exists: 20200915-C3S-L2_XCO2-GHG_PRODUCTS-MERGED-MERGED-EMMA-DAILY-v4.4.nc
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="open-data-files-with-xarray">
+<h2>Open data files with xarray<a class="headerlink" href="#open-data-files-with-xarray" title="Permalink to this heading">#</a></h2>
+<p>We open the first file with xarray, and then set some of the variables to be coordinates (<code class="docutils literal notranslate"><span class="pre">latitude</span></code>, <code class="docutils literal notranslate"><span class="pre">longitude</span></code> and <code class="docutils literal notranslate"><span class="pre">time</span></code>).</p>
+<p>The print out of the <code class="docutils literal notranslate"><span class="pre">xarray.Dataset</span></code> allows you to explore the contents of the file. For this tutorial we will be using the <code class="docutils literal notranslate"><span class="pre">xco2</span></code> variable.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_1</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">L2_file_1</span><span class="p">)</span>
+
+<span class="n">ds_1</span> <span class="o">=</span> <span class="n">ds_1</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span>
+   <span class="s2">&quot;latitude&quot;</span><span class="p">:</span> <span class="n">ds_1</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+   <span class="s2">&quot;longitude&quot;</span><span class="p">:</span> <span class="n">ds_1</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+   <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">ds_1</span><span class="o">.</span><span class="n">time</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="n">ds_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 936kB
+Dimensions:                  (sounding_dim: 4333, layer_dim: 10, level_dim: 11)
+Coordinates:
+    longitude                (sounding_dim) float32 17kB ...
+    latitude                 (sounding_dim) float32 17kB ...
+    time                     (sounding_dim) datetime64[ns] 35kB ...
+Dimensions without coordinates: sounding_dim, layer_dim, level_dim
+Data variables: (12/15)
+    solar_zenith_angle       (sounding_dim) float32 17kB ...
+    sensor_zenith_angle      (sounding_dim) float32 17kB ...
+    xco2_quality_flag        (sounding_dim) int8 4kB ...
+    xco2                     (sounding_dim) float32 17kB ...
+    xco2_uncertainty         (sounding_dim) float32 17kB ...
+    co2_profile_apriori      (sounding_dim, layer_dim) float32 173kB ...
+    ...                       ...
+    median_processor_id      (sounding_dim) int16 9kB ...
+    median_uncertainty       (sounding_dim) float32 17kB ...
+    median_uncertainty_se    (sounding_dim) float32 17kB ...
+    median_uncertainty_ex    (sounding_dim) float32 17kB ...
+    xco2_accuracy            (sounding_dim) float32 17kB ...
+    contributing_algorithms  (sounding_dim) int8 4kB ...
+Attributes: (12/37)
+    title:                     EMMA
+    institution:               IUP
+    source:                     
+    history:                    
+    references:                M. Reuter, H. Bösch, H. Bovensmann, A. Bril, M...
+    tracking_id:               bd847e6c-5e1b-4947-a667-00263c3dbb68
+    ...                        ...
+    time_coverage_resolution:  P1D
+    standard_name_vocabulary:  NetCDF Climate and Forecast (CF) Metadata Conv...
+    license:                   GHG-CCI Licence: \nAs condition of using this...
+    platform:                  Envisat, GOSAT, GOSAT-2, OCO-2
+    sensor:                    SCIAMACHY, TANSO-FTS, TANSO-FTS-2, OCO-2
+    spatial_resolution:         </pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-dd0bd4d5-fc62-4847-8813-6b01f4abb829' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-dd0bd4d5-fc62-4847-8813-6b01f4abb829' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>sounding_dim</span>: 4333</li><li><span>layer_dim</span>: 10</li><li><span>level_dim</span>: 11</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-fa8c6733-2647-4bd4-ac33-86ef23c5e6ea' class='xr-section-summary-in' type='checkbox'  checked><label for='section-fa8c6733-2647-4bd4-ac33-86ef23c5e6ea' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-dd3a7260-a7d6-4161-83c4-ccdbfede91a2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-dd3a7260-a7d6-4161-83c4-ccdbfede91a2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7c1e00f9-63ed-476b-87c8-4806eed83c39' class='xr-var-data-in' type='checkbox'><label for='data-7c1e00f9-63ed-476b-87c8-4806eed83c39' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>valid_range :</span></dt><dd>[-180.  180.]</dd><dt><span>comment :</span></dt><dd>Center longitude of the measurement</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-e4b024fa-1d9a-4c44-acd6-cbb59c695ace' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-e4b024fa-1d9a-4c44-acd6-cbb59c695ace' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f63be405-c082-4aa0-af40-d49f80549478' class='xr-var-data-in' type='checkbox'><label for='data-f63be405-c082-4aa0-af40-d49f80549478' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_range :</span></dt><dd>[-90.  90.]</dd><dt><span>comment :</span></dt><dd>Center latitude of the measurement</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-97c9cffc-e0ba-41da-b02e-09dc3e73feb0' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-97c9cffc-e0ba-41da-b02e-09dc3e73feb0' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9068b49e-e569-44d7-9748-ad29636481b7' class='xr-var-data-in' type='checkbox'><label for='data-9068b49e-e569-44d7-9748-ad29636481b7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=datetime64[ns]]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-084e6dfa-4598-4164-9fc0-678d01690b12' class='xr-section-summary-in' type='checkbox'  ><label for='section-084e6dfa-4598-4164-9fc0-678d01690b12' class='xr-section-summary' >Data variables: <span>(15)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>solar_zenith_angle</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b7f301fd-2632-4c2e-b8f1-8e30ff7d430e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b7f301fd-2632-4c2e-b8f1-8e30ff7d430e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d550695f-fdbb-45e7-9536-2a494ced5876' class='xr-var-data-in' type='checkbox'><label for='data-d550695f-fdbb-45e7-9536-2a494ced5876' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>solar_zenith_angle</dd><dt><span>long_name :</span></dt><dd>solar zenith angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>comment :</span></dt><dd>Solar zenith angle is the the angle between the line of sight to the sun and the local vertical.</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sensor_zenith_angle</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4419ad68-6d13-4f67-8fc0-64613c0f09ec' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4419ad68-6d13-4f67-8fc0-64613c0f09ec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9aad428e-32d8-4387-a106-ed91aa0a0bc2' class='xr-var-data-in' type='checkbox'><label for='data-9aad428e-32d8-4387-a106-ed91aa0a0bc2' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>sensor_zenith_angle</dd><dt><span>long_name :</span></dt><dd>Sensor zenith angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>comment :</span></dt><dd>Sensor zenith angle is the angle between the line of sight to the sensor and the local vertical.</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xco2_quality_flag</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-4bb729a0-e3aa-4ea0-b8cc-01a902167868' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-4bb729a0-e3aa-4ea0-b8cc-01a902167868' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6691b64b-bf59-4929-8caa-cf3cb9210e5e' class='xr-var-data-in' type='checkbox'><label for='data-6691b64b-bf59-4929-8caa-cf3cb9210e5e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>quality flag</dd><dt><span>flag_values :</span></dt><dd>[0 1]</dd><dt><span>flag_meanings :</span></dt><dd>good_quality potentially_bad_quality</dd><dt><span>comment :</span></dt><dd>0=good, 1=bad</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=int8]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xco2</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-d734a9b6-d5f8-40f7-a666-81640d3117d1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d734a9b6-d5f8-40f7-a666-81640d3117d1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6f1e69e5-23d6-44bf-a602-bea3f7049ef3' class='xr-var-data-in' type='checkbox'><label for='data-6f1e69e5-23d6-44bf-a602-bea3f7049ef3' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>dry_atmosphere_mole_fraction_of_carbon_dioxide</dd><dt><span>long_name :</span></dt><dd>column-average dry-air mole fraction of atmospheric carbon dioxide in dry air</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>Retrieved column-average dry-air mole fraction of atmospheric carbon dioxide (XCO2) in ppm</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xco2_uncertainty</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-71071878-665c-444c-af6f-2141d4596cdc' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-71071878-665c-444c-af6f-2141d4596cdc' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4a9cc170-92a7-4bcd-89eb-d93d300f7470' class='xr-var-data-in' type='checkbox'><label for='data-4a9cc170-92a7-4bcd-89eb-d93d300f7470' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>1-sigma uncertainty of the retrieved column-average dry-air mole fraction of atmospheric carbon dioxide</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>1-sigma uncertainty of the retrieved column-average dry-air mole fraction of atmospheric carbon dioxide (XCO2) in ppm</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>co2_profile_apriori</span></div><div class='xr-var-dims'>(sounding_dim, layer_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-36de7931-2e56-4642-8510-41b9384a75ab' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-36de7931-2e56-4642-8510-41b9384a75ab' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-87eff4ff-e248-452f-8cbe-08fd016fc43f' class='xr-var-data-in' type='checkbox'><label for='data-87eff4ff-e248-452f-8cbe-08fd016fc43f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>a priori dry-air mole fraction profile of atmospheric carbon dioxide</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>A priori dry-air mole fraction profile of atmospheric carbon dioxide in ppm All values represent layer averages within the corresponding pressure levels. Profiles are ordered from surface to top of atmosphere. The a priori profile is needed to apply the XCO2 averaging kernel. See Product Specification Document Version 3 at www.esa-ghg-cci.org for more information.</dd></dl></div><div class='xr-var-data'><pre>[43330 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>pressure_levels</span></div><div class='xr-var-dims'>(sounding_dim, level_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-75db07f6-b0dd-46e9-bab3-dcdf3fc9c777' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-75db07f6-b0dd-46e9-bab3-dcdf3fc9c777' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-6877b1fb-06eb-4458-9b9d-416c15512394' class='xr-var-data-in' type='checkbox'><label for='data-6877b1fb-06eb-4458-9b9d-416c15512394' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>pressure levels</dd><dt><span>units :</span></dt><dd>hPa</dd><dt><span>comment :</span></dt><dd>Pressure levels define the boundaries of the averaging kernel and mole fraction profile layers. Surface pressure is represented by the 1st element, i.e., profiles are ordered from surface to top of atmosphere.</dd></dl></div><div class='xr-var-data'><pre>[47663 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>pressure_weight</span></div><div class='xr-var-dims'>(sounding_dim, layer_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9d18cd34-c22c-473d-a335-0be7e9855ab6' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9d18cd34-c22c-473d-a335-0be7e9855ab6' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4bb85c9f-9c8c-445e-82c4-925f090ac1f7' class='xr-var-data-in' type='checkbox'><label for='data-4bb85c9f-9c8c-445e-82c4-925f090ac1f7' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>pressure weight</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>comment :</span></dt><dd>Layer dependent weights needed to apply the averaging kernels (see Product Specification Document Version 3, www.esa-ghg-cci.org)</dd></dl></div><div class='xr-var-data'><pre>[43330 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xco2_averaging_kernel</span></div><div class='xr-var-dims'>(sounding_dim, layer_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1a29acef-8255-44ca-a314-f37b7f7d0e02' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1a29acef-8255-44ca-a314-f37b7f7d0e02' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-21231846-2a62-4b14-abf1-18ff19d46c0b' class='xr-var-data-in' type='checkbox'><label for='data-21231846-2a62-4b14-abf1-18ff19d46c0b' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>normalized column averaging kernel</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>comment :</span></dt><dd>The normalized column-averaging kernel represents the sensitivity of the retrieved XCO2 to the atmospheric carbon dioxide mole fraction depending on pressure (height). All values represent layer averages within the corresponding pressure levels. Values near one are ideal and indicate that the influence of the a priori is minimal. Profiles are ordered from surface to top of atmosphere. See Product Specification Document Version 3 at www.esa-ghg-cci.org for more information.</dd></dl></div><div class='xr-var-data'><pre>[43330 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>median_processor_id</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>int16</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-1182f839-0454-455a-92b7-33c5e4c40ea1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-1182f839-0454-455a-92b7-33c5e4c40ea1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-8b7bea94-e3fc-4f2f-95e2-bc0f623a6dca' class='xr-var-data-in' type='checkbox'><label for='data-8b7bea94-e3fc-4f2f-95e2-bc0f623a6dca' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>l2 processor id</dd><dt><span>comment :</span></dt><dd>   ID   Institute  Instrument   Algorithm     Version
+    3        NIES       GOSAT        NIES    v02.9xbc
+    5        SRON       GOSAT     RemoTeC      v2.3.8
+    6         UoL       GOSAT      UoL-FP        v7.3
+    8         IUP       GOSAT       FOCAL        v3.0
+    9        NASA       OCO-2        NASA       v10.2
+   10         IUP       OCO-2       FOCAL         v10
+   12        SRON     GOSAT-2     RemoTeC      v2.0.0
+   13         IUP     GOSAT-2       FOCAL        v3.0
+</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=int16]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>median_uncertainty</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3b8b444f-c6fc-4585-abef-e265d3663db8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3b8b444f-c6fc-4585-abef-e265d3663db8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-c51f256e-0301-450f-b6e4-8e71182f0e6c' class='xr-var-data-in' type='checkbox'><label for='data-c51f256e-0301-450f-b6e4-8e71182f0e6c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>xco2 median uncertainty</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>inter-algorithm-spread</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>median_uncertainty_se</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-b6704204-4387-4eee-a321-774aa738c923' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b6704204-4387-4eee-a321-774aa738c923' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2cbd8a6f-2769-412c-a009-a64146d387bc' class='xr-var-data-in' type='checkbox'><label for='data-2cbd8a6f-2769-412c-a009-a64146d387bc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>xco2 median uncertainty se</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>standard error of the median uncertainty</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>median_uncertainty_ex</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-0094b487-d03b-4916-8d0e-997a9c452855' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-0094b487-d03b-4916-8d0e-997a9c452855' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-5d8a8688-eeee-4ac8-932f-d11065a6b38c' class='xr-var-data-in' type='checkbox'><label for='data-5d8a8688-eeee-4ac8-932f-d11065a6b38c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>xco2 median uncertainty ex</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>expected inter-algorithm spread due to measurement noise</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xco2_accuracy</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9d4f9705-410e-45cd-8508-b34daeedea1b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9d4f9705-410e-45cd-8508-b34daeedea1b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-83e70d0d-1255-44c9-9239-c9961db7d0a8' class='xr-var-data-in' type='checkbox'><label for='data-83e70d0d-1255-44c9-9239-c9961db7d0a8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>xco2 accuracy</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>potential spatio/temporal bias (1-sigma) of the retrieved column-average dry-air mole fraction of atmospheric carbon dioxide (XCO2) in ppm estimated from TCCON co-locations</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>contributing_algorithms</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-aca93228-02a8-4ba5-b787-4551653495c3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-aca93228-02a8-4ba5-b787-4551653495c3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a8640932-8353-49f6-8bd2-f433c036abef' class='xr-var-data-in' type='checkbox'><label for='data-a8640932-8353-49f6-8bd2-f433c036abef' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>contributing algorithms</dd><dt><span>comment :</span></dt><dd>number of algorithms contributing to median calculation in this grid box</dd></dl></div><div class='xr-var-data'><pre>[4333 values with dtype=int8]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-d5a66787-d71b-45db-bae8-51dca0afc995' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-d5a66787-d71b-45db-bae8-51dca0afc995' class='xr-section-summary'  title='Expand/collapse section'>Indexes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-4c2ec284-2965-45c6-bd7b-42747d048c5f' class='xr-section-summary-in' type='checkbox'  ><label for='section-4c2ec284-2965-45c6-bd7b-42747d048c5f' class='xr-section-summary' >Attributes: <span>(37)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>EMMA</dd><dt><span>institution :</span></dt><dd>IUP</dd><dt><span>source :</span></dt><dd> </dd><dt><span>history :</span></dt><dd> </dd><dt><span>references :</span></dt><dd>M. Reuter, H. Bösch, H. Bovensmann, A. Bril, M. Buchwitz, A. Butz,
+J. P. Burrows, C. W. ODell, S. Guerlet, O. Hasekamp, J. Heymann, N. Kikuchi,
+S. Oshchepkov, R. Parker, S. Pfeifer, O. Schneising, T. Yokota, and
+Y. Yoshida: A joint effort to deliver satellite retrieved atmospheric CO2
+concentrations for surface flux inversions: the ensemble median algorithm
+EMMA. Atmospheric Chemistry and Physics, 13, 1771-1780, 2013</dd><dt><span>tracking_id :</span></dt><dd>bd847e6c-5e1b-4947-a667-00263c3dbb68</dd><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>product_version :</span></dt><dd>v4.4.CO2</dd><dt><span>summary :</span></dt><dd>Since long time, climate modellers use ensemble approaches to calculate the
+ensemble median and to estimate uncertainties of climate projections where
+no ground-truth is known. Following this idea, the ensemble median
+algorithm EMMA composes level 2 data of independently developed retrieval
+algorithms. EMMA determines in 10x10 degree grid boxes monthly averages and
+selects level 2 data of the median algorithm.</dd><dt><span>keywords :</span></dt><dd>satellite, atmosphere, carbon dioxide</dd><dt><span>id :</span></dt><dd>ESACCI-GHG-L2-CO2-VARIOUS-EMMA-20200415-fv1.nc</dd><dt><span>naming_authority :</span></dt><dd> </dd><dt><span>keywords_vocabulary :</span></dt><dd>NASA Global Change Master Directory (GCMD)</dd><dt><span>cdm_data_type :</span></dt><dd>point</dd><dt><span>comment :</span></dt><dd> </dd><dt><span>date_created :</span></dt><dd>20220710T091918Z</dd><dt><span>creator_name :</span></dt><dd> </dd><dt><span>creator_url :</span></dt><dd> </dd><dt><span>creator_email :</span></dt><dd> </dd><dt><span>project :</span></dt><dd> </dd><dt><span>geospatial_lat_min :</span></dt><dd>-90.0</dd><dt><span>geospatial_lat_max :</span></dt><dd>90.0</dd><dt><span>geospatial_lat_units :</span></dt><dd>degrees_north</dd><dt><span>geospatial_lon_min :</span></dt><dd>-180.0</dd><dt><span>geospatial_lon_max :</span></dt><dd>180.0</dd><dt><span>geospatial_lon_units :</span></dt><dd>degrees_east</dd><dt><span>geospatial_vertical_min :</span></dt><dd>0.0</dd><dt><span>geospatial_vertical_max :</span></dt><dd>100000.0</dd><dt><span>time_coverage_start :</span></dt><dd>20200415T000000Z</dd><dt><span>time_coverage_end :</span></dt><dd>20200415T235959Z</dd><dt><span>time_coverage_duration :</span></dt><dd>P1D</dd><dt><span>time_coverage_resolution :</span></dt><dd>P1D</dd><dt><span>standard_name_vocabulary :</span></dt><dd>NetCDF Climate and Forecast (CF) Metadata Conventions Version 1.6</dd><dt><span>license :</span></dt><dd>GHG-CCI Licence: 
+As condition of using this product, you agree
+... to inform us prior to any publication where the data products are planned to be used. Please do this by sending us the
+manuscript for review before submission for publication to ensure that our data are accurately represented.
+... to offer us co-authorship for any planned peer-reviewed publication based on our data products. (For non peer-reviewed
+publications it is sufficient if you add an appropriate acknowledgement.) In these instances, please contact the project management
+(Michael Buchwitz (michael.buchwitz@iup.physik.uni-bremen.de) or Maximilian Reuter (maximilian.reuter@iup.physik.uni-bremen.de))
+who will then forward the information to the respective retrieval teams.</dd><dt><span>platform :</span></dt><dd>Envisat, GOSAT, GOSAT-2, OCO-2</dd><dt><span>sensor :</span></dt><dd>SCIAMACHY, TANSO-FTS, TANSO-FTS-2, OCO-2</dd><dt><span>spatial_resolution :</span></dt><dd> </dd></dl></div></li></ul></div></div></div></div>
+</div>
+<p>Then repeat for file 2:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ds_2</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_dataset</span><span class="p">(</span><span class="n">L2_file_2</span><span class="p">)</span>
+
+<span class="n">ds_2</span> <span class="o">=</span> <span class="n">ds_2</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">({</span>
+   <span class="s2">&quot;latitude&quot;</span><span class="p">:</span> <span class="n">ds_2</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+   <span class="s2">&quot;longitude&quot;</span><span class="p">:</span> <span class="n">ds_2</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span>
+   <span class="s2">&quot;time&quot;</span><span class="p">:</span> <span class="n">ds_2</span><span class="o">.</span><span class="n">time</span><span class="p">,</span>
+<span class="p">})</span>
+
+<span class="n">ds_2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 1MB
+Dimensions:                  (sounding_dim: 5455, layer_dim: 10, level_dim: 11)
+Coordinates:
+    longitude                (sounding_dim) float32 22kB ...
+    latitude                 (sounding_dim) float32 22kB ...
+    time                     (sounding_dim) datetime64[ns] 44kB ...
+Dimensions without coordinates: sounding_dim, layer_dim, level_dim
+Data variables: (12/15)
+    solar_zenith_angle       (sounding_dim) float32 22kB ...
+    sensor_zenith_angle      (sounding_dim) float32 22kB ...
+    xco2_quality_flag        (sounding_dim) int8 5kB ...
+    xco2                     (sounding_dim) float32 22kB ...
+    xco2_uncertainty         (sounding_dim) float32 22kB ...
+    co2_profile_apriori      (sounding_dim, layer_dim) float32 218kB ...
+    ...                       ...
+    median_processor_id      (sounding_dim) int16 11kB ...
+    median_uncertainty       (sounding_dim) float32 22kB ...
+    median_uncertainty_se    (sounding_dim) float32 22kB ...
+    median_uncertainty_ex    (sounding_dim) float32 22kB ...
+    xco2_accuracy            (sounding_dim) float32 22kB ...
+    contributing_algorithms  (sounding_dim) int8 5kB ...
+Attributes: (12/37)
+    title:                     EMMA
+    institution:               IUP
+    source:                     
+    history:                    
+    references:                M. Reuter, H. Bösch, H. Bovensmann, A. Bril, M...
+    tracking_id:               3c1d15b4-db12-4365-809f-390ca631576b
+    ...                        ...
+    time_coverage_resolution:  P1D
+    standard_name_vocabulary:  NetCDF Climate and Forecast (CF) Metadata Conv...
+    license:                   GHG-CCI Licence: \nAs condition of using this...
+    platform:                  Envisat, GOSAT, GOSAT-2, OCO-2
+    sensor:                    SCIAMACHY, TANSO-FTS, TANSO-FTS-2, OCO-2
+    spatial_resolution:         </pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-465e5b84-bdab-451e-8678-57fb1ae29d34' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-465e5b84-bdab-451e-8678-57fb1ae29d34' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span>sounding_dim</span>: 5455</li><li><span>layer_dim</span>: 10</li><li><span>level_dim</span>: 11</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-7eb6acb1-20d1-4f2a-a6e0-9784496bfaf9' class='xr-section-summary-in' type='checkbox'  checked><label for='section-7eb6acb1-20d1-4f2a-a6e0-9784496bfaf9' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>longitude</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-01494e07-9a11-4fff-ac1d-68b0e4e966b4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-01494e07-9a11-4fff-ac1d-68b0e4e966b4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-731ad081-d59a-481a-8606-bdc16ad29fdb' class='xr-var-data-in' type='checkbox'><label for='data-731ad081-d59a-481a-8606-bdc16ad29fdb' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>valid_range :</span></dt><dd>[-180.  180.]</dd><dt><span>comment :</span></dt><dd>Center longitude of the measurement</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>latitude</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-579a93eb-a39b-4158-a84d-92e5b478cf0a' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-579a93eb-a39b-4158-a84d-92e5b478cf0a' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-7253b7ca-bed2-42d8-a68a-3b75adfb9b6c' class='xr-var-data-in' type='checkbox'><label for='data-7253b7ca-bed2-42d8-a68a-3b75adfb9b6c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_range :</span></dt><dd>[-90.  90.]</dd><dt><span>comment :</span></dt><dd>Center latitude of the measurement</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-de6f38db-0835-4055-b6f2-6946afee5e82' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-de6f38db-0835-4055-b6f2-6946afee5e82' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e6f6945f-5061-4eb1-b55a-c18240d4433c' class='xr-var-data-in' type='checkbox'><label for='data-e6f6945f-5061-4eb1-b55a-c18240d4433c' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>long_name :</span></dt><dd>time</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=datetime64[ns]]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-645ef6ca-366b-477e-add7-e1f69d26cf59' class='xr-section-summary-in' type='checkbox'  ><label for='section-645ef6ca-366b-477e-add7-e1f69d26cf59' class='xr-section-summary' >Data variables: <span>(15)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>solar_zenith_angle</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-a7585af2-378c-4aee-a11b-49c86aca8aec' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-a7585af2-378c-4aee-a11b-49c86aca8aec' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4a33e289-e96c-47ca-b2a3-9062608022b5' class='xr-var-data-in' type='checkbox'><label for='data-4a33e289-e96c-47ca-b2a3-9062608022b5' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>solar_zenith_angle</dd><dt><span>long_name :</span></dt><dd>solar zenith angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>comment :</span></dt><dd>Solar zenith angle is the the angle between the line of sight to the sun and the local vertical.</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>sensor_zenith_angle</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-39311b00-f2bb-4aca-addf-2cb1f2222be1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-39311b00-f2bb-4aca-addf-2cb1f2222be1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-022cf794-fc44-42b5-9b40-99a0645b5f37' class='xr-var-data-in' type='checkbox'><label for='data-022cf794-fc44-42b5-9b40-99a0645b5f37' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>sensor_zenith_angle</dd><dt><span>long_name :</span></dt><dd>Sensor zenith angle</dd><dt><span>units :</span></dt><dd>degree</dd><dt><span>comment :</span></dt><dd>Sensor zenith angle is the angle between the line of sight to the sensor and the local vertical.</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xco2_quality_flag</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9fedbe0c-280d-4cde-93d3-e8c0bbbd4fd1' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9fedbe0c-280d-4cde-93d3-e8c0bbbd4fd1' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-58fa9532-8f5d-44e1-b5b4-62bc08cdd611' class='xr-var-data-in' type='checkbox'><label for='data-58fa9532-8f5d-44e1-b5b4-62bc08cdd611' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>quality flag</dd><dt><span>flag_values :</span></dt><dd>[0 1]</dd><dt><span>flag_meanings :</span></dt><dd>good_quality potentially_bad_quality</dd><dt><span>comment :</span></dt><dd>0=good, 1=bad</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=int8]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xco2</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-9ece405e-5838-4abd-99e9-8bacab35748e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9ece405e-5838-4abd-99e9-8bacab35748e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f7947934-d733-411f-9a60-91fdc05d72ef' class='xr-var-data-in' type='checkbox'><label for='data-f7947934-d733-411f-9a60-91fdc05d72ef' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>dry_atmosphere_mole_fraction_of_carbon_dioxide</dd><dt><span>long_name :</span></dt><dd>column-average dry-air mole fraction of atmospheric carbon dioxide in dry air</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>Retrieved column-average dry-air mole fraction of atmospheric carbon dioxide (XCO2) in ppm</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xco2_uncertainty</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-94d94d87-f3f9-4ef1-82b7-f258bb962649' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-94d94d87-f3f9-4ef1-82b7-f258bb962649' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b74d0b04-1659-48ec-8f26-c3f9aa1ecf1e' class='xr-var-data-in' type='checkbox'><label for='data-b74d0b04-1659-48ec-8f26-c3f9aa1ecf1e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>1-sigma uncertainty of the retrieved column-average dry-air mole fraction of atmospheric carbon dioxide</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>1-sigma uncertainty of the retrieved column-average dry-air mole fraction of atmospheric carbon dioxide (XCO2) in ppm</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>co2_profile_apriori</span></div><div class='xr-var-dims'>(sounding_dim, layer_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-3f06359e-eb18-4a4c-b225-d35ed395a3ce' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-3f06359e-eb18-4a4c-b225-d35ed395a3ce' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-be7536d9-02f5-4bbd-906f-4c989bf4697a' class='xr-var-data-in' type='checkbox'><label for='data-be7536d9-02f5-4bbd-906f-4c989bf4697a' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>a priori dry-air mole fraction profile of atmospheric carbon dioxide</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>A priori dry-air mole fraction profile of atmospheric carbon dioxide in ppm All values represent layer averages within the corresponding pressure levels. Profiles are ordered from surface to top of atmosphere. The a priori profile is needed to apply the XCO2 averaging kernel. See Product Specification Document Version 3 at www.esa-ghg-cci.org for more information.</dd></dl></div><div class='xr-var-data'><pre>[54550 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>pressure_levels</span></div><div class='xr-var-dims'>(sounding_dim, level_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-d81702c2-fac1-469d-9ef9-a8d7cdcc0ca2' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d81702c2-fac1-469d-9ef9-a8d7cdcc0ca2' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-844569e6-509c-41f7-b815-a7b07116535e' class='xr-var-data-in' type='checkbox'><label for='data-844569e6-509c-41f7-b815-a7b07116535e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>pressure levels</dd><dt><span>units :</span></dt><dd>hPa</dd><dt><span>comment :</span></dt><dd>Pressure levels define the boundaries of the averaging kernel and mole fraction profile layers. Surface pressure is represented by the 1st element, i.e., profiles are ordered from surface to top of atmosphere.</dd></dl></div><div class='xr-var-data'><pre>[60005 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>pressure_weight</span></div><div class='xr-var-dims'>(sounding_dim, layer_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-154462f7-a00d-4b9d-b84e-c35d0d05a93b' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-154462f7-a00d-4b9d-b84e-c35d0d05a93b' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-e7cc089e-7880-4e80-9db8-687f79cc4a9f' class='xr-var-data-in' type='checkbox'><label for='data-e7cc089e-7880-4e80-9db8-687f79cc4a9f' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>pressure weight</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>comment :</span></dt><dd>Layer dependent weights needed to apply the averaging kernels (see Product Specification Document Version 3, www.esa-ghg-cci.org)</dd></dl></div><div class='xr-var-data'><pre>[54550 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xco2_averaging_kernel</span></div><div class='xr-var-dims'>(sounding_dim, layer_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-7a724d67-a0f4-4db3-b0e9-259b8059861f' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7a724d67-a0f4-4db3-b0e9-259b8059861f' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-796f77b5-1e16-491e-acde-0b3bfcae5c47' class='xr-var-data-in' type='checkbox'><label for='data-796f77b5-1e16-491e-acde-0b3bfcae5c47' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>normalized column averaging kernel</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>comment :</span></dt><dd>The normalized column-averaging kernel represents the sensitivity of the retrieved XCO2 to the atmospheric carbon dioxide mole fraction depending on pressure (height). All values represent layer averages within the corresponding pressure levels. Values near one are ideal and indicate that the influence of the a priori is minimal. Profiles are ordered from surface to top of atmosphere. See Product Specification Document Version 3 at www.esa-ghg-cci.org for more information.</dd></dl></div><div class='xr-var-data'><pre>[54550 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>median_processor_id</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>int16</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-d0eaf248-3b60-4d05-abb2-0ea4afa310c8' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-d0eaf248-3b60-4d05-abb2-0ea4afa310c8' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-d3b2e030-4387-4e16-919c-748dc933c483' class='xr-var-data-in' type='checkbox'><label for='data-d3b2e030-4387-4e16-919c-748dc933c483' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>l2 processor id</dd><dt><span>comment :</span></dt><dd>   ID   Institute  Instrument   Algorithm     Version
+    3        NIES       GOSAT        NIES    v02.9xbc
+    6         UoL       GOSAT      UoL-FP        v7.3
+    8         IUP       GOSAT       FOCAL        v3.0
+    9        NASA       OCO-2        NASA       v10.2
+   10         IUP       OCO-2       FOCAL         v10
+   12        SRON     GOSAT-2     RemoTeC      v2.0.0
+   13         IUP     GOSAT-2       FOCAL        v3.0
+</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=int16]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>median_uncertainty</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-62284ca0-01bd-41c1-9f2a-adb32adf3c2c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-62284ca0-01bd-41c1-9f2a-adb32adf3c2c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f15d86a4-8a57-4e4f-8392-5b5b126ece6e' class='xr-var-data-in' type='checkbox'><label for='data-f15d86a4-8a57-4e4f-8392-5b5b126ece6e' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>xco2 median uncertainty</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>inter-algorithm-spread</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>median_uncertainty_se</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-7a8a81b9-2f94-4790-ad95-04cac2c196dd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7a8a81b9-2f94-4790-ad95-04cac2c196dd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a3f739fc-9ea4-4e9c-ab1f-3026e755d3b8' class='xr-var-data-in' type='checkbox'><label for='data-a3f739fc-9ea4-4e9c-ab1f-3026e755d3b8' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>xco2 median uncertainty se</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>standard error of the median uncertainty</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>median_uncertainty_ex</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-5fb5b100-7b35-486f-87ad-b636b9c6ad61' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-5fb5b100-7b35-486f-87ad-b636b9c6ad61' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-f3c9a4cc-597d-440a-b6dd-127610e6efda' class='xr-var-data-in' type='checkbox'><label for='data-f3c9a4cc-597d-440a-b6dd-127610e6efda' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>xco2 median uncertainty ex</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>expected inter-algorithm spread due to measurement noise</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>xco2_accuracy</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-bc5af611-b317-4c71-b1e0-f88f9fcde273' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-bc5af611-b317-4c71-b1e0-f88f9fcde273' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-2d13fb70-409d-46a1-b5e5-9a8935b06fa6' class='xr-var-data-in' type='checkbox'><label for='data-2d13fb70-409d-46a1-b5e5-9a8935b06fa6' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>xco2 accuracy</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>potential spatio/temporal bias (1-sigma) of the retrieved column-average dry-air mole fraction of atmospheric carbon dioxide (XCO2) in ppm estimated from TCCON co-locations</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=float32]</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span>contributing_algorithms</span></div><div class='xr-var-dims'>(sounding_dim)</div><div class='xr-var-dtype'>int8</div><div class='xr-var-preview xr-preview'>...</div><input id='attrs-ece84828-68ee-45df-a030-30be17c95c3c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ece84828-68ee-45df-a030-30be17c95c3c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a5645b9a-d77f-4577-a24d-4ee2e56a81bc' class='xr-var-data-in' type='checkbox'><label for='data-a5645b9a-d77f-4577-a24d-4ee2e56a81bc' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>contributing algorithms</dd><dt><span>comment :</span></dt><dd>number of algorithms contributing to median calculation in this grid box</dd></dl></div><div class='xr-var-data'><pre>[5455 values with dtype=int8]</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-e3c00e62-b2a0-49dc-96ae-b32cee1aa72f' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-e3c00e62-b2a0-49dc-96ae-b32cee1aa72f' class='xr-section-summary'  title='Expand/collapse section'>Indexes: <span>(0)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'></ul></div></li><li class='xr-section-item'><input id='section-6d9b2dab-db5d-4487-815c-5328567d2f06' class='xr-section-summary-in' type='checkbox'  ><label for='section-6d9b2dab-db5d-4487-815c-5328567d2f06' class='xr-section-summary' >Attributes: <span>(37)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>title :</span></dt><dd>EMMA</dd><dt><span>institution :</span></dt><dd>IUP</dd><dt><span>source :</span></dt><dd> </dd><dt><span>history :</span></dt><dd> </dd><dt><span>references :</span></dt><dd>M. Reuter, H. Bösch, H. Bovensmann, A. Bril, M. Buchwitz, A. Butz,
+J. P. Burrows, C. W. ODell, S. Guerlet, O. Hasekamp, J. Heymann, N. Kikuchi,
+S. Oshchepkov, R. Parker, S. Pfeifer, O. Schneising, T. Yokota, and
+Y. Yoshida: A joint effort to deliver satellite retrieved atmospheric CO2
+concentrations for surface flux inversions: the ensemble median algorithm
+EMMA. Atmospheric Chemistry and Physics, 13, 1771-1780, 2013</dd><dt><span>tracking_id :</span></dt><dd>3c1d15b4-db12-4365-809f-390ca631576b</dd><dt><span>Conventions :</span></dt><dd>CF-1.6</dd><dt><span>product_version :</span></dt><dd>v4.4.CO2</dd><dt><span>summary :</span></dt><dd>Since long time, climate modellers use ensemble approaches to calculate the
+ensemble median and to estimate uncertainties of climate projections where
+no ground-truth is known. Following this idea, the ensemble median
+algorithm EMMA composes level 2 data of independently developed retrieval
+algorithms. EMMA determines in 10x10 degree grid boxes monthly averages and
+selects level 2 data of the median algorithm.</dd><dt><span>keywords :</span></dt><dd>satellite, atmosphere, carbon dioxide</dd><dt><span>id :</span></dt><dd>ESACCI-GHG-L2-CO2-VARIOUS-EMMA-20200915-fv1.nc</dd><dt><span>naming_authority :</span></dt><dd> </dd><dt><span>keywords_vocabulary :</span></dt><dd>NASA Global Change Master Directory (GCMD)</dd><dt><span>cdm_data_type :</span></dt><dd>point</dd><dt><span>comment :</span></dt><dd> </dd><dt><span>date_created :</span></dt><dd>20220710T091935Z</dd><dt><span>creator_name :</span></dt><dd> </dd><dt><span>creator_url :</span></dt><dd> </dd><dt><span>creator_email :</span></dt><dd> </dd><dt><span>project :</span></dt><dd> </dd><dt><span>geospatial_lat_min :</span></dt><dd>-90.0</dd><dt><span>geospatial_lat_max :</span></dt><dd>90.0</dd><dt><span>geospatial_lat_units :</span></dt><dd>degrees_north</dd><dt><span>geospatial_lon_min :</span></dt><dd>-180.0</dd><dt><span>geospatial_lon_max :</span></dt><dd>180.0</dd><dt><span>geospatial_lon_units :</span></dt><dd>degrees_east</dd><dt><span>geospatial_vertical_min :</span></dt><dd>0.0</dd><dt><span>geospatial_vertical_max :</span></dt><dd>100000.0</dd><dt><span>time_coverage_start :</span></dt><dd>20200915T000000Z</dd><dt><span>time_coverage_end :</span></dt><dd>20200915T235959Z</dd><dt><span>time_coverage_duration :</span></dt><dd>P1D</dd><dt><span>time_coverage_resolution :</span></dt><dd>P1D</dd><dt><span>standard_name_vocabulary :</span></dt><dd>NetCDF Climate and Forecast (CF) Metadata Conventions Version 1.6</dd><dt><span>license :</span></dt><dd>GHG-CCI Licence: 
+As condition of using this product, you agree
+... to inform us prior to any publication where the data products are planned to be used. Please do this by sending us the
+manuscript for review before submission for publication to ensure that our data are accurately represented.
+... to offer us co-authorship for any planned peer-reviewed publication based on our data products. (For non peer-reviewed
+publications it is sufficient if you add an appropriate acknowledgement.) In these instances, please contact the project management
+(Michael Buchwitz (michael.buchwitz@iup.physik.uni-bremen.de) or Maximilian Reuter (maximilian.reuter@iup.physik.uni-bremen.de))
+who will then forward the information to the respective retrieval teams.</dd><dt><span>platform :</span></dt><dd>Envisat, GOSAT, GOSAT-2, OCO-2</dd><dt><span>sensor :</span></dt><dd>SCIAMACHY, TANSO-FTS, TANSO-FTS-2, OCO-2</dd><dt><span>spatial_resolution :</span></dt><dd> </dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+<section id="use-case-1-the-latitudinal-distribution-of-xco2">
+<h2>Use case 1: The latitudinal distribution of XCO2<a class="headerlink" href="#use-case-1-the-latitudinal-distribution-of-xco2" title="Permalink to this heading">#</a></h2>
+<p>Here our intention is to plot the data as a function of latitude. For this we first need to define the latitude bands.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lat_band_width</span> <span class="o">=</span> <span class="mf">10.0</span>  <span class="c1"># Width of latitude band in deg</span>
+<span class="n">d_lat</span> <span class="o">=</span> <span class="n">lat_band_width</span><span class="o">*</span><span class="mf">0.5</span>
+<span class="n">lat_band_min</span> <span class="o">=</span> <span class="o">-</span><span class="mf">90.0</span> <span class="o">+</span> <span class="n">d_lat</span>
+<span class="n">lat_band_max</span> <span class="o">=</span> <span class="mf">90.0</span> <span class="o">-</span> <span class="n">d_lat</span>
+<span class="n">lat_band_bins</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">90</span><span class="p">,</span> <span class="mi">91</span><span class="p">,</span> <span class="n">lat_band_width</span><span class="p">)</span>
+<span class="n">n_lat_bands</span> <span class="o">=</span> <span class="nb">int</span><span class="p">((</span><span class="n">lat_band_max</span> <span class="o">-</span> <span class="n">lat_band_min</span><span class="p">)</span> <span class="o">/</span> <span class="n">lat_band_width</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span>
+<span class="n">lat_band_center</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n_lat_bands</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n_lat_bands</span><span class="p">):</span>
+   <span class="n">lat_band_center</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span> <span class="o">=</span> <span class="n">lat_band_min</span> <span class="o">+</span> <span class="n">ii</span><span class="o">*</span><span class="n">lat_band_width</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* lat_band_center: &#39;</span><span class="p">,</span> <span class="n">lat_band_center</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;* lat_band_bins: &#39;</span><span class="p">,</span> <span class="n">lat_band_bins</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>* lat_band_center:  [-85. -75. -65. -55. -45. -35. -25. -15.  -5.   5.  15.  25.  35.  45.
+  55.  65.  75.  85.]
+* lat_band_bins:  [-90. -80. -70. -60. -50. -40. -30. -20. -10.   0.  10.  20.  30.  40.
+  50.  60.  70.  80.  90.]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="computing-xco2-vs-latitude">
+<h3>Computing XCO2 vs latitude<a class="headerlink" href="#computing-xco2-vs-latitude" title="Permalink to this heading">#</a></h3>
+<p>Now we compute the mean and standard deviation for each latitude band of XCO2 from files 1 and 2. As  we need to repeat this process for the data in file 1 and file 2, we will write a function to reduce the repetitive code.</p>
+<p>(Note: we identify “No data” via a negative standard deviation)</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">zonal_mean_and_std</span><span class="p">(</span><span class="n">dataset</span><span class="p">,</span> <span class="n">lat_band_bins</span><span class="p">,</span> <span class="n">lat_band_centres</span><span class="p">,</span> <span class="n">variable</span><span class="o">=</span><span class="s2">&quot;xco2&quot;</span><span class="p">):</span>
+    <span class="c1"># Group the data by latitude bands</span>
+    <span class="n">grouped</span> <span class="o">=</span> <span class="n">dataset</span><span class="p">[</span><span class="n">variable</span><span class="p">]</span><span class="o">.</span><span class="n">groupby_bins</span><span class="p">(</span><span class="s1">&#39;latitude&#39;</span><span class="p">,</span> <span class="n">lat_band_bins</span><span class="p">)</span>
+
+    <span class="c1"># Compute the zonal mean and standard deviation,</span>
+    <span class="c1"># assign the latitude centres as coordinates, and use this as the dimension</span>
+    <span class="n">zonal_mean</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+    <span class="n">zonal_mean</span> <span class="o">=</span> <span class="n">zonal_mean</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;latitude_bins&quot;</span><span class="p">,</span> <span class="n">lat_band_center</span><span class="p">))</span>
+    <span class="n">zonal_mean</span> <span class="o">=</span> <span class="n">zonal_mean</span><span class="o">.</span><span class="n">swap_dims</span><span class="p">({</span><span class="s1">&#39;latitude_bins&#39;</span><span class="p">:</span> <span class="s1">&#39;latitude&#39;</span><span class="p">})</span>
+
+    <span class="n">zonal_std</span> <span class="o">=</span> <span class="n">grouped</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">zonal_std</span> <span class="o">=</span> <span class="n">zonal_std</span><span class="o">.</span><span class="n">assign_coords</span><span class="p">(</span><span class="n">latitude</span><span class="o">=</span><span class="p">(</span><span class="s2">&quot;latitude_bins&quot;</span><span class="p">,</span> <span class="n">lat_band_center</span><span class="p">))</span>
+    <span class="n">zonal_std</span> <span class="o">=</span> <span class="n">zonal_std</span><span class="o">.</span><span class="n">swap_dims</span><span class="p">({</span><span class="s1">&#39;latitude_bins&#39;</span><span class="p">:</span> <span class="s1">&#39;latitude&#39;</span><span class="p">})</span>
+
+    <span class="c1"># finally, we mask the data where the standard deviation is zero</span>
+    <span class="n">zonal_mean</span> <span class="o">=</span> <span class="n">zonal_mean</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">zonal_std</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="n">zonal_std</span> <span class="o">=</span> <span class="n">zonal_std</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">zonal_std</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">zonal_mean</span><span class="p">,</span> <span class="n">zonal_std</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now calculate the mean and standard deviation using our function. We also caculate the mean+standard deviation and mean-standard deviation which will be used in the plot created below.</p>
+<p>The print out of the xarray object shows that we have xco2 data in a DataArray with a single dimension, <code class="docutils literal notranslate"><span class="pre">latitude</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate the mean and standard deviation of the Dataset for each latitude band</span>
+<span class="n">xco2_lb_mean_1</span><span class="p">,</span> <span class="n">xco2_lb_std_1</span> <span class="o">=</span> <span class="n">zonal_mean_and_std</span><span class="p">(</span><span class="n">ds_1</span><span class="p">,</span> <span class="n">lat_band_bins</span><span class="p">,</span> <span class="n">lat_band_center</span><span class="p">)</span>
+<span class="n">xco2_lb_low_1</span> <span class="o">=</span> <span class="n">xco2_lb_mean_1</span> <span class="o">-</span> <span class="n">xco2_lb_std_1</span>
+<span class="n">xco2_lb_high_1</span> <span class="o">=</span> <span class="n">xco2_lb_mean_1</span> <span class="o">+</span> <span class="n">xco2_lb_std_1</span>
+
+<span class="n">xco2_lb_mean_2</span><span class="p">,</span> <span class="n">xco2_lb_std_2</span> <span class="o">=</span> <span class="n">zonal_mean_and_std</span><span class="p">(</span><span class="n">ds_2</span><span class="p">,</span> <span class="n">lat_band_bins</span><span class="p">,</span> <span class="n">lat_band_center</span><span class="p">)</span>
+<span class="n">xco2_lb_low_2</span> <span class="o">=</span> <span class="n">xco2_lb_mean_2</span> <span class="o">-</span> <span class="n">xco2_lb_std_2</span>
+<span class="n">xco2_lb_high_2</span> <span class="o">=</span> <span class="n">xco2_lb_mean_2</span> <span class="o">+</span> <span class="n">xco2_lb_std_2</span>
+
+<span class="n">xco2_lb_mean_1</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.DataArray &#x27;xco2&#x27; (latitude: 18)&gt; Size: 72B
+array([      nan,       nan,       nan,       nan,       nan, 409.20816,
+       409.57675, 410.1195 , 411.09332, 413.27045, 414.57516, 415.732  ,
+       414.9866 , 415.58185, 415.8857 ,       nan,       nan,       nan],
+      dtype=float32)
+Coordinates:
+    latitude_bins  (latitude) object 144B (-90.0, -80.0] ... (80.0, 90.0]
+  * latitude       (latitude) float64 144B -85.0 -75.0 -65.0 ... 65.0 75.0 85.0
+Attributes:
+    standard_name:  dry_atmosphere_mole_fraction_of_carbon_dioxide
+    long_name:      column-average dry-air mole fraction of atmospheric carbo...
+    units:          1e-6
+    comment:        Retrieved column-average dry-air mole fraction of atmosph...</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.DataArray</div><div class='xr-array-name'>'xco2'</div><ul class='xr-dim-list'><li><span class='xr-has-index'>latitude</span>: 18</li></ul></div><ul class='xr-sections'><li class='xr-section-item'><div class='xr-array-wrap'><input id='section-bd581179-4592-4077-8d8d-1a85012ff2b4' class='xr-array-in' type='checkbox' checked><label for='section-bd581179-4592-4077-8d8d-1a85012ff2b4' title='Show/hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-array-preview xr-preview'><span>nan nan nan nan nan 409.2 409.6 ... 415.0 415.6 415.9 nan nan nan</span></div><div class='xr-array-data'><pre>array([      nan,       nan,       nan,       nan,       nan, 409.20816,
+       409.57675, 410.1195 , 411.09332, 413.27045, 414.57516, 415.732  ,
+       414.9866 , 415.58185, 415.8857 ,       nan,       nan,       nan],
+      dtype=float32)</pre></div></div></li><li class='xr-section-item'><input id='section-06271379-2f57-4268-a2b1-df810724f6dc' class='xr-section-summary-in' type='checkbox'  checked><label for='section-06271379-2f57-4268-a2b1-df810724f6dc' class='xr-section-summary' >Coordinates: <span>(2)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>latitude_bins</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>object</div><div class='xr-var-preview xr-preview'>(-90.0, -80.0] ... (80.0, 90.0]</div><input id='attrs-9e3435b1-16dc-4866-9c67-b179d7a3063c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-9e3435b1-16dc-4866-9c67-b179d7a3063c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-b78af383-118c-4772-b909-c3c381290f53' class='xr-var-data-in' type='checkbox'><label for='data-b78af383-118c-4772-b909-c3c381290f53' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>valid_range :</span></dt><dd>[-90.  90.]</dd><dt><span>comment :</span></dt><dd>Center latitude of the measurement</dd></dl></div><div class='xr-var-data'><pre>array([Interval(-90.0, -80.0, closed=&#x27;right&#x27;),
+       Interval(-80.0, -70.0, closed=&#x27;right&#x27;),
+       Interval(-70.0, -60.0, closed=&#x27;right&#x27;),
+       Interval(-60.0, -50.0, closed=&#x27;right&#x27;),
+       Interval(-50.0, -40.0, closed=&#x27;right&#x27;),
+       Interval(-40.0, -30.0, closed=&#x27;right&#x27;),
+       Interval(-30.0, -20.0, closed=&#x27;right&#x27;),
+       Interval(-20.0, -10.0, closed=&#x27;right&#x27;),
+       Interval(-10.0, 0.0, closed=&#x27;right&#x27;),
+       Interval(0.0, 10.0, closed=&#x27;right&#x27;),
+       Interval(10.0, 20.0, closed=&#x27;right&#x27;),
+       Interval(20.0, 30.0, closed=&#x27;right&#x27;),
+       Interval(30.0, 40.0, closed=&#x27;right&#x27;),
+       Interval(40.0, 50.0, closed=&#x27;right&#x27;),
+       Interval(50.0, 60.0, closed=&#x27;right&#x27;),
+       Interval(60.0, 70.0, closed=&#x27;right&#x27;),
+       Interval(70.0, 80.0, closed=&#x27;right&#x27;),
+       Interval(80.0, 90.0, closed=&#x27;right&#x27;)], dtype=object)</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>latitude</span></div><div class='xr-var-dims'>(latitude)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-85.0 -75.0 -65.0 ... 75.0 85.0</div><input id='attrs-7511bb7b-4fa4-4833-84b7-79af30e8e949' class='xr-var-attrs-in' type='checkbox' disabled><label for='attrs-7511bb7b-4fa4-4833-84b7-79af30e8e949' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-42eae1ca-9e9c-4c20-a7c3-35f4d0d81d41' class='xr-var-data-in' type='checkbox'><label for='data-42eae1ca-9e9c-4c20-a7c3-35f4d0d81d41' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'></dl></div><div class='xr-var-data'><pre>array([-85., -75., -65., -55., -45., -35., -25., -15.,  -5.,   5.,  15.,  25.,
+        35.,  45.,  55.,  65.,  75.,  85.])</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-551b6d1b-4473-4fea-9cc8-f01082a81325' class='xr-section-summary-in' type='checkbox'  ><label for='section-551b6d1b-4473-4fea-9cc8-f01082a81325' class='xr-section-summary' >Indexes: <span>(1)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>latitude</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-30efe334-8f47-4f50-906a-47fcc43658f5' class='xr-index-data-in' type='checkbox'/><label for='index-30efe334-8f47-4f50-906a-47fcc43658f5' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-85.0, -75.0, -65.0, -55.0, -45.0, -35.0, -25.0, -15.0,  -5.0,   5.0,
+        15.0,  25.0,  35.0,  45.0,  55.0,  65.0,  75.0,  85.0],
+      dtype=&#x27;float64&#x27;, name=&#x27;latitude&#x27;))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-24fc6a64-eef9-40b5-a056-6a910c0cc3d1' class='xr-section-summary-in' type='checkbox'  checked><label for='section-24fc6a64-eef9-40b5-a056-6a910c0cc3d1' class='xr-section-summary' >Attributes: <span>(4)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>dry_atmosphere_mole_fraction_of_carbon_dioxide</dd><dt><span>long_name :</span></dt><dd>column-average dry-air mole fraction of atmospheric carbon dioxide in dry air</dd><dt><span>units :</span></dt><dd>1e-6</dd><dt><span>comment :</span></dt><dd>Retrieved column-average dry-air mole fraction of atmospheric carbon dioxide (XCO2) in ppm</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+<section id="generation-of-xy-plot-showing-xco2-vs-latitude">
+<h3>Generation of xy plot showing XCO2 vs latitude<a class="headerlink" href="#generation-of-xy-plot-showing-xco2-vs-latitude" title="Permalink to this heading">#</a></h3>
+<p>We can now plot this data using <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">ncols</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>
+<span class="n">xmin</span> <span class="o">=</span> <span class="mf">404.0</span>
+<span class="n">xmax</span> <span class="o">=</span> <span class="mf">420.0</span>
+<span class="n">ymin</span> <span class="o">=</span> <span class="o">-</span><span class="mf">60.0</span>
+<span class="n">ymax</span> <span class="o">=</span>  <span class="mf">80.0</span>
+
+<span class="c1">#  Plot the data and the ranges:</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">xco2_lb_mean_1</span><span class="p">,</span> <span class="n">xco2_lb_mean_1</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">39</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean+/-Stddev &#39;</span><span class="o">+</span><span class="n">file_1_date2</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">xco2_lb_low_1</span><span class="p">,</span> <span class="n">xco2_lb_high_1</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">xco2_lb_mean_1</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">xco2_lb_mean_1</span><span class="o">.</span><span class="n">latitude</span><span class="p">],</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">38</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span>
+<span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="n">xco2_lb_mean_2</span><span class="p">,</span> <span class="n">xco2_lb_mean_2</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">39</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Mean+/-Stddev &#39;</span><span class="o">+</span><span class="n">file_1_date2</span>
+<span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+    <span class="p">[</span><span class="n">xco2_lb_low_2</span><span class="p">,</span> <span class="n">xco2_lb_high_2</span><span class="p">],</span>
+    <span class="p">[</span><span class="n">xco2_lb_mean_2</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">xco2_lb_mean_2</span><span class="o">.</span><span class="n">latitude</span><span class="p">],</span>
+    <span class="n">linewidth</span><span class="o">=</span><span class="mf">20.0</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">38</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span>
+<span class="p">)</span>
+
+<span class="c1"># Decorate the plot with some labels:</span>
+<span class="n">title</span> <span class="o">=</span> <span class="n">product_str</span>
+<span class="n">x_label</span> <span class="o">=</span> <span class="s1">&#39;XCO$_2$ [ppm]&#39;</span>
+<span class="n">y_label</span> <span class="o">=</span> <span class="s1">&#39;Latitude [deg]&#39;</span>
+<span class="n">plot_title</span> <span class="o">=</span> <span class="n">product_str</span><span class="o">+</span><span class="s1">&#39;: XCO$_2$ vs latitude&#39;</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="n">plot_title</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="n">x_label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="n">y_label</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xbound</span><span class="p">([</span><span class="n">xmin</span><span class="p">,</span> <span class="n">xmax</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ybound</span><span class="p">([</span><span class="n">ymin</span><span class="p">,</span> <span class="n">ymax</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/e3abf0679c2b4cd616e19a64e362bab564fe3fe6be41f3abc245750c4f3e2f10.png" src="../_images/e3abf0679c2b4cd616e19a64e362bab564fe3fe6be41f3abc245750c4f3e2f10.png" />
+</div>
+</div>
+<p>The figure above shows mean value of XCO2 as a function of latitude (thick lines) and the corresponding variation (computed as standard deviation of the individual XCO2 retrievals) within each latitude band (semi-transparent horizontal bars) for 15-April-2020 (red) and 15-September-2020 (black). As can be seen, during September XCO2 shows quite little variation with latitude, whereas in April XCO2 is significantly higher over the northern hemisphere (NH) compared to the southern hemisphere (SH). This is due to the seasonal cycle of CO2 primarily resulting from regular uptake and release of atmospheric CO2 by growing and decaying vegetation (photosythesis and respiration). Vegetation uptake reduces the CO2 concentration over the NH during the growing season (spring and summer) compared to the dormant season (winter). Over the SH there is less vegetation and therefore CO2 is relatively constant (apart from the general increase due to CO2 emissions by burning fossil fuels).</p>
+</section>
+</section>
+<section id="application-2-showing-daily-data-on-a-map">
+<h2>Application 2: Showing daily data on a map<a class="headerlink" href="#application-2-showing-daily-data-on-a-map" title="Permalink to this heading">#</a></h2>
+<p>Here we show how to generate a plot showing the spatial distribution of the data. As can be seen, we use only three variables: XCO2, latitude and longitude. We define a small region in terms of latitude and longitude corner coordinates and select only data in this region for the plot.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># # Relevant input data:</span>
+<span class="n">plot_title</span> <span class="o">=</span> <span class="n">product_str</span><span class="o">+</span><span class="s1">&#39; - &#39;</span><span class="o">+</span><span class="n">file_2_date2</span>
+<span class="c1"># Define spatial region of interest:</span>
+<span class="n">lonmin</span> <span class="o">=</span> <span class="o">-</span><span class="mf">12.0</span>
+<span class="n">lonmax</span> <span class="o">=</span>  <span class="mf">35.0</span>
+<span class="n">latmin</span> <span class="o">=</span>  <span class="mf">32.0</span>
+<span class="n">latmax</span> <span class="o">=</span>  <span class="mf">65.0</span>
+
+<span class="c1"># Mask the data to the region of interest:</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">ds_2</span>
+<span class="n">ds</span> <span class="o">=</span> <span class="n">ds</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">latmin</span><span class="o">&lt;</span><span class="n">ds</span><span class="o">.</span><span class="n">latitude</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">latitude</span> <span class="o">&lt;</span><span class="n">latmax</span><span class="p">)</span> <span class="o">&amp;</span>
+    <span class="p">(</span><span class="n">lonmin</span><span class="o">&lt;</span><span class="n">ds</span><span class="o">.</span><span class="n">longitude</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">ds</span><span class="o">.</span><span class="n">longitude</span> <span class="o">&lt;</span><span class="n">lonmax</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="c1"># Get the min and max values for the colorbar:</span>
+<span class="n">rmin</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">xco2</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<span class="n">rmax</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">xco2</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+
+<span class="c1"># Create a figure with a geographic projection:</span>
+<span class="n">projection</span> <span class="o">=</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">()</span>
+<span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">9</span><span class="p">,</span><span class="mi">7</span><span class="p">)</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="n">figsize</span><span class="p">)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="n">lonmin</span><span class="p">,</span> <span class="n">lonmax</span><span class="p">,</span> <span class="n">latmin</span><span class="p">,</span> <span class="n">latmax</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">projection</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">OCEAN</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;powderblue&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">COASTLINE</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">crs</span><span class="o">=</span><span class="n">projection</span><span class="p">,</span> <span class="n">draw_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span>  <span class="o">=</span> <span class="kc">False</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span>
+    <span class="n">x</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">longitude</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">latitude</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">ds</span><span class="o">.</span><span class="n">xco2</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">zorder</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span>
+    <span class="n">vmin</span><span class="o">=</span><span class="n">rmin</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="n">rmax</span>
+<span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;XCO$_2$ [ppm]&#39;</span><span class="p">,</span> <span class="n">location</span><span class="o">=</span><span class="s1">&#39;bottom&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">shrink</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/9713e9d1ad78c85b76237bf39d1f3a8704977b08f61f69d49182b612ac7ad56e.png" src="../_images/9713e9d1ad78c85b76237bf39d1f3a8704977b08f61f69d49182b612ac7ad56e.png" />
+</div>
+</div>
+<p>The figure above shows the locations of the individual ground pixel observations and their corresponding XCO2 value using all “good” retrievals over Europe and surrounding area for 15-Sept-2020. As can be seen, the spatial coverage of the daily data is very sparse. This is because only data of the highest quality are contained in the product file. Strict quality filtering is important to meet the demanding requirements on accuracy and precision for satellite XCO2 data observations.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ecv-notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="total-ozone-columns.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exploring an ozone product available through the Climate Data Store (CDS)</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../projections-cmip6.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Plot an Ensemble of CMIP6 Climate Projections</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries-used-in-this-tutorial">Import libraries used in this tutorial</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-download-from-cds">Data download from CDS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#set-some-options-that-are-used-in-this-tutorial">Set some options that are used in this tutorial</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#open-data-files-with-xarray">Open data files with xarray</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-latitudinal-distribution-of-xco2">Use case 1: The latitudinal distribution of XCO2</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#computing-xco2-vs-latitude">Computing XCO2 vs latitude</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#generation-of-xy-plot-showing-xco2-vs-latitude">Generation of xy plot showing XCO2 vs latitude</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#application-2-showing-daily-data-on-a-map">Application 2: Showing daily data on a map</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

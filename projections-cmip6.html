@@ -65,7 +65,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Analysis of Projected versus Historical Climatology with CORDEX Data" href="projections-cordex.html" />
-    <link rel="prev" title="Exploring an ozone product available through the Climate Data Store (CDS)" href="ecv-notebooks/total-ozone-columns.html" />
+    <link rel="prev" title="How to access and use a satellite-derived GHG Level 2 data product using XCO2_EMMA as an example?" href="ecv-notebooks/greenhouse-gases-level2-products.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -158,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference external" href="https://cds-beta.climate.copernicus.eu/user-guide">CDS user guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cds.climate.copernicus.eu/user-guide">CDS user guide</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
 <ul class="nav bd-sidenav">
@@ -169,8 +169,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-clara-climatology.html">Analysis of the CLARA Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-ceres-climatology.html">Analysis of the CERES Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-ozone-columns.html">Total Column Ozone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
 <ul class="current nav bd-sidenav">
@@ -461,7 +466,7 @@ document.write(`
 <h1>Plot an Ensemble of CMIP6 Climate Projections<a class="headerlink" href="#plot-an-ensemble-of-cmip6-climate-projections" title="Permalink to this heading">#</a></h1>
 <section id="about">
 <h2>About<a class="headerlink" href="#about" title="Permalink to this heading">#</a></h2>
-<p>This notebook provides a practical introduction on how to access and process <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/projections-cmip6?tab=overview">CMIP6 global climate projections</a> data available in the Climate Data Store (CDS) of the Copernicus Climate Change Service (C3S). The workflow shows how to compute and visualize the output of an ensemble of models for the annual global average temperature between 1850 to 2100. You will use the <code class="docutils literal notranslate"><span class="pre">historical</span></code> experiment for the temporal period 1850 to 2014 and the three scenarios <code class="docutils literal notranslate"><span class="pre">SSP1-2.6</span></code>, <code class="docutils literal notranslate"><span class="pre">SSP2-4.5</span></code> and <code class="docutils literal notranslate"><span class="pre">SSP5-8.5</span></code> for the period from 2015 to 2100.</p>
+<p>This notebook provides a practical introduction on how to access and process <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/projections-cmip6?tab=overview">CMIP6 global climate projections</a> data available in the Climate Data Store (CDS) of the Copernicus Climate Change Service (C3S). The workflow shows how to compute and visualize the output of an ensemble of models for the annual global average temperature between 1850 to 2100. You will use the <code class="docutils literal notranslate"><span class="pre">historical</span></code> experiment for the temporal period 1850 to 2014 and the three scenarios <code class="docutils literal notranslate"><span class="pre">SSP1-2.6</span></code>, <code class="docutils literal notranslate"><span class="pre">SSP2-4.5</span></code> and <code class="docutils literal notranslate"><span class="pre">SSP5-8.5</span></code> for the period from 2015 to 2100.</p>
 <p>For the sake of simplicity, and to facilitate data download, the tutorial will make use of some of the coarser resolution models that have a smaller data size. It is nevertheless only a choice for this exercise and not a recommendation (since ideally all models, including those with highest resolution, should be used). Many more models are available on the CDS, and when calculating an ensemble of models, it is best practice to use as many as possible for a more reliable output. See <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/CMIP6%3A+Global+climate+projections#CMIP6:Globalclimateprojections-Models,gridsandpressurelevels">here</a> a full list of models included in the CDS-CMIP6 dataset.</p>
 <p>Learn <a class="reference external" href="https://confluence.ecmwf.int/display/CKB/CMIP6%3A+Global+climate+projections#CMIP6:Globalclimateprojections">here</a> more about CMIP6 global climate projections and the CMIP6 experiments in the CDS.</p>
 <p>The notebook has the following outline:</p>
@@ -475,7 +480,7 @@ document.write(`
 </section>
 <section id="data">
 <h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
-<p>This notebook introduces you to <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/projections-cmip6?tab=overview">CMIP6 Global climate projections</a>. The datasets used in the notebook have the following specifications:</p>
+<p>This notebook introduces you to <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/projections-cmip6?tab=overview">CMIP6 Global climate projections</a>. The datasets used in the notebook have the following specifications:</p>
 <blockquote>
 <div><p><strong>Data</strong>: CMIP6 global climate projections of near-surface air temperature <br>
 <strong>Experiments</strong>: Historical, SSP1-2.6, SSP2-4.5, SSP5-8.5 <br>
@@ -544,10 +549,10 @@ td, th {
 <hr></section>
 <section id="request-data-from-the-cds-programmatically-with-the-cds-api">
 <h2>Request data from the CDS programmatically with the CDS API<a class="headerlink" href="#request-data-from-the-cds-programmatically-with-the-cds-api" title="Permalink to this heading">#</a></h2>
-<p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="https://cds-beta.climate.copernicus.eu">https://cds-beta.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">https://cds-beta.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+<p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="https://cds.climate.copernicus.eu">https://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api">https://cds.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds-beta.climate.copernicus.eu/api&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api&#39;</span>
 <span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;##################################&#39;</span>
 </pre></div>
 </div>
@@ -580,12 +585,12 @@ td, th {
 </div>
 </div>
 <blockquote>
-<div><p><strong>Note:</strong> Note that these are a selection of the lightest models (in terms of data volume), to facilitate download for the sake of this exercise. There are many <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/projections-cmip6?tab=overview">more models available on the CDS</a>.</p>
+<div><p><strong>Note:</strong> Note that these are a selection of the lightest models (in terms of data volume), to facilitate download for the sake of this exercise. There are many <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/projections-cmip6?tab=overview">more models available on the CDS</a>.</p>
 </div></blockquote>
 <p>Now we can download the data for each model and experiment sequentially. We will do this separately for the historical experiments and for the various future scenarios, given that they refer to two different time periods.</p>
-<p>Before you run the cells below, the terms and conditions on the use of the data need to have been accepted in the CDS. You can view and accept these conditions by logging into the <a class="reference external" href="https://cds-beta.climate.copernicus.eu">CDS</a>, searching for the dataset, then scrolling to the end of the <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">data</span></code> section.</p>
+<p>Before you run the cells below, the terms and conditions on the use of the data need to have been accepted in the CDS. You can view and accept these conditions by logging into the <a class="reference external" href="https://cds.climate.copernicus.eu">CDS</a>, searching for the dataset, then scrolling to the end of the <code class="docutils literal notranslate"><span class="pre">Download</span> <span class="pre">data</span></code> section.</p>
 <blockquote>
-<div><p><strong>Note:</strong> For more information about data access through the Climate Data Store, please see the CDS user guide <a class="reference external" href="https://cds-beta.climate.copernicus.eu/user-guide">here</a>.</p>
+<div><p><strong>Note:</strong> For more information about data access through the Climate Data Store, please see the CDS user guide <a class="reference external" href="https://cds.climate.copernicus.eu/user-guide">here</a>.</p>
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1799,12 +1804,12 @@ Data variables:
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="ecv-notebooks/total-ozone-columns.html"
+       href="ecv-notebooks/greenhouse-gases-level2-products.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Exploring an ozone product available through the Climate Data Store (CDS)</p>
+        <p class="prev-next-title">How to access and use a satellite-derived GHG Level 2 data product using XCO2_EMMA as an example?</p>
       </div>
     </a>
     <a class="right-next"

@@ -1,0 +1,2228 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Calculation of global climatology of Earth Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset &#8212; C3S Training</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'ecv-notebooks/erb-clara-climatology';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Analysis of the Earth’s Radiation Budget using the CERES product" href="erb-ceres-climatology.html" />
+    <link rel="prev" title="Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data" href="erb-outgoing-longwave-radiation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/C3S–POS–LINE.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/C3S–POS–LINE.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Copernicus Climate Change Service (C3S) Data Tutorials
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://cds.climate.copernicus.eu/user-guide">CDS user guide</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-climatology.html">Climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-temp-record.html">Climate Records</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reanalysis-heatwave.html">Heatwave Analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Analysis of the CLARA Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="erb-ceres-climatology.html">Analysis of the CERES Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
+<li class="toctree-l1"><a class="reference internal" href="total-ozone-columns.html">Total Column Ozone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../projections-cmip6.html">Climate Projections (CMIP6)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../projections-cordex.html">Climate Projections (CORDEX)</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Seasonal Forecasts</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../sf-anomalies.html">Seasonal Forecast Anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../sf-verification.html">Seasonal Forecast Verification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Indices</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../ci-windchill.html">Windchill Index Calculation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Bias Correction</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ibicus.readthedocs.io/en/latest/getting_started/overview.html">Python library (ibicus) and tutorials on bias correction</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials using EFFIS and GloFAS data</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../visualising-fwi-for-esotc.html">Visualising Fire Weather Index (FWI)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../glofas-bangladesh-floods.html">Observing floods with GloFAS</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Atmosphere Monitoring Tutorials</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://ecmwf-projects.github.io/copernicus-training-cams/">Tutorials from the Copernicus Atmosphere Monitoring Service (CAMS)</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?urlpath=tree/ecv-notebooks/erb-clara-climatology.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/ecmwf-projects/copernicus-training-c3s/issues/new?title=Issue%20on%20page%20%2Fecv-notebooks/erb-clara-climatology.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/ecv-notebooks/erb-clara-climatology.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><a id='page-top'></a> Calculation of global climatology of Earth Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset description</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset">Load dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution">Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-olr">Calculation of the temporal average of OLR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-olr">Plot of the temporal average of OLR</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution">Use case 2: The mean global Reflected Solar Flux (RSF) distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-rsf">Calculation of the temporal average of RSF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-rsf">Plot of the temporal average of RSF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">Get more information about Earth Radiation Budget</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <p><img alt="logo" src="../_images/LogoLine_horizon_C3S.png" /></p>
+<section class="tex2jax_ignore mathjax_ignore" id="a-id-page-top-a-calculation-of-global-climatology-of-earth-radiation-budget-from-eumetsat-s-cm-saf-clara-a3-dataset">
+<h1><a id='page-top'></a> Calculation of global climatology of Earth Radiation Budget from EUMETSAT’s CM SAF CLARA-A3 dataset<a class="headerlink" href="#a-id-page-top-a-calculation-of-global-climatology-of-earth-radiation-budget-from-eumetsat-s-cm-saf-clara-a3-dataset" title="Permalink to this heading">#</a></h1>
+<p>This notebook provides you with an introduction on EUMETSAT’s CM SAF <strong>CLARA-A3</strong> dataset available at the <a class="reference external" href="https://cds.climate.copernicus.eu">Climate Data Store</a> (CDS). The dataset contains data for Essential Climate Variables (ECVs) <em>Earth Radiation Budget</em>, as well as <em>Cloud Properties and Surface Radiation Budget</em>, while this notebook focuses on <strong>Earth Radiation Budget</strong> as part of the ECV <em>Earth Radiation Budget</em> available here: <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget">Earth’s radiation budget from 1979 to present derived from satellite observations</a>.</p>
+<p>The notebook covers the full process from scratch and starts with a short introdution to the dataset and how to access the data from the Climate Data Store of the Copernicus Climate Change Service (C3S). This is followed by a step-by-step guide on how to process and visualize the data. Once you feel comfortable with the python code, you are invited to adjust or extend the code according to your interests. After a short introduction how to use a Jupyter notebook the analysis starts.<br>
+Two figures below are results of Use Case 1 and 2, and the result of a successful run of the code.</p>
+<p><img alt="img" src="../_images/erb-claraA3-banner.png" /></p>
+<section id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h2>
+<p>This tutorial is about Earth radiation (top of atmosphere) parameters of EUMETSAT’s CM SAF CLARA-A3 dataset. It covers step by step the process from retrieving the data to the processing and finally the visualisation of the results.</p>
+<p>In the following, we will concentrate on the earth radiation part. The CLARA-A3 dataset is the successor of CLARA-A2.1 and comprises almost 44 years (latest status: 09/2023) of continuous observations of radiation and clouds from space, thereby monitoring their spatial and temporal variability on Earth. Earth Radiation Budget parameters were not included in CLARA-A2.1</p>
+<p>The CLARA-A3 radiation dataset contains all surface and Earth (top-of-the-atmosphere) fluxes, and thus, it enables studies of the full earth radiation budget.</p>
+<p>In the following, two examples are presented to illustrate some ideas on the usage, visualisation, and analysis of the CLARA-A3 earth radiation dataset.</p>
+<section id="dataset-description">
+<h3>Dataset description<a class="headerlink" href="#dataset-description" title="Permalink to this heading">#</a></h3>
+<p>Please find further information about the datasets as well as the data in the Climate Data Store sections “Overview”, “Download data” and “Documentation”:</p>
+<ul class="simple">
+<li><p>Earth Radiation: Budget <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-earth-radiation-budget?tab=overview</a></p></li>
+<li><p>Surface Radiation Budget: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-surface-radiation-budget?tab=overview</a></p></li>
+<li><p>Cloud Properties: <a class="reference external" href="https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview">https://cds.climate.copernicus.eu/cdsapp#!/dataset/satellite-cloud-properties?tab=overview</a></p></li>
+</ul>
+</section>
+</section>
+<section id="prerequisites-and-data-acquisition">
+<h2>Prerequisites and data acquisition<a class="headerlink" href="#prerequisites-and-data-acquisition" title="Permalink to this heading">#</a></h2>
+<p>This tutorial is in the form of a Jupyter notebook. It can be run on a cloud environment, or on your own computer. You will not need to install any software for the training as there are a number of free cloud-based services to create, edit, run and export Jupyter notebooks such as this. Here are some suggestions (simply click on one of the links below to run the notebook):</p>
+<style>
+td, th {
+   border: 1px solid white;
+   border-collapse: collapse;
+}
+</style>
+<table align="left">
+  <tr>
+    <th>Run the tutorial via free cloud platforms: </th>
+    <th><a href="https://kaggle.com/kernels/welcome?src=https://github.com/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/erb-clara-climatology.ipynb">
+        <img src = "https://kaggle.com/static/images/open-in-kaggle.svg" alt = "Kaggle"></th>
+    <th><a href="https://mybinder.org/v2/gh/ecmwf-projects/copernicus-training-c3s/main?labpath=ecv-notebooks/erb-clara-climatology.ipynb">
+        <img src = "https://mybinder.org/badge.svg" alt = "Binder"></th>
+    <th><a href="https://colab.research.google.com/github/ecmwf-projects/copernicus-training-c3s/blob/main/ecv-notebooks/erb-clara-climatology.ipynb">
+        <img src = "https://colab.research.google.com/assets/colab-badge.svg" alt = "Colab"></th>
+  </tr>
+</table>
+<p><br><br></p>
+<p>We are using <code class="docutils literal notranslate"><span class="pre">cdsapi</span></code> to download the data. This package is not yet included by default on most cloud platforms. You can use <code class="docutils literal notranslate"><span class="pre">pip</span></code> to install it. We use an exclamation mark to pass the command to the shell (not to the Python interpreter).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install -q cdsapi
+</pre></div>
+</div>
+</div>
+</div>
+<section id="import-libraries">
+<h3>Import libraries<a class="headerlink" href="#import-libraries" title="Permalink to this heading">#</a></h3>
+<p>The data have been stored in files written in NetCDF format. To best handle these, we will import the library <a class="reference external" href="http://xarray.pydata.org/en/stable/">Xarray</a> which is specifically designed for manipulating multidimensional arrays in the field of geosciences. The libraries Matplotlib and Cartopy will also be imported for plotting and visualising the analysed data. We will also import the libraries <a class="reference external" href="https://docs.python.org/3/library/zipfile.html">zipfile</a> to work with zip-archives, <a class="reference external" href="https://docs.python.org/3/library/os.html">OS</a> to use OS-functions and pattern expansion, and <a class="reference external" href="https://urllib3.readthedocs.io/en/stable/">urllib3</a> for disabling warnings for data download via CDS API.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># CDS API library</span>
+<span class="kn">import</span> <span class="nn">cdsapi</span>
+
+<span class="c1"># Libraries for working with multidimensional arrays</span>
+<span class="kn">import</span> <span class="nn">xarray</span> <span class="k">as</span> <span class="nn">xr</span>
+
+<span class="c1"># Library to work with zip-archives and OS-functions</span>
+<span class="kn">import</span> <span class="nn">zipfile</span>
+<span class="kn">import</span> <span class="nn">os</span>
+
+<span class="c1"># Libraries for plotting and visualising data</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+
+<span class="c1"># Disable warnings for data download via API</span>
+<span class="kn">import</span> <span class="nn">urllib3</span>
+<span class="n">urllib3</span><span class="o">.</span><span class="n">disable_warnings</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="download-data-using-cds-api">
+<h3>Download data using CDS API<a class="headerlink" href="#download-data-using-cds-api" title="Permalink to this heading">#</a></h3>
+<p>This section is provides all necessary settings and input data to successfully run the use cases, and produce the figures.</p>
+<section id="set-up-cds-api-credentials">
+<h4>Set up CDS API credentials<a class="headerlink" href="#set-up-cds-api-credentials" title="Permalink to this heading">#</a></h4>
+<p>We will request data from the <a class="reference external" href="https://cds.climate.copernicus.eu/">Climate Data Store (CDS)</a>. In case you don’t have an account yet, please click on “Login/register” at the right top and select “Create new account”. With the process finished you are able to login to the CDS and can search for your preferred data.</p>
+<p>We will request data from the CDS programmatically with the help of the CDS API.
+First, we need to manually set the CDS API credentials.
+To do so, we need to define two variables: URL and KEY.
+To obtain these, first login to the CDS, then visit <a class="reference external" href="https://cds.climate.copernicus.eu/api-how-to">https://cds.climate.copernicus.eu/api-how-to</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api&#39;</span>
+<span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;############&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Next, we specify a data directory in which we will download our data and all output files that we will generate. We will also create a directory, if it doesn’t already exist.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">DATADIR</span> <span class="o">=</span> <span class="s1">&#39;./data&#39;</span>
+<span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">,</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>In advance of the following processing and visualisation part we set a directory where to save the figures. Default option is to save figures in the folder:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">FIGPATH</span> <span class="o">=</span> <span class="s1">&#39;.&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="search-for-data">
+<h3>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h3>
+<p>To search for data, visit the <a class="reference external" href="https://cds.climate.copernicus.eu/">CDS website</a>.
+Here we can search for “Earth Radiation Budget” or simply “ERB” data using the search bar. The data we need for this use case is the <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">Earth’s radiation budget from 1979 to present derived from satellite observations</a>.
+The Earth Radiation Budget (ERB) comprises the quantification of the reflected radiation from the Sun and the emitted longwave radiation from  Earth. This catalogue entry comprises data from a number of sources.</p>
+<p>Once you reached the landing page, feel free to have a look at the documentation and information provided.</p>
+<p>The data can be found in the “Download data”-tab with a form to select certain variables, years etc. For our use case we select as follows:</p>
+<ul class="simple">
+<li><p>Product family: <code class="docutils literal notranslate"><span class="pre">CLARA-A3</span> <span class="pre">(CM</span> <span class="pre">SAF</span> <span class="pre">cLoud,</span> <span class="pre">Albedo</span> <span class="pre">and</span> <span class="pre">surface</span> <span class="pre">RAdiation</span> <span class="pre">dataset</span> <span class="pre">from</span> <span class="pre">AVHRR</span> <span class="pre">data)</span></code></p></li>
+<li><p>Origin: <code class="docutils literal notranslate"><span class="pre">EUMETSAT</span> <span class="pre">(European</span> <span class="pre">Organisation</span> <span class="pre">for</span> <span class="pre">the</span> <span class="pre">Exploitation</span> <span class="pre">of</span> <span class="pre">Meteorological</span> <span class="pre">Satellites)</span></code></p></li>
+<li><p>Variable: <code class="docutils literal notranslate"><span class="pre">Outgoing</span> <span class="pre">longwave</span> <span class="pre">radiation</span> <span class="pre">(Outgoing</span> <span class="pre">LW)</span></code>, <code class="docutils literal notranslate"><span class="pre">Outgoing</span> <span class="pre">shortwave</span> <span class="pre">radiation</span> <span class="pre">(Outgoing</span> <span class="pre">SW)</span></code></p></li>
+<li><p>Climate data record type: <code class="docutils literal notranslate"><span class="pre">Thematic</span> <span class="pre">Climate</span> <span class="pre">Data</span> <span class="pre">Record</span> <span class="pre">(TCDR)</span></code></p></li>
+<li><p>Time aggregation: <code class="docutils literal notranslate"><span class="pre">Monthly</span> <span class="pre">mean</span></code></p></li>
+<li><p>Year: <code class="docutils literal notranslate"><span class="pre">Every</span> <span class="pre">year</span> <span class="pre">from</span> <span class="pre">1979-2020</span> <span class="pre">(shortcut</span> <span class="pre">with</span> <span class="pre">&quot;Select</span> <span class="pre">all&quot;</span> <span class="pre">at</span> <span class="pre">the</span> <span class="pre">bottom</span> <span class="pre">right)</span></code></p></li>
+<li><p>Month: <code class="docutils literal notranslate"><span class="pre">Every</span> <span class="pre">month</span> <span class="pre">from</span> <span class="pre">January</span> <span class="pre">to</span> <span class="pre">December</span> <span class="pre">(shortcut</span> <span class="pre">with</span> <span class="pre">&quot;Select</span> <span class="pre">all&quot;</span> <span class="pre">at</span> <span class="pre">the</span> <span class="pre">bottom</span> <span class="pre">right)</span></code></p></li>
+<li><p>Geographical area: <code class="docutils literal notranslate"><span class="pre">Whole</span> <span class="pre">available</span> <span class="pre">region</span></code></p></li>
+<li><p>Format: <code class="docutils literal notranslate"><span class="pre">Zip</span> <span class="pre">file</span> <span class="pre">(.zip)</span></code></p></li>
+</ul>
+<p>Please make sure all <strong>Terms of use</strong> are accepted. This can be done at the bottom of the <strong>Download data</strong> tab.</p>
+<p>At the bottom left of the page, click on <strong>Show API request</strong> and copy &amp; paste the text into the Jupyter notebook. The first line can be skipped since it is already part of the <strong>Import libraries</strong> section.</p>
+<p>Note: The download may take a few minutes. Feel free to have a look at the various information on the Earth Radiation Budget page in the CDS or already get familiar with the next steps.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">c</span> <span class="o">=</span> <span class="n">cdsapi</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">url</span><span class="o">=</span><span class="n">URL</span><span class="p">,</span><span class="n">key</span><span class="o">=</span><span class="n">KEY</span><span class="p">)</span>
+
+<span class="n">c</span><span class="o">.</span><span class="n">retrieve</span><span class="p">(</span>
+    <span class="s1">&#39;satellite-earth-radiation-budget&#39;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;format&#39;</span><span class="p">:</span> <span class="s1">&#39;zip&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;product_family&#39;</span><span class="p">:</span> <span class="s1">&#39;clara_a3&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;origin&#39;</span><span class="p">:</span> <span class="s1">&#39;eumetsat&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;variable&#39;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="s1">&#39;outgoing_longwave_radiation&#39;</span><span class="p">,</span> <span class="s1">&#39;outgoing_shortwave_radiation&#39;</span><span class="p">,</span>
+        <span class="p">],</span>
+        <span class="s1">&#39;climate_data_record_type&#39;</span><span class="p">:</span> <span class="s1">&#39;thematic_climate_data_record&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;time_aggregation&#39;</span><span class="p">:</span> <span class="s1">&#39;monthly_mean&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;year&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%04d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">year</span><span class="p">)</span> <span class="k">for</span> <span class="n">year</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1979</span><span class="p">,</span> <span class="mi">2021</span><span class="p">)],</span>
+        <span class="s1">&#39;month&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;</span><span class="si">%02d</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">mnth</span><span class="p">)</span> <span class="k">for</span> <span class="n">mnth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)],</span>
+    <span class="p">},</span>
+    <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">DATADIR</span><span class="si">}</span><span class="s1">/download_claraA3_erb.zip&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-12-09 16:13:53,119 INFO [2024-01-09T00:00:00] NOAA/NCEI HIRS OLR was reprocessed from 2007 till 2023. Please see the Known issues section under the Documentation tab for more details.
+2024-12-09 16:13:53,121 WARNING [2024-12-09T16:13:53.137329] You are using a deprecated API endpoint. If you are using cdsapi, please upgrade to the latest version.
+2024-12-09 16:13:53,121 INFO Request ID is 85037786-023d-424e-b6cf-6ea437e6ab74
+2024-12-09 16:13:53,325 INFO status has been updated to accepted
+2024-12-09 16:14:08,585 INFO status has been updated to running
+2024-12-09 16:22:19,668 INFO status has been updated to successful
+</pre></div>
+</div>
+<script type="application/vnd.jupyter.widget-view+json">{"model_id": "6a12b2bd97854b8c9b3fdaf73a9125cf", "version_major": 2, "version_minor": 0}</script><div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;./data/download_claraA3_erb.zip&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<p>The zip-file should be downloaded and saved at the correct place, that we have defined earlier. The zip archive containing one variable for monthly mean needs several GB of storage space.</p>
+<p>The following lines unzip the data. <strong>DATADIR + ‘/download_claraA3_erb.zip</strong> is the path to the zip-file. The first line constructs a ZipFile() object, the second line applies the function <strong>extractall</strong> to extract the content.</p>
+<p>DATADIR/’_ is the path we want to store the files.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">zipfile</span><span class="o">.</span><span class="n">ZipFile</span><span class="p">(</span><span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/download_claraA3_erb.zip&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zip_ref</span><span class="p">:</span>
+    <span class="n">zip_ref</span><span class="o">.</span><span class="n">extractall</span><span class="p">(</span><span class="n">DATADIR</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>With the zip-file unziped and files at the right place we can start reading and processing the data.</p>
+</section>
+<section id="load-dataset">
+<h3>Load dataset<a class="headerlink" href="#load-dataset" title="Permalink to this heading">#</a></h3>
+<p>The following line starting with “file” considers only files in the given directory starting the “OLRmm”, “RSFmm” and ending with “.nc” and creates a list with all matching files. The “*” means “everything” and takes every file into account. This is quite useful since year and month are part of the file names.</p>
+<p>The second line reads the defined file list with the xarray function “open_mfdataset” (mf - multiple file) and concatenates them according to the time dimension.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">file_olr</span> <span class="o">=</span> <span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/OLRmm*.nc&#39;</span>
+<span class="n">file_rsf</span> <span class="o">=</span> <span class="n">DATADIR</span> <span class="o">+</span> <span class="s1">&#39;/RSFmm*.nc&#39;</span>
+
+<span class="n">dataset_olr</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">file_olr</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">)</span>
+<span class="n">dataset_rsf</span> <span class="o">=</span> <span class="n">xr</span><span class="o">.</span><span class="n">open_mfdataset</span><span class="p">(</span><span class="n">file_rsf</span><span class="p">,</span> <span class="n">concat_dim</span><span class="o">=</span><span class="s1">&#39;time&#39;</span><span class="p">,</span> <span class="n">combine</span><span class="o">=</span><span class="s1">&#39;nested&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Please find below the xarray dataset of the Earth Radiation Budget exemplary:</p>
+<p>It provides information about the:</p>
+<ul class="simple">
+<li><p>Dimensions: Lat and Lon with 0.25°x0.25° resolution and a lenght of 720/1440 and 504 months (42 years * 12 months)</p></li>
+<li><p>Coordinates: Spatial coordinates for Latitude and Longitude, temporal coordinates for time</p></li>
+<li><p>Data variables: List of different variables (in our case “LW_flux” and “SW_flux” are relevant)</p></li>
+<li><p>Attributes: Various important information about the dataset</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dataset_olr</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div><svg style="position: absolute; width: 0; height: 0; overflow: hidden">
+<defs>
+<symbol id="icon-database" viewBox="0 0 32 32">
+<path d="M16 0c-8.837 0-16 2.239-16 5v4c0 2.761 7.163 5 16 5s16-2.239 16-5v-4c0-2.761-7.163-5-16-5z"></path>
+<path d="M16 17c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+<path d="M16 26c-8.837 0-16-2.239-16-5v6c0 2.761 7.163 5 16 5s16-2.239 16-5v-6c0 2.761-7.163 5-16 5z"></path>
+</symbol>
+<symbol id="icon-file-text2" viewBox="0 0 32 32">
+<path d="M28.681 7.159c-0.694-0.947-1.662-2.053-2.724-3.116s-2.169-2.030-3.116-2.724c-1.612-1.182-2.393-1.319-2.841-1.319h-15.5c-1.378 0-2.5 1.121-2.5 2.5v27c0 1.378 1.122 2.5 2.5 2.5h23c1.378 0 2.5-1.122 2.5-2.5v-19.5c0-0.448-0.137-1.23-1.319-2.841zM24.543 5.457c0.959 0.959 1.712 1.825 2.268 2.543h-4.811v-4.811c0.718 0.556 1.584 1.309 2.543 2.268zM28 29.5c0 0.271-0.229 0.5-0.5 0.5h-23c-0.271 0-0.5-0.229-0.5-0.5v-27c0-0.271 0.229-0.5 0.5-0.5 0 0 15.499-0 15.5 0v7c0 0.552 0.448 1 1 1h7v19.5z"></path>
+<path d="M23 26h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 22h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+<path d="M23 18h-14c-0.552 0-1-0.448-1-1s0.448-1 1-1h14c0.552 0 1 0.448 1 1s-0.448 1-1 1z"></path>
+</symbol>
+</defs>
+</svg>
+<style>/* CSS stylesheet for displaying xarray objects in jupyterlab.
+ *
+ */
+
+:root {
+  --xr-font-color0: var(--jp-content-font-color0, rgba(0, 0, 0, 1));
+  --xr-font-color2: var(--jp-content-font-color2, rgba(0, 0, 0, 0.54));
+  --xr-font-color3: var(--jp-content-font-color3, rgba(0, 0, 0, 0.38));
+  --xr-border-color: var(--jp-border-color2, #e0e0e0);
+  --xr-disabled-color: var(--jp-layout-color3, #bdbdbd);
+  --xr-background-color: var(--jp-layout-color0, white);
+  --xr-background-color-row-even: var(--jp-layout-color1, white);
+  --xr-background-color-row-odd: var(--jp-layout-color2, #eeeeee);
+}
+
+html[theme=dark],
+body[data-theme=dark],
+body.vscode-dark {
+  --xr-font-color0: rgba(255, 255, 255, 1);
+  --xr-font-color2: rgba(255, 255, 255, 0.54);
+  --xr-font-color3: rgba(255, 255, 255, 0.38);
+  --xr-border-color: #1F1F1F;
+  --xr-disabled-color: #515151;
+  --xr-background-color: #111111;
+  --xr-background-color-row-even: #111111;
+  --xr-background-color-row-odd: #313131;
+}
+
+.xr-wrap {
+  display: block !important;
+  min-width: 300px;
+  max-width: 700px;
+}
+
+.xr-text-repr-fallback {
+  /* fallback to plain text repr when CSS is not injected (untrusted notebook) */
+  display: none;
+}
+
+.xr-header {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  margin-bottom: 4px;
+  border-bottom: solid 1px var(--xr-border-color);
+}
+
+.xr-header > div,
+.xr-header > ul {
+  display: inline;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.xr-obj-type,
+.xr-array-name {
+  margin-left: 2px;
+  margin-right: 10px;
+}
+
+.xr-obj-type {
+  color: var(--xr-font-color2);
+}
+
+.xr-sections {
+  padding-left: 0 !important;
+  display: grid;
+  grid-template-columns: 150px auto auto 1fr 20px 20px;
+}
+
+.xr-section-item {
+  display: contents;
+}
+
+.xr-section-item input {
+  display: none;
+}
+
+.xr-section-item input + label {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-item input:enabled + label {
+  cursor: pointer;
+  color: var(--xr-font-color2);
+}
+
+.xr-section-item input:enabled + label:hover {
+  color: var(--xr-font-color0);
+}
+
+.xr-section-summary {
+  grid-column: 1;
+  color: var(--xr-font-color2);
+  font-weight: 500;
+}
+
+.xr-section-summary > span {
+  display: inline-block;
+  padding-left: 0.5em;
+}
+
+.xr-section-summary-in:disabled + label {
+  color: var(--xr-font-color2);
+}
+
+.xr-section-summary-in + label:before {
+  display: inline-block;
+  content: '►';
+  font-size: 11px;
+  width: 15px;
+  text-align: center;
+}
+
+.xr-section-summary-in:disabled + label:before {
+  color: var(--xr-disabled-color);
+}
+
+.xr-section-summary-in:checked + label:before {
+  content: '▼';
+}
+
+.xr-section-summary-in:checked + label > span {
+  display: none;
+}
+
+.xr-section-summary,
+.xr-section-inline-details {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.xr-section-inline-details {
+  grid-column: 2 / -1;
+}
+
+.xr-section-details {
+  display: none;
+  grid-column: 1 / -1;
+  margin-bottom: 5px;
+}
+
+.xr-section-summary-in:checked ~ .xr-section-details {
+  display: contents;
+}
+
+.xr-array-wrap {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.xr-array-wrap > label {
+  grid-column: 1;
+  vertical-align: top;
+}
+
+.xr-preview {
+  color: var(--xr-font-color3);
+}
+
+.xr-array-preview,
+.xr-array-data {
+  padding: 0 5px !important;
+  grid-column: 2;
+}
+
+.xr-array-data,
+.xr-array-in:checked ~ .xr-array-preview {
+  display: none;
+}
+
+.xr-array-in:checked ~ .xr-array-data,
+.xr-array-preview {
+  display: inline-block;
+}
+
+.xr-dim-list {
+  display: inline-block !important;
+  list-style: none;
+  padding: 0 !important;
+  margin: 0;
+}
+
+.xr-dim-list li {
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+}
+
+.xr-dim-list:before {
+  content: '(';
+}
+
+.xr-dim-list:after {
+  content: ')';
+}
+
+.xr-dim-list li:not(:last-child):after {
+  content: ',';
+  padding-right: 5px;
+}
+
+.xr-has-index {
+  font-weight: bold;
+}
+
+.xr-var-list,
+.xr-var-item {
+  display: contents;
+}
+
+.xr-var-item > div,
+.xr-var-item label,
+.xr-var-item > .xr-var-name span {
+  background-color: var(--xr-background-color-row-even);
+  margin-bottom: 0;
+}
+
+.xr-var-item > .xr-var-name:hover span {
+  padding-right: 5px;
+}
+
+.xr-var-list > li:nth-child(odd) > div,
+.xr-var-list > li:nth-child(odd) > label,
+.xr-var-list > li:nth-child(odd) > .xr-var-name span {
+  background-color: var(--xr-background-color-row-odd);
+}
+
+.xr-var-name {
+  grid-column: 1;
+}
+
+.xr-var-dims {
+  grid-column: 2;
+}
+
+.xr-var-dtype {
+  grid-column: 3;
+  text-align: right;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-preview {
+  grid-column: 4;
+}
+
+.xr-index-preview {
+  grid-column: 2 / 5;
+  color: var(--xr-font-color2);
+}
+
+.xr-var-name,
+.xr-var-dims,
+.xr-var-dtype,
+.xr-preview,
+.xr-attrs dt {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  padding-right: 10px;
+}
+
+.xr-var-name:hover,
+.xr-var-dims:hover,
+.xr-var-dtype:hover,
+.xr-attrs dt:hover {
+  overflow: visible;
+  width: auto;
+  z-index: 1;
+}
+
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  display: none;
+  background-color: var(--xr-background-color) !important;
+  padding-bottom: 5px !important;
+}
+
+.xr-var-attrs-in:checked ~ .xr-var-attrs,
+.xr-var-data-in:checked ~ .xr-var-data,
+.xr-index-data-in:checked ~ .xr-index-data {
+  display: block;
+}
+
+.xr-var-data > table {
+  float: right;
+}
+
+.xr-var-name span,
+.xr-var-data,
+.xr-index-name div,
+.xr-index-data,
+.xr-attrs {
+  padding-left: 25px !important;
+}
+
+.xr-attrs,
+.xr-var-attrs,
+.xr-var-data,
+.xr-index-data {
+  grid-column: 1 / -1;
+}
+
+dl.xr-attrs {
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 125px auto;
+}
+
+.xr-attrs dt,
+.xr-attrs dd {
+  padding: 0;
+  margin: 0;
+  float: left;
+  padding-right: 10px;
+  width: auto;
+}
+
+.xr-attrs dt {
+  font-weight: normal;
+  grid-column: 1;
+}
+
+.xr-attrs dt:hover span {
+  display: inline-block;
+  background: var(--xr-background-color);
+  padding-right: 10px;
+}
+
+.xr-attrs dd {
+  grid-column: 2;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.xr-icon-database,
+.xr-icon-file-text2,
+.xr-no-icon {
+  display: inline-block;
+  vertical-align: middle;
+  width: 1em;
+  height: 1.5em !important;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+</style><pre class='xr-text-repr-fallback'>&lt;xarray.Dataset&gt; Size: 10GB
+Dimensions:                   (time: 504, lat: 720, bnds: 2, lon: 1440)
+Coordinates:
+  * lon                       (lon) float64 12kB -179.9 -179.6 ... 179.6 179.9
+  * lat                       (lat) float64 6kB -89.88 -89.62 ... 89.62 89.88
+  * time                      (time) datetime64[ns] 4kB 1979-01-01 ... 2020-1...
+Dimensions without coordinates: bnds
+Data variables:
+    lat_bnds                  (time, lat, bnds) float64 6MB dask.array&lt;chunksize=(1, 720, 2), meta=np.ndarray&gt;
+    lon_bnds                  (time, lon, bnds) float64 12MB dask.array&lt;chunksize=(1, 1440, 2), meta=np.ndarray&gt;
+    time_bnds                 (time, bnds) datetime64[ns] 8kB dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;
+    record_status             (time) uint8 504B dask.array&lt;chunksize=(1,), meta=np.ndarray&gt;
+    number_of_lw_daily_means  (time, lat, lon) float32 2GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
+    LW_flux                   (time, lat, lon) float64 4GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
+    number_of_lw_inst_obs     (time, lat, lon) float32 2GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
+    bitflags_lw               (time, lat, lon) float32 2GB dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;
+Attributes: (12/38)
+    geospatial_lat_min:         -90.0
+    geospatial_lat_max:         90.0
+    geospatial_lon_min:         -180.0
+    geospatial_lon_max:         180.0
+    title:                      CM SAF Cloud, Albedo and Radiation dataset, A...
+    summary:                    This file contains AVHRR-based Thematic Clima...
+    ...                         ...
+    variable_id:                LW_flux
+    license:                    The CM SAF data are owned by EUMETSAT and are...
+    source:                     FCDR AVHRR-GAC : ERA-5 : OSISAF : USGS : IGBP
+    lineage:                    pygac/gac2pps.py : NWC/PPS version v2018 : CL...
+    CMSAF_L2_processor:         CLARA-A3 TOA toa_flux v2.0
+    CMSAF_L3_processor:         CLARA-A3 TOA dailymean v2.4</pre><div class='xr-wrap' style='display:none'><div class='xr-header'><div class='xr-obj-type'>xarray.Dataset</div></div><ul class='xr-sections'><li class='xr-section-item'><input id='section-a3adef47-331c-4080-b27a-bbe30f38e116' class='xr-section-summary-in' type='checkbox' disabled ><label for='section-a3adef47-331c-4080-b27a-bbe30f38e116' class='xr-section-summary'  title='Expand/collapse section'>Dimensions:</label><div class='xr-section-inline-details'><ul class='xr-dim-list'><li><span class='xr-has-index'>time</span>: 504</li><li><span class='xr-has-index'>lat</span>: 720</li><li><span>bnds</span>: 2</li><li><span class='xr-has-index'>lon</span>: 1440</li></ul></div><div class='xr-section-details'></div></li><li class='xr-section-item'><input id='section-936132ba-ce80-46c7-811d-1fcbb2938375' class='xr-section-summary-in' type='checkbox'  checked><label for='section-936132ba-ce80-46c7-811d-1fcbb2938375' class='xr-section-summary' >Coordinates: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lon</span></div><div class='xr-var-dims'>(lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-179.9 -179.6 ... 179.6 179.9</div><input id='attrs-ffd25227-47ff-4e2e-8d1d-5e548648aeca' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ffd25227-47ff-4e2e-8d1d-5e548648aeca' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4971313d-5081-4f0a-b2d9-4585939f4f99' class='xr-var-data-in' type='checkbox'><label for='data-4971313d-5081-4f0a-b2d9-4585939f4f99' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>longitude</dd><dt><span>long_name :</span></dt><dd>Longitude</dd><dt><span>units :</span></dt><dd>degrees_east</dd><dt><span>bounds :</span></dt><dd>lon_bnds</dd></dl></div><div class='xr-var-data'><pre>array([-179.875, -179.625, -179.375, ...,  179.375,  179.625,  179.875])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>lat</span></div><div class='xr-var-dims'>(lat)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>-89.88 -89.62 ... 89.62 89.88</div><input id='attrs-7897297f-93fc-4ef9-ba57-822bbb13641e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7897297f-93fc-4ef9-ba57-822bbb13641e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-fa6fd5c7-2fd9-4a0d-aa83-b8a9c8a2e336' class='xr-var-data-in' type='checkbox'><label for='data-fa6fd5c7-2fd9-4a0d-aa83-b8a9c8a2e336' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>latitude</dd><dt><span>long_name :</span></dt><dd>Latitude</dd><dt><span>units :</span></dt><dd>degrees_north</dd><dt><span>bounds :</span></dt><dd>lat_bnds</dd></dl></div><div class='xr-var-data'><pre>array([-89.875, -89.625, -89.375, ...,  89.375,  89.625,  89.875])</pre></div></li><li class='xr-var-item'><div class='xr-var-name'><span class='xr-has-index'>time</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>1979-01-01 ... 2020-12-01</div><input id='attrs-b78f14c6-9ac3-4798-a5fd-af8709f00764' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-b78f14c6-9ac3-4798-a5fd-af8709f00764' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a1a4f57e-609a-4cb5-9794-0d0005110f9d' class='xr-var-data-in' type='checkbox'><label for='data-a1a4f57e-609a-4cb5-9794-0d0005110f9d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>standard_name :</span></dt><dd>time</dd><dt><span>long_name :</span></dt><dd>Time</dd><dt><span>bounds :</span></dt><dd>time_bnds</dd></dl></div><div class='xr-var-data'><pre>array([&#x27;1979-01-01T00:00:00.000000000&#x27;, &#x27;1979-02-01T00:00:00.000000000&#x27;,
+       &#x27;1979-03-01T00:00:00.000000000&#x27;, ..., &#x27;2020-10-01T00:00:00.000000000&#x27;,
+       &#x27;2020-11-01T00:00:00.000000000&#x27;, &#x27;2020-12-01T00:00:00.000000000&#x27;],
+      dtype=&#x27;datetime64[ns]&#x27;)</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-18dc02af-fa26-427f-ac16-2617ea906cf8' class='xr-section-summary-in' type='checkbox'  checked><label for='section-18dc02af-fa26-427f-ac16-2617ea906cf8' class='xr-section-summary' >Data variables: <span>(8)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-var-name'><span>lat_bnds</span></div><div class='xr-var-dims'>(time, lat, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 2), meta=np.ndarray&gt;</div><input id='attrs-456ed90d-5471-4326-ae9e-10a187134284' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-456ed90d-5471-4326-ae9e-10a187134284' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-a308814d-1c6d-46e2-8907-9b10c89d0158' class='xr-var-data-in' type='checkbox'><label for='data-a308814d-1c6d-46e2-8907-9b10c89d0158' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Latitude bounds</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 5.54 MiB </td>
+                        <td> 11.25 kiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (504, 720, 2) </td>
+                        <td> (1, 720, 2) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 504 chunks in 1513 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> float64 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="134" height="219" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="59" y2="49" style="stroke-width:2" />
+  <line x1="10" y1="120" x2="59" y2="169" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="120" style="stroke-width:2" />
+  <line x1="12" y1="2" x2="12" y2="122" />
+  <line x1="15" y1="5" x2="15" y2="125" />
+  <line x1="17" y1="7" x2="17" y2="127" />
+  <line x1="20" y1="10" x2="20" y2="130" />
+  <line x1="22" y1="12" x2="22" y2="132" />
+  <line x1="25" y1="15" x2="25" y2="135" />
+  <line x1="28" y1="18" x2="28" y2="138" />
+  <line x1="30" y1="20" x2="30" y2="140" />
+  <line x1="33" y1="23" x2="33" y2="143" />
+  <line x1="35" y1="25" x2="35" y2="145" />
+  <line x1="38" y1="28" x2="38" y2="148" />
+  <line x1="41" y1="31" x2="41" y2="151" />
+  <line x1="43" y1="33" x2="43" y2="153" />
+  <line x1="46" y1="36" x2="46" y2="156" />
+  <line x1="48" y1="38" x2="48" y2="158" />
+  <line x1="51" y1="41" x2="51" y2="161" />
+  <line x1="54" y1="44" x2="54" y2="164" />
+  <line x1="56" y1="46" x2="56" y2="166" />
+  <line x1="59" y1="49" x2="59" y2="169" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 59.411764705882355,49.411764705882355 59.411764705882355,169.41176470588235 10.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="35" y2="0" style="stroke-width:2" />
+  <line x1="12" y1="2" x2="37" y2="2" />
+  <line x1="15" y1="5" x2="40" y2="5" />
+  <line x1="17" y1="7" x2="43" y2="7" />
+  <line x1="20" y1="10" x2="45" y2="10" />
+  <line x1="22" y1="12" x2="48" y2="12" />
+  <line x1="25" y1="15" x2="51" y2="15" />
+  <line x1="28" y1="18" x2="53" y2="18" />
+  <line x1="30" y1="20" x2="56" y2="20" />
+  <line x1="33" y1="23" x2="58" y2="23" />
+  <line x1="35" y1="25" x2="61" y2="25" />
+  <line x1="38" y1="28" x2="63" y2="28" />
+  <line x1="41" y1="31" x2="66" y2="31" />
+  <line x1="43" y1="33" x2="69" y2="33" />
+  <line x1="46" y1="36" x2="71" y2="36" />
+  <line x1="48" y1="38" x2="74" y2="38" />
+  <line x1="51" y1="41" x2="76" y2="41" />
+  <line x1="54" y1="44" x2="79" y2="44" />
+  <line x1="56" y1="46" x2="82" y2="46" />
+  <line x1="59" y1="49" x2="84" y2="49" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="59" y2="49" style="stroke-width:2" />
+  <line x1="35" y1="0" x2="84" y2="49" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 35.41261651458248,0.0 84.82438122046483,49.411764705882355 59.411764705882355,49.411764705882355" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="59" y1="49" x2="84" y2="49" style="stroke-width:2" />
+  <line x1="59" y1="169" x2="84" y2="169" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="59" y1="49" x2="59" y2="169" style="stroke-width:2" />
+  <line x1="84" y1="49" x2="84" y2="169" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="59.411764705882355,49.411764705882355 84.82438122046484,49.411764705882355 84.82438122046484,169.41176470588235 59.411764705882355,169.41176470588235" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="72.118073" y="189.411765" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
+  <text x="104.824381" y="109.411765" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,104.824381,109.411765)">720</text>
+  <text x="24.705882" y="164.705882" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,24.705882,164.705882)">504</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>lon_bnds</span></div><div class='xr-var-dims'>(time, lon, bnds)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 1440, 2), meta=np.ndarray&gt;</div><input id='attrs-ae164af3-65b6-4b62-9894-44c5d378bf19' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ae164af3-65b6-4b62-9894-44c5d378bf19' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-27081ccd-f0fe-42e6-863f-2b286e1d10ee' class='xr-var-data-in' type='checkbox'><label for='data-27081ccd-f0fe-42e6-863f-2b286e1d10ee' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Longitude bounds</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 11.07 MiB </td>
+                        <td> 22.50 kiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (504, 1440, 2) </td>
+                        <td> (1, 1440, 2) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 504 chunks in 1513 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> float64 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="111" height="195" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
+  <line x1="10" y1="120" x2="35" y2="145" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="120" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="11" y2="121" />
+  <line x1="12" y1="2" x2="12" y2="122" />
+  <line x1="14" y1="4" x2="14" y2="124" />
+  <line x1="15" y1="5" x2="15" y2="125" />
+  <line x1="16" y1="6" x2="16" y2="126" />
+  <line x1="18" y1="8" x2="18" y2="128" />
+  <line x1="19" y1="9" x2="19" y2="129" />
+  <line x1="20" y1="10" x2="20" y2="130" />
+  <line x1="22" y1="12" x2="22" y2="132" />
+  <line x1="23" y1="13" x2="23" y2="133" />
+  <line x1="24" y1="14" x2="24" y2="134" />
+  <line x1="26" y1="16" x2="26" y2="136" />
+  <line x1="27" y1="17" x2="27" y2="137" />
+  <line x1="29" y1="19" x2="29" y2="139" />
+  <line x1="30" y1="20" x2="30" y2="140" />
+  <line x1="31" y1="21" x2="31" y2="141" />
+  <line x1="33" y1="23" x2="33" y2="143" />
+  <line x1="34" y1="24" x2="34" y2="144" />
+  <line x1="35" y1="25" x2="35" y2="145" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 35.903485391229815,25.903485391229815 35.903485391229815,145.90348539122982 10.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="35" y2="0" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="36" y2="1" />
+  <line x1="12" y1="2" x2="38" y2="2" />
+  <line x1="14" y1="4" x2="39" y2="4" />
+  <line x1="15" y1="5" x2="40" y2="5" />
+  <line x1="16" y1="6" x2="42" y2="6" />
+  <line x1="18" y1="8" x2="43" y2="8" />
+  <line x1="19" y1="9" x2="44" y2="9" />
+  <line x1="20" y1="10" x2="46" y2="10" />
+  <line x1="22" y1="12" x2="47" y2="12" />
+  <line x1="23" y1="13" x2="49" y2="13" />
+  <line x1="24" y1="14" x2="50" y2="14" />
+  <line x1="26" y1="16" x2="51" y2="16" />
+  <line x1="27" y1="17" x2="53" y2="17" />
+  <line x1="29" y1="19" x2="54" y2="19" />
+  <line x1="30" y1="20" x2="55" y2="20" />
+  <line x1="31" y1="21" x2="57" y2="21" />
+  <line x1="33" y1="23" x2="58" y2="23" />
+  <line x1="34" y1="24" x2="59" y2="24" />
+  <line x1="35" y1="25" x2="61" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
+  <line x1="35" y1="0" x2="61" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 35.41261651458248,0.0 61.316101905812296,25.903485391229815 35.903485391229815,25.903485391229815" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="35" y1="25" x2="61" y2="25" style="stroke-width:2" />
+  <line x1="35" y1="145" x2="61" y2="145" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="35" y1="25" x2="35" y2="145" style="stroke-width:2" />
+  <line x1="61" y1="25" x2="61" y2="145" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="35.903485391229815,25.903485391229815 61.3161019058123,25.903485391229815 61.3161019058123,145.90348539122982 35.903485391229815,145.90348539122982" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="48.609794" y="165.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
+  <text x="81.316102" y="85.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,81.316102,85.903485)">1440</text>
+  <text x="12.951743" y="152.951743" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,12.951743,152.951743)">504</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>time_bnds</span></div><div class='xr-var-dims'>(time, bnds)</div><div class='xr-var-dtype'>datetime64[ns]</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 2), meta=np.ndarray&gt;</div><input id='attrs-ef43af6a-6fbd-488d-8a58-7f9ba91532f3' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-ef43af6a-6fbd-488d-8a58-7f9ba91532f3' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-cd7876b7-d4ce-486a-9eac-8d19d9c55370' class='xr-var-data-in' type='checkbox'><label for='data-cd7876b7-d4ce-486a-9eac-8d19d9c55370' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Time bounds</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 7.88 kiB </td>
+                        <td> 16 B </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (504, 2) </td>
+                        <td> (1, 2) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 504 chunks in 1009 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> datetime64[ns] numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="75" height="170" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="25" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="6" x2="25" y2="6" />
+  <line x1="0" y1="12" x2="25" y2="12" />
+  <line x1="0" y1="18" x2="25" y2="18" />
+  <line x1="0" y1="25" x2="25" y2="25" />
+  <line x1="0" y1="31" x2="25" y2="31" />
+  <line x1="0" y1="37" x2="25" y2="37" />
+  <line x1="0" y1="44" x2="25" y2="44" />
+  <line x1="0" y1="50" x2="25" y2="50" />
+  <line x1="0" y1="56" x2="25" y2="56" />
+  <line x1="0" y1="63" x2="25" y2="63" />
+  <line x1="0" y1="69" x2="25" y2="69" />
+  <line x1="0" y1="75" x2="25" y2="75" />
+  <line x1="0" y1="81" x2="25" y2="81" />
+  <line x1="0" y1="88" x2="25" y2="88" />
+  <line x1="0" y1="94" x2="25" y2="94" />
+  <line x1="0" y1="100" x2="25" y2="100" />
+  <line x1="0" y1="107" x2="25" y2="107" />
+  <line x1="0" y1="113" x2="25" y2="113" />
+  <line x1="0" y1="120" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="120" style="stroke-width:2" />
+  <line x1="25" y1="0" x2="25" y2="120" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 25.412616514582485,0.0 25.412616514582485,120.0 0.0,120.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="12.706308" y="140.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" >2</text>
+  <text x="45.412617" y="60.000000" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,45.412617,60.000000)">504</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>record_status</span></div><div class='xr-var-dims'>(time)</div><div class='xr-var-dtype'>uint8</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1,), meta=np.ndarray&gt;</div><input id='attrs-327b181a-965c-40d8-a8e3-bd9e066c3aa4' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-327b181a-965c-40d8-a8e3-bd9e066c3aa4' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-34728752-ad97-413e-ac68-dd9d0535f994' class='xr-var-data-in' type='checkbox'><label for='data-34728752-ad97-413e-ac68-dd9d0535f994' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>long_name :</span></dt><dd>Record Status</dd><dt><span>comment :</span></dt><dd>Overall status of each record (timestamp) in this file. If a record is flagged as not ok, it is recommended not to use it.</dd><dt><span>flag_meanings :</span></dt><dd>ok void bad_quality</dd><dt><span>flag_values :</span></dt><dd>[0 1 2]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 504 B </td>
+                        <td> 1 B </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (504,) </td>
+                        <td> (1,) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 504 chunks in 1009 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> uint8 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="170" height="75" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="0" y1="0" x2="120" y2="0" style="stroke-width:2" />
+  <line x1="0" y1="25" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="0" y1="0" x2="0" y2="25" style="stroke-width:2" />
+  <line x1="6" y1="0" x2="6" y2="25" />
+  <line x1="12" y1="0" x2="12" y2="25" />
+  <line x1="18" y1="0" x2="18" y2="25" />
+  <line x1="25" y1="0" x2="25" y2="25" />
+  <line x1="31" y1="0" x2="31" y2="25" />
+  <line x1="37" y1="0" x2="37" y2="25" />
+  <line x1="44" y1="0" x2="44" y2="25" />
+  <line x1="50" y1="0" x2="50" y2="25" />
+  <line x1="56" y1="0" x2="56" y2="25" />
+  <line x1="63" y1="0" x2="63" y2="25" />
+  <line x1="69" y1="0" x2="69" y2="25" />
+  <line x1="75" y1="0" x2="75" y2="25" />
+  <line x1="81" y1="0" x2="81" y2="25" />
+  <line x1="88" y1="0" x2="88" y2="25" />
+  <line x1="94" y1="0" x2="94" y2="25" />
+  <line x1="100" y1="0" x2="100" y2="25" />
+  <line x1="107" y1="0" x2="107" y2="25" />
+  <line x1="113" y1="0" x2="113" y2="25" />
+  <line x1="120" y1="0" x2="120" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="0.0,0.0 120.0,0.0 120.0,25.412616514582485 0.0,25.412616514582485" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="60.000000" y="45.412617" font-size="1.0rem" font-weight="100" text-anchor="middle" >504</text>
+  <text x="140.000000" y="12.706308" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(0,140.000000,12.706308)">1</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>number_of_lw_daily_means</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-7ef08c6c-94b7-4623-89ed-207590fbf07e' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-7ef08c6c-94b7-4623-89ed-207590fbf07e' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-4c3b6ad1-c0fa-4ca0-9c7f-bb0e6b62d70d' class='xr-var-data-in' type='checkbox'><label for='data-4c3b6ad1-c0fa-4ca0-9c7f-bb0e6b62d70d' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_range :</span></dt><dd>[  0 254]</dd><dt><span>long_name :</span></dt><dd>Number of longwave daily means contributing to monthly mean</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.95 GiB </td>
+                        <td> 3.96 MiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (504, 720, 1440) </td>
+                        <td> (1, 720, 1440) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 504 chunks in 1009 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="205" height="135" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
+  <line x1="10" y1="60" x2="35" y2="85" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="11" y2="61" />
+  <line x1="12" y1="2" x2="12" y2="62" />
+  <line x1="14" y1="4" x2="14" y2="64" />
+  <line x1="15" y1="5" x2="15" y2="65" />
+  <line x1="16" y1="6" x2="16" y2="66" />
+  <line x1="18" y1="8" x2="18" y2="68" />
+  <line x1="19" y1="9" x2="19" y2="69" />
+  <line x1="20" y1="10" x2="20" y2="70" />
+  <line x1="22" y1="12" x2="22" y2="72" />
+  <line x1="23" y1="13" x2="23" y2="73" />
+  <line x1="24" y1="14" x2="24" y2="74" />
+  <line x1="26" y1="16" x2="26" y2="76" />
+  <line x1="27" y1="17" x2="27" y2="77" />
+  <line x1="29" y1="19" x2="29" y2="79" />
+  <line x1="30" y1="20" x2="30" y2="80" />
+  <line x1="31" y1="21" x2="31" y2="81" />
+  <line x1="33" y1="23" x2="33" y2="83" />
+  <line x1="34" y1="24" x2="34" y2="84" />
+  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 35.903485391229815,25.903485391229815 35.903485391229815,85.90348539122982 10.0,60.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="131" y2="1" />
+  <line x1="12" y1="2" x2="132" y2="2" />
+  <line x1="14" y1="4" x2="134" y2="4" />
+  <line x1="15" y1="5" x2="135" y2="5" />
+  <line x1="16" y1="6" x2="136" y2="6" />
+  <line x1="18" y1="8" x2="138" y2="8" />
+  <line x1="19" y1="9" x2="139" y2="9" />
+  <line x1="20" y1="10" x2="140" y2="10" />
+  <line x1="22" y1="12" x2="142" y2="12" />
+  <line x1="23" y1="13" x2="143" y2="13" />
+  <line x1="24" y1="14" x2="144" y2="14" />
+  <line x1="26" y1="16" x2="146" y2="16" />
+  <line x1="27" y1="17" x2="147" y2="17" />
+  <line x1="29" y1="19" x2="149" y2="19" />
+  <line x1="30" y1="20" x2="150" y2="20" />
+  <line x1="31" y1="21" x2="151" y2="21" />
+  <line x1="33" y1="23" x2="153" y2="23" />
+  <line x1="34" y1="24" x2="154" y2="24" />
+  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
+  <line x1="130" y1="0" x2="155" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 130.0,0.0 155.90348539122982,25.903485391229815 35.903485391229815,25.903485391229815" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
+  <line x1="35" y1="85" x2="155" y2="85" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
+  <line x1="155" y1="25" x2="155" y2="85" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="35.903485391229815,25.903485391229815 155.90348539122982,25.903485391229815 155.90348539122982,85.90348539122982 35.903485391229815,85.90348539122982" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="95.903485" y="105.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" >1440</text>
+  <text x="175.903485" y="55.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,175.903485,55.903485)">720</text>
+  <text x="12.951743" y="92.951743" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,12.951743,92.951743)">504</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>LW_flux</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float64</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-8b193200-e0ac-482f-aee7-f168552e5e3c' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-8b193200-e0ac-482f-aee7-f168552e5e3c' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-56dcf356-e5b9-4886-8925-ae288dab7a57' class='xr-var-data-in' type='checkbox'><label for='data-56dcf356-e5b9-4886-8925-ae288dab7a57' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_range :</span></dt><dd>[    0 15000]</dd><dt><span>standard_name :</span></dt><dd>toa_outgoing_longwave_flux</dd><dt><span>long_name :</span></dt><dd>TOA outgoing longwave radiation (OLR)</dd><dt><span>units :</span></dt><dd>W m-2</dd><dt><span>ancillary_variables :</span></dt><dd>bitflags_lw number_of_lw_daily_means</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 3.89 GiB </td>
+                        <td> 7.91 MiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (504, 720, 1440) </td>
+                        <td> (1, 720, 1440) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 504 chunks in 1009 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> float64 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="205" height="135" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
+  <line x1="10" y1="60" x2="35" y2="85" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="11" y2="61" />
+  <line x1="12" y1="2" x2="12" y2="62" />
+  <line x1="14" y1="4" x2="14" y2="64" />
+  <line x1="15" y1="5" x2="15" y2="65" />
+  <line x1="16" y1="6" x2="16" y2="66" />
+  <line x1="18" y1="8" x2="18" y2="68" />
+  <line x1="19" y1="9" x2="19" y2="69" />
+  <line x1="20" y1="10" x2="20" y2="70" />
+  <line x1="22" y1="12" x2="22" y2="72" />
+  <line x1="23" y1="13" x2="23" y2="73" />
+  <line x1="24" y1="14" x2="24" y2="74" />
+  <line x1="26" y1="16" x2="26" y2="76" />
+  <line x1="27" y1="17" x2="27" y2="77" />
+  <line x1="29" y1="19" x2="29" y2="79" />
+  <line x1="30" y1="20" x2="30" y2="80" />
+  <line x1="31" y1="21" x2="31" y2="81" />
+  <line x1="33" y1="23" x2="33" y2="83" />
+  <line x1="34" y1="24" x2="34" y2="84" />
+  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 35.903485391229815,25.903485391229815 35.903485391229815,85.90348539122982 10.0,60.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="131" y2="1" />
+  <line x1="12" y1="2" x2="132" y2="2" />
+  <line x1="14" y1="4" x2="134" y2="4" />
+  <line x1="15" y1="5" x2="135" y2="5" />
+  <line x1="16" y1="6" x2="136" y2="6" />
+  <line x1="18" y1="8" x2="138" y2="8" />
+  <line x1="19" y1="9" x2="139" y2="9" />
+  <line x1="20" y1="10" x2="140" y2="10" />
+  <line x1="22" y1="12" x2="142" y2="12" />
+  <line x1="23" y1="13" x2="143" y2="13" />
+  <line x1="24" y1="14" x2="144" y2="14" />
+  <line x1="26" y1="16" x2="146" y2="16" />
+  <line x1="27" y1="17" x2="147" y2="17" />
+  <line x1="29" y1="19" x2="149" y2="19" />
+  <line x1="30" y1="20" x2="150" y2="20" />
+  <line x1="31" y1="21" x2="151" y2="21" />
+  <line x1="33" y1="23" x2="153" y2="23" />
+  <line x1="34" y1="24" x2="154" y2="24" />
+  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
+  <line x1="130" y1="0" x2="155" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 130.0,0.0 155.90348539122982,25.903485391229815 35.903485391229815,25.903485391229815" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
+  <line x1="35" y1="85" x2="155" y2="85" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
+  <line x1="155" y1="25" x2="155" y2="85" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="35.903485391229815,25.903485391229815 155.90348539122982,25.903485391229815 155.90348539122982,85.90348539122982 35.903485391229815,85.90348539122982" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="95.903485" y="105.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" >1440</text>
+  <text x="175.903485" y="55.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,175.903485,55.903485)">720</text>
+  <text x="12.951743" y="92.951743" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,12.951743,92.951743)">504</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>number_of_lw_inst_obs</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-004c1814-0de3-47f3-823b-48b4c228b5dd' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-004c1814-0de3-47f3-823b-48b4c228b5dd' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-9c92b375-3b70-4ad9-b937-f30988e455da' class='xr-var-data-in' type='checkbox'><label for='data-9c92b375-3b70-4ad9-b937-f30988e455da' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_range :</span></dt><dd>[  0 254]</dd><dt><span>long_name :</span></dt><dd>Number of longwave instantaneous obs. contributing to daily mean</dd><dt><span>units :</span></dt><dd>1</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.95 GiB </td>
+                        <td> 3.96 MiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (504, 720, 1440) </td>
+                        <td> (1, 720, 1440) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 504 chunks in 1009 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="205" height="135" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
+  <line x1="10" y1="60" x2="35" y2="85" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="11" y2="61" />
+  <line x1="12" y1="2" x2="12" y2="62" />
+  <line x1="14" y1="4" x2="14" y2="64" />
+  <line x1="15" y1="5" x2="15" y2="65" />
+  <line x1="16" y1="6" x2="16" y2="66" />
+  <line x1="18" y1="8" x2="18" y2="68" />
+  <line x1="19" y1="9" x2="19" y2="69" />
+  <line x1="20" y1="10" x2="20" y2="70" />
+  <line x1="22" y1="12" x2="22" y2="72" />
+  <line x1="23" y1="13" x2="23" y2="73" />
+  <line x1="24" y1="14" x2="24" y2="74" />
+  <line x1="26" y1="16" x2="26" y2="76" />
+  <line x1="27" y1="17" x2="27" y2="77" />
+  <line x1="29" y1="19" x2="29" y2="79" />
+  <line x1="30" y1="20" x2="30" y2="80" />
+  <line x1="31" y1="21" x2="31" y2="81" />
+  <line x1="33" y1="23" x2="33" y2="83" />
+  <line x1="34" y1="24" x2="34" y2="84" />
+  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 35.903485391229815,25.903485391229815 35.903485391229815,85.90348539122982 10.0,60.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="131" y2="1" />
+  <line x1="12" y1="2" x2="132" y2="2" />
+  <line x1="14" y1="4" x2="134" y2="4" />
+  <line x1="15" y1="5" x2="135" y2="5" />
+  <line x1="16" y1="6" x2="136" y2="6" />
+  <line x1="18" y1="8" x2="138" y2="8" />
+  <line x1="19" y1="9" x2="139" y2="9" />
+  <line x1="20" y1="10" x2="140" y2="10" />
+  <line x1="22" y1="12" x2="142" y2="12" />
+  <line x1="23" y1="13" x2="143" y2="13" />
+  <line x1="24" y1="14" x2="144" y2="14" />
+  <line x1="26" y1="16" x2="146" y2="16" />
+  <line x1="27" y1="17" x2="147" y2="17" />
+  <line x1="29" y1="19" x2="149" y2="19" />
+  <line x1="30" y1="20" x2="150" y2="20" />
+  <line x1="31" y1="21" x2="151" y2="21" />
+  <line x1="33" y1="23" x2="153" y2="23" />
+  <line x1="34" y1="24" x2="154" y2="24" />
+  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
+  <line x1="130" y1="0" x2="155" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 130.0,0.0 155.90348539122982,25.903485391229815 35.903485391229815,25.903485391229815" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
+  <line x1="35" y1="85" x2="155" y2="85" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
+  <line x1="155" y1="25" x2="155" y2="85" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="35.903485391229815,25.903485391229815 155.90348539122982,25.903485391229815 155.90348539122982,85.90348539122982 35.903485391229815,85.90348539122982" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="95.903485" y="105.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" >1440</text>
+  <text x="175.903485" y="55.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,175.903485,55.903485)">720</text>
+  <text x="12.951743" y="92.951743" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,12.951743,92.951743)">504</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li><li class='xr-var-item'><div class='xr-var-name'><span>bitflags_lw</span></div><div class='xr-var-dims'>(time, lat, lon)</div><div class='xr-var-dtype'>float32</div><div class='xr-var-preview xr-preview'>dask.array&lt;chunksize=(1, 720, 1440), meta=np.ndarray&gt;</div><input id='attrs-6fb30063-b222-4148-8727-c405e2acea6d' class='xr-var-attrs-in' type='checkbox' ><label for='attrs-6fb30063-b222-4148-8727-c405e2acea6d' title='Show/Hide attributes'><svg class='icon xr-icon-file-text2'><use xlink:href='#icon-file-text2'></use></svg></label><input id='data-71693daa-34be-455a-8a74-7fe5658e9ec9' class='xr-var-data-in' type='checkbox'><label for='data-71693daa-34be-455a-8a74-7fe5658e9ec9' title='Show/Hide data repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-var-attrs'><dl class='xr-attrs'><dt><span>valid_range :</span></dt><dd>[    0 65534]</dd><dt><span>long_name :</span></dt><dd>Bitwise quality flags_lw</dd><dt><span>units :</span></dt><dd>1</dd><dt><span>flag_meanings :</span></dt><dd>MISSINGDAYS_WARNING MISSINGDAYS_INVALID</dd><dt><span>flag_masks :</span></dt><dd>[1 2]</dd></dl></div><div class='xr-var-data'><table>
+    <tr>
+        <td>
+            <table style="border-collapse: collapse;">
+                <thead>
+                    <tr>
+                        <td> </td>
+                        <th> Array </th>
+                        <th> Chunk </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    
+                    <tr>
+                        <th> Bytes </th>
+                        <td> 1.95 GiB </td>
+                        <td> 3.96 MiB </td>
+                    </tr>
+                    
+                    <tr>
+                        <th> Shape </th>
+                        <td> (504, 720, 1440) </td>
+                        <td> (1, 720, 1440) </td>
+                    </tr>
+                    <tr>
+                        <th> Dask graph </th>
+                        <td colspan="2"> 504 chunks in 1009 graph layers </td>
+                    </tr>
+                    <tr>
+                        <th> Data type </th>
+                        <td colspan="2"> float32 numpy.ndarray </td>
+                    </tr>
+                </tbody>
+            </table>
+        </td>
+        <td>
+        <svg width="205" height="135" style="stroke:rgb(0,0,0);stroke-width:1" >
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
+  <line x1="10" y1="60" x2="35" y2="85" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="10" y2="60" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="11" y2="61" />
+  <line x1="12" y1="2" x2="12" y2="62" />
+  <line x1="14" y1="4" x2="14" y2="64" />
+  <line x1="15" y1="5" x2="15" y2="65" />
+  <line x1="16" y1="6" x2="16" y2="66" />
+  <line x1="18" y1="8" x2="18" y2="68" />
+  <line x1="19" y1="9" x2="19" y2="69" />
+  <line x1="20" y1="10" x2="20" y2="70" />
+  <line x1="22" y1="12" x2="22" y2="72" />
+  <line x1="23" y1="13" x2="23" y2="73" />
+  <line x1="24" y1="14" x2="24" y2="74" />
+  <line x1="26" y1="16" x2="26" y2="76" />
+  <line x1="27" y1="17" x2="27" y2="77" />
+  <line x1="29" y1="19" x2="29" y2="79" />
+  <line x1="30" y1="20" x2="30" y2="80" />
+  <line x1="31" y1="21" x2="31" y2="81" />
+  <line x1="33" y1="23" x2="33" y2="83" />
+  <line x1="34" y1="24" x2="34" y2="84" />
+  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 35.903485391229815,25.903485391229815 35.903485391229815,85.90348539122982 10.0,60.0" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="10" y1="0" x2="130" y2="0" style="stroke-width:2" />
+  <line x1="11" y1="1" x2="131" y2="1" />
+  <line x1="12" y1="2" x2="132" y2="2" />
+  <line x1="14" y1="4" x2="134" y2="4" />
+  <line x1="15" y1="5" x2="135" y2="5" />
+  <line x1="16" y1="6" x2="136" y2="6" />
+  <line x1="18" y1="8" x2="138" y2="8" />
+  <line x1="19" y1="9" x2="139" y2="9" />
+  <line x1="20" y1="10" x2="140" y2="10" />
+  <line x1="22" y1="12" x2="142" y2="12" />
+  <line x1="23" y1="13" x2="143" y2="13" />
+  <line x1="24" y1="14" x2="144" y2="14" />
+  <line x1="26" y1="16" x2="146" y2="16" />
+  <line x1="27" y1="17" x2="147" y2="17" />
+  <line x1="29" y1="19" x2="149" y2="19" />
+  <line x1="30" y1="20" x2="150" y2="20" />
+  <line x1="31" y1="21" x2="151" y2="21" />
+  <line x1="33" y1="23" x2="153" y2="23" />
+  <line x1="34" y1="24" x2="154" y2="24" />
+  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="10" y1="0" x2="35" y2="25" style="stroke-width:2" />
+  <line x1="130" y1="0" x2="155" y2="25" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="10.0,0.0 130.0,0.0 155.90348539122982,25.903485391229815 35.903485391229815,25.903485391229815" style="fill:#8B4903A0;stroke-width:0"/>
+
+  <!-- Horizontal lines -->
+  <line x1="35" y1="25" x2="155" y2="25" style="stroke-width:2" />
+  <line x1="35" y1="85" x2="155" y2="85" style="stroke-width:2" />
+
+  <!-- Vertical lines -->
+  <line x1="35" y1="25" x2="35" y2="85" style="stroke-width:2" />
+  <line x1="155" y1="25" x2="155" y2="85" style="stroke-width:2" />
+
+  <!-- Colored Rectangle -->
+  <polygon points="35.903485391229815,25.903485391229815 155.90348539122982,25.903485391229815 155.90348539122982,85.90348539122982 35.903485391229815,85.90348539122982" style="fill:#ECB172A0;stroke-width:0"/>
+
+  <!-- Text -->
+  <text x="95.903485" y="105.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" >1440</text>
+  <text x="175.903485" y="55.903485" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(-90,175.903485,55.903485)">720</text>
+  <text x="12.951743" y="92.951743" font-size="1.0rem" font-weight="100" text-anchor="middle" transform="rotate(45,12.951743,92.951743)">504</text>
+</svg>
+        </td>
+    </tr>
+</table></div></li></ul></div></li><li class='xr-section-item'><input id='section-edc4b81e-cb49-4efc-bca6-06c916557fcd' class='xr-section-summary-in' type='checkbox'  ><label for='section-edc4b81e-cb49-4efc-bca6-06c916557fcd' class='xr-section-summary' >Indexes: <span>(3)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><ul class='xr-var-list'><li class='xr-var-item'><div class='xr-index-name'><div>lon</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-1618fe14-37c7-413d-a55f-8a2c57bc3cc7' class='xr-index-data-in' type='checkbox'/><label for='index-1618fe14-37c7-413d-a55f-8a2c57bc3cc7' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-179.875, -179.625, -179.375, -179.125, -178.875, -178.625, -178.375,
+       -178.125, -177.875, -177.625,
+       ...
+        177.625,  177.875,  178.125,  178.375,  178.625,  178.875,  179.125,
+        179.375,  179.625,  179.875],
+      dtype=&#x27;float64&#x27;, name=&#x27;lon&#x27;, length=1440))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>lat</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-de8818a5-533f-4785-a9c7-c198270a57d2' class='xr-index-data-in' type='checkbox'/><label for='index-de8818a5-533f-4785-a9c7-c198270a57d2' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(Index([-89.875, -89.625, -89.375, -89.125, -88.875, -88.625, -88.375, -88.125,
+       -87.875, -87.625,
+       ...
+        87.625,  87.875,  88.125,  88.375,  88.625,  88.875,  89.125,  89.375,
+        89.625,  89.875],
+      dtype=&#x27;float64&#x27;, name=&#x27;lat&#x27;, length=720))</pre></div></li><li class='xr-var-item'><div class='xr-index-name'><div>time</div></div><div class='xr-index-preview'>PandasIndex</div><div></div><input id='index-8459df6e-dca8-44fd-b94b-11188c0c6c77' class='xr-index-data-in' type='checkbox'/><label for='index-8459df6e-dca8-44fd-b94b-11188c0c6c77' title='Show/Hide index repr'><svg class='icon xr-icon-database'><use xlink:href='#icon-database'></use></svg></label><div class='xr-index-data'><pre>PandasIndex(DatetimeIndex([&#x27;1979-01-01&#x27;, &#x27;1979-02-01&#x27;, &#x27;1979-03-01&#x27;, &#x27;1979-04-01&#x27;,
+               &#x27;1979-05-01&#x27;, &#x27;1979-06-01&#x27;, &#x27;1979-07-01&#x27;, &#x27;1979-08-01&#x27;,
+               &#x27;1979-09-01&#x27;, &#x27;1979-10-01&#x27;,
+               ...
+               &#x27;2020-03-01&#x27;, &#x27;2020-04-01&#x27;, &#x27;2020-05-01&#x27;, &#x27;2020-06-01&#x27;,
+               &#x27;2020-07-01&#x27;, &#x27;2020-08-01&#x27;, &#x27;2020-09-01&#x27;, &#x27;2020-10-01&#x27;,
+               &#x27;2020-11-01&#x27;, &#x27;2020-12-01&#x27;],
+              dtype=&#x27;datetime64[ns]&#x27;, name=&#x27;time&#x27;, length=504, freq=None))</pre></div></li></ul></div></li><li class='xr-section-item'><input id='section-4a1d9386-9efc-4c6d-a20b-31a800ab0f27' class='xr-section-summary-in' type='checkbox'  ><label for='section-4a1d9386-9efc-4c6d-a20b-31a800ab0f27' class='xr-section-summary' >Attributes: <span>(38)</span></label><div class='xr-section-inline-details'></div><div class='xr-section-details'><dl class='xr-attrs'><dt><span>geospatial_lat_min :</span></dt><dd>-90.0</dd><dt><span>geospatial_lat_max :</span></dt><dd>90.0</dd><dt><span>geospatial_lon_min :</span></dt><dd>-180.0</dd><dt><span>geospatial_lon_max :</span></dt><dd>180.0</dd><dt><span>title :</span></dt><dd>CM SAF Cloud, Albedo and Radiation dataset, AVHRR-based edition 3 (CLARA-A3): Monthly Mean TOA Outgoing Longwave Radiation (OLR)</dd><dt><span>summary :</span></dt><dd>This file contains AVHRR-based Thematic Climate Data Records (TCDR) produced by the Satellite Application Facility on Climate Monitoring (CM SAF)</dd><dt><span>id :</span></dt><dd>DOI:10.5676/EUM_SAF_CM/CLARA_AVHRR/V003</dd><dt><span>cmsaf_product_id :</span></dt><dd>CM-11342</dd><dt><span>product_version :</span></dt><dd>3.0</dd><dt><span>creator_name :</span></dt><dd>BE/RMIB</dd><dt><span>creator_email :</span></dt><dd>contact.cmsaf@dwd.de</dd><dt><span>creator_url :</span></dt><dd>http://www.cmsaf.eu/</dd><dt><span>institution :</span></dt><dd>EUMETSAT/CMSAF</dd><dt><span>project :</span></dt><dd>Satellite Application Facility on Climate Monitoring (CM SAF)</dd><dt><span>references :</span></dt><dd>https://doi.org/10.5676/EUM_SAF_CM/CLARA_AVHRR/V003</dd><dt><span>keywords_vocabulary :</span></dt><dd>GCMD Science Keywords, Version 8.6</dd><dt><span>keywords :</span></dt><dd>EARTH SCIENCE &gt; ATMOSPHERE &gt; ATMOSPHERIC RADIATION &gt; RADIATIVE FLUX</dd><dt><span>Conventions :</span></dt><dd>CF-1.7,ACDD-1.3</dd><dt><span>standard_name_vocabulary :</span></dt><dd>Standard Name Table (v57, 11 July 2018)</dd><dt><span>date_created :</span></dt><dd>2022-03-07T08:53:36Z</dd><dt><span>geospatial_lat_units :</span></dt><dd>degrees_north</dd><dt><span>geospatial_lat_resolution :</span></dt><dd>0.25 degree</dd><dt><span>geospatial_lon_units :</span></dt><dd>degrees_east</dd><dt><span>geospatial_lon_resolution :</span></dt><dd>0.25 degree</dd><dt><span>time_coverage_start :</span></dt><dd>1979-01-01T00:00:00Z</dd><dt><span>time_coverage_end :</span></dt><dd>1979-02-01T00:00:00Z</dd><dt><span>time_coverage_duration :</span></dt><dd>P1M</dd><dt><span>time_coverage_resolution :</span></dt><dd>P1M</dd><dt><span>platform :</span></dt><dd>TIROS-N &gt; Television Infrared Observation Satellite-N</dd><dt><span>platform_vocabulary :</span></dt><dd>GCMD Platforms, Version 8.6</dd><dt><span>instrument :</span></dt><dd>AVHRR &gt; Advanced Very High Resolution Radiometer</dd><dt><span>instrument_vocabulary :</span></dt><dd>GCMD Instruments, Version 8.6</dd><dt><span>variable_id :</span></dt><dd>LW_flux</dd><dt><span>license :</span></dt><dd>The CM SAF data are owned by EUMETSAT and are available to all users free of charge and with no conditions to use. If you wish to use these products, EUMETSAT&#x27;s copyright credit must be shown by displaying the words &quot;Copyright (c) (2022) EUMETSAT&quot; under/in each of these SAF Products used in a project or shown in a publication or website.
+
+Please follow the citation guidelines given at https://doi.org/10.5676/EUM_SAF_CM/CLARA_AVHRR/V003 and also register as a user at http://cm-saf.eumetsat.int/ to receive latest information on CM SAF services and to get access to the CM SAF User Help Desk.</dd><dt><span>source :</span></dt><dd>FCDR AVHRR-GAC : ERA-5 : OSISAF : USGS : IGBP</dd><dt><span>lineage :</span></dt><dd>pygac/gac2pps.py : NWC/PPS version v2018 : CLARA-A3 TOA toa_flux v2.0 : CLARA-A3 TOA dailymean v2.4</dd><dt><span>CMSAF_L2_processor :</span></dt><dd>CLARA-A3 TOA toa_flux v2.0</dd><dt><span>CMSAF_L3_processor :</span></dt><dd>CLARA-A3 TOA dailymean v2.4</dd></dl></div></li></ul></div></div></div></div>
+</div>
+</section>
+</section>
+<section id="use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution">
+<h2>Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution<a class="headerlink" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution" title="Permalink to this heading">#</a></h2>
+<p>Use Case #1 aims to give an overview about the OLR distribution. We do that by plotting the global mean OLR from the CLARA-A3 dataset. Please note that we need to open the dataset to be able to execute this usecase, as described in the previous “Load dataset” section.</p>
+<section id="calculation-of-the-temporal-average-of-olr">
+<h3>Calculation of the temporal average of OLR<a class="headerlink" href="#calculation-of-the-temporal-average-of-olr" title="Permalink to this heading">#</a></h3>
+<p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_olr” and the variable Outgoing Longwave Radiation or “LW_flux”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate temporal average</span>
+<span class="n">average</span> <span class="o">=</span> <span class="n">dataset_olr</span><span class="p">[</span><span class="s1">&#39;LW_flux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get longitude and latitude coordinates. Both are variables of the dataset and available with</span>
+<span class="c1"># the &quot;.variables[&#39;lat/lon&#39;]&quot; function; [:] usually means [&quot;from&quot;:&quot;till&quot;] but</span>
+<span class="c1"># without numbers it means &quot;everything&quot;</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">dataset_olr</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">dataset_olr</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-of-the-temporal-average-of-olr">
+<h3>Plot of the temporal average of OLR<a class="headerlink" href="#plot-of-the-temporal-average-of-olr" title="Permalink to this heading">#</a></h3>
+<p>With the calculation done the data is ready for a plot. Please find the plot and settings in the next section.</p>
+<p>Some further notes:</p>
+<ul class="simple">
+<li><p>Matplotlib provides a wide range of colorbars: <a class="reference external" href="https://matplotlib.org/stable/users/explain/colors/colormaps.html">https://matplotlib.org/stable/users/explain/colors/colormaps.html</a>; the addition <code class="docutils literal notranslate"><span class="pre">_r</span></code> reverses the colorbar</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">add_subplot</span></code> part provides the option to plot more than one figure (e.g. a 2x2 matrix with four plots together). In this case (1,1,1) means that the panel is a 1x1 matrix and the following plot is the first subplot.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create figure and size</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Create the figure panel and define the Cartopy map projection (PlateCarree)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># Plot the data and set colorbar, minimum and maximum values</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;YlGnBu&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="c1"># Set title and size</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean Outgoing Longwave Radiation from CLARA-A3 for 1979-2020&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Define gridlines with linewidth, color, opacity and style</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set x- and y-axis labels to True or False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">bottom_labels</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">left_labels</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Set coastlines</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+
+<span class="c1"># Set colorbar and adjust size, location and text</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Outgoing Longwave Radiation (W/m²)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Save figure in defined path and name</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">FIGPATH</span> <span class="o">+</span> <span class="s1">&#39;/OLRmm_mean.png&#39;</span><span class="p">)</span>
+
+<span class="c1"># Show plot and close it afterwards to reduce the amount of storage</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/1b14559670a84f139d6b9f34f2c0732ef796d464b33c7ae896c5dfe2bcce3e95.png" src="../_images/1b14559670a84f139d6b9f34f2c0732ef796d464b33c7ae896c5dfe2bcce3e95.png" />
+</div>
+</div>
+<p><strong>Figure 1</strong> shows the global mean values of the Outgoing Longwave Radiation (OLR).</p>
+</section>
+</section>
+<section id="use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution">
+<h2>Use case 2: The mean global Reflected Solar Flux (RSF) distribution<a class="headerlink" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution" title="Permalink to this heading">#</a></h2>
+<p>Use Case #2 aims to give an overview about the RSF distribution. We do that by plotting the global mean RSF from the CLARA-A3 dataset. Please note that we need to open the dataset to be able to execute this usecase, as described in the previous “Load dataset” section.</p>
+<section id="calculation-of-the-temporal-average-of-rsf">
+<h3>Calculation of the temporal average of RSF<a class="headerlink" href="#calculation-of-the-temporal-average-of-rsf" title="Permalink to this heading">#</a></h3>
+<p>We calculate the temporal average with the function np.nanmean. np is common alias for numpy and a library for mathmatical working with arrays. nanmean averages the data and ignores nan’s. This operation is applied to “dataset_olr” and the variable Reflected Solar Flux or “SW_flux”. axis=0 averages over the first axis, which is “time” in this case. This leads to a two-dimensional result with an average over time.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Calculate temporal average</span>
+<span class="n">average</span> <span class="o">=</span> <span class="n">dataset_rsf</span><span class="p">[</span><span class="s1">&#39;SW_flux&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dim</span><span class="o">=</span><span class="s2">&quot;time&quot;</span><span class="p">)</span>
+
+<span class="c1"># Get longitude and latitude coordinates. Both are variables of the dataset and available with</span>
+<span class="c1"># the &quot;.variables[&#39;lat/lon&#39;]&quot; function; [:] usually means [&quot;from&quot;:&quot;till&quot;] but</span>
+<span class="c1"># without numbers it means &quot;everything&quot;</span>
+<span class="n">lon</span> <span class="o">=</span> <span class="n">dataset_rsf</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lon&#39;</span><span class="p">]</span>
+<span class="n">lat</span> <span class="o">=</span> <span class="n">dataset_rsf</span><span class="o">.</span><span class="n">variables</span><span class="p">[</span><span class="s1">&#39;lat&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-of-the-temporal-average-of-rsf">
+<h3>Plot of the temporal average of RSF<a class="headerlink" href="#plot-of-the-temporal-average-of-rsf" title="Permalink to this heading">#</a></h3>
+<p>With the calculation done the data is ready for a plot. Please find the plot and settings in the next section.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create figure and size</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+
+<span class="c1"># Create the figure panel and define the Cartopy map projection (PlateCarree)</span>
+<span class="n">ax</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_subplot</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">projection</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+<span class="c1"># Plot the data and set colorbar, minimum and maximum values</span>
+<span class="n">im</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">pcolormesh</span><span class="p">(</span><span class="n">lon</span><span class="p">,</span> <span class="n">lat</span><span class="p">,</span> <span class="n">average</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;Wistia_r&#39;</span><span class="p">,</span> <span class="n">vmin</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">vmax</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+
+<span class="c1"># Set title and size</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Mean Reflected Solar Flux from CLARA-A3 for 1979-2020&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+
+<span class="c1"># Define gridlines with linewidth, color, opacity and style</span>
+<span class="n">gl</span> <span class="o">=</span> <span class="n">ax</span><span class="o">.</span><span class="n">gridlines</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set x- and y-axis labels to True or False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">top_labels</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">bottom_labels</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="n">gl</span><span class="o">.</span><span class="n">left_labels</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="c1"># Set coastlines</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">coastlines</span><span class="p">()</span>
+
+<span class="c1"># Set colorbar and adjust size, location and text</span>
+<span class="n">cbar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">colorbar</span><span class="p">(</span><span class="n">im</span><span class="p">,</span> <span class="n">fraction</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">pad</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span> <span class="n">orientation</span><span class="o">=</span><span class="s1">&#39;horizontal&#39;</span><span class="p">,</span> <span class="n">extend</span><span class="o">=</span><span class="s1">&#39;both&#39;</span><span class="p">)</span>
+<span class="n">cbar</span><span class="o">.</span><span class="n">set_label</span><span class="p">(</span><span class="s1">&#39;Reflected Solar Flux (W/m²)&#39;</span><span class="p">)</span>
+
+<span class="c1"># Save figure in defined path and name</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="n">FIGPATH</span> <span class="o">+</span> <span class="s1">&#39;/RSFmm_mean.png&#39;</span><span class="p">)</span>
+
+<span class="c1"># Show plot and close it afterwards to reduce the amount of storage</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/8fee8c83fd804a40c207529b7e7dfdcd6e077c8c1c7956bf6db8d10f55827468.png" src="../_images/8fee8c83fd804a40c207529b7e7dfdcd6e077c8c1c7956bf6db8d10f55827468.png" />
+</div>
+</div>
+<p><strong>Figure 2</strong> shows the global mean values of the Reflected Solar Flux (RSF).</p>
+</section>
+</section>
+<section id="get-more-information-about-earth-radiation-budget">
+<h2>Get more information about Earth Radiation Budget<a class="headerlink" href="#get-more-information-about-earth-radiation-budget" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/datasets/satellite-earth-radiation-budget?tab=overview">About Earth’s radiation budget from 1979 to present derived from satellite observations</a></p></li>
+<li><p><a class="reference external" href="https://cds.climate.copernicus.eu/">About the Climate Data Store</a></p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./ecv-notebooks"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="erb-outgoing-longwave-radiation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Calculation of global distribution and timeseries of Outgoing Longwave Radiation (OLR) using NOAA/NCEI HIRS data</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="erb-ceres-climatology.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Analysis of the Earth’s Radiation Budget using the CERES product</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction">Introduction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dataset-description">Dataset description</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prerequisites-and-data-acquisition">Prerequisites and data acquisition</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#import-libraries">Import libraries</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#download-data-using-cds-api">Download data using CDS API</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#set-up-cds-api-credentials">Set up CDS API credentials</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-data">Search for data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dataset">Load dataset</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-1-the-mean-global-outgoing-longwave-radiation-olr-radiation-distribution">Use case 1: The mean global Outgoing Longwave Radiation (OLR) radiation distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-olr">Calculation of the temporal average of OLR</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-olr">Plot of the temporal average of OLR</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#use-case-2-the-mean-global-reflected-solar-flux-rsf-distribution">Use case 2: The mean global Reflected Solar Flux (RSF) distribution</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#calculation-of-the-temporal-average-of-rsf">Calculation of the temporal average of RSF</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-of-the-temporal-average-of-rsf">Plot of the temporal average of RSF</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-more-information-about-earth-radiation-budget">Get more information about Earth Radiation Budget</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By the Copernicus Climate Change Service (C3S), entrusted to ECMWF (European Centre for Medium-Range Weather Forecasts)
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

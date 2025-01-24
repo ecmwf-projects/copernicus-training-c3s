@@ -158,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference external" href="https://cds-beta.climate.copernicus.eu/user-guide">CDS user guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cds.climate.copernicus.eu/user-guide">CDS user guide</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
 <ul class="current nav bd-sidenav">
@@ -169,8 +169,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-clara-climatology.html">Analysis of the CLARA Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-ceres-climatology.html">Analysis of the CERES Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-ozone-columns.html">Total Column Ozone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
 <ul class="nav bd-sidenav">
@@ -525,10 +530,10 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\
 </section>
 <section id="enter-your-cds-api-key">
 <h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this heading">#</a></h3>
-<p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="https://cds-beta.climate.copernicus.eu">https://cds-beta.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">https://cds-beta.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+<p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First, you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> which build together your CDS API key. The string of characters that make up your KEY include your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="https://cds.climate.copernicus.eu">https://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api">https://cds.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds-beta.climate.copernicus.eu/api&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s1">&#39;https://cds.climate.copernicus.eu/api&#39;</span>
 <span class="n">KEY</span> <span class="o">=</span> <span class="s1">&#39;##################################&#39;</span>
 </pre></div>
 </div>
@@ -545,7 +550,7 @@ Requirement already satisfied: certifi&gt;=2017.4.17 in c:\users\cxcs\anaconda3\
 </section>
 <section id="search-for-data">
 <h3>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h3>
-<p>To search for data, visit the CDS website: <a class="reference external" href="https://cds-beta.climate.copernicus.eu">https://cds-beta.climate.copernicus.eu</a>. To facilitate your search you can use keywords, or apply various filters. The data we are going to use in this exercise is the <code class="docutils literal notranslate"><span class="pre">ERA5</span> <span class="pre">reanalysis</span> <span class="pre">data</span> <span class="pre">on</span> <span class="pre">single</span> <span class="pre">levels</span> <span class="pre">from</span> <span class="pre">1979</span> <span class="pre">to</span> <span class="pre">present</span></code>.</p>
+<p>To search for data, visit the CDS website: <a class="reference external" href="https://cds.climate.copernicus.eu">https://cds.climate.copernicus.eu</a>. To facilitate your search you can use keywords, or apply various filters. The data we are going to use in this exercise is the <code class="docutils literal notranslate"><span class="pre">ERA5</span> <span class="pre">reanalysis</span> <span class="pre">data</span> <span class="pre">on</span> <span class="pre">single</span> <span class="pre">levels</span> <span class="pre">from</span> <span class="pre">1979</span> <span class="pre">to</span> <span class="pre">present</span></code>.</p>
 <p>Having selected the correct dataset, we now need to specify what product type, variables, temporal and geographic coverage we are interested in. These can all be selected in the <strong>“Download data”</strong> tab. In this tab a form appears in which we will select the following parameters to download. We will choose a subset area of 1x1 degrees, corresponding to a region of around 111km North/South and 72km East/West in Belgium and Northern France, around the city of Lille:</p>
 <ul class="simple">
 <li><p>Product type: <code class="docutils literal notranslate"><span class="pre">Reanalysis</span></code></p></li>
@@ -1260,7 +1265,7 @@ Attributes:
 <img alt="_images/8791f8bc0c3987422b463945d984ed65c691b820567b469cfe1a1ad66704d989.png" src="_images/8791f8bc0c3987422b463945d984ed65c691b820567b469cfe1a1ad66704d989.png" />
 </div>
 </div>
-<p>In the histogram above, you see that even if we take an increased sample covering a wider temporal range, the maximum daily temperature still never reached that of 15 September 2020. To increase the sample even further, you could include data from a longer time period. The C3S reanalysis dataset now extends back to 1940 and is accessible here <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets?q=era5+hourly+single+levels">ERA5 hourly data on single levels from 1940 to present</a>.</p>
+<p>In the histogram above, you see that even if we take an increased sample covering a wider temporal range, the maximum daily temperature still never reached that of 15 September 2020. To increase the sample even further, you could include data from a longer time period. The C3S reanalysis dataset now extends back to 1940 and is accessible here <a class="reference external" href="https://cds.climate.copernicus.eu/datasets?q=era5+hourly+single+levels">ERA5 hourly data on single levels from 1940 to present</a>.</p>
 <hr></section>
 </section>
 

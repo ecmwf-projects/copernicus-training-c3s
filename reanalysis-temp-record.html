@@ -158,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference external" href="https://cds-beta.climate.copernicus.eu/user-guide">CDS user guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cds.climate.copernicus.eu/user-guide">CDS user guide</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
 <ul class="current nav bd-sidenav">
@@ -169,8 +169,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-clara-climatology.html">Analysis of the CLARA Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-ceres-climatology.html">Analysis of the CERES Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-ozone-columns.html">Total Column Ozone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
 <ul class="nav bd-sidenav">
@@ -561,10 +566,10 @@ td, th {
 </section>
 <section id="enter-your-cds-api-key">
 <h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this heading">#</a></h3>
-<p>We will request data from the CDS programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">APIKEY</span></code> which build together your CDS API key. The string of characters that make up your APIKEY include your personal User ID and CDS API key. To obtain these, first register and login to the CDS (<a class="reference external" href="https://cds-beta.climate.copernicus.eu">https://cds-beta.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">https://cds-beta.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">Your-api-key</span></code> below with this string.</p>
+<p>We will request data from the CDS programmatically with the help of the CDS API. Let us make use of the option to manually set the CDS API credentials. First you have to define two variables: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">APIKEY</span></code> which build together your CDS API key. The string of characters that make up your APIKEY include your personal User ID and CDS API key. To obtain these, first register and login to the CDS (<a class="reference external" href="https://cds.climate.copernicus.eu">https://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api">https://cds.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">Your-api-key</span></code> below with this string.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://cds-beta.climate.copernicus.eu/api&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="o">=</span> <span class="s2">&quot;https://cds.climate.copernicus.eu/api&quot;</span>
 <span class="c1"># Here you shall use your UUID and api key replacing &quot;UUID:Your-api-key&quot; with the values in your user profile in CDS</span>
 <span class="c1"># For instance &quot;1234:ecmwf123-4567-89ec-mwf1-23456789ecmf&quot; or something like that</span>
 <span class="n">APIKEY</span> <span class="o">=</span> <span class="s2">&quot;Your-api-key&quot;</span>
@@ -583,8 +588,8 @@ td, th {
 </section>
 <section id="search-for-data">
 <h3>Search for data<a class="headerlink" href="#search-for-data" title="Permalink to this heading">#</a></h3>
-<p>To search for data, visit the CDS website: <a class="reference external" href="https://cds-beta.climate.copernicus.eu">https://cds-beta.climate.copernicus.eu</a>.
-Here you can search for ERA5 data using the search bar. The data we need for this tutorial is the <a class="reference external" href="https://cds-beta.climate.copernicus.eu/datasets/reanalysis-era5-single-levels-monthly-means?tab=overview">ERA5 monthly averaged data on single levels from 1940 to present</a>. ERA5 is the 5th version of the ECMWF Reanalysis dataset. Reanalysis uses a state of the art forecast model and data assimilation system to create a consistent “map without gaps” of observed and modelled climate variables over the past decades.</p>
+<p>To search for data, visit the CDS website: <a class="reference external" href="https://cds.climate.copernicus.eu">https://cds.climate.copernicus.eu</a>.
+Here you can search for ERA5 data using the search bar. The data we need for this tutorial is the <a class="reference external" href="https://cds.climate.copernicus.eu/datasets/reanalysis-era5-single-levels-monthly-means?tab=overview">ERA5 monthly averaged data on single levels from 1940 to present</a>. ERA5 is the 5th version of the ECMWF Reanalysis dataset. Reanalysis uses a state of the art forecast model and data assimilation system to create a consistent “map without gaps” of observed and modelled climate variables over the past decades.</p>
 <p>Having selected the correct dataset, we now need to specify what product type, variables, temporal and geographic coverage we are interested in. These can all be selected in the <strong>“Download data”</strong> tab. In this tab a form appears in which we will select the following parameters to download:</p>
 <ul class="simple">
 <li><p>Product type: <code class="docutils literal notranslate"><span class="pre">Monthly</span> <span class="pre">averaged</span> <span class="pre">reanalysis</span></code></p></li>
@@ -5112,7 +5117,7 @@ Coordinates:
 <h2>5. View time series and analyse North Atlantic sea surface temperature trends<a class="headerlink" href="#view-time-series-and-analyse-north-atlantic-sea-surface-temperature-trends" title="Permalink to this heading">#</a></h2>
 <section id="this-is-a-new-exercise-in-this-part-of-the-tutorial-we-will-be-working-with-monthly-sea-surface-temperature-sst-data">
 <h3>This is a new exercise. In this part of the tutorial we will be working with monthly sea surface temperature (SST) data.<a class="headerlink" href="#this-is-a-new-exercise-in-this-part-of-the-tutorial-we-will-be-working-with-monthly-sea-surface-temperature-sst-data" title="Permalink to this heading">#</a></h3>
-<p>First we need to download a new dataset. As before, we need to specify what product type, variables, temporal and geographic coverage we are interested in. These can all be selected in the <strong>“Download data”</strong> tab in the CDS (<a class="reference external" href="https://cds-beta.climate.copernicus.eu">https://cds-beta.climate.copernicus.eu</a>). In this tab a form appears in which we select the following parameters to download:</p>
+<p>First we need to download a new dataset. As before, we need to specify what product type, variables, temporal and geographic coverage we are interested in. These can all be selected in the <strong>“Download data”</strong> tab in the CDS (<a class="reference external" href="https://cds.climate.copernicus.eu">https://cds.climate.copernicus.eu</a>). In this tab a form appears in which we select the following parameters to download:</p>
 <ul class="simple">
 <li><p>Product type: <code class="docutils literal notranslate"><span class="pre">Monthly</span> <span class="pre">averaged</span> <span class="pre">reanalysis</span></code></p></li>
 <li><p>Variable: <code class="docutils literal notranslate"><span class="pre">sea_surface_temperature</span></code></p></li>

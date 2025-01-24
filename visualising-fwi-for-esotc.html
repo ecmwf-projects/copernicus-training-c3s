@@ -158,7 +158,7 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Climate Data Store (CDS)</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference external" href="https://cds-beta.climate.copernicus.eu/user-guide">CDS user guide</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://cds.climate.copernicus.eu/user-guide">CDS user guide</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Reanalysis</span></p>
 <ul class="nav bd-sidenav">
@@ -169,8 +169,13 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Observations</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-outgoing-longwave-radiation.html">Outgoing Longwave Radiation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-clara-climatology.html">Analysis of the CLARA Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/erb-ceres-climatology.html">Analysis of the CERES Earth radiation budget product</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/srb-climatology-and-anomaly.html">Surface radiation budget climatologies and anomalies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/cloud-cover-climatology.html">Cloud fractional cover climatology</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-column-water-vapour-combi.html">Total Column Water Vapour</a></li>
 <li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/total-ozone-columns.html">Total Column Ozone</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ecv-notebooks/greenhouse-gases-level2-products.html">Greenhouse Gas Level 2 Products</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Tutorials on Climate Projections</span></p>
 <ul class="nav bd-sidenav">
@@ -524,7 +529,7 @@ td, th {
 <section id="enter-your-cds-api-key">
 <h3>Enter your CDS API key<a class="headerlink" href="#enter-your-cds-api-key" title="Permalink to this heading">#</a></h3>
 <p>We will request data from the Climate Data Store (CDS) programmatically with the help of the CDS API.</p>
-<p>If you have not set up your CDS API credentials with a <code class="docutils literal notranslate"><span class="pre">~/.cdsapirc</span></code> file, it is possible to provide the credentials when initialising the <code class="docutils literal notranslate"><span class="pre">cdsapi.Client</span></code>. To do this we must define the two variables needed to establish a connection: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> . The <code class="docutils literal notranslate"><span class="pre">URL</span></code> for the cds api is common and you do not need to modify that field. The <code class="docutils literal notranslate"><span class="pre">KEY</span></code> is string of characters made up of your your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="https://cds-beta.climate.copernicus.eu">https://cds-beta.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds-beta.climate.copernicus.eu/how-to-api">https://cds-beta.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
+<p>If you have not set up your CDS API credentials with a <code class="docutils literal notranslate"><span class="pre">~/.cdsapirc</span></code> file, it is possible to provide the credentials when initialising the <code class="docutils literal notranslate"><span class="pre">cdsapi.Client</span></code>. To do this we must define the two variables needed to establish a connection: <code class="docutils literal notranslate"><span class="pre">URL</span></code> and <code class="docutils literal notranslate"><span class="pre">KEY</span></code> . The <code class="docutils literal notranslate"><span class="pre">URL</span></code> for the cds api is common and you do not need to modify that field. The <code class="docutils literal notranslate"><span class="pre">KEY</span></code> is string of characters made up of your your personal User ID and CDS API key. To obtain these, first register or login to the CDS (<a class="reference external" href="https://cds.climate.copernicus.eu">https://cds.climate.copernicus.eu</a>), then visit <a class="reference external" href="https://cds.climate.copernicus.eu/how-to-api">https://cds.climate.copernicus.eu/how-to-api</a> and copy the string of characters listed after “key:”. Replace the <code class="docutils literal notranslate"><span class="pre">#########</span></code> below with this string.</p>
 <p>NOTE: If you have set up your cdsapi key using a ~/.cdsapirc you do not need to add your key below.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -617,7 +622,7 @@ td, th {
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-14 17:17:52,815 WARNING [2024-05-15T00:00:00] **BETA version** of the new [CEMS](https://emergency.copernicus.eu/) [Early Warning Data Store (EWDS)](https://ewds-beta.climate.copernicus.eu/). Your [feedback](https://jira.ecmwf.int/plugins/servlet/desk/portal/1/create/202) is very useful for us. **Please notice** that access to the system might suffer some disruptions due to evolving updates.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2024-10-14 17:17:52,815 WARNING [2024-05-15T00:00:00] **BETA version** of the new [CEMS](https://emergency.copernicus.eu/) [Early Warning Data Store (EWDS)](https://ewds.climate.copernicus.eu/). Your [feedback](https://jira.ecmwf.int/plugins/servlet/desk/portal/1/create/202) is very useful for us. **Please notice** that access to the system might suffer some disruptions due to evolving updates.
 </pre></div>
 </div>
 </div>
